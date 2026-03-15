@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/contactos.css">
+    <link rel="icon" href="../img-pap/logotipo-docesdias.jpg">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <title>contactos - Doces Dias</title>
+</head>
+
+<body>
+    <?php include '../includes/header.php'; ?>
+
+    <div class="title">
+        <h1>Os Nossos Contactos</h1>
+    </div>
+
+    <div class="contact-info">
+        <div class="contact-item">
+            <i class="fas fa-phone" style="font-size:64px;color:#0066cc"></i>
+            <a href="tel:+351913047889">+351 913 047 889</a>
+        </div>
+
+        <div class="contact-item">
+            <i class="fab fa-whatsapp" style="font-size:64px;color:#25D366"></i>
+            <a href="https://wa.me/351913047889">WhatsApp</a>
+        </div>
+
+        <div class="contact-item">
+            <i class="fab fa-instagram" style="font-size:64px;color:#E1306C"></i>
+            <a href="https://www.instagram.com/doces__dias">@doces__dias</a>
+        </div>
+
+        <div class="contact-item">
+            <i class="fab fa-facebook" style="font-size:64px;color:#1877F2"></i>
+            <a href="https://www.facebook.com/docessdias">Doces Dias</a>
+        </div>
+
+        <div class="contact-item">
+            <i class="fas fa-envelope" style="font-size:64px;color:#666666"></i>
+            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=docessdias1@gmail.com" target="_blank">
+                docessdias1@gmail.com
+            </a>
+        </div>
+    </div>
+
+
+    <div class="faq-container">
+        <h3>Perguntas Frequentes (FAQ)</h3>
+
+        <div class="faq-item">
+            <button class="faq-question">Qual o prazo mínimo para encomendas?</button>
+            <div class="faq-answer" style="max-height: 0; overflow: hidden;">
+                <p>Pedimos que realize a sua encomenda com pelo menos 48h de antecedência.<br>
+                Para bolos personalizados complexos, recomendamos 1 semana.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question">Fazemos entregas ao domicílio?</button>
+            <div class="faq-answer" style="max-height: 0; overflow: hidden;">
+                <p>Sim, fazemos entregas na região num raio de 20km da nossa loja.<br>
+                A taxa de entrega é calculada com base na distância.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question">Têm opções sem glúten ou vegan?</button>
+            <div class="faq-answer" style="max-height: 0; overflow: hidden;">
+                <p>Sim! Temos uma linha dedicada a restrições alimentares sob consulta.<br>
+                Contacte-nos para conhecer os sabores disponíveis esta semana.</p>
+            </div>
+        </div>
+    </div>
+
+   <form class="container my-5 p-5 bg-light rounded-4 shadow" style="max-width: 800px;" method="POST" action="../actions/processa_contacto.php">
+    <h3 class="text-primary mb-3">Precisa de Ajuda?</h3>
+    <h4 class="mb-4 text-dark fw-normal">Contacte-nos!</h4>
+
+    <div class="mb-3">
+        <label for="nome" class="form-label fw-semibold">Nome e apelido</label>
+        <input type="text" class="form-control" id="nome" name="nome" placeholder="Ex: Martim Dias" required>
+    </div>
+
+    <div class="mb-3">
+        <label for="email" class="form-label fw-semibold">Endereço de email</label>
+        <input type="email" class="form-control" id="email" name="email" placeholder="exemplo@email.com" required>
+    </div>
+
+    <div class="mb-3">
+        <label for="telefone" class="form-label fw-semibold">Telefone (opcional)</label>
+        <input type="tel" class="form-control" id="telefone" name="telefone" placeholder="Ex: 912345678">
+    </div>
+
+    <div class="mb-3">
+        <label for="assunto" class="form-label fw-semibold">Assunto</label>
+        <input type="text" class="form-control" id="assunto" name="assunto" placeholder="Assunto da mensagem" required>
+    </div>
+
+    <div class="mb-3">
+        <label for="mensagem" class="form-label fw-semibold">Mensagem</label>
+        <textarea class="form-control" id="mensagem" name="mensagem" rows="5" placeholder="Escreva a sua mensagem aqui..." required></textarea>
+    </div>
+
+    <button type="submit" class="btn btn-primary w-100 fw-bold" style="background: linear-gradient(135deg,#e91e63,#c2185b); border:none;">
+        Enviar Mensagem
+    </button>
+</form>
+
+    <script src="../js/contactos.js"></script>
+    <?php include '../includes/footer.php'; ?>
+</body>
+</html>

@@ -1,0 +1,48 @@
+/* Cores inspiradas no logotipo Doces Dias */
+        .navbar-custom {
+            background-color: #c65d5d;
+        }
+        
+        .navbar-custom .navbar-brand img {
+            border-radius: 50%;
+            border: 2px solid #fff;
+            transition: transform 0.3s ease;
+        }
+        
+        .navbar-custom .nav-link {
+            color: #fff !important;
+            transition: all 0.3s ease;
+            padding: 8px 15px !important;
+        }
+        
+        .navbar-custom .nav-link:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+        
+        .navbar-custom .nav-link i {
+            font-size: 1.2rem;
+        }
+        
+        .navbar-custom .dropdown-menu {
+            background-color: #f8d7da;
+            border: none;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        .navbar-custom .dropdown-item {
+            color: #c65d5d;
+            transition: all 0.3s ease;
+        }
+        
+        .navbar-custom .dropdown-item:hover {
+            background-color: #c65d5d;
+            color: #fff;
+        }
+        
+        /* Separador visual para redes sociais */
+        .social-divider {
+            border-left: 2px solid rgba(255, 255, 255, 0.3);
+            margin-left: 10px;
+            padding-left: 10px;
+        }

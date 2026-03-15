@@ -1,0 +1,279 @@
+* {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            background: linear-gradient(135deg, #ffbecb 0%, #ff6d85 100%);
+            overflow-x: hidden;
+        }
+
+        /* ==================== HERO SECTION ==================== */
+        .container {
+            min-height: 80vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            padding: 80px 40px;
+            background: linear-gradient(135deg, rgba(195, 89, 85, 0.95) 0%, rgba(220, 110, 106, 0.95) 100%);
+            margin-bottom: 0;
+            max-width: 100%;
+            overflow: hidden;
+        }
+
+        .img-fundo,
+        .img-fundo2 {
+            position: absolute;
+            width: 350px;
+            height: 350px;
+            object-fit: cover;
+            opacity: 0.15;
+            border-radius: 50%;
+            filter: blur(2px);
+        }
+
+        .img-fundo {
+            top: 10%;
+            left: 5%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .img-fundo2 {
+            bottom: 10%;
+            right: 5%;
+            animation: float 6s ease-in-out infinite reverse;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .subtitle {
+            font-size: 2.5rem;
+            color: #ffe8ec;
+            font-style: italic;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            z-index: 1;
+            animation: fadeInDown 1s ease-out;
+        }
+
+        .main-title {
+            font-size: 5rem;
+            color: #ffffff;
+            font-weight: bold;
+            letter-spacing: 8px;
+            margin-bottom: 30px;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.4);
+            z-index: 1;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .divider {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            z-index: 1;
+            animation: fadeIn 1.5s ease-out;
+        }
+
+        .divider::before,
+        .divider::after {
+            content: '';
+            width: 150px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.8), transparent);
+        }
+
+        .online-text {
+            font-size: 1.5rem;
+            color: #ffffff;
+            letter-spacing: 3px;
+            font-weight: 300;
+        }
+
+
+        /* ==================== HR STYLING ==================== */
+        hr {
+            border: none;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #f5a9ad, transparent);
+            margin: 60px auto;
+            width: 80%;
+        }
+
+        /* ==================== CHOOSE SECTION ==================== */
+        .choose-section {
+            max-width: 1200px;
+            margin: 80px auto;
+            padding: 40px 20px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            text-align: center;
+        }
+
+        .choose-section > div {
+            background: white;
+            padding: 40px 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(195, 89, 85, 0.15);
+            transition: all 0.3s ease;
+            border-top: 4px solid #e88b8d;
+        }
+
+        .choose-section > div:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(195, 89, 85, 0.3);
+        }
+
+        .choose-section button {
+            padding: 15px 40px;
+            background: linear-gradient(135deg, #c35955 0%, #dc6e6a 100%);
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-bottom: 20px;
+            box-shadow: 0 5px 15px rgba(195, 89, 85, 0.3);
+        }
+
+        .choose-section button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 25px rgba(195, 89, 85, 0.5);
+            background: linear-gradient(135deg, #dc6e6a 0%, #e88b8d 100%);
+        }
+
+        .choose-section button a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .choose-section h4 {
+            color: #333;
+            font-size: 1rem;
+            line-height: 1.6;
+            font-style: italic;
+        }
+
+        /* ==================== CAKES SECTION ==================== */
+        .cakes-section {
+            max-width: 1200px;
+            margin: 80px auto;
+            padding: 60px 20px;
+            background: linear-gradient(135deg, #fff 0%, #fff5f7 100%);
+            border-radius: 20px;
+            box-shadow: 0 15px 50px rgba(195, 89, 85, 0.15);
+            text-align: center;
+        }
+
+        .cakes-section img {
+            width: 30%;
+            max-width: 350px;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 15px;
+            margin: 10px;
+            transition: all 0.4s ease;
+            box-shadow: 0 5px 20px rgba(195, 89, 85, 0.2);
+            border: 3px solid #ffe8ec;
+        }
+
+        .cakes-section img:hover {
+            transform: scale(1.08) rotate(2deg);
+            box-shadow: 0 10px 40px rgba(195, 89, 85, 0.4);
+        }
+
+        .cakes-section button {
+            margin-top: 40px;
+            padding: 18px 50px;
+            background: linear-gradient(135deg, #c35955 0%, #dc6e6a 100%);
+            border: 2px solid #e88b8d;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .cakes-section button:hover {
+            background: linear-gradient(135deg, #dc6e6a 0%, #e88b8d 100%);
+            transform: scale(1.05);
+            box-shadow: 0 8px 25px rgba(195, 89, 85, 0.4);
+        }
+
+        .cakes-section button a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.2rem;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+
+        /* ==================== INFO SECTION ==================== */
+        .info-section {
+            max-width: 1200px;
+            margin: 80px auto;
+            padding: 60px 40px;
+            background: linear-gradient(135deg, #c35955 0%, #dc6e6a 100%);
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 15px 50px rgba(195, 89, 85, 0.3);
+        }
+
+        .info-section h1 {
+            color: white;
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .info-section button {
+            padding: 15px 35px;
+            background: rgba(255, 255, 255, 0.2);
+            border: 2px solid rgba(255, 255, 255, 0.8);
+            border-radius: 50px;
+            cursor: pointer;
+            margin: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .info-section button:hover {
+            background: rgba(255, 255, 255, 0.9);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(255, 255, 255, 0.4);
+        }
+
+        .info-section button a {
+            color: white;
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .info-section button:hover a {
+            color: #c35955;
+        }
+
+        .info-section button:last-child {
+            background: white;
+            margin-top: 30px;
+            padding: 18px 45px;
+        }
+
+        .info-section button:last-child a {
+            color: #c35955;
+        }
+
+        .info-section button:last-child:hover {
+            background: #ffe8ec;
+        }
+
