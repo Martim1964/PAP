@@ -187,7 +187,6 @@ if (!isset($_SESSION['user'])) {
                             <button type="submit" class="btn-primary">Adicionar ao Carrinho</button>
                         </div>
 
-                        <p class="disclaimer">* Preço indicativo. O orçamento final será confirmado por email após análise do pedido.</p>
                     </section>
 
                 </div>

@@ -1,82 +1,27 @@
-// =============================================
-// ENCOMENDA.JS
-// JS específico para a página de encomenda
-// de um bolo do catálogo
-// =============================================
+// ============================================================
+// FICHEIRO: js/encomenda.js
+// O QUE FAZ: Comportamento interativo da página de encomenda.
+//
+// FUNCIONALIDADES:
+//   1. Calcula e mostra o preço total enquanto o utilizador escolhe
+//      tamanho, massa e recheio (em tempo real, sem recarregar).
+//   2. Valida a data: tem de ser pelo menos 7 dias no futuro.
+//   3. Limpa o formulário quando o utilizador clica "Limpar Pedido".
+//   4. Mostra a decoração correta consoante a categoria do bolo.
+// ============================================================
 
-// ===== CATEGORIA DO BOLO (vem do PHP via data-category) =====
-const category = document.querySelector('.bcontainer')?.dataset?.category || 'outro';
-
-// ===== MOSTRAR A DECORAÇÃO CORRETA AUTOMATICAMENTE =====
-// Em vez de o utilizador escolher o tipo de evento,
-// a decoração já sabe a categoria do bolo que foi clicado.
-function mostrarDecoracaoCorreta() {
-    const decoracaoCasamento  = document.getElementById('decoracao-casamento');
-    const decoracaoAniversario = document.getElementById('decoracao-aniversario');
-    const decoracaoBatizado   = document.getElementById('decoracao-batizado');
-
-    // Esconde todas primeiro
-    if (decoracaoCasamento)  decoracaoCasamento.style.display  = 'none';
-    if (decoracaoAniversario) decoracaoAniversario.style.display = 'none';
-    if (decoracaoBatizado)   decoracaoBatizado.style.display   = 'none';
-
-    // Mostra só a da categoria deste bolo
-    switch (category) {
-        case 'casamento':
-            if (decoracaoCasamento) decoracaoCasamento.style.display = 'block';
-            break;
-        case 'aniversario':
-            if (decoracaoAniversario) decoracaoAniversario.style.display = 'block';
-            break;
-        case 'batizado':
-            if (decoracaoBatizado) decoracaoBatizado.style.display = 'block';
-            break;
-        // 'outro' (cupcakes etc.) — não mostra nenhuma decoração específica
-    }
-}
-
-// ===== VALIDAÇÃO DE DATA (mínimo 7 dias) =====
-function inicializarData() {
-    const dataInput = document.getElementById('birthday');
-    if (!dataInput) return;
-
-    // Define a data mínima via HTML5
-    const hoje = new Date();
-    const dataMinima = new Date(hoje);
-    dataMinima.setDate(hoje.getDate() + 7);
-    dataInput.min = dataMinima.toISOString().split('T')[0];
-
-    dataInput.addEventListener('blur', function () {
-        if (!dataInput.value || dataInput.value.length < 10) return;
-
-        const dataSelecionada = new Date(dataInput.value);
-        if (isNaN(dataSelecionada.getTime())) return;
-
-        const minima = new Date();
-        minima.setHours(0, 0, 0, 0);
-        minima.setDate(minima.getDate() + 7);
-        dataSelecionada.setHours(0, 0, 0, 0);
-
-        if (dataSelecionada < minima) {
-            alert('A data do evento deve ser marcada com pelo menos 7 dias de antecedência.');
-            dataInput.value = '';
-            atualizarResumo();
-        }
-    });
-
-    dataInput.addEventListener('change', atualizarResumo);
-}
-
-// ===== TABELA DE PREÇOS =====
+// --- TABELA DE PREÇOS ---
+// Igual ao que está no PHP (carrinho.php), mas em JavaScript
+// para calcular o preço em tempo real no browser.
 const precos = {
     tamanho: {
-        pequeno:     25,
-        medio:       35,
-        grande:      50,
+        pequeno:      25,
+        medio:        35,
+        grande:       50,
         muito_grande: 70
     },
     massa: {
-        baunilha:      0,
+        baunilha:       0,
         laranja_canela: 0,
         papoila_limao:  0,
         chocolate:     10,
@@ -95,37 +40,46 @@ const precos = {
     }
 };
 
+// --- CALCULAR PREÇO TOTAL ---
+// Soma o preço do tamanho + extra da massa + extra do recheio.
 function calcularTotal() {
-    const tamanhoVal = document.getElementById('tamanho')?.value;
-    const massaVal   = document.getElementById('massa')?.value;
-    const recheioVal = document.getElementById('recheio')?.value;
+    const tamanhoEscolhido = document.getElementById('tamanho')?.value;
+    const massaEscolhida   = document.getElementById('massa')?.value;
+    const recheioEscolhido = document.getElementById('recheio')?.value;
 
-    return (precos.tamanho[tamanhoVal] || 0)
-         + (precos.massa[massaVal]     || 0)
-         + (precos.recheio[recheioVal] || 0);
+    const precoTamanho = precos.tamanho[tamanhoEscolhido] || 0;
+    const precoMassa   = precos.massa[massaEscolhida]     || 0;
+    const precoRecheio = precos.recheio[recheioEscolhido] || 0;
+
+    return precoTamanho + precoMassa + precoRecheio;
 }
 
-// ===== ATUALIZAR RESUMO EM TEMPO REAL =====
+// --- ATUALIZAR RESUMO EM TEMPO REAL ---
+// Sempre que o utilizador muda uma opção, o resumo lateral atualiza.
 function atualizarResumo() {
     const tamanhoEl  = document.getElementById('tamanho');
     const massaEl    = document.getElementById('massa');
     const recheioEl  = document.getElementById('recheio');
     const dataEl     = document.getElementById('birthday');
     const obsEl      = document.getElementById('observacoes');
-    const resumoContent = document.getElementById('resumo-content');
+    const resumoDiv  = document.getElementById('resumo-content');
 
-    if (!resumoContent) return;
+    if (!resumoDiv) return;
 
-    // Só mostra resumo quando os campos obrigatórios estiverem preenchidos
+    // Só mostra o resumo quando os campos obrigatórios estão preenchidos
     if (!tamanhoEl?.value || !massaEl?.value || !recheioEl?.value || !dataEl?.value) {
-        resumoContent.innerHTML = '<p class="resumo-vazio">Preencha os campos para ver o resumo...</p>';
+        resumoDiv.innerHTML = '<p class="resumo-vazio">Preenche os campos para ver o resumo...</p>';
         return;
     }
 
     const total = calcularTotal();
+
+    // Formata a data para português (dd/mm/aaaa)
+    const dataFormatada = new Date(dataEl.value + 'T00:00:00').toLocaleDateString('pt-PT');
+
+    // Constrói o HTML do resumo
     let html = '';
 
-    // Bloco: detalhes do bolo
     html += '<div class="resumo-item">';
     html += '<h3>🎂 Detalhes do Bolo</h3>';
     html += `<p><strong>Tamanho:</strong> ${tamanhoEl.options[tamanhoEl.selectedIndex].text}</p>`;
@@ -133,33 +87,12 @@ function atualizarResumo() {
     html += `<p><strong>Recheio:</strong> ${recheioEl.options[recheioEl.selectedIndex].text}</p>`;
     html += '</div>';
 
-    // Bloco: evento
     html += '<div class="resumo-item">';
     html += '<h3>📅 Evento</h3>';
-
-    const dataFormatada = new Date(dataEl.value + 'T00:00:00').toLocaleDateString('pt-PT');
     html += `<p><strong>Data:</strong> ${dataFormatada}</p>`;
-
-    // Decoração (se existir e estiver preenchida)
-    const decoracaoAniv = document.getElementById('decoracao-select-aniversario');
-    const decoracaoCas  = document.getElementById('decoracao-select-casamento');
-    const decoracaoBat  = document.getElementById('decoracao-select-batizado');
-    const idadeEl       = document.getElementById('idade');
-
-    if (decoracaoAniv?.value) {
-        html += `<p><strong>Decoração:</strong> ${decoracaoAniv.options[decoracaoAniv.selectedIndex].text}</p>`;
-        if (idadeEl?.value) html += `<p><strong>Idade:</strong> ${idadeEl.value} anos</p>`;
-    }
-    if (decoracaoCas?.value) {
-        html += `<p><strong>Decoração:</strong> ${decoracaoCas.options[decoracaoCas.selectedIndex].text}</p>`;
-    }
-    if (decoracaoBat?.value) {
-        html += `<p><strong>Decoração:</strong> ${decoracaoBat.options[decoracaoBat.selectedIndex].text}</p>`;
-    }
-
     html += '</div>';
 
-    // Bloco: observações
+    // Observações (só aparece se o utilizador escreveu alguma coisa)
     if (obsEl?.value.trim()) {
         html += '<div class="resumo-item">';
         html += '<h3>📝 Observações</h3>';
@@ -167,52 +100,105 @@ function atualizarResumo() {
         html += '</div>';
     }
 
-    // Total
     html += `<div class="resumo-total">💰 Total estimado: €${total.toFixed(2)}</div>`;
 
-    resumoContent.innerHTML = html;
+    resumoDiv.innerHTML = html;
 }
 
-// ===== LIMPAR PEDIDO =====
-function inicializarLimpar() {
+// --- VALIDAÇÃO DA DATA ---
+// Define o mínimo como hoje + 7 dias no campo de data.
+// Também valida quando o utilizador sai do campo (blur).
+function inicializarValidacaoData() {
+    const campoData = document.getElementById('birthday');
+    if (!campoData) return;
+
+    // Define o atributo "min" do input para não deixar escolher datas passadas
+    const hoje       = new Date();
+    const dataMinima = new Date(hoje);
+    dataMinima.setDate(hoje.getDate() + 7);
+    campoData.min = dataMinima.toISOString().split('T')[0]; // Formato: AAAA-MM-DD
+
+    // Valida quando o utilizador sai do campo
+    campoData.addEventListener('blur', function() {
+        if (!campoData.value) return;
+
+        const dataSelecionada = new Date(campoData.value + 'T00:00:00');
+        const minima          = new Date();
+        minima.setHours(0, 0, 0, 0);
+        minima.setDate(minima.getDate() + 7);
+
+        if (dataSelecionada < minima) {
+            alert('A data do evento tem de ser pelo menos 7 dias a partir de hoje.');
+            campoData.value = ''; // Limpa a data inválida
+            atualizarResumo();
+        }
+    });
+
+    campoData.addEventListener('change', atualizarResumo);
+}
+
+// --- LIMPAR FORMULÁRIO ---
+// Quando o utilizador clica em "Limpar Pedido", confirma e limpa tudo.
+function inicializarBotaoLimpar() {
     const btnLimpar = document.getElementById('btn-limpar-pedido');
     if (!btnLimpar) return;
 
-    btnLimpar.addEventListener('click', function () {
-        if (!confirm('Tem a certeza que quer limpar todos os campos?')) return;
+    btnLimpar.addEventListener('click', function() {
+        if (!confirm('Tens a certeza que queres limpar todos os campos?')) return;
 
-        document.querySelector('form')?.reset();
+        document.querySelector('form')?.reset(); // Limpa todos os campos do formulário
 
-        // Volta a mostrar a decoração certa (não esconde tudo)
-        mostrarDecoracaoCorreta();
-
-        // Limpa o resumo
-        const resumoContent = document.getElementById('resumo-content');
-        if (resumoContent) {
-            resumoContent.innerHTML = '<p class="resumo-vazio">Preencha os campos para ver o resumo...</p>';
+        // Volta ao estado inicial do resumo
+        const resumoDiv = document.getElementById('resumo-content');
+        if (resumoDiv) {
+            resumoDiv.innerHTML = '<p class="resumo-vazio">Preenche os campos para ver o resumo...</p>';
         }
     });
 }
 
-// ===== MONITORAR TODOS OS CAMPOS PARA ATUALIZAR RESUMO =====
+// --- MONITORAR CAMPOS PARA ATUALIZAR RESUMO ---
+// Cada vez que qualquer campo muda, o resumo é recalculado.
 function inicializarListeners() {
-    const campos = ['tamanho', 'massa', 'recheio', 'birthday', 'observacoes',
-                    'decoracao-select-aniversario', 'decoracao-select-casamento',
-                    'decoracao-select-batizado', 'idade'];
+    const camposAMonitorar = ['tamanho', 'massa', 'recheio', 'birthday', 'observacoes'];
 
-    campos.forEach(id => {
-        const el = document.getElementById(id);
-        if (el) {
-            el.addEventListener('change', atualizarResumo);
-            el.addEventListener('input',  atualizarResumo);
+    camposAMonitorar.forEach(function(id) {
+        const campo = document.getElementById(id);
+        if (campo) {
+            campo.addEventListener('change', atualizarResumo);
+            campo.addEventListener('input',  atualizarResumo);
         }
     });
 }
 
-// ===== INICIALIZAÇÃO =====
-document.addEventListener('DOMContentLoaded', function () {
+// --- MOSTRAR DECORAÇÃO CORRETA CONFORME A CATEGORIA DO BOLO ---
+// A categoria vem do PHP via atributo data-category no HTML.
+// Assim, cada tipo de bolo (casamento, aniversário, batizado) mostra
+// as suas próprias opções de decoração.
+function mostrarDecoracaoCorreta() {
+    const categoria = document.querySelector('.bcontainer')?.dataset?.category || '';
+
+    const decoracoes = {
+        'casamento'   : document.getElementById('decoracao-casamento'),
+        'aniversario' : document.getElementById('decoracao-aniversario'),
+        'batizado'    : document.getElementById('decoracao-batizado'),
+    };
+
+    // Esconde todas as decorações
+    Object.values(decoracoes).forEach(function(el) {
+        if (el) el.style.display = 'none';
+    });
+
+    // Mostra só a da categoria atual
+    if (decoracoes[categoria]) {
+        decoracoes[categoria].style.display = 'block';
+    }
+}
+
+// --- INICIALIZAÇÃO ---
+// Quando a página carrega, ativa todas as funcionalidades acima.
+document.addEventListener('DOMContentLoaded', function() {
     mostrarDecoracaoCorreta();
-    inicializarData();
-    inicializarLimpar();
+    inicializarValidacaoData();
+    inicializarBotaoLimpar();
     inicializarListeners();
 });
