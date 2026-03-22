@@ -23,9 +23,9 @@
                 <p>Descrição do bolo</p>
                 <h4>Preço: Desde ... euros</h4>
                 <?php if(isset($_SESSION['user'])): ?>
-                    <a href="encomendas&bolo=bolo-batismo" class="order-btn">Encomendar / Personalizar</a>
+                    <a href="encomenda.php?bolo=bolo-batismo" class="order-btn">Encomendar / Personalizar</a>
                 <?php else: ?>
-                    <a href="../../pages/login.php?redirect=encomendas&bolo=bolo-batismo" class="order-btn">Encomendar / Personalizar</a>
+                    <a href="../../pages/login.php?redirect=encomenda.php&bolo=bolo-batismo" class="order-btn">Encomendar / Personalizar</a>
                 <?php endif; ?>
             </div>
         </div>
@@ -37,9 +37,9 @@
                 <p>Descrição do bolo</p>
                 <h4>Preço: Desde ... euros</h4>
                 <?php if(isset($_SESSION['user'])): ?>
-                    <a href="encomendas&bolo=bolo-1ºcomunhão" class="order-btn">Encomendar / Personalizar</a>
+                    <a href="encomenda.php?bolo=bolo-1ºcomunhão" class="order-btn">Encomendar / Personalizar</a>
                 <?php else: ?>
-                    <a href="../../pages/login.php?redirect=encomendas&bolo=bolo-1ºcomunhão" class="order-btn">Encomendar / Personalizar</a>
+                    <a href="../../pages/login.php?redirect=encomenda.php&bolo=bolo-1ºcomunhão" class="order-btn">Encomendar / Personalizar</a>
                 <?php endif; ?>
             </div>
         </div>
@@ -51,9 +51,9 @@
                 <p>Descrição do bolo</p>
                 <h4>Preço: Desde ... euros</h4>
                 <?php if(isset($_SESSION['user'])): ?>
-                    <a href="encomendas&bolo=bolo-baloiço" class="order-btn">Encomendar / Personalizar</a>
+                    <a href="encomenda.php?bolo=bolo-baloiço" class="order-btn">Encomendar / Personalizar</a>
                 <?php else: ?>
-                    <a href="../../pages/login.php?redirect=encomendas&bolo=bolo-baloiço" class="order-btn">Encomendar / Personalizar</a>
+                    <a href="../../pages/login.php?redirect=encomenda.php&bolo=bolo-baloiço" class="order-btn">Encomendar / Personalizar</a>
                 <?php endif; ?>
             </div>
         </div>
@@ -63,11 +63,11 @@
     <section>
         <div class="Encomendas">
             <div class="enc-type">
-                <h2>Personalize aqui o seu bolo de aniversário!</h2>
+                <h2>Personalize aqui o seu bolo de batismo!</h2>
                 <?php if(isset($_SESSION['user'])): ?>
-                        <a href="../../pages/bolospersonalizados.php">Personalize já o seu bolo de aniversário!</a>
+                        <a href="../../pages/bolospersonalizados.php">Personalize já o seu bolo de batismo!</a>
                     <?php else: ?>
-                        <a href="../../pages/login.php">Personalize já o seu bolo de aniversário!</a>
+                        <a href="../../pages/login.php">Personalize já o seu bolo de batismo!</a>
                     <?php endif; ?>
             </div>
         </div>

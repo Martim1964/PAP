@@ -1,3 +1,8 @@
+<!-- =========================================================
+     PAGINA DE PAGAMENTO
+     Interface final do checkout com metodos de pagamento
+     e resumo do pedido antes da confirmacao.
+     ========================================================= -->
 <!-- compras-pagamento.php -->
 <!DOCTYPE html>
 <html lang="pt">

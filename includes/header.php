@@ -12,7 +12,7 @@
         
 
 <body>
-    <?php session_start(); ?>
+    <?php if (session_status() !== PHP_SESSION_ACTIVE) { session_start(); } ?>
     <!-- Responsive navigation bar with Doces Dias colors -->
     <nav class="navbar navbar-expand-sm navbar-custom">
         <div class="container-fluid">

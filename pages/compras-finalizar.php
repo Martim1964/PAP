@@ -1,4 +1,18 @@
-<!-- compras-finalizar.php -->
+<?php
+declare(strict_types=1);
+
+// =========================================================
+// PAGINA DE FINALIZACAO DO CHECKOUT
+// Recolhe dados de cliente, entrega e observacoes antes
+// de avancar para a fase de pagamento.
+// =========================================================
+
+require_once __DIR__ . '/../includes/carrinho.php';
+
+dd_start_session();
+
+$cartItems = dd_carrinho_get();
+?>
 <!DOCTYPE html>
 <html lang="pt">
 <head>
@@ -104,39 +118,6 @@
                         </div>
                     </form>
                 </div>
-
-                <!-- OPÇÕES DE ENTREGA -->
-                <div class="secao-formulario">
-                    <h2 class="secao-titulo">🚚 OPÇÕES DE ENTREGA</h2>
-                    <div class="opcoes-entrega">
-                        <div class="opcao-entrega" onclick="selecionarEntrega('normal')">
-                            <input type="radio" name="entrega" value="normal" id="entrega-normal" checked>
-                            <label for="entrega-normal">
-                                <div class="opcao-titulo">Entrega Normal</div>
-                                <div class="opcao-descricao">5 - 7 dias úteis</div>
-                                <div class="opcao-preco">€ 5,00</div>
-                            </label>
-                        </div>
-
-                        <div class="opcao-entrega" onclick="selecionarEntrega('express')">
-                            <input type="radio" name="entrega" value="express" id="entrega-express">
-                            <label for="entrega-express">
-                                <div class="opcao-titulo">Entrega Express</div>
-                                <div class="opcao-descricao">2 - 3 dias úteis</div>
-                                <div class="opcao-preco">€ 12,00</div>
-                            </label>
-                        </div>
-
-                        <div class="opcao-entrega" onclick="selecionarEntrega('urgente')">
-                            <input type="radio" name="entrega" value="urgente" id="entrega-urgente">
-                            <label for="entrega-urgente">
-                                <div class="opcao-titulo">Entrega Urgente</div>
-                                <div class="opcao-descricao">Próximo dia útil (até 12h)</div>
-                                <div class="opcao-preco">€ 25,00</div>
-                            </label>
-                        </div>
-                    </div>
-                </div>
             </div>
 
             <!-- COLUNA DIREITA - RESUMO -->
@@ -201,6 +182,9 @@
 
 <?php include '../includes/footer.php'; ?>
 
+<script>
+    window.carrinhoSessao = <?= json_encode($cartItems, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES) ?>;
+</script>
 <script src="../js/compras-finalizar.js"></script>
 </body>
 </html>

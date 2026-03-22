@@ -23,9 +23,9 @@
                 <p>Descrição do doce</p>
                 <h4>Preço: Desde ... euros</h4>
                 <?php if(isset($_SESSION['user'])): ?>
-                    <a href="encomendas&bolo=bolachas-natal" class="order-btn">Encomendar / Personalizar</a>
+                    <a href="encomenda-cupcakes.php?bolo=bolachas-natal" class="order-btn">Encomendar / Personalizar</a>
                 <?php else: ?>
-                    <a href="../../pages/login.php?redirect=encomendas&bolo=bolachas-natal" class="order-btn">Encomendar / Personalizar</a>
+                    <a href="../../pages/login.php?redirect=encomenda-cupcakes.php&bolo=bolachas-natal" class="order-btn">Encomendar / Personalizar</a>
                 <?php endif; ?>
             </div>
         </div>
@@ -37,9 +37,9 @@
                 <p>Descrição do doce</p>
                 <h4>Preço: Desde ... euros</h4>
                 <?php if(isset($_SESSION['user'])): ?>
-                    <a href="encomendas&bolo=bolachas-panda" class="order-btn">Encomendar / Personalizar</a>
+                    <a href="encomenda-cupcakes.php?bolo=bolachas-panda" class="order-btn">Encomendar / Personalizar</a>
                 <?php else: ?>
-                    <a href="../../pages/login.php?redirect=encomendas&bolo=bolachas-panda" class="order-btn">Encomendar / Personalizar</a>
+                    <a href="../../pages/login.php?redirect=encomenda-cupcakes.php&bolo=bolachas-panda" class="order-btn">Encomendar / Personalizar</a>
                 <?php endif; ?>
             </div>
         </div>
@@ -51,9 +51,9 @@
                 <p>Descrição do doce</p>
                 <h4>Preço: Desde ... euros</h4>
                 <?php if(isset($_SESSION['user'])): ?>
-                    <a href="encomendas&bolo=mini-brigadeiros" class="order-btn">Encomendar / Personalizar</a>
+                    <a href="encomenda-cupcakes.php?bolo=mini-brigadeiros" class="order-btn">Encomendar / Personalizar</a>
                 <?php else: ?>
-                    <a href="../../pages/login.php?redirect=encomendas&bolo=mini-brigadeiros" class="order-btn">Encomendar / Personalizar</a>
+                    <a href="../../pages/login.php?redirect=encomenda-cupcakes.php&bolo=mini-brigadeiros" class="order-btn">Encomendar / Personalizar</a>
                 <?php endif; ?>
             </div>
         </div>
@@ -65,9 +65,9 @@
                 <p>Descrição do doce</p>
                 <h4>Preço: Desde ... euros</h4>
                 <?php if(isset($_SESSION['user'])): ?>
-                    <a href="encomendas&bolo=brigadeiro-chocolate" class="order-btn">Encomendar / Personalizar</a>
+                    <a href="encomenda-cupcakes.php?bolo=brigadeiro-chocolate" class="order-btn">Encomendar / Personalizar</a>
                 <?php else: ?>
-                    <a href="../../pages/login.php?redirect=encomendas&bolo=brigadeiro-chocolate" class="order-btn">Encomendar / Personalizar</a>
+                    <a href="../../pages/login.php?redirect=encomenda-cupcakes.php&bolo=brigadeiro-chocolate" class="order-btn">Encomendar / Personalizar</a>
                 <?php endif; ?>
             </div>
         </div>
@@ -79,9 +79,9 @@
                 <p>Descrição do doce</p>
                 <h4>Preço: Desde ... euros</h4>
                 <?php if(isset($_SESSION['user'])): ?>
-                    <a href="encomendas&bolo=torta-chocolate" class="order-btn">Encomendar / Personalizar</a>
+                    <a href="encomenda-cupcakes.php?bolo=torta-chocolate" class="order-btn">Encomendar / Personalizar</a>
                 <?php else: ?>
-                    <a href="../../pages/login.php?redirect=encomendas&bolo=torta-chocolate" class="order-btn">Encomendar / Personalizar</a>
+                    <a href="../../pages/login.php?redirect=encomenda-cupcakes.php&bolo=torta-chocolate" class="order-btn">Encomendar / Personalizar</a>
                 <?php endif; ?>
             </div>
         </div>
@@ -93,9 +93,9 @@
                 <p>Descrição do doce</p>
                 <h4>Preço: Desde ... euros</h4>
                 <?php if(isset($_SESSION['user'])): ?>
-                    <a href="encomendas&bolo=torta-laranja" class="order-btn">Encomendar / Personalizar</a>
+                    <a href="encomenda-cupcakes.php?bolo=torta-laranja" class="order-btn">Encomendar / Personalizar</a>
                 <?php else: ?>
-                    <a href="../../pages/login.php?redirect=encomendas&bolo=torta-laranja" class="order-btn">Encomendar / Personalizar</a>
+                    <a href="../../pages/login.php?redirect=encomenda-cupcakes.php&bolo=torta-laranja" class="order-btn">Encomendar / Personalizar</a>
                 <?php endif; ?>
             </div>
         </div>
@@ -107,9 +107,9 @@
                 <p>Descrição do doce</p>
                 <h4>Preço: Desde ... euros</h4>
                 <?php if(isset($_SESSION['user'])): ?>
-                    <a href="encomendas&bolo=bolo-bolacha" class="order-btn">Encomendar / Personalizar</a>
+                    <a href="encomenda-cupcakes.php?bolo=bolo-bolacha" class="order-btn">Encomendar / Personalizar</a>
                 <?php else: ?>
-                    <a href="../../pages/login.php?redirect=encomendas&bolo=bolo-bolacha" class="order-btn">Encomendar / Personalizar</a>
+                    <a href="../../pages/login.php?redirect=encomenda-cupcakes.php&bolo=bolo-bolacha" class="order-btn">Encomendar / Personalizar</a>
                 <?php endif; ?>
             </div>
         </div>
@@ -121,9 +121,9 @@
                 <p>Descrição do doce</p>
                 <h4>Preço: Desde ... euros</h4>
                 <?php if(isset($_SESSION['user'])): ?>
-                    <a href="encomendas&bolo=torre-choux" class="order-btn">Encomendar / Personalizar</a>
+                    <a href="encomenda-cupcakes.php?bolo=torre-choux" class="order-btn">Encomendar / Personalizar</a>
                 <?php else: ?>
-                    <a href="../../pages/login.php?redirect=encomendas&bolo=torre-choux" class="order-btn">Encomendar / Personalizar</a>
+                    <a href="../../pages/login.php?redirect=encomenda-cupcakes.php&bolo=torre-choux" class="order-btn">Encomendar / Personalizar</a>
                 <?php endif; ?>
             </div>
         </div>
@@ -135,11 +135,11 @@
     <section>
         <div class="Encomendas">
             <div class="enc-type">
-                <h2>Personalize aqui o seu bolo de aniversário!</h2>
+                <h2>Personalize aqui o seu cupcake / doce tradicional!</h2>
                 <?php if(isset($_SESSION['user'])): ?>
-                        <a href="../../pages/bolospersonalizados.php">Personalize já o seu bolo de aniversário!</a>
+                        <a href="../../pages/bolospersonalizados.php">Personalize já o seu cupcake / doce tradicional!</a>
                     <?php else: ?>
-                        <a href="../../pages/login.php">Personalize já o seu bolo de aniversário!</a>
+                        <a href="../../pages/login.php">Personalize já o seucupcake / doce tradicional!</a>
                     <?php endif; ?>
             </div>
         </div>

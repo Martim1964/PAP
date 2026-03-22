@@ -1,4 +1,51 @@
-<!-- carrinho.php -->
+<?php
+declare(strict_types=1);
+
+// =========================================================
+// PAGINA DO CARRINHO
+// Lista os itens em sessao e trata atualizacao/remocao.
+// =========================================================
+
+require_once __DIR__ . '/../includes/carrinho.php';
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if (!dd_verify_csrf($_POST['csrf_token'] ?? '')) {
+        http_response_code(403);
+        dd_flash_set('danger', 'Pedido invalido. Atualize a pagina e tente novamente.');
+        header('Location: compras.php');
+        exit;
+    }
+
+    $action = dd_limpar_texto($_POST['action'] ?? '', 20);
+    $signature = dd_limpar_texto($_POST['item_id'] ?? '', 128);
+
+    if ($action === 'update') {
+        $quantity = filter_input(INPUT_POST, 'quantidade', FILTER_VALIDATE_INT, [
+            'options' => [
+                'default' => 1,
+                'min_range' => 1,
+                'max_range' => 20,
+            ],
+        ]);
+
+        if ($quantity === false || !dd_carrinho_atualizar_quantidade($signature, $quantity)) {
+            dd_flash_set('danger', 'Nao foi possivel atualizar a quantidade do item.');
+        } else {
+            dd_flash_set('success', 'Quantidade atualizada com sucesso.');
+        }
+    } elseif ($action === 'remove') {
+        dd_carrinho_remover($signature);
+        dd_flash_set('success', 'Item removido do carrinho.');
+    }
+
+    header('Location: compras.php');
+    exit;
+}
+
+$cartItems = dd_carrinho_get();
+$totais = dd_carrinho_totais($cartItems);
+$flash = dd_flash_get();
+?>
 <!DOCTYPE html>
 <html lang="pt">
 <head>
@@ -14,173 +61,123 @@
 <?php include '../includes/header.php'; ?>
 
     <div class="carrinho-container">
-        <!-- COLUNA ESQUERDA - PRODUTOS -->
         <div class="coluna-produtos">
             <div class="carrinho-header">
-                <h1>O TEU SACO DE COMPRAS <span class="produto-count">(2 produtos)</span></h1>
+                <h1>O teu carrinho <span class="produto-count">(<?= (int) $totais['quantidade_total'] ?> produto<?= $totais['quantidade_total'] === 1 ? '' : 's' ?>)</span></h1>
             </div>
-            <!-- LISTA DE PRODUTOS -->
+
+            <?php if ($flash): ?>
+                <div class="alert alert-<?= htmlspecialchars($flash['type'] === 'danger' ? 'danger' : 'success') ?>" role="alert">
+                    <?= htmlspecialchars($flash['message']) ?>
+                </div>
+            <?php endif; ?>
+            
             <div id="lista-produtos">
-                
-                <!-- Produto 1 - Bolo Personalizado -->
-                <div class="produto-item" data-id="1" data-preco="45.00">
-                    <div class="produto-imagem">
-                        <img src="../img-pap/bolo-exemplo.jpg" alt="Bolo Personalizado">
+                <?php if (!$cartItems): ?>
+                    <div class="carrinho-vazio">
+                        <h2>O teu carrinho esta vazio</h2>
+                        <p>Escolhe um bolo personalizado para comecar a tua encomenda.</p>
+                        <a href="../pages/encomende.php" class="btn-continuar">Continuar a comprar</a>
                     </div>
-
-                    <div class="produto-info">
-                        <div class="produto-detalhes">
-                            <h3 class="produto-nome">BOLO PERSONALIZADO</h3>
-                            <p class="produto-desc">Red Velvet / Mascarpone</p>
-                            <div class="produto-specs">
-                                <span class="spec-tag">🎂 Médio (13-16 pessoas)</span>
-                                <span class="spec-tag">💗 Aniversário - 25 anos</span>
-                                <span class="spec-tag">📅 15/02/2026</span>
+                <?php else: ?>
+                    <?php foreach ($cartItems as $item): ?>
+                        <article class="produto-item" data-item-id="<?= htmlspecialchars((string) ($item['assinatura'] ?? '')) ?>">
+                            <div class="produto-imagem">
+                                <img src="<?= htmlspecialchars((string) ($item['imagem'] ?? '')) ?>" alt="<?= htmlspecialchars((string) ($item['nome'] ?? 'Produto')) ?>">
                             </div>
-                        </div>
 
-                        <div class="produto-acoes">
-                            <label for="qtd-1">Quantidade:</label>
-                            <select class="qtd-selector" id="qtd-1" onchange="atualizarQuantidade(1, this.value)">
-                                <option value="1" selected>1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                            </select>
-                        </div>
-                    </div>
+                            <div class="produto-info">
+                                <div class="produto-detalhes">
+                                    <h3 class="produto-nome"><?= htmlspecialchars((string) ($item['nome'] ?? 'Produto personalizado')) ?></h3>
+                                    <p class="produto-desc"><?= htmlspecialchars((string) ($item['descricao'] ?? '')) ?></p>
+                                    <div class="produto-specs">
+                                        <span class="spec-tag">Tamanho: <?= htmlspecialchars((string) ($item['tamanho_label'] ?? '')) ?></span>
+                                        <span class="spec-tag">Massa: <?= htmlspecialchars((string) ($item['massa_label'] ?? '')) ?></span>
+                                        <span class="spec-tag">Recheio: <?= htmlspecialchars((string) ($item['recheio_label'] ?? '')) ?></span>
+                                        <span class="spec-tag">Data: <?= htmlspecialchars(dd_formata_data((string) ($item['data_evento'] ?? ''))) ?></span>
+                                    </div>
+                                    <?php if (!empty($item['observacoes'])): ?>
+                                        <p class="produto-desc mt-3"><strong>Observacoes:</strong> <?= htmlspecialchars((string) $item['observacoes']) ?></p>
+                                    <?php endif; ?>
+                                </div>
 
-                    <div class="produto-preco-secao">
-                        <button class="btn-remover" onclick="removerItem(1)" title="Remover">✕</button>
-                        <button class="btn-favorito" title="Adicionar aos favoritos">♡</button>
-                        <div class="preco-valor">€ 45,00</div>
-                    </div>
-                </div>
-
-                <!-- Produto 2 - Cupcakes -->
-                <div class="produto-item" data-id="2" data-preco="18.00">
-                    <div class="produto-imagem">
-                        <img src="../img-pap/cupcakes-exemplo.jpg" alt="Cupcakes">
-                    </div>
-
-                    <div class="produto-info">
-                        <div class="produto-detalhes">
-                            <h3 class="produto-nome">CUPCAKES ARTESANAIS</h3>
-                            <p class="produto-desc">Chocolate / Brigadeiro</p>
-                            <div class="produto-specs">
-                                <span class="spec-tag">🧁 Pack 6 unidades</span>
-                                <span class="spec-tag">🍫 Premium</span>
+                                <form class="produto-acoes js-quantity-form" method="post" action="compras.php">
+                                    <input type="hidden" name="csrf_token" value="<?= htmlspecialchars(dd_csrf_token()) ?>">
+                                    <input type="hidden" name="action" value="update">
+                                    <input type="hidden" name="item_id" value="<?= htmlspecialchars((string) ($item['assinatura'] ?? '')) ?>">
+                                    <label for="qtd-<?= htmlspecialchars((string) ($item['assinatura'] ?? '')) ?>">Quantidade:</label>
+                                    <select class="qtd-selector js-quantity-select" id="qtd-<?= htmlspecialchars((string) ($item['assinatura'] ?? '')) ?>" name="quantidade">
+                                        <?php for ($i = 1; $i <= 5; $i++): ?>
+                                            <option value="<?= $i ?>" <?= (int) ($item['quantidade'] ?? 1) === $i ? 'selected' : '' ?>><?= $i ?></option>
+                                        <?php endfor; ?>
+                                    </select>
+                                </form>
                             </div>
-                        </div>
 
-                        <div class="produto-acoes">
-                            <label for="qtd-2">Quantidade:</label>
-                            <select class="qtd-selector" id="qtd-2" onchange="atualizarQuantidade(2, this.value)">
-                                <option value="1" selected>1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <div class="produto-preco-secao">
-                        <button class="btn-remover" onclick="removerItem(2)" title="Remover">✕</button>
-                        <button class="btn-favorito" title="Adicionar aos favoritos">♡</button>
-                        <div class="preco-valor">€ 18,00</div>
-                    </div>
-                </div>
-
+                            <div class="produto-preco-secao">
+                                <form method="post" action="compras.php" class="js-remove-form">
+                                    <input type="hidden" name="csrf_token" value="<?= htmlspecialchars(dd_csrf_token()) ?>">
+                                    <input type="hidden" name="action" value="remove">
+                                    <input type="hidden" name="item_id" value="<?= htmlspecialchars((string) ($item['assinatura'] ?? '')) ?>">
+                                    <button class="btn-remover" type="submit" title="Remover">x</button>
+                                </form>
+                                <div class="preco-valor">€ <?= htmlspecialchars(dd_formata_preco((float) ($item['subtotal'] ?? 0))) ?></div>
+                                <small class="text-muted">€ <?= htmlspecialchars(dd_formata_preco((float) ($item['preco_unitario'] ?? 0))) ?> / unidade</small>
+                            </div>
+                        </article>
+                    <?php endforeach; ?>
+                <?php endif; ?>
             </div>
 
-            <!-- Benefícios -->
             <div class="beneficios-secao">
                 <div class="beneficio-item">
-                    <span class="beneficio-icon">🚚</span>
-                    <span>Entregas em Lisboa e arredores</span>
+                    <span>Encomendas com configuracao guardada em sessao protegida no servidor.</span>
                 </div>
                 <div class="beneficio-item">
-                    <span class="beneficio-icon">🎂</span>
-                    <span>Bolos feitos no próprio dia</span>
+                    <span>Validacao de data minima de 7 dias para producao artesanal.</span>
                 </div>
                 <div class="beneficio-item">
-                    <span class="beneficio-icon">💝</span>
-                    <span>Embalagem especial incluída</span>
+                    <span>Preco calculado no backend para evitar manipulacao no browser.</span>
                 </div>
             </div>
         </div>
 
-        <!-- COLUNA DIREITA - RESUMO -->
-        <div class="coluna-resumo">
+        <aside class="coluna-resumo">
             <div class="resumo-sticky">
-                <h2 class="resumo-titulo">RESUMO DA ENCOMENDA</h2>
+                <h2 class="resumo-titulo">Resumo da encomenda</h2>
 
                 <div class="resumo-linha">
-                    <span id="total-itens">2 produtos</span>
-                    <span id="subtotal">€ 63,00</span>
+                    <span>Linhas no carrinho</span>
+                    <span><?= (int) $totais['linhas'] ?></span>
                 </div>
 
                 <div class="resumo-linha">
-                    <span>Entrega</span>
-                    <span id="entrega-valor">€ 5,00</span>
+                    <span>Total de unidades</span>
+                    <span id="total-itens"><?= (int) $totais['quantidade_total'] ?> produto<?= $totais['quantidade_total'] === 1 ? '' : 's' ?></span>
                 </div>
 
-                <div class="resumo-linha desconto-linha">
-                    <span>Desconto</span>
-                    <span id="desconto-valor" class="texto-verde">- € 0,00</span>
+                <div class="resumo-linha">
+                    <span>Subtotal</span>
+                    <span id="subtotal">€ <?= htmlspecialchars(dd_formata_preco($totais['subtotal'])) ?></span>
                 </div>
 
-                <div class="resumo-total">
-                    <span class="total-label">Total</span>
-                    <span id="total-final" class="total-valor">€ 68,00</span>
-                </div>
-                <p class="impostos-info">(Com impostos incluídos € <span id="impostos">12,74</span>)</p>
-
-                <!-- Código Promocional -->
-                <div class="codigo-promo" onclick="togglePromoCode()">
-                    <span class="promo-icon">🏷️</span>
-                    <span>Utiliza um código promocional</span>
-                    <span class="seta">▼</span>
+                <div class="resumo-linha">
+                    <span>Total</span>
+                    <span id="total-final">€ <?= htmlspecialchars(dd_formata_preco($totais['total'])) ?></span>
                 </div>
 
-                <div class="promo-input-container" id="promo-container" style="display: none;">
-                    <input type="text" id="codigo-promo" placeholder="Inserir código">
-                    <button onclick="aplicarCodigo()" class="btn-aplicar">Aplicar</button>
-                </div>
+                <p class="impostos-info">Os portes e ajustes finais de design podem ser confirmados mais tarde, sem alterar o preco base calculado para as opcoes escolhidas.</p>
 
-                <!-- Botões de Pagamento -->
-                <button class="btn-checkout" onclick="irParaFinalizacao()">
-                    Finalizar Compra →
+                <button class="btn-checkout" type="button" <?= !$cartItems ? 'disabled' : '' ?> onclick="window.location.href='compras-finalizar.php'">
+                    Finalizar compra →
                 </button>
 
-                <button class="btn-alternativo">
-                    <img src="https://www.gstatic.com/instantbuy/svg/dark_gpay.svg" alt="Google Pay" style="height: 20px;">
-                </button>
-
-                <div class="divisor-ou">
-                    <span>OU</span>
-                </div>
-
-                <!-- Métodos de Pagamento -->
-                <div class="metodos-pagamento">
-                    <p class="metodos-titulo">MÉTODOS DE PAGAMENTO ACEITES</p>
-                    <div class="icones-pagamento">
-                        <div class="icone-pag">VISA</div>
-                        <div class="icone-pag">MC</div>
-                        <div class="icone-pag">AMEX</div>
-                        <div class="icone-pag">MB</div>
-                        <div class="icone-pag">PayPal</div>
-                    </div>
-                </div>
-
-                <!-- Entrega Estimada -->
                 <div class="info-entrega">
-                    <p class="entrega-titulo">📦 Entrega Estimada</p>
-                    <p class="entrega-data">15 - 20 Fevereiro 2026</p>
-                    <p class="entrega-nota">* Bolos personalizados: mínimo 7 dias</p>
+                    <p class="entrega-titulo">Sugestao futura</p>
+                    <p class="entrega-data">Persistir carrinho e encomendas finais em MySQL para historico, checkout e recuperacao entre dispositivos.</p>
                 </div>
             </div>
-        </div>
+        </aside>
     </div>
 
     <script src="../js/compras.js"></script>

@@ -1,4 +1,9 @@
-// compras-finalizar.js - Doces Dias Checkout Finalization
+// =========================================================
+// JS DA ETAPA DE FINALIZACAO
+// - carrega o carrinho para resumo visual
+// - valida dados pessoais e de entrega
+// - guarda os dados para a etapa de pagamento
+// =========================================================
 
 // Dados Globais
 let carrinhoData = {};
@@ -19,13 +24,29 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // ========== CARREGAR DADOS DO CARRINHO ==========
 function carregarDadosCarrinho() {
-    const carrinhoStorage = localStorage.getItem('carrinho_docesdias');
-    if (carrinhoStorage) {
-        carrinhoData = JSON.parse(carrinhoStorage);
+    if (Array.isArray(window.carrinhoSessao) && window.carrinhoSessao.length > 0) {
+        carrinhoData = window.carrinhoSessao.map(function (produto) {
+            return {
+                imagem: produto.imagem,
+                nome: produto.nome,
+                quantidade: Number(produto.quantidade || 0),
+                preco: Number(produto.preco_unitario || 0)
+            };
+        });
+
+        localStorage.setItem('carrinho_docesdias', JSON.stringify(carrinhoData));
         renderizarResumo();
-    } else {
-        window.location.href = '../pages/compras.php';
+        return;
     }
+
+    const carrinhoStorage = localStorage.getItem('carrinho_docesdias');
+    if (!carrinhoStorage) {
+        window.location.href = '../pages/compras.php';
+        return;
+    }
+
+    carrinhoData = JSON.parse(carrinhoStorage);
+    renderizarResumo();
 }
 
 // Renderizar Resumo de Produtos
