@@ -17,3 +17,6 @@ https://docs.stripe.com/api/checkout/sessions/object#checkout_session_object-loc
 https://docs.stripe.com/checkout/quickstart#testing
 https://docs.stripe.com/payments/accept-a-payment?payment-ui=checkout&ui=stripe-hosted
 https://www.youtube.com/watch?v=1KxD8J8CAFg
+https://github.com/PHPMailer/PHPMailer
+https://www.totvs.com/blog/gestao-para-assinatura-de-documentos/sha256/
+https://www.youtube.com/watch?v=R9bfts9ZFjs
