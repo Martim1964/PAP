@@ -6,6 +6,7 @@
 <!-- compras-pagamento.php -->
 
 <?php
+        session_start();
         require_once __DIR__ . '/../includes/carrinho.php'; //ir buscar os dados guardados no carrinho
         require_once __DIR__ . '/../vendor/autoload.php';
 
@@ -55,10 +56,12 @@
         //Criar session para ser implementada no Stripe com todos os itens acumulados
         $checkout_session = \Stripe\Checkout\Session::create([
             "mode" => "payment", //Meter modo de pagamento no Stripe
-            "success_url" => "http://localhost/PAP/pages/compras-sucesso.php", //Caso o pagamento seja bem sucedido redirecionar para a página de sucesso
+            "success_url" => "http://localhost/PAP/actions/compras-sucesso.php", //Caso o pagamento seja bem sucedido redirecionar para a página de sucesso
             "cancel_url" => "http://localhost/PAP/pages/compras-finalizar.php", //Caso contrário irá voltar à pagina inicial do site
             "locale" => "pt", //Traduzir toda a página de pagamento para português 
             "line_items" => $lineitems, //Usar os itens postos dentro do array
+            "customer_email" => $_SESSION['user'] ?? null, 
+
         ]);
 
         http_response_code(303); //Usar esta porta 303 serve para redirecionar o pedido para o stripe Checkout

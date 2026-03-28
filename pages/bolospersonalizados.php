@@ -18,7 +18,7 @@
         </div>
         
         <div class="personalize-form">
-            <form method="post" action="processar_personalizacao.php">
+            <form method="post" action="../actions/processar_personalizacao.php">
                 
                 <!-- GRID LAYOUT - 2 COLUNAS -->
                 <div class="grid-container">
@@ -120,52 +120,6 @@
                             </select>
                         </section>
 
-                        <!-- Decoração Casamento -->
-                        <section class="form-section conditional" id="decoracao-casamento" style="display: none;">
-                            <h3>Decoração - Casamento</h3>
-                            <select id="decoracao-select-casamento" name="decoracao-casamento">
-                                <option value="">Escolha o estilo...</option>
-                                <option value="classico">Clássico Elegante</option>
-                                <option value="moderno">Moderno Minimalista</option>
-                                <option value="romantico">Romântico Floral</option>
-                                <option value="vintage">Vintage</option>
-                            </select>
-                        </section>
-
-                        <!-- Decoração Aniversário -->
-                        <section class="form-section conditional" id="decoracao-aniversario" style="display: none;">
-                            <h3>Decoração - Aniversário</h3>
-                            <select id="decoracao-select-aniversario" name="decoracao-aniversario">
-                                <option value="">Escolha o estilo...</option>
-                                <option value="colorido">Colorido Divertido</option>
-                                <option value="tematico">Temático Infantil</option>
-                                <option value="elegante">Elegante</option>
-                                <option value="personalizado">Personalizado</option>
-                            </select>
-                            <div class="idade-box">
-                                <label for="idade">Idade do aniversariante:</label>
-                                <input type="number" id="idade" name="idade" min="1" max="150" placeholder="Ex: 25">
-                            </div>
-                        </section>
-
-                        <!-- Decoração Batizado -->
-                        <section class="form-section conditional" id="decoracao-batizado" style="display: none;">
-                            <h3>Decoração - Batizado</h3>
-                            <select id="decoracao-select-batizado" name="decoracao-batizado">
-                                <option value="">Escolha o estilo...</option>
-                                <option value="suave_feminino">Suave Feminino (Rosa)</option>
-                                <option value="suave_masculino">Suave Masculino (Azul)</option>
-                                <option value="neutro">Neutro (Verde/Branco)</option>
-                                <option value="elegante">Elegante Clássico</option>
-                            </select>
-                        </section>
-
-                        <!-- Outras Ocasiões -->
-                        <section class="form-section conditional" id="outras-ocasioes" style="display: none;">
-                            <label for="ocasiao">Descreva a ocasião:</label>
-                            <input type="text" id="ocasiao" name="ocasiao" placeholder="Ex: Confraternização...">
-                        </section>
-
                         <!-- Observações -->
                         <section class="form-section">
                             <h2>6. Observações Especiais</h2>
@@ -211,7 +165,7 @@
                                 <img id="imagemPreview" src="" alt="Preview">
                                 <div class="preview-info">
                                     <p><strong>Importante:</strong> A imagem será analisada pela nossa equipa.</p>
-                                    <p>Enviaremos por <strong>email</strong> a confirmação se é possível reproduzir o design e o <strong>orçamento final</strong>.</p>
+                                    <p>Entraremos em <strong>contacto</strong> assim que possível.</p>
                                 </div>
                             </div>
                         </section>
@@ -227,10 +181,9 @@
                             <!-- Botões de Ação -->
                             <div class="button-group">
                                 <button type="button" class="btn-secondary" id="btn-limpar-pedido">Limpar Pedido</button>
-                                <button type="submit" class="btn-primary">Adicionar ao Carrinho</button>
+                                <button type="submit" class="btn-primary">Enviar à equipa Doces Dias</button>
                             </div>
 
-                            <p class="disclaimer">* Preço indicativo. O orçamento final será confirmado por email após análise do pedido.</p>
                         </section>
 
                     </div>

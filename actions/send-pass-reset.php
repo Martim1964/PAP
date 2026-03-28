@@ -21,7 +21,7 @@
 
     //Verifica se o email existe na BD
     if ($mysqli->affected_rows > 0) {
-        $mail = require __DIR__ . "/../pages/mailer.php"; //Vai buscar os dados do SMTP no mailer.php
+        $mail = require __DIR__ . "/../includes/mailer.php"; //Vai buscar os dados do SMTP no mailer.php
 
         $mail->setFrom("martimdias.pap@gmail.com"); //Aqui é o email que enviará a mensagem
         $mail->addAddress($email); 
