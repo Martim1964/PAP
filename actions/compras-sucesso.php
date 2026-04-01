@@ -1,6 +1,8 @@
 <?php
+
     require_once __DIR__ . '/../includes/carrinho.php';
     require_once __DIR__ . '/../vendor/autoload.php';
+    require_once __DIR__ . '/../includes/db.php';
 
     $itensCart = dd_carrinho_get(); //Buscar os itens do carrinho antes de serem limpos
     
@@ -8,6 +10,29 @@
     $total = 0;
     //Fazer o email personalizado
     $lineBuy = "";
+
+    
+    //Inserir na base de dados
+    $user_id = $_SESSION['user_id'] ?? null;
+    foreach($itensCart as $item){
+        $sucesso = guardar_encomenda($con, [
+            'utilizador_id'  => $user_id,
+            'bolo_slug'      => $item['bolo_id'],
+            'bolo_nome'      => $item['nome'],
+            'tamanho_slug'   => $item['tamanho'],
+            'tamanho_label'  => $item['tamanho_label'],
+            'massa_slug'     => $item['massa'] ?? '',
+            'massa_label'    => $item['massa_label'] ?? '',
+            'recheio_slug'   => $item['recheio'] ?? '',
+            'recheio_label'  => $item['recheio_label'] ?? '',
+            'data_evento'    => $item['data_evento'] ?? date('d-m-Y'),
+            'observacoes'    => $item['observacoes'],
+            'quantidade'     => (int)$item['quantidade'],
+            'preco_unitario' => (float)$item['preco_unitario'],
+        ]);
+    }
+
+
     //Calcular preços para serem postos no email
     foreach($itensCart as $item){
         $precoComIva = (float)$item['preco_unitario'] * 1.23 *$item['quantidade'];
@@ -20,7 +45,7 @@
         $lineBuy .= ' | Massa: ' . $item['massa_label'];
         $lineBuy .= ' | Quantidade: ' . $item['quantidade'];
         $lineBuy .= ' | Preço final: ' . $total . "€";
-    
+    }
 
     //Limpar o carrinho pois os itens ja foram guardados
     dd_carrinho_limpar();
@@ -53,7 +78,7 @@
             ?>
             <script>
                 alert('Obrigado pela sua compra. Verifique o seu email!');
-                window.location.href = '../pages/index.php';
+                window.location.href = '../index.php';
              </script>;
              <?php
         } catch (Exception $e) {
@@ -74,7 +99,9 @@
 
             <?php
         }
-    }
+    
+
+
 ?>
 
 

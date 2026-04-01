@@ -1,0 +1,175 @@
+<?php
+    require_once __DIR__ . '/../../includes/carrinho.php'; //Ir buscar os dados a pagina do carrinho
+    require_once __DIR__ . '/../../includes/db.php'; //Ir ver os dados inseridos na db
+    dd_start_session(); //Utiliza a funcao criada para start_session no carrinho.php
+
+    if (!isset($_SESSION['user_id'])) { //Confirma que o utilizador está logado 
+        header('Location: ../login.php');
+        exit;
+    }
+
+    $user_id = (int)$_SESSION['user_id'];
+
+    // Buscar dados do utilizador
+    $sql_user = "SELECT nome, email, telefone, data_nascimento FROM utilizadores WHERE id = $user_id LIMIT 1";
+    $result_user = mysqli_query($con, $sql_user);
+    $user = mysqli_fetch_assoc($result_user);
+
+    // Filtro
+    // $filtro = $_GET['filtro'] ?? 'todas';
+    // $where_extra = '';
+    // if ($filtro === 'por_entregar') {
+    //     $where_extra = "AND estado NOT IN ('entregue', 'cancelada')";
+    // } elseif ($filtro === 'entregues') {
+    //     $where_extra = "AND estado = 'entregue'";
+    // } elseif ($filtro === 'canceladas') {
+    //     $where_extra = "AND estado = 'cancelada'";
+    // }
+
+    $filtro = '';
+    $where_extra = '';
+    if($filtro == 'entregue' || $filtro == 'cancelada'){
+        $where_extra = "SELECT estado FROM encomendas WHERE estado != 'entregue' AND estado != 'cancelada' ";
+    } elseif ($filtro == 'entregue'){
+        $where_extra = "SELECT estado FROM encomendas WHERE estado = 'entregue' ";
+    } elseif($filtro == 'cancelada'){
+        $where_extra = "SELECT estado FROM encomendas WHERE estado = 'cancelada' ";
+    }
+
+    // Buscar encomendas do utilizador 
+    $sql_enc = "SELECT bolo_nome, tamanho_label, massa_label, recheio_label, quantidade, data_evento, estado FROM encomendas WHERE utilizador_id = $user_id $where_extra ORDER BY data_encomenda DESC";
+    $result_enc = mysqli_query($con, $sql_enc);
+?>
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <title>A minha conta - Doces Dias</title>
+</head>
+<body>
+    <?php include __DIR__ . '/../../includes/header-bolos.php'; ?>
+
+    <div class="container my-5">
+
+        <!-- DADOS DO UTILIZADOR -->
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <h4><i class="bi bi-person-circle"></i> Os meus dados</h4>
+            <button class="btn btn-outline-primary btn-sm" data-bs-toggle="modal" data-bs-target="#modalEditar">
+                <i class="bi bi-pencil"></i> Editar
+            </button>
+        </div>
+        <hr>
+        <?php if ($user): ?>
+        <table class="table table-bordered"> <!-- Tabela com dados do user -->
+            <tr>
+                <th>Nome</th>
+                <td><?= htmlspecialchars($user['nome']) ?></td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td><?= htmlspecialchars($user['email']) ?></td>
+            </tr>
+            <tr>
+                <th>Telefone</th>
+                <td><?= htmlspecialchars($user['telefone'] ?? '—') ?></td>
+            </tr>
+            <tr>
+                <th>Data de Nascimento</th>
+                <td><?= $user['data_nascimento'] ? dd_formata_data($user['data_nascimento']) : '—' ?></td>
+            </tr>
+        </table>
+        <?php endif; ?>
+
+        <!-- ENCOMENDAS -->
+        <div class="d-flex justify-content-between align-items-center mt-5 mb-3">
+            <h4><i class="bi bi-box-seam"></i> As minhas encomendas</h4>
+            <!-- DROPDOWN -->
+            <div class="dropdown">
+                <button class="btn btn-outline-secondary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                    <i class="bi bi-funnel"></i>
+                    <?php
+                        $labels = ['todas'=>'Todas','por_entregar'=>'Por entregar','entregues'=>'Entregues','canceladas'=>'Canceladas'];
+                        echo $labels[$filtro] ?? 'Todas';
+                    ?>
+                </button>
+                <ul class="dropdown-menu dropdown-menu-end">
+                    <li><a class="dropdown-item <?= $filtro==='todas'        ? 'active':'' ?>" href="?filtro=todas">Todas</a></li>
+                    <li><a class="dropdown-item <?= $filtro==='por_entregar' ? 'active':'' ?>" href="?filtro=por_entregar">Por entregar</a></li>
+                    <li><a class="dropdown-item <?= $filtro==='entregues'    ? 'active':'' ?>" href="?filtro=entregues">Entregues</a></li>
+                    <li><a class="dropdown-item <?= $filtro==='canceladas'   ? 'active':'' ?>" href="?filtro=canceladas">Canceladas</a></li>
+                </ul>
+            </div>
+        </div>
+        <hr>
+        <table class="table table-bordered table-hover"> <!-- Tabela com dados das encomendas -->
+            <thead class="table-dark">
+                <tr>
+                    <th>Bolo</th>
+                    <th>Tamanho</th>
+                    <th>Massa</th>
+                    <th>Recheio</th>
+                    <th>Quantidade</th>
+                    <th>Data Evento</th>
+                    <th>Estado</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php if (mysqli_num_rows($result_enc) > 0): ?>
+                    <?php while ($enc = mysqli_fetch_assoc($result_enc)): ?>
+                    <tr>
+                        <td><?= htmlspecialchars($enc['bolo_nome']) ?></td>
+                        <td><?= htmlspecialchars($enc['tamanho_label']) ?></td>
+                        <td><?= htmlspecialchars($enc['massa_label'] ?: '—') ?></td>
+                        <td><?= htmlspecialchars($enc['recheio_label'] ?: '—') ?></td>
+                        <td><?= $enc['quantidade'] ?></td>
+                        <td><?= dd_formata_data($enc['data_evento']) ?></td>
+                        <td><?= htmlspecialchars($enc['estado']) ?></td>
+                    </tr>
+                    <?php endwhile; ?>
+                <?php else: ?>
+                    <tr>
+                        <td colspan="7" class="text-center text-muted">Nenhuma encomenda encontrada.</td>
+                    </tr>
+                <?php endif; ?>
+            </tbody>
+        </table>
+
+    </div>
+
+    <!-- MODAL EDITAR -->
+    <div class="modal fade" id="modalEditar" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title"><i class="bi bi-pencil"></i> Editar dados</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <form action="../../actions/editar-conta.php" method="POST">
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label class="form-label">Email</label>
+                            <input type="email" name="email" class="form-control"
+                                value="<?= htmlspecialchars($user['email']) ?>" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Telefone</label>
+                            <input type="tel" name="telefone" class="form-control"
+                                value="<?= htmlspecialchars($user['telefone'] ?? '') ?>">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                        <button type="submit" class="btn btn-primary">Guardar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <?php include __DIR__ . '/../../includes/footer-bolos.php'; ?>
+</body>
+</html>

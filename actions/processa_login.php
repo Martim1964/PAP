@@ -43,6 +43,8 @@ if (isset($_POST['email']) && isset($_POST['pass'])) {
         if(password_verify($senha, $row['pass'])){
             $_SESSION['user'] = $row['email'];
             $_SESSION['nome'] = $row['nome'];
+            $_SESSION['user_id'] = $row['id'];
+            $_SESSION['admin']   = $row['admin'];
             header("Location: $destination");
             exit;
         } else {

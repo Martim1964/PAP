@@ -31,10 +31,10 @@
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Nossos Bolos</a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="pages/bolos/casamento.php">🎂 Bolos de casamento</a></li>
-                                <li><a class="dropdown-item" href="pages/bolos/aniversario.php">🎉 Bolos de aniversário</a></li>
-                                <li><a class="dropdown-item" href="pages/bolos/batizados.php">👶 Bolos de batizado</a></li>
-                                <li><a class="dropdown-item" href="pages/bolos/cupcakes.php">🧁 Cupcakes/Bolos tradicionais</a></li>
+                                <li><a class="dropdown-item" href="pages/bolos/casamento.php">Bolos de casamento</a></li>
+                                <li><a class="dropdown-item" href="pages/bolos/aniversario.php">Bolos de aniversário</a></li>
+                                <li><a class="dropdown-item" href="pages/bolos/batizados.php">Bolos de batizado</a></li>
+                                <li><a class="dropdown-item" href="pages/bolos/cupcakes.php">Cupcakes/Bolos tradicionais</a></li>
                             </ul>
                     </li>
 
@@ -50,19 +50,29 @@
                 </ul>
                 
                 <ul class="navbar-nav">
-                    <?php if(isset($_SESSION['user'])): ?>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link" onclick="if(confirm('Deseja realmente fazer logout?')){window.location='actions/logout.php';}return false;">
-                                Bem vindo, <strong><?php echo $_SESSION['nome']; ?></strong>!
+                    <?php if(isset($_SESSION['user_id'])): ?>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                                Bem-vindo, <strong><?php echo htmlspecialchars($_SESSION['nome']); ?></strong>!
                             </a>
+                            <ul class="dropdown-menu dropdown-menu-end">
+                                <li><a class="dropdown-item" href="pages/data/user-data.php">Ver conta</a></li>
+                                <?php if($_SESSION['admin'] == 1): ?>
+                                    <li><a class="dropdown-item" href="pages/data/admin-data.php">Painel Admin</a></li>
+                                <?php endif; ?>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item text-danger" href="actions/logout.php">Terminar sessão</a></li>
+                            </ul>
                         </li>
                     <?php else: ?>
                         <li class="nav-item">
-                            <a class="nav-link" href="pages/login.php">
+                            <a class="nav-link" href="../pages/login.php">
                                 <i class="bi bi-person"></i> Login/Registe-se
                             </a>
                         </li>
                     <?php endif; ?>
+
+
                     <li class="nav-item">
                         <a class="nav-link" href="pages/compras.php">
                             <i class="bi bi-cart-fill"></i>
