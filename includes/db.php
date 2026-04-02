@@ -164,4 +164,32 @@ function guardar_encomenda($con, $dados) {
 
     return mysqli_query($con, $query);
 }
+// ------------------------------------------------------------
+// GUARDAR ENCOMENDA PERSONALIZADA NA BASE DE DADOS
+// Chamada quando o utilizador finaliza a sua encomenda personalizada.
+// ------------------------------------------------------------
+function guardar_encomenda_personalizada($con, $dados) {
+    $utilizador_id  = (int)$dados['utilizador_id'];
+    $tamanho_label  = mysqli_real_escape_string($con, $dados['tamanho']);
+    $massa_label    = mysqli_real_escape_string($con, $dados['massa']   ?? '');
+    $recheio_label  = mysqli_real_escape_string($con, $dados['recheio'] ?? '');
+    $data_evento    = mysqli_real_escape_string($con, $dados['data_evento']);
+    $observacoes    = mysqli_real_escape_string($con, $dados['observacoes']   ?? '');
+    $tema           = mysqli_real_escape_string($con, $dados['tema']   ?? '');
+    $imagem         = mysqli_real_escape_string($con, $dados['imagem']);
+
+    $query = "
+        INSERT INTO encomendas-personalizadas (
+            utilizador_id,tamanho,
+            massa, recheio, 
+            data_evento, observacoes, estado, imagem
+        ) VALUES (
+            $utilizador_id, '$tamanho_label', '$massa_label',
+            '$recheio_label', '$data_evento', 
+            '$observacoes','Pendente', $imagem
+        )
+    ";
+
+    return mysqli_query($con, $query);
+}
 return $con;

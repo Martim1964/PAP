@@ -25,7 +25,6 @@
                     
                     <!-- ========== COLUNA ESQUERDA - PERSONALIZAÇÃO ========== -->
                     <div class="coluna-esquerda">
-                        
                         <!-- Tamanho do Bolo -->
                         <section class="form-section">
                             <h2>1. Tamanho do Bolo</h2>

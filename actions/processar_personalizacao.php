@@ -1,7 +1,23 @@
 
 <?php
     session_start();
+    require_once __DIR__ . '/../includes/carrinho.php';
     require_once __DIR__ . '/../vendor/autoload.php';
+    require_once __DIR__ . '/../includes/db.php';
+    //Inserir na base de dados
+    $user_id = $_SESSION['user_id']; 
+    $sucesso = guardar_encomenda_personalizada($con, [
+        'utilizador_id'  => $user_id,
+        'tamanho'        => $_POST['tamanho'],
+        'massa'          => $_POST['massa'],
+        'recheio'        => $_POST['recheio'],
+        'data_evento'    => $birthday ?? date('d-m-Y'),
+        'observacoes'    => $_POST['observacoes'],
+        'tema'           => $_POST['tema'], 
+        'imagem'         => $_POST(['$imagem']),
+    ]);
+
+
     //Fazer o email personalizado
     $lineBuy = "";
     $lineBuy .= "";
@@ -46,7 +62,7 @@
         } catch (Exception $e) {
             ?>
             <script>
-                alert('Menssagem não enviada: {$mail->ErrorInfo}');
+                alert('Menssagem não enviada: <?=  $mail->ErrorInfo ?>');
                 window.location.href = '../pages/bolospersonalizados.php';
              </script>";
              <?php
