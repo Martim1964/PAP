@@ -134,7 +134,8 @@ if (!isset($_SESSION['user'])) {
 
             <div class="grid-container">
                 <div class="coluna-esquerda">
-
+                    <?php
+                    if($bolo_id == "bolachas-natal" || $bolo_id == "bolachas-panda"):?>
                     <!-- 1. PACK / QUANTIDADE -->
                     <section class="form-section">
                         <h2>1. Quantidade</h2>
@@ -146,6 +147,43 @@ if (!isset($_SESSION['user'])) {
                             <option value="muito_grande">Pack 50 unidades - €70</option>
                         </select>
                     </section>
+                    <?php
+                    elseif($bolo_id=="mini-brigadeiros"):?>
+
+                    <section class="form-section">
+                        <h2>1. Quantidade</h2>
+                        <select id="tamanho" name="tamanho" required>
+                            <option value="">Escolha a quantidade...</option>
+                            <option value="pequeno">Pack 6 unidades - €10</option>
+                            <option value="medio">Pack 14 unidades - €20</option>
+                            <option value="grande">Pack 28 unidades - €35</option>
+                            <option value="muito_grande">Pack 50 unidades - €50</option>
+                        </select>
+                    </section>
+
+                    <?php
+                    elseif($bolo_id=="brigadeiro-chocolate" || $bolo_id=="bolo-bolacha"):?>
+                    <section class="form-section">
+                        <h2>1. Tamanho do Bolo</h2>
+                        <select id="tamanho" name="tamanho" required>
+                            <option value="">Escolha um tamanho...</option>
+                                <option value="pequeno">Tamanho Normal - €25</option>
+                                <option value="grande">Tamanho Familiar - €40</option>
+                        </select>
+                        
+                    </section>
+
+                    <?php
+                    elseif($bolo_id=="torta-chocolate" || $bolo_id=="torta-laranja"): ?>
+                    <section class="form-section">
+                        <h2>1. Tamanho da Torta</h2>
+                        <select id="tamanho" name="tamanho" required>
+                            <option value="">Escolha um tamanho...</option>
+                                <option value="pequeno">Tamanho Normal - €25</option>
+                                <option value="grande">Tamanho Familiar - €40</option>
+                        </select>
+                    </section>
+                    <?php endif ?>
 
                     <!-- 2. DATA DO EVENTO -->
                     <section class="form-section">
@@ -188,7 +226,7 @@ if (!isset($_SESSION['user'])) {
     </div>
 </div>
 
-<script src="../../js/encomenda-cupcakes.js"></script>
+<script src="../../js/encomenda-cupcakes.js?v=1.1"></script>
 <?php include '../../includes/footer-bolos.php'; ?>
 </body>
 </html>

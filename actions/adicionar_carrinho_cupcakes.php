@@ -37,10 +37,6 @@ $tamanho     = dd_limpar_texto($_POST['tamanho']     ?? '', 30);
 $dataEvento  = dd_limpar_texto($_POST['birthday']    ?? '', 10);
 $observacoes = dd_limpar_texto($_POST['observacoes'] ?? '', 500);
 
-$quantidade = filter_input(INPUT_POST, 'quantidade', FILTER_VALIDATE_INT, [
-    'options' => ['default' => 1, 'min_range' => 1, 'max_range' => 20]
-]);
-
 // --- BUSCAR DADOS DA BASE DE DADOS ---
 $bolo     = buscar_bolo($con, $boloId);
 $tamanhos = buscar_tamanhos($con);
@@ -65,9 +61,29 @@ if (!empty($erros)) {
     exit;
 }
 
-// --- CALCULAR PREÇO A PARTIR DA BASE DE DADOS ---
-// Para cupcakes não há massa nem recheio — só o tamanho/pack
-$precoUnitario = calcular_preco($tamanhos, [], [], $tamanho);
+// Mapa de preços local para cupcakes/doces 
+$mapaPrecos = [
+    'bolachas-natal'        => ['pequeno' => 25, 'medio' => 35, 'grande' => 50, 'muito_grande' => 70],
+    'bolachas-panda'        => ['pequeno' => 25, 'medio' => 35, 'grande' => 50, 'muito_grande' => 70],
+    'mini-brigadeiros'      => ['pequeno' => 10, 'medio' => 20, 'grande' => 35, 'muito_grande' => 50],
+    'brigadeiro-chocolate'  => ['pequeno' => 25, 'grande' => 40],
+    'bolo-bolacha'          => ['pequeno' => 25, 'grande' => 40],
+    'torta-chocolate'       => ['pequeno' => 25, 'grande' => 40],
+    'torta-laranja'         => ['pequeno' => 25, 'grande' => 40],
+    //'torre-choux'           => ['pequeno' => 25],
+];
+
+$mapaLabels = [
+    'bolachas-natal'        => ['pequeno' => "Pack 6 unidades", 'medio' => "Pack 14 unidades", 'grande' => "Pack 28 unidades", 'muito_grande' => "Pack 50 unidades"],
+    'bolachas-panda'        => ['pequeno' => "Pack 6 unidades", 'medio' => "Pack 14 unidades", 'grande' => "Pack 28 unidades", 'muito_grande' => "Pack 50 unidades"],
+    'mini-brigadeiros'      => ['pequeno' => "Pack 6 unidades", 'medio' => "Pack 14 unidades", 'grande' => "Pack 28 unidades", 'muito_grande' => "Pack 50 unidades"],
+    'brigadeiro-chocolate'  => ['pequeno' => "Tamanho Normal", 'grande' => "Tamanho Familiar"],
+    'bolo-bolacha'          => ['pequeno' => "Tamanho Normal", 'grande' => "Tamanho Familiar"],
+    'torta-chocolate'       => ['pequeno' => "Tamanho Normal", 'grande' => "Tamanho Familiar"],
+    'torta-laranja'         => ['pequeno' => "Tamanho Normal", 'grande' => "Tamanho Familiar"],
+];
+
+$precoUnitario = $mapaPrecos[$boloId][$tamanho] ?? null;
 
 if ($precoUnitario === null) {
     dd_flash_set('danger', 'Não foi possível calcular o preço. Tenta novamente.');
@@ -75,23 +91,24 @@ if ($precoUnitario === null) {
     exit;
 }
 
-// --- ADICIONAR AO CARRINHO (sessão) ---
+// --- 5. ADICIONAR AO CARRINHO ---
+$quantidade = (int)($_POST['quantidade'] ?? 1);
 dd_carrinho_adicionar([
-    'bolo_id'       => $boloId,
-    'nome'          => $bolo['nome'],
-    'imagem'        => '../' . ltrim($bolo['imagem'], '/'),
-    'descricao'     => $bolo['descricao'],
-    'categoria'     => $bolo['categoria'],
-    'tamanho'       => $tamanho,
-    'tamanho_label' => $tamanhos[$tamanho]['label'],
-    'massa'         => '',   // cupcakes não têm massa
-    'massa_label'   => '',
-    'recheio'       => '',   // cupcakes não têm recheio
-    'recheio_label' => '',
-    'data_evento'   => $dataEvento,
-    'observacoes'   => $observacoes,
-    'quantidade'    => $quantidade,
-    'preco_unitario'=> $precoUnitario,
+    'bolo_id'        => $boloId,
+    'nome'           => $bolo['nome'],
+    'imagem'         => '../' . ltrim($bolo['imagem'], '/'),
+    'categoria'      => 'cupcakes',
+    'tamanho'        => $tamanho,
+    'tamanho_label'  => $mapaLabels[$boloId][$tamanho] ?? $tamanho,
+    'massa'          => '',
+    'massa_label'    => '',
+    'recheio'        => '',
+    'recheio_label'  => '',
+    'data_evento'    => $dataEvento,
+    'observacoes'    => $observacoes,
+    'quantidade'     => $quantidade,
+    'preco_unitario' => (float)$precoUnitario,
+    'total_item'     => (float)$precoUnitario * $quantidade
 ]);
 
 dd_flash_set('success', 'Produto adicionado ao carrinho com sucesso!');

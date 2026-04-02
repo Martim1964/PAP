@@ -141,7 +141,8 @@ function guardar_encomenda($con, $dados) {
     $quantidade     = (int)$dados['quantidade'];
     $preco_unitario = (float)$dados['preco_unitario'];
     $preco_total    = round($preco_unitario * $quantidade, 2);
-    $iva            = round($preco_total * 0.23, 2); // 23% de IVA
+    $iva            = round($preco_total * 0.23, 2); 
+   
 
     $query = "
         INSERT INTO encomendas (
@@ -150,14 +151,14 @@ function guardar_encomenda($con, $dados) {
             massa_slug, massa_label,
             recheio_slug, recheio_label,
             data_evento, observacoes,
-            quantidade, preco_unitario, preco_total, iva
+            quantidade, preco_unitario, preco_total, iva, estado
         ) VALUES (
             $utilizador_id, '$bolo_slug', '$bolo_nome',
             '$tamanho_slug', '$tamanho_label',
             '$massa_slug', '$massa_label',
             '$recheio_slug', '$recheio_label',
             '$data_evento', '$observacoes',
-            $quantidade, $preco_unitario, $preco_total, $iva
+            $quantidade, $preco_unitario, $preco_total, $iva, 'Confirmada'
         )
     ";
 

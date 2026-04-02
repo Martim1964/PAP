@@ -66,7 +66,7 @@
                         </li>
                     <?php else: ?>
                         <li class="nav-item">
-                            <a class="nav-link" href="../pages/login.php">
+                            <a class="nav-link" href="pages/login.php">
                                 <i class="bi bi-person"></i> Login/Registe-se
                             </a>
                         </li>

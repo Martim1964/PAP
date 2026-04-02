@@ -18,6 +18,9 @@ $cartItems = dd_carrinho_get();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="../css/compras-finalizar.css">
     <link rel="icon" href="../img-pap/logotipo-docesdias.jpg">
     <title>Finalizar Compra - Doces Dias</title>
@@ -50,67 +53,32 @@ $cartItems = dd_carrinho_get();
             <div class="coluna-formulario">
                 <!-- DADOS PESSOAIS -->
                 <div class="secao-formulario">
-                    <h2 class="secao-titulo">👤 DADOS PESSOAIS</h2>
+                    <h2 class="secao-titulo">DADOS PESSOAIS</h2>
                     <form id="form-dados-pessoais">
                         <div class="form-grupo">
                             <label for="nome">Nome Completo *</label>
-                            <input type="text" id="nome" name="nome" placeholder="Ex: João Silva" required>
+                            <input type="text" id="nome" name="nome" value="<?= htmlspecialchars($_SESSION['nome'] ?? '') ?>"readonly>
                             <span class="erro-msg" id="erro-nome"></span>
                         </div>
 
                         <div class="form-row">
                             <div class="form-grupo">
                                 <label for="email">Email *</label>
-                                <input type="email" id="email" name="email" placeholder="seu@email.com" required>
+                                <input type="email" id="email" name="email" value="<?= htmlspecialchars($_SESSION['user'] ?? '') ?>"readonly>
                                 <span class="erro-msg" id="erro-email"></span>
                             </div>
                             <div class="form-grupo">
                                 <label for="telefone">Telemóvel *</label>
-                                <input type="tel" id="telefone" name="telefone" placeholder="+351 9XX XXX XXX" required>
+                                <input type="tel" id="telefone" name="telefone" value="<?= htmlspecialchars($_SESSION['telemovel'] ?? '') ?>"readonly>
                                 <span class="erro-msg" id="erro-telefone"></span>
                             </div>
                         </div>
                     </form>
                 </div>
 
-                <!-- ENDEREÇO DE ENTREGA -->
-                <div class="secao-formulario">
-                    <h2 class="secao-titulo">📍 ENDEREÇO DE ENTREGA</h2>
-                    <form id="form-endereco">
-                        <div class="form-grupo">
-                            <label for="endereco">Rua e Número *</label>
-                            <input type="text" id="endereco" name="endereco" placeholder="Ex: Rua das Flores, 123" required>
-                            <span class="erro-msg" id="erro-endereco"></span>
-                        </div>
-
-                        <div class="form-row">
-                            <div class="form-grupo">
-                                <label for="codigo-postal">Código Postal *</label>
-                                <input type="text" id="codigo-postal" name="codigo-postal" placeholder="1200-000" required>
-                                <span class="erro-msg" id="erro-cp"></span>
-                            </div>
-                            <div class="form-grupo">
-                                <label for="cidade">Cidade *</label>
-                                <input type="text" id="cidade" name="cidade" placeholder="Lisboa" required>
-                                <span class="erro-msg" id="erro-cidade"></span>
-                            </div>
-                        </div>
-
-                        <div class="form-grupo">
-                            <label for="complemento">Complemento (Apto, Andar, etc)</label>
-                            <input type="text" id="complemento" name="complemento" placeholder="Opcional">
-                        </div>
-
-                        <div class="checkbox-grupo">
-                            <input type="checkbox" id="endereco-igual" checked>
-                            <label for="endereco-igual">Endereço de faturação igual ao de entrega</label>
-                        </div>
-                    </form>
-                </div>
-
                 <!-- OBSERVAÇÕES -->
                 <div class="secao-formulario">
-                    <h2 class="secao-titulo">📝 OBSERVAÇÕES</h2>
+                    <h2 class="secao-titulo">OBSERVAÇÕES</h2>
                     <form id="form-observacoes">
                         <div class="form-grupo">
                             <label for="observacoes">Mensagem Especial (Opcional)</label>
@@ -125,7 +93,7 @@ $cartItems = dd_carrinho_get();
             <div class="coluna-resumo">
                 <!-- RESUMO DO PEDIDO -->
                 <div class="resumo-pedido-sticky">
-                    <h2 class="resumo-titulo">📦 RESUMO DO PEDIDO</h2>
+                    <h2 class="resumo-titulo">RESUMO DO PEDIDO</h2>
 
                     <!-- Produtos -->
                     <div class="resumo-produtos">

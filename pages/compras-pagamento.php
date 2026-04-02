@@ -24,8 +24,12 @@
         foreach($itensCart as $item){
             $descricao = ''; /* Criar variável que escreve todos os detalhes do bolo (tamanho, massa, recheio, etc) */
             $descricao .= ' | Tamanho: ' . $item['tamanho_label']; //todos estes dados vêm da page compras.php
+            if (!empty($item['massa_label'])): 
             $descricao .= ' | Massa: ' . $item['massa_label'];
+            endif;
+            if (!empty($item['recheio_label'])): 
             $descricao .= ' | Recheio: ' . $item['recheio_label'];
+            endif; 
             $descricao .= ' | Evento: ' . $item['data_evento'];
         
 

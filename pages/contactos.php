@@ -123,9 +123,9 @@ session_start();
             </div>
 
             <div class="mb-3">
-                <label for="telefone" class="form-label fw-semibold">Telefone (opcional)</label>
+                <label for="telefone" class="form-label fw-semibold">Telefone</label>
                 <input type="tel" class="form-control" id="telefone" name="telefone"
-                       placeholder="Ex: 912345678">
+                       value="<?= htmlspecialchars($_SESSION['telemovel'] ?? '') ?>"readonly>
             </div>
 
             <div class="mb-3">

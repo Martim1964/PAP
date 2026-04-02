@@ -117,8 +117,12 @@ $flash         = dd_flash_get(); // Mensagem flash (se existir)
                                 <!-- Etiquetas com as opções escolhidas -->
                                 <div class="produto-specs">
                                     <span class="spec-tag">Tamanho: <?= htmlspecialchars($item['tamanho_label'] ?? '') ?></span>
-                                    <span class="spec-tag">Massa: <?= htmlspecialchars($item['massa_label'] ?? '') ?></span>
-                                    <span class="spec-tag">Recheio: <?= htmlspecialchars($item['recheio_label'] ?? '') ?></span>
+                                    <?php if (!empty($item['massa_label'])): ?>
+                                        <span class="spec-tag">Massa: <?= htmlspecialchars($item['massa_label']) ?></span>
+                                    <?php endif; ?>
+                                    <?php if (!empty($item['recheio_label'])): ?>
+                                        <span class="spec-tag">Recheio: <?= htmlspecialchars($item['recheio_label']) ?></span>
+                                    <?php endif; ?>
                                     <span class="spec-tag">Data: <?= htmlspecialchars(dd_formata_data($item['data_evento'] ?? '')) ?></span>
                                 </div>
 

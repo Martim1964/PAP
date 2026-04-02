@@ -45,6 +45,7 @@ if (isset($_POST['email']) && isset($_POST['pass'])) {
             $_SESSION['nome'] = $row['nome'];
             $_SESSION['user_id'] = $row['id'];
             $_SESSION['admin']   = $row['admin'];
+            $_SESSION['telemovel'] = $row['telefone'];
             header("Location: $destination");
             exit;
         } else {
