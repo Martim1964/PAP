@@ -34,9 +34,10 @@
     $result_clientes = mysqli_query($con, "SELECT id, nome, email, telefone, data_nascimento FROM utilizadores WHERE admin = 0 AND nome LIKE '%$pesquisa_escaped%' ORDER BY nome ASC");
 
     // Buscar encomendas personalizadas
-    $sql_personalizadas = "SELECT ep.id, ep.tamanho, ep.massa, ep.recheio, ep.data_evento, ep.estado, ep.imagem, u.nome AS cliente 
+    $sql_personalizadas = "SELECT ep.*, u.nome AS cliente 
     FROM encomendas_personalizadas ep 
-    JOIN utilizadores u ON ep.utilizador_id = u.id ORDER BY ep.id DESC";
+    JOIN utilizadores u ON ep.utilizador_id = u.id 
+    ORDER BY ep.id DESC";
     $result_personalizadas = mysqli_query($con, $sql_personalizadas);
 ?>
 <!DOCTYPE html>
@@ -77,7 +78,6 @@
         <table class="table table-bordered table-hover">
             <thead class="table-dark">
                 <tr>
-                    <th>#</th>
                     <th>Cliente</th>
                     <th>Bolo</th>
                     <th>Tamanho</th>
@@ -139,6 +139,35 @@
             <tbody>
                 <?php if (mysqli_num_rows($result_personalizadas) > 0): ?>
                     <?php while ($enc = mysqli_fetch_assoc($result_personalizadas)): ?>
+
+                    <?php if ($enc['estado'] == 'confirmada' || $enc['estado'] == 'pronta' || $enc['estado'] == 'entregue'): ?>
+                    <tr>
+                        <td><?= htmlspecialchars($enc['cliente']) ?></td>
+                        <td><?= htmlspecialchars($enc['tamanho_final']) ?></td>
+                        <td><?= htmlspecialchars($enc['massa_final'] ?: '—') ?></td>
+                        <td><?= htmlspecialchars($enc['recheio_final'] ?: '—') ?></td>
+                        <td><?= dd_formata_data($enc['data_evento_final']) ?></td>
+                        <td>
+                            <div class="dropdown">
+                                <button class="btn btn-outline-secondary btn-sm dropdown-toggle w-100" type="button" data-bs-toggle="dropdown">
+                                    <?= ucfirst($enc['estado']) ?>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="../../actions/alterar-estado-personalizada.php?id=<?= $enc['id'] ?>&estado=pendente">Pendente</a></li>
+                                    <li><a class="dropdown-item" href="../../actions/alterar-estado-personalizada.php?id=<?= $enc['id'] ?>&estado=confirmada">Confirmada</a></li>
+                                    <li><a class="dropdown-item" href="../../actions/alterar-estado-personalizada.php?id=<?= $enc['id'] ?>&estado=pronta">Pronta</a></li>
+                                    <li><a class="dropdown-item" href="../../actions/alterar-estado-personalizada.php?id=<?= $enc['id'] ?>&estado=entregue">Entregue</a></li>
+                                    <li><hr class="dropdown-divider"></li>
+                                    <li><a class="dropdown-item text-danger" href="../../actions/alterar-estado-personalizada.php?id=<?= $enc['id'] ?>&estado=cancelada">Cancelada</a></li>
+                                </ul>
+                            </div>
+                        </td>
+                        <td>
+                                <img src="../../img-pap/upload-bolos-personalizados/<?= htmlspecialchars($enc['imagem']) ?>"
+                                     alt="Imagem do bolo"
+                                     style="width: 60px; height: 60px; object-fit: cover; border-radius: 8px;">
+                        </td>
+                    <?php else: ?>
                     <tr>
                         <td><?= htmlspecialchars($enc['cliente']) ?></td>
                         <td><?= htmlspecialchars($enc['tamanho']) ?></td>
@@ -161,17 +190,18 @@
                             </div>
                         </td>
                         <td>
-                                <img src="../../img-pap/upload-bolos-personalizados/<?= htmlspecialchars($enc['imagem']) ?>"
-                                     alt="Imagem do bolo"
-                                     style="width: 60px; height: 60px; object-fit: cover; border-radius: 8px;">
+                             <img src="../../img-pap/upload-bolos-personalizados/<?= htmlspecialchars($enc['imagem']) ?>" 
+                                  style="width: 60px; height: 60px; object-fit: cover; border-radius: 8px;">
                         </td>
                     </tr>
-                    <?php endwhile; ?>
-                <?php else: ?>
-                    <tr><td colspan="7" class="text-center text-muted">Nenhuma encomenda personalizada encontrada.</td></tr>
                 <?php endif; ?>
-            </tbody>
-        </table>
+
+            <?php endwhile; ?>
+        <?php else: ?>
+            <tr><td colspan="7" class="text-center text-muted">Nenhuma encomenda personalizada encontrada.</td></tr>
+        <?php endif; ?>
+    </tbody>
+</table>
 
         <!-- Modal para edição dos dados da encomenda personalizada após o estado ser trocado para "confirmada" -->
         <div class="modal fade" id="modalEditar" tabindex="-1">
@@ -180,7 +210,7 @@
                 <div class="modal-header">
                     <h5 class="modal-title"><i class="bi bi-pencil"></i> Alterar dados da encomenda após confirmação</h5>
                 </div>
-                <form action="editar-encomenda.php" method="POST">
+                <form action="../../actions/editar-encomenda.php" method="POST">
                     <div class="modal-body">
                         <input type="hidden" name = "encomenda_id" id="ModalEncId">
                         <div class="mb-3">

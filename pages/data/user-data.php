@@ -31,7 +31,9 @@
     $result_enc = mysqli_query($con, $sql_enc);
 
     // Buscar encomendas personalizadas do utilizador
-    $sql_personalizadas = "SELECT tamanho, massa, recheio, data_evento, estado, imagem FROM encomendas_personalizadas WHERE utilizador_id = $user_id ORDER BY id DESC";
+    $sql_personalizadas = "SELECT *, tamanho_final, massa_final, recheio_final, data_evento_final, quantidade_final 
+                       FROM encomendas_personalizadas 
+                       WHERE utilizador_id = $user_id ORDER BY id DESC";
     $result_personalizadas = mysqli_query($con, $sql_personalizadas);
 ?>
 <!DOCTYPE html>
@@ -136,41 +138,59 @@
         </div>
         <hr>
         <table class="table table-bordered table-hover">
-            <thead class="table-dark">
-                <tr>
-                    <th>Tamanho</th>
-                    <th>Massa</th>
-                    <th>Recheio</th>
-                    <th>Data Evento</th>
-                    <th>Estado</th>
-                    <th>Imagem</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php if (mysqli_num_rows($result_personalizadas) > 0): ?>
-                    <?php while ($enc = mysqli_fetch_assoc($result_personalizadas)): ?>
+    <thead class="table-dark">
+        <tr>
+            <th>Tamanho</th>
+            <th>Massa</th>
+            <th>Recheio</th>
+            <th>Data Evento</th>
+            <th>Qtd</th>
+            <th>Estado</th>
+            <th>Imagem</th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php if (mysqli_num_rows($result_personalizadas) > 0): ?>
+            <?php while ($enc = mysqli_fetch_assoc($result_personalizadas)): ?>
+
+                <?php if ($enc['estado'] == 'confirmada'): ?>
+                    <tr class="table-success">
+                        <td><?= htmlspecialchars($enc['tamanho_final']) ?></td>
+                        <td><?= htmlspecialchars($enc['massa_final'] ?: '—') ?></td>
+                        <td><?= htmlspecialchars($enc['recheio_final'] ?: '—') ?></td>
+                        <td><?= dd_formata_data($enc['data_evento_final']) ?></td>
+                        <td><?= $enc['quantidade_final'] ?></td>
+                        <td><strong>Confirmada</strong></td>
+                        <td>
+                             <img src="../../img-pap/upload-bolos-personalizados/<?= htmlspecialchars($enc['imagem']) ?>" 
+                                  style="width: 60px; height: 60px; object-fit: cover; border-radius: 8px;">
+                        </td>
+                    </tr>
+
+                <?php else: ?>
                     <tr>
                         <td><?= htmlspecialchars($enc['tamanho']) ?></td>
                         <td><?= htmlspecialchars($enc['massa'] ?: '—') ?></td>
                         <td><?= htmlspecialchars($enc['recheio'] ?: '—') ?></td>
                         <td><?= dd_formata_data($enc['data_evento']) ?></td>
-                        <td><?= htmlspecialchars($enc['estado']) ?></td>
+                        <td>1</td> <td><?= ucfirst($enc['estado']) ?></td>
                         <td>
-                            <!--Verificar a imagem na pasta e pôr essa imagem na tabela -->
-                                <img src="../../img-pap/upload-bolos-personalizados/<?= htmlspecialchars($enc['imagem']) ?>" alt="Imagem do bolo" 
-                                style="width: 80px; height: 80px; object-fit: cover; border-radius: 8px;"> <!-- Estilizar a imagem de modo que fique pequena mas visível -->
+                             <img src="../../img-pap/upload-bolos-personalizados/<?= htmlspecialchars($enc['imagem']) ?>" 
+                                  style="width: 60px; height: 60px; object-fit: cover; border-radius: 8px;">
                         </td>
                     </tr>
-                    <?php endwhile; ?>
-                <?php else: ?>
-                    <tr>
-                        <td colspan="6" class="text-center text-muted">Nenhuma encomenda personalizada pendente.</td>
-                    </tr>
                 <?php endif; ?>
-            </tbody>
-        </table>
+
+                <?php endwhile; ?>
+            <?php else: ?>
+                <tr><td colspan="7" class="text-center">Ainda não fizeste pedidos personalizados.</td></tr>
+            <?php endif; ?>
+        </tbody>
+    </table>
 
     </div>
+                        
+                    
 
     <!-- MODAL EDITAR -->
     <div class="modal fade" id="modalEditar" tabindex="-1">
