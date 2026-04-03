@@ -18,7 +18,7 @@
         </div>
         
         <div class="personalize-form">
-            <form method="post" action="../actions/processar_personalizacao.php">
+            <form method="post" enctype = "multipart/form-data" action = "../actions/processar_personalizacao.php">
                 
                 <!-- GRID LAYOUT - 2 COLUNAS -->
                 <div class="grid-container">
@@ -150,7 +150,7 @@
                                 <p class="small-text">Formato PNG (máx. 5MB)</p>
                             </div>
                             
-                            <input type="file" id="imagem" name="imagem" accept="image/png" required>
+                            <input type="file" id="imagem" name="photo" accept="image/png" required>
                             
                             <p class="erro" id="mensagemErro"></p>
                             <p class="sucesso" id="mensagemSucesso"></p>

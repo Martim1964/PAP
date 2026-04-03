@@ -6,16 +6,22 @@
     require_once __DIR__ . '/../includes/db.php';
     //Inserir na base de dados
     $user_id = $_SESSION['user_id']; 
+    $fileName = $_FILES["photo"]["name"]; //Criar variavel que vai buscar a imagem e o seu respetivo nome
+    //Criar variavel a dizer o caminho que a imagem deve fazer, ou seja em que pasta vai ser posta 
+    $path = __DIR__ . '/../img-pap/upload-bolos-personalizados/' . $_FILES['photo']['name'];
+    //Confirmar que ela foi para aquela posta e inserir na base de dados
+    if(move_uploaded_file($_FILES['photo']['tmp_name'], $path)){
     $sucesso = guardar_encomenda_personalizada($con, [
         'utilizador_id'  => $user_id,
         'tamanho'        => $_POST['tamanho'],
         'massa'          => $_POST['massa'],
         'recheio'        => $_POST['recheio'],
-        'data_evento'    => $birthday ?? date('d-m-Y'),
+        'data_evento'    => $_POST['birthday'] ?? date('d-m-Y'),
         'observacoes'    => $_POST['observacoes'],
         'tema'           => $_POST['tema'], 
-        'imagem'         => $_POST(['$imagem']),
+        'imagem'         => $fileName,
     ]);
+    }
 
 
     //Fazer o email personalizado

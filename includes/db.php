@@ -179,14 +179,13 @@ function guardar_encomenda_personalizada($con, $dados) {
     $imagem         = mysqli_real_escape_string($con, $dados['imagem']);
 
     $query = "
-        INSERT INTO encomendas-personalizadas (
-            utilizador_id,tamanho,
-            massa, recheio, 
-            data_evento, observacoes, estado, imagem
+        INSERT INTO `encomendas_personalizadas` (
+            utilizador_id, tamanho, massa, recheio, 
+            data_evento, observacoes, tema, estado, imagem
         ) VALUES (
             $utilizador_id, '$tamanho_label', '$massa_label',
             '$recheio_label', '$data_evento', 
-            '$observacoes','Pendente', $imagem
+            '$observacoes', '$tema', 'Pendente', '$imagem'
         )
     ";
 
