@@ -156,10 +156,9 @@
                         <td><?= dd_formata_data($enc['data_evento']) ?></td>
                         <td><?= htmlspecialchars($enc['estado']) ?></td>
                         <td>
-                            <?php if ($enc['imagem']): ?>
+                            <!--Verificar a imagem na pasta e pôr essa imagem na tabela -->
                                 <img src="../../img-pap/upload-bolos-personalizados/<?= htmlspecialchars($enc['imagem']) ?>" alt="Imagem do bolo" 
-                                    style="width: 80px; height: 80px; object-fit: cover; border-radius: 8px;">
-                            <?php endif; ?>
+                                style="width: 80px; height: 80px; object-fit: cover; border-radius: 8px;"> <!-- Estilizar a imagem de modo que fique pequena mas visível -->
                         </td>
                     </tr>
                     <?php endwhile; ?>
@@ -171,7 +170,7 @@
             </tbody>
         </table>
 
-    </div><!-- fim container -->
+    </div>
 
     <!-- MODAL EDITAR -->
     <div class="modal fade" id="modalEditar" tabindex="-1">

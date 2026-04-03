@@ -24,3 +24,4 @@ https://www.youtube.com/watch?v=kj7A7lH3aVE
 https://getbootstrap.com/docs/4.1/content/tables/
 https://www.youtube.com/watch?v=Y9LFqKTrJE4
 https://www.youtube.com/watch?v=A83BZWPeRJk
+https://bdprogramacao.blogspot.com/2021/11/php-imagens.html
