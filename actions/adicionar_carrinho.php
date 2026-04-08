@@ -47,7 +47,7 @@ $quantidade = filter_input(INPUT_POST, 'quantidade', FILTER_VALIDATE_INT, [
 // --- BUSCAR DADOS DA BASE DE DADOS ---
 // Em vez de arrays hardcoded, os dados vêm agora do MySQL
 $bolo     = buscar_bolo($con, $boloId);
-$tamanhos = buscar_tamanhos($con);
+$tamanhos = buscar_tamanhos($con, $boloId);
 $massas   = buscar_massas($con);
 $recheios = buscar_recheios($con);
 

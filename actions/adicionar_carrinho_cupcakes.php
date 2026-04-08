@@ -1,9 +1,9 @@
 <?php
 // ============================================================
 // FICHEIRO: actions/adicionar_carrinho_cupcakes.php
-// O QUE FAZ: Recebe o formulário de encomenda de cupcakes
-// e doces, valida os dados, calcula o preço A PARTIR DA
-// BASE DE DADOS e adiciona ao carrinho na sessão.
+// O QUE FAZ: Recebe o formulario de encomenda de cupcakes
+// e doces, valida os dados, calcula o preco a partir da
+// base de dados e adiciona ao carrinho na sessao.
 // ============================================================
 
 require_once __DIR__ . '/../includes/carrinho.php';
@@ -11,47 +11,50 @@ require_once __DIR__ . '/../includes/db.php';
 
 dd_start_session();
 
-// --- PROTEÇÃO 1: Só aceita pedidos POST ---
+// --- PROTECAO 1: So aceita pedidos POST ---
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     header('Location: ../pages/compras.php');
     exit;
 }
 
-// --- PROTEÇÃO 2: O utilizador tem de estar autenticado ---
+// --- PROTECAO 2: O utilizador tem de estar autenticado ---
 if (!isset($_SESSION['user'])) {
-    dd_flash_set('danger', 'Precisa de iniciar sessão para adicionar produtos ao carrinho.');
+    dd_flash_set('danger', 'Precisa de iniciar sessao para adicionar produtos ao carrinho.');
     header('Location: ../pages/login.php');
     exit;
 }
 
-// --- PROTEÇÃO 3: Verificar o token CSRF ---
+// --- PROTECAO 3: Verificar o token CSRF ---
 if (!dd_verificar_csrf($_POST['csrf_token'] ?? '')) {
-    dd_flash_set('danger', 'Pedido inválido. Atualiza a página e tenta novamente.');
+    dd_flash_set('danger', 'Pedido invalido. Atualiza a pagina e tenta novamente.');
     header('Location: ../pages/compras.php');
     exit;
 }
 
-// --- LER E LIMPAR OS DADOS DO FORMULÁRIO ---
-$boloId      = dd_limpar_texto($_POST['bolo_id']     ?? '', 100);
-$tamanho     = dd_limpar_texto($_POST['tamanho']     ?? '', 30);
-$dataEvento  = dd_limpar_texto($_POST['birthday']    ?? '', 10);
+// --- LER E LIMPAR OS DADOS DO FORMULARIO ---
+$boloId      = dd_limpar_texto($_POST['bolo_id'] ?? '', 100);
+$tamanho     = dd_limpar_texto($_POST['tamanho'] ?? '', 30);
+$dataEvento  = dd_limpar_texto($_POST['birthday'] ?? '', 10);
 $observacoes = dd_limpar_texto($_POST['observacoes'] ?? '', 500);
+$quantidade  = filter_input(INPUT_POST, 'quantidade', FILTER_VALIDATE_INT, [
+    'options' => ['default' => 1, 'min_range' => 1, 'max_range' => 20]
+]);
 
 // --- BUSCAR DADOS DA BASE DE DADOS ---
 $bolo     = buscar_bolo($con, $boloId);
-$tamanhos = buscar_tamanhos($con);
+$tamanhos = buscar_tamanhos($con, $boloId);
 
-// --- VALIDAÇÕES ---
+// --- VALIDACOES ---
 $erros = [];
 
 if (!$bolo) {
-    $erros[] = 'O produto selecionado não existe.';
+    $erros[] = 'O produto selecionado nao existe.';
 }
 if (!isset($tamanhos[$tamanho])) {
-    $erros[] = 'Seleciona um pack válido.';
+    $erros[] = 'Seleciona uma opcao valida.';
 }
 if (!dd_data_evento_valida($dataEvento)) {
-    $erros[] = 'A data do evento deve ter pelo menos 7 dias de antecedência.';
+    $erros[] = 'A data do evento deve ter pelo menos 7 dias de antecedencia.';
 }
 
 if (!empty($erros)) {
@@ -61,45 +64,24 @@ if (!empty($erros)) {
     exit;
 }
 
-// Mapa de preços local para cupcakes/doces 
-$mapaPrecos = [
-    'bolachas-natal'        => ['pequeno' => 25, 'medio' => 35, 'grande' => 50, 'muito_grande' => 70],
-    'bolachas-panda'        => ['pequeno' => 25, 'medio' => 35, 'grande' => 50, 'muito_grande' => 70],
-    'mini-brigadeiros'      => ['pequeno' => 10, 'medio' => 20, 'grande' => 35, 'muito_grande' => 50],
-    'brigadeiro-chocolate'  => ['pequeno' => 25, 'grande' => 40],
-    'bolo-bolacha'          => ['pequeno' => 25, 'grande' => 40],
-    'torta-chocolate'       => ['pequeno' => 25, 'grande' => 40],
-    'torta-laranja'         => ['pequeno' => 25, 'grande' => 40],
-    //'torre-choux'           => ['pequeno' => 25],
-];
-
-$mapaLabels = [
-    'bolachas-natal'        => ['pequeno' => "Pack 6 unidades", 'medio' => "Pack 14 unidades", 'grande' => "Pack 28 unidades", 'muito_grande' => "Pack 50 unidades"],
-    'bolachas-panda'        => ['pequeno' => "Pack 6 unidades", 'medio' => "Pack 14 unidades", 'grande' => "Pack 28 unidades", 'muito_grande' => "Pack 50 unidades"],
-    'mini-brigadeiros'      => ['pequeno' => "Pack 6 unidades", 'medio' => "Pack 14 unidades", 'grande' => "Pack 28 unidades", 'muito_grande' => "Pack 50 unidades"],
-    'brigadeiro-chocolate'  => ['pequeno' => "Tamanho Normal", 'grande' => "Tamanho Familiar"],
-    'bolo-bolacha'          => ['pequeno' => "Tamanho Normal", 'grande' => "Tamanho Familiar"],
-    'torta-chocolate'       => ['pequeno' => "Tamanho Normal", 'grande' => "Tamanho Familiar"],
-    'torta-laranja'         => ['pequeno' => "Tamanho Normal", 'grande' => "Tamanho Familiar"],
-];
-
-$precoUnitario = $mapaPrecos[$boloId][$tamanho] ?? null;
+// --- CALCULAR PRECO A PARTIR DA BASE DE DADOS ---
+$precoUnitario = calcular_preco($tamanhos, [], [], $tamanho);
 
 if ($precoUnitario === null) {
-    dd_flash_set('danger', 'Não foi possível calcular o preço. Tenta novamente.');
+    dd_flash_set('danger', 'Nao foi possivel calcular o preco. Tenta novamente.');
     header('Location: ../pages/bolos/encomenda-cupcakes.php?bolo=' . urlencode($boloId));
     exit;
 }
 
-// --- 5. ADICIONAR AO CARRINHO ---
-$quantidade = (int)($_POST['quantidade'] ?? 1);
+// --- ADICIONAR AO CARRINHO ---
 dd_carrinho_adicionar([
     'bolo_id'        => $boloId,
     'nome'           => $bolo['nome'],
     'imagem'         => '../' . ltrim($bolo['imagem'], '/'),
-    'categoria'      => 'cupcakes',
+    'descricao'      => $bolo['descricao'],
+    'categoria'      => $bolo['categoria'],
     'tamanho'        => $tamanho,
-    'tamanho_label'  => $mapaLabels[$boloId][$tamanho] ?? $tamanho,
+    'tamanho_label'  => $tamanhos[$tamanho]['label'],
     'massa'          => '',
     'massa_label'    => '',
     'recheio'        => '',
@@ -107,8 +89,8 @@ dd_carrinho_adicionar([
     'data_evento'    => $dataEvento,
     'observacoes'    => $observacoes,
     'quantidade'     => $quantidade,
-    'preco_unitario' => (float)$precoUnitario,
-    'total_item'     => (float)$precoUnitario * $quantidade
+    'preco_unitario' => $precoUnitario,
+    'total_item'     => round($precoUnitario * $quantidade, 2),
 ]);
 
 dd_flash_set('success', 'Produto adicionado ao carrinho com sucesso!');

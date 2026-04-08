@@ -103,7 +103,7 @@
                 </button>
 
                 <div class="regist-footer">
-                    <p>Ao registar, concorda com os nossos <a href="#">Termos e Condições</a></p>
+                    <p>Ao registar, concorda com os nossos <a href="termos.php">Termos e Condições</a></p>
                 </div>
             </form>
         </div>

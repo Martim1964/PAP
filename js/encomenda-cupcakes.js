@@ -72,7 +72,7 @@ function inicializarLimpar() {
     btnLimpar.addEventListener('click', function () {
         if (!confirm('Tem a certeza que quer limpar todos os campos?')) return;
         document.querySelector('form')?.reset();
-        atualizarResumo(); 
+        atualizarResumo();
     });
 }
 

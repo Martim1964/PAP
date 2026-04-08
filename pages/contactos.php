@@ -39,7 +39,7 @@ session_start();
 
             <div class="contact-item">
             <i class="fab fa-instagram" style="font-size:64px;color:#E1306C"></i>
-                <a href="https://www.instagram.com/doces__dias">@doces__dias</a>
+                <a href="https://www.instagram.com/docesdias.pt">@docesdias.pt</a>
             </div>
 
             <div class="contact-item">
