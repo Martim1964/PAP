@@ -14,7 +14,6 @@ dd_start_session();
 // --- BUSCAR O BOLO DA BASE DE DADOS ---
 $bolo_id  = $_GET['bolo'] ?? null;
 $bolo_sel = $bolo_id ? buscar_bolo($con, $bolo_id) : null;
-$category = $bolo_sel['categoria'] ?? 'outro';
 
 // Se o bolo não existe, redireciona
 if (!$bolo_sel) {
@@ -30,9 +29,11 @@ if (!isset($_SESSION['user'])) {
 }
 
 // --- BUSCAR OPÇÕES DA BASE DE DADOS ---
-$tamanhos = buscar_tamanhos($con);
+$tamanhos = buscar_tamanhos($con, $bolo_id);
 $massas   = buscar_massas($con);
 $recheios = buscar_recheios($con);
+
+$category = 'outros';
 ?>
 <!DOCTYPE html>
 <html lang="pt">
@@ -69,7 +70,6 @@ $recheios = buscar_recheios($con);
         <div class="cake-overview-info">
             <h3><?= htmlspecialchars($bolo_sel['nome']) ?></h3>
             <p><?= htmlspecialchars($bolo_sel['descricao']) ?></p>
-            <strong>Preço base: desde €<?= dd_formata_preco($tamanhos['pequeno']['preco']) ?></strong>
         </div>
     </div>
 

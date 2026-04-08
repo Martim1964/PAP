@@ -14,39 +14,71 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // --- LER OS DADOS DO FORMULÁRIO ---
     $nome  = $_SESSION['nome'];
     $email = $_SESSION['user'];
-    $telefone = trim($_POST['telefone'] ?? '');
-    $assunto  = trim($_POST['assunto']  ?? '');
-    $mensagem = trim($_POST['mensagem'] ?? '');
-
-    // --- VALIDAÇÃO BÁSICA ---
-    if (empty($nome) || empty($email) || empty($mensagem)) {
-        $_SESSION['contacto_erro'] = 'Por favor preenche todos os campos obrigatórios.';
-        header('Location: ../pages/contactos.php');
-        exit;
-    }
+    $telefone = $_SESSION['telemovel'];
 
     // --- GUARDAR NA BASE DE DADOS ---
-    $nomeEsc     = mysqli_real_escape_string($con, $nome);
-    $emailEsc    = mysqli_real_escape_string($con, $email);
-    $telefoneEsc = mysqli_real_escape_string($con, $telefone);
-    $assuntoEsc  = mysqli_real_escape_string($con, $assunto);
-    $mensagemEsc = mysqli_real_escape_string($con, $mensagem);
-
-    $inserir = "INSERT INTO contactos (nome, email, telefone, assunto, mensagem)
-                VALUES ('$nomeEsc', '$emailEsc', '$telefoneEsc', '$assuntoEsc', '$mensagemEsc')";
-
-    if (mysqli_query($con, $inserir)) {
-        // Mostra o alert e redireciona para a página de contactos
-        echo "<script>
-            alert('Mensagem enviada com sucesso! Irá receber um email em breve.');
-            window.location.href = '../pages/contactos.php';
-        </script>";
-    } else {
-        $_SESSION['contacto_erro'] = 'Erro ao enviar mensagem. Tenta novamente.';
-        header('Location: ../pages/contactos.php');
+    $sucesso = guardar_contacto($con, [
+        'nome' => $nome,
+        'email' => $email,
+        'telefone' => $telefone,
+        'assunto' => $_POST['assunto'],
+        'mensagem' => $_POST['mensagem'],
+    ]);
     }
 
-    exit;
-}
+    //Fazer o email personalizado
+    $lineBuy = "";
+    $lineBuy .= "";
+    $lineBuy .= ' | Nome: ' . $nome;
+    $lineBuy .= ' | Assunto: ' . $_POST['assunto'];
+    $lineBuy .= ' | Mensagem: ' . $_POST['mensagem'];
+    
+    //Enviar o email
+    if($email){
+        $mail = require_once __DIR__ . '/../includes/mailer.php';
 
-mysqli_close($con);
+        $mail -> setFrom("martimdias.pap@gmail.com");
+        $mail -> addAddress($email);
+        $mail -> addAddress("martimdias.pap@gmail.com"); //Envia para mim 
+        $mail->addReplyTo($email, $nome); //Para responder logo ao cliente a partir da menssagem enviada para mim
+
+        $mail -> Subject = "Mensagem enviada com sucesso";
+        $mail -> Body = <<<END
+
+        <h2> Obrigado pelo envio da mensagem!</h2>
+        <p>Brevemente entraremos em contacto para responder à sua mensagem via email ou número de telefone</p>
+        <br>    
+        <strong>Detalhes da sua encomenda:</strong><br>
+        $lineBuy
+        <br><br>
+        <p>Qualquer questão disponha!</p>
+        
+        END;
+
+        try {
+            $mail->send(); //Aqui envia a mensagem que está na variável $mail
+            ?>
+            <script>
+                alert('Contacto enviado com sucesso. Verifique o seu email!');
+                window.location.href = '../index.php';
+             </script>;
+             <?php
+        } catch (Exception $e) {
+            ?>
+            <script>
+                alert('Menssagem não enviada: <?=  $mail->ErrorInfo ?>');
+            window.location.href = '../pages/contactos.php';
+        </script>";
+             <?php
+        }
+    }
+        else {
+            ?>
+             <script>
+                alert('Erro ao enviar a mensagem!');
+                window.location.href = '../pages/contactos.php';
+             </script>;
+
+            <?php
+        }    
+?>

@@ -31,7 +31,7 @@ $res_bolos = mysqli_query($con, $query);
    <div class="cakes">
     <?php while ($bolo = mysqli_fetch_assoc($res_bolos)): 
         // Para cada bolo que o MySQL encontrar, vamos buscar os seus tamanhos específicos e o seu preco
-        $tamanhos = buscar_tamanhos_cupcake($con, $bolo['slug']);
+        $tamanhos = buscar_tamanhos($con, $bolo['slug']);
         
         // Pegamos no primeiro preço da lista, que é o pequeno para mostrar o preco minimo
         // Usamos o reset() para pegar no primeiro elemento do array de tamanhos

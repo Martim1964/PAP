@@ -13,6 +13,13 @@ require_once __DIR__ . '/../../includes/db.php';
 
 dd_start_session();
 
+// Se não está logado, redireciona para login
+if (!isset($_SESSION['user'])) {
+    $redirectTarget = 'bolos/encomenda-cupcakes.php?bolo=' . urlencode($bolo_id);
+    header('Location: ../login.php?redirect=' . urlencode($redirectTarget));
+    exit;
+}
+
 // --- BUSCAR O BOLO DA BASE DE DADOS ---
 $bolo_id  = $_GET['bolo'] ?? null;
 $bolo_sel = $bolo_id ? buscar_bolo($con, $bolo_id) : null;
@@ -24,7 +31,7 @@ if (!$bolo_sel) {
 }
 
 // --- BUSCAR OPÇÕES DA BASE DE DADOS ---
-$tamanhos = buscar_tamanhos_cupcake($con, $bolo_id);
+$tamanhos = buscar_tamanhos($con, $bolo_id);
 
 
 // Verifico se o ID do bolo contém as palavras 'bolachas' ou 'brigadeiros'.
@@ -38,18 +45,7 @@ $titulo_secao = $is_pack ? 'Quantidade' : 'Tamanho';
 // Definir categoria
 $category = 'cupcakes';
 
-// Se o bolo não existe, redireciona para a página de encomendas
-if (!$bolo_sel) {
-    header('Location: ../encomende.php');
-    exit;
-}
 
-// Se não está logado, redireciona para login
-if (!isset($_SESSION['user'])) {
-    $redirectTarget = 'bolos/encomenda-cupcakes.php?bolo=' . urlencode($bolo_id);
-    header('Location: ../login.php?redirect=' . urlencode($redirectTarget));
-    exit;
-}
 ?>
 <!DOCTYPE html>
 <html lang="pt">

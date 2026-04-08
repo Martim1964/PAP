@@ -6,15 +6,19 @@ function togglePassword(fieldId) {
     if (field.type === 'password') {
         field.type = 'text';
         btn.innerHTML = '<i class="bi bi-eye-slash-fill"></i>';
+        btn.setAttribute('aria-label', 'Ocultar campo de senha');
+        btn.setAttribute('aria-pressed', 'true');
     } else {
         field.type = 'password';
         btn.innerHTML = '<i class="bi bi-eye-fill"></i>';
+        btn.setAttribute('aria-label', 'Mostrar campo de senha');
+        btn.setAttribute('aria-pressed', 'false');
     }
 }
 
 // Validação do formulário no cliente
 document.getElementById('registForm').addEventListener('submit', function(e) {
-    const username = document.getElementById('username').value.trim();
+    const username = document.getElementById('nome').value.trim();
     const email = document.getElementById('email').value.trim();
     const password = document.getElementById('password').value;
     const confirm_password = document.getElementById('confirm_password').value;
@@ -23,7 +27,7 @@ document.getElementById('registForm').addEventListener('submit', function(e) {
     if (username.length < 3) {
         e.preventDefault();
         alert('O nome de utilizador deve ter pelo menos 3 caracteres.');
-        document.getElementById('username').focus();
+        document.getElementById('nome').focus();
         return false;
     }
 

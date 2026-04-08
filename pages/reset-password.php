@@ -1,36 +1,30 @@
 <?php
-$token = $_GET["token"]; //Obtém o token enviado via parâmetro GET no URL
+$token = $_GET["token"];
 
-$token_hash = hash("sha256", $token); //Vai fazer o hash do token para comparar com o que está na BD
+$token_hash = hash("sha256", $token);
 
-$mysqli = require __DIR__ . "/../includes/db.php"; //Vai obter os dados da db para alterar esses mesmos dados apos a troca da password
+$mysqli = require __DIR__ . "/../includes/db.php";
 
-//Vais buscar os dados do user com aquele token_hash em questao
 $sql = "SELECT * FROM utilizadores
         WHERE reset_token_hash = ?";
 
-//Vai preparar e executar a query
 $stmt = $mysqli->prepare($sql);
-
 $stmt->bind_param("s", $token_hash);
-
 $stmt->execute();
 
-$result = $stmt->get_result(); //vai obter o resultado
+$result = $stmt->get_result();
+$user = $result->fetch_assoc();
 
-$user = $result->fetch_assoc(); //Vai ver os dados do user em questao
-
-if ($user === null) { //caso  user nao exista
+if ($user === null) {
     die("token não encontrado");
 }
 
-if (strtotime($user["reset_token_expires_at"]) <= time()) { //caso tenho passado o tempo do token
+if (strtotime($user["reset_token_expires_at"]) <= time()) {
     die("token expirado");
 }
-
 ?>
 <!DOCTYPE html>
-<html>
+<html lang="pt-PT">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -44,51 +38,48 @@ if (strtotime($user["reset_token_expires_at"]) <= time()) { //caso tenho passado
 <body>
     <?php include '../includes/header.php'; ?>
 
-    <main class="login-main">
+    <main id="main-content" class="login-main">
         <div class="login-container">
-            <!-- Seção de Imagem -->
             <div class="login-image">
-                <img src="../img-pap/logotipo-docesdias.jpg" alt="Doces Dias Logo" class="logo-login">
+                <img src="../img-pap/logotipo-docesdias.jpg" alt="Logótipo da Doces Dias" class="logo-login">
                 <h2 class="welcome-text">Bem-vindo</h2>
-                <p class="subtitle-text">Aceda à sua conta para encomendar os melhores bolos</p>
+                <p class="subtitle-text">Defina uma nova password para voltar a aceder à sua conta</p>
             </div>
 
-            <!-- Seção de Formulário -->
             <div class="login-form-section">
                 <form method="post" action="../actions/processa_reset_password.php" class="login-form" id="loginForm">
-                    <h3 class="form-title">Recupere sua password</h3>
+                    <h3 class="form-title">Alterar password</h3>
 
                     <input type="hidden" name="token" value="<?= htmlspecialchars($token) ?>">
-                    
 
                     <div class="form-group">
                         <label for="password" class="form-label">
-                            <i class="bi bi-envelope-fill"></i> Nova Password
+                            <i class="bi bi-lock-fill" aria-hidden="true"></i> Nova Password
                         </label>
-                        <input type="password" class = "form-control" id="password" name="password" placeholder="******" required>
+                        <input type="password" class="form-control" id="password" name="password" placeholder="******" aria-describedby="reset-password-help" required>
+                        <small class="form-text" id="reset-password-help">Utilize uma password com pelo menos 8 caracteres.</small>
                     </div>
 
                     <div class="form-group">
                         <label for="password_confirmation" class="form-label">
-                            <i class="bi bi-envelope-fill"></i> Confirme a password
+                            <i class="bi bi-lock-fill" aria-hidden="true"></i> Confirme a password
                         </label>
-                        <input type="password" class = "form-control" id="password_confirmation" name="password_confirmation" placeholder="******" required>
+                        <input type="password" class="form-control" id="password_confirmation" name="password_confirmation" placeholder="******" aria-describedby="reset-password-confirm-help" required>
+                        <small class="form-text" id="reset-password-confirm-help">Repita a nova password exatamente como acima.</small>
                     </div>
                     
-                    <!-- Mensagem de Erro -->
-                    <?php if(isset($_SESSION['loginErro'])): ?>
+                    <?php if (isset($_SESSION['loginErro'])): ?>
                         <div class="alert alert-danger" role="alert">
-                            <i class="bi bi-exclamation-triangle-fill"></i>
-                            <?php 
-                                echo htmlspecialchars($_SESSION['loginErro']); 
+                            <i class="bi bi-exclamation-triangle-fill" aria-hidden="true"></i>
+                            <?php
+                                echo htmlspecialchars($_SESSION['loginErro']);
                                 unset($_SESSION['loginErro']);
                             ?>
                         </div>
                     <?php endif; ?>
 
-                    <!-- Botão de Recuperar Senha -->
                     <button type="submit" class="btn btn-login">
-                        <i class="bi bi-box-arrow-in-right"></i> Recuperar password
+                        <i class="bi bi-box-arrow-in-right" aria-hidden="true"></i> Alterar password
                     </button>
                 </form>
             </div>
@@ -96,11 +87,5 @@ if (strtotime($user["reset_token_expires_at"]) <= time()) { //caso tenho passado
     </main>
 
     <?php include '../includes/footer.php'; ?>
-        <input type="password" id="password_confirmation"
-               name="password_confirmation">
-
-        <button>Send</button>
-    </form>
-
 </body>
 </html>

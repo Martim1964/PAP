@@ -289,6 +289,47 @@
             </tbody>
         </table>
 
+        <h4 class="mt-5"><i class="bi bi-envelope-at"></i> Nova informação para a página de informações</h4>
+        <hr>
+        <div class="card shadow-sm">
+            <div class="card-body">
+                <form action="../../actions/processa_nova_info.php" method="POST">
+                    <div class="mb-3">
+                        <label class="form-label font-weight-bold">Assunto da Informação</label>
+                        <input type="text" name="assunto" class="form-control" placeholder="Nova Informação" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label font-weight-bold">Conteúdo</label>
+                        <textarea name="conteudo" class="form-control" rows="5" placeholder="Escreva aqui o conteúdo da informação" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="bi bi-send"></i> Inserir na página de informações
+                    </button>
+                </form>
+            </div>
+        </div>
+
+
+        <h4 class="mt-5"><i class="bi bi-envelope-at"></i> Enviar Newsletter</h4>
+        <hr>
+        <div class="card shadow-sm">
+            <div class="card-body">
+                <form action="../../actions/processa_envio_newsletter.php" method="POST">
+                    <div class="mb-3">
+                        <label class="form-label font-weight-bold">Assunto do Email</label>
+                        <input type="text" name="assunto" class="form-control" placeholder="Ex: Novidades de Páscoa na Doces Dias!" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label font-weight-bold">Mensagem</label>
+                        <textarea name="mensagem" class="form-control" rows="5" placeholder="Escreva aqui a mensagem para todos os seus clientes..." required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="bi bi-send"></i> Enviar para todos os subscritores
+                    </button>
+                </form>
+            </div>
+        </div>
+
         <!-- LUCRO -->
         <h4 class="mt-5"><i class="bi bi-currency-euro"></i> Lucro</h4>
         <hr>

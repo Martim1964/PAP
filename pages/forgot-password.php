@@ -8,52 +8,45 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="icon" href="../img-pap/logotipo-docesdias.jpg">
     <link rel="stylesheet" href="../css/login.css">
-    <title>Login - Doces Dias</title>
+    <title>Recuperar Password - Doces Dias</title>
 </head>
 <body>
     <?php include '../includes/header.php'; ?>
 
-    <main class="login-main">
+    <main id="main-content" class="login-main">
         <div class="login-container">
-            <!-- Seção de Imagem -->
             <div class="login-image">
-                <img src="../img-pap/logotipo-docesdias.jpg" alt="Doces Dias Logo" class="logo-login">
+                <img src="../img-pap/logotipo-docesdias.jpg" alt="Logótipo da Doces Dias" class="logo-login">
                 <h2 class="welcome-text">Bem-vindo</h2>
                 <p class="subtitle-text">Aceda à sua conta para encomendar os melhores bolos</p>
             </div>
 
-            <!-- Seção de Formulário -->
             <div class="login-form-section">
                 <form action="../actions/send-pass-reset.php" method="POST" class="login-form" id="loginForm">
-                    <h3 class="form-title">Recupere sua password</h3>
+                    <h3 class="form-title">Recupere a sua password</h3>
 
-                    <!-- Campo Email -->
                     <div class="form-group">
                         <label for="email" class="form-label">
-                            <i class="bi bi-envelope-fill"></i> Email
+                            <i class="bi bi-envelope-fill" aria-hidden="true"></i> Email
                         </label>
-                        <input 
-                        type="email" class="form-control" id="email" name="email" placeholder="seu.email@exemplo.com" required autocomplete="email">
-                        <small class="form-text">Introduza o seu endereço de email para a recuperação da password</small>
+                        <input type="email" class="form-control" id="email" name="email" placeholder="seu.email@exemplo.com" aria-describedby="forgot-email-help" required autocomplete="email">
+                        <small class="form-text" id="forgot-email-help">Introduza o email associado à sua conta para receber instruções.</small>
                     </div>
                     
-                    <!-- Mensagem de Erro -->
-                    <?php if(isset($_SESSION['loginErro'])): ?>
+                    <?php if (isset($_SESSION['loginErro'])): ?>
                         <div class="alert alert-danger" role="alert">
-                            <i class="bi bi-exclamation-triangle-fill"></i>
-                            <?php 
-                                echo htmlspecialchars($_SESSION['loginErro']); 
+                            <i class="bi bi-exclamation-triangle-fill" aria-hidden="true"></i>
+                            <?php
+                                echo htmlspecialchars($_SESSION['loginErro']);
                                 unset($_SESSION['loginErro']);
                             ?>
                         </div>
                     <?php endif; ?>
 
-                    <!-- Botão de Recuperar Senha -->
                     <button type="submit" class="btn btn-login">
-                        <i class="bi bi-box-arrow-in-right"></i> Recuperar password
+                        <i class="bi bi-box-arrow-in-right" aria-hidden="true"></i> Recuperar password
                     </button>
 
-                    <!-- Link para Registo -->
                     <div class="login-footer">
                         <p>Não tem conta? <a href="regist.php">Registe-se aqui</a></p>
                     </div>

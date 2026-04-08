@@ -6,9 +6,13 @@ function togglePassword() {
     if (passwordInput.type === 'password') {
         passwordInput.type = 'text';
         toggleBtn.innerHTML = '<i class="bi bi-eye-slash-fill"></i>';
+        toggleBtn.setAttribute('aria-label', 'Ocultar palavra-passe');
+        toggleBtn.setAttribute('aria-pressed', 'true');
     } else {
         passwordInput.type = 'password';
         toggleBtn.innerHTML = '<i class="bi bi-eye-fill"></i>';
+        toggleBtn.setAttribute('aria-label', 'Mostrar palavra-passe');
+        toggleBtn.setAttribute('aria-pressed', 'false');
     }
 }
 

@@ -25,6 +25,33 @@ if (!$con) {
 mysqli_set_charset($con, "utf8mb4");
 
 // ------------------------------------------------------------
+// BUSCAR TODAS AS INFORMAÇÕES DA BD E INSERIR NA PÁGINA DE INFO
+// ------------------------------------------------------------
+function buscar_infos($con) {
+    $query = "SELECT id, nome, conteudo, ordem FROM informacoes WHERE ativo = 1 ORDER BY ordem ASC";
+    
+    $resultado = mysqli_query($con, $query);
+    
+    $infos = [];
+
+    // Se houver informacoes
+    if ($resultado) {
+        while ($linha = mysqli_fetch_assoc($resultado)) {
+            // Guardamos todos os campos necessários num array
+            $infos[] = [
+                'id'       => $linha['id'],
+                'nome'     => $linha['nome'],
+                'conteudo' => $linha['conteudo'],
+                'ordem'    => $linha['ordem']
+            ];
+        }
+    }
+    
+    return $infos;
+}
+
+
+// ------------------------------------------------------------
 // BUSCAR UM BOLO PELO SLUG
 // Vai à tabela catalogo_bolos e devolve os dados do bolo.
 // Devolve null se o bolo não existir ou estiver inativo.
@@ -50,28 +77,9 @@ function buscar_bolo($con, $slug) {
 }
 
 // ------------------------------------------------------------
-// BUSCAR TODOS OS TAMANHOS COM PREÇOS
-// Devolve array: ['pequeno' => ['label' => '...', 'preco' => 25.00], ...]
-// ------------------------------------------------------------
-// function buscar_tamanhos($con) {
-//     $query    = "SELECT slug, label, preco FROM tamanhos ORDER BY ordem ASC";
-//     $resultado = mysqli_query($con, $query);
-
-//     $tamanhos = [];
-//     while ($linha = mysqli_fetch_assoc($resultado)) {
-//         $tamanhos[$linha['slug']] = [
-//             'label' => $linha['label'],
-//             'preco' => (float)$linha['preco'],
-//         ];
-//     }
-
-//     return $tamanhos;
-// }
-
-// ------------------------------------------------------------
 // BUSCAR TODOS OS TAMANHOS DOS DOCES/CUPCAKES COM PREÇOS
 // ------------------------------------------------------------
-function buscar_tamanhos_cupcake($con, $bolo_slug) {
+function buscar_tamanhos($con, $bolo_slug) {
     $slug      = mysqli_real_escape_string($con, $bolo_slug);
     $query     = "SELECT slug, label, preco FROM tamanhos_produtos WHERE bolo_slug = '$slug' ORDER BY ordem ASC";
     $resultado = mysqli_query($con, $query);
@@ -209,4 +217,73 @@ function guardar_encomenda_personalizada($con, $dados) {
 
     return mysqli_query($con, $query);
 }
+
+// ------------------------------------------------------------
+// GUARDAR CONTACTO NA BASE DE DADOS
+// Chamada quando o utilizador envia uma mensagem no formulário de contactos
+// ------------------------------------------------------------
+function guardar_contacto($con) {
+    $nome  = $_SESSION['nome'];
+    $email = $_SESSION['user'];
+    $telefone = $_SESSION['telemovel'];
+    $assunto  = trim($_POST['assunto']  ?? '');
+    $mensagem = trim($_POST['mensagem'] ?? '');
+
+    $query = "
+        INSERT INTO `contactos` (
+            nome, email, telefone, assunto, mensagem
+        ) VALUES (
+            '$nome', '$email', '$telefone', '$assunto', '$mensagem'
+        )
+    ";
+
+    return mysqli_query($con, $query);
+}
+
+// ------------------------------------------------------------
+// GUARDAR EMAIL SUBSCITORES NEWSLETTER NA BASE DE DADOS
+// Chamada quando o utilizador subscreve a newsletter
+// ------------------------------------------------------------
+function guardar_newsletter($con) {
+    $email = $_SESSION['user'];
+
+    $check = mysqli_query($con, "SELECT id FROM newsletter_subscritores WHERE email = '$email' LIMIT 1");
+    if (mysqli_num_rows($check) > 0) {
+        return false;
+    }
+
+    $query = "
+        INSERT INTO `newsletter_subscritores` (
+            email
+        ) VALUES (
+            '$email'
+        )
+    ";
+
+    return mysqli_query($con, $query);
+}
+
+
+// ------------------------------------------------------------
+// GUARDAR NOVA INFO NA BASE DE DADOS
+// Chamada quando o admin escreve nova informação
+// ------------------------------------------------------------
+function guardar_info($con) {
+    $assunto  = trim($_POST['assunto']  ?? '');
+    $conteudo = trim($_POST['conteudo'] ?? '');
+
+    $query = "
+        INSERT INTO `informacoes` (
+            nome, conteudo
+        ) VALUES (
+            '$assunto', '$conteudo'
+        )
+    ";
+
+    return mysqli_query($con, $query);
+}
+
+
+
+
 return $con;

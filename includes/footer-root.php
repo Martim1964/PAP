@@ -17,11 +17,12 @@
     <section class="newsletter">
         <div class="container">
             <div class="newsletter-content">
-                <h3>🍰 Mantenha-se atualizado</h3>
+                <h3>Mantenha-se atualizado</h3>
                 <p>Subscreva a nossa newsletter e receba as últimas novidades e promoções!</p>
                 
-                <form class="form-newsletter">
-                    <input type="email" placeholder="Seu endereço de email" required>
+                <form class="form-newsletter" action="actions/processa_newsletter.php" method="POST">
+                    <input type="email" name="email_newsletter" placeholder="Seu endereço de email" 
+                    value="<?= htmlspecialchars($_SESSION['user'] ?? '') ?>"readonly>
                     <button type="submit" class="btn-primario">Subscrever</button>
                 </form>
             </div>
@@ -37,10 +38,9 @@
                 
                 <!-- Important links -->
                 <div class="footer-links">
-                    <button><a href="pages/politica.php">Política de Privacidade</a></button>
-                    <button><a href="pages/termos.php">Termos e Condições</a></button>
-                    <button><a href="pages/cookies.php">Cookies</a></button>
-                    <button><a href="pages/contactos.php">Contacte-nos</a></button>
+                    <a href="pages/politica.php" class="footer-link-pill">Política de Privacidade</a>
+                    <a href="pages/termos.php" class="footer-link-pill">Termos e Condições</a>
+                    <a href="pages/contactos.php" class="footer-link-pill">Contacte-nos</a>
                 </div>
                 <!-- Copyright and Social Media -->
                 <div class="footer-bottom">

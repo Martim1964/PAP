@@ -31,11 +31,12 @@
     <section class="intro-section">
         <div class="container">
             <div class="content-box">
-                <h2 class="section-heading">Bem-vindo ao Doces Dias</h2>
+                <h2 class="section-heading">O Início</h2>
                 <p class="section-text">
-                    Breve apresentação minha e da página. Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-                    Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, 
-                    quis nostrud exercitation ullamco laboris.
+                    A Doces Dias, anteriormente conhecida por Delicias do Nelinho nasceu a partir de um grande desafio. Manuel, homem de
+                    família, mais conhecido como Nelinho fundou este projeto numa altura complicada na sua vida com mais de 20 anos 
+                    de experiência no mundo da pastelaria. Ele decidiu transformar o desemprego numa grande oportunidade onde o amor
+                    e as receitas tradicionais foram os ingredientes principais neste capítulo. 
                 </p>
             </div>
         </div>
@@ -47,11 +48,13 @@
             <div class="row align-items-center">
                 <div class="col-lg-6">
                     <div class="content-box">
-                        <h2 class="section-heading">O que é a Página</h2>
+                        <h2 class="section-heading">A Mudança</h2>
                         <p class="section-text">
-                            Nossa plataforma foi criada com amor e dedicação para conectar você aos melhores 
-                            doces artesanais. Combinamos tradição e inovação para oferecer uma experiência 
-                            única em confeitaria.
+                            Como costume, o amor pelos bolos acabou por contagiar a família alterando assim o rumo do negócio para algo
+                            mais elaborado como vemos nos nossos bolos. Foi entre as decorações feitas e o apoio desde o início do 
+                            projeto que a história deste projeto mudou de rumo e alterou a fachada para a Doces Dias, alterando assim
+                            a pessoa que assumiu o projeto para uma mulher que sempre ouviu indicações do seu marido quando 
+                            o ajudava nos bolos e que lhe dizia sempre: "Tens tanto jeito para isto".
                         </p>
                     </div>
                 </div>
@@ -70,11 +73,11 @@
             <div class="row align-items-center">
                 <div class="col-lg-6 order-lg-2">
                     <div class="content-box">
-                        <h2 class="section-heading">O que Oferecemos</h2>
+                        <h2 class="section-heading">Quem é esta mulher</h2>
                         <p class="section-text">
-                            Trabalhamos com ingredientes selecionados e receitas exclusivas. Desde bolos 
-                            personalizados até doces tradicionais portugueses, cada criação é feita com 
-                            carinho e atenção aos detalhes.
+                            Paula, nascida em 1972 não é só uma mulher de bolos mas também uma mulher de família, mãe de dois filhos e
+                            que foi inspirada pelo grande talento do marido, assumindo assim este projeto relembrando-se da sua infância
+                            onde traz as memórias dos lanches em casa da sua mãe e o cheirinho a bolo que sempre perfumou a sua vida.
                         </p>
                     </div>
                 </div>
@@ -91,11 +94,11 @@
     <section class="conclusion-section bg-primary text-white">
         <div class="container">
             <div class="content-box text-center">
-                <h2 class="section-heading text-white">Adoce os Seus Dias</h2>
+                <h2 class="section-heading text-white">O que somos Hoje</h2>
                 <p class="section-text text-white">
-                    Mensagem final. Obrigado por visitar o Doces Dias. Estamos aqui para tornar 
-                    cada momento especial com sabores que ficam na memória. Junte-se a nós nesta 
-                    doce jornada!
+                    Hoje, a Doces Dias é a fusão perfeita entre a técnica de décadas e a emoção de cada detalhe. 
+                    O que começou como um sonho de superação do Nelinho, floresceu num projeto familiar onde cada bolo conta uma história ,
+                    seguindo sempre o mesmo lema: "Não fazemos apenas bolos; transformamos sentimentos em sabor para que as suas celebrações sejam inesquecíveis."
                 </p>
             </div>
         </div>

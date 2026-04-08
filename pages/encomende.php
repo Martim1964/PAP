@@ -2,7 +2,7 @@
 <html lang="pt">
 <style>
     #btnSeeInfo {
-        background: linear-gradient(135deg, #e91e63 0%, #c2185b 100%) !important;
+        background: linear-gradient(135deg, #ffffff 0%, #c2185b 100%) !important;
         color: white !important;
         border: none !important;
         border-radius: 30px !important;
@@ -84,44 +84,11 @@
             <div class="hero-content">
                 <h2 class="hero-subtitle">Tudo o que precisa de saber para fazer a sua encomenda</h2>
                 <p>Escolha o sabor, o tamanho e o design do seu bolo. Descubra prazos de encomenda, preços e opções de personalização para tornar o seu momento ainda mais especial.</p>
+                <button id="btnSeeInfo" onclick="window.location.href='../pages/informacoes.php'">Ver todas as informações</button>
+                <button id="btnNeedHelp" onclick="window.location.href='../pages/contactos.php'">Precisa de ajuda?</button>
             </div>
         </div>
     </section>
-
-    <!-- Info section -->
-    <section class="Info-section">
-    <!-- Info 1 -->
-    <div class="info1">
-        <div class="info-container">
-            <img src="../img/" alt="" class="info-logo">
-            <p class="info-text">Mini texto cinzento c/info Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit accusamus voluptas quisquam vero illum.</p>
-            <a href="info1.php" class="btn-ver-mais">Ver mais</a>
-        </div>
-    </div>
-
-    <!-- Info 2 -->
-    <div class="info2">
-        <div class="info-container">
-            <img src="../img/" alt="" class="info-logo">
-            <p class="info-text">Mini texto cinzento c/info Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit accusamus voluptas quisquam vero illum.</p>
-            <a href="info2.php" class="btn-ver-mais">Ver mais</a>
-        </div>
-    </div>
-
-    <!-- Info 3 -->
-    <div class="info3">
-        <div class="info-container">
-            <img src="../img/" alt="" class="info-logo">
-            <p class="info-text">Mini texto cinzento c/info Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit accusamus voluptas quisquam vero illum.</p>
-            <a href="info3.php" class="btn-ver-mais">Ver mais</a>
-        </div>
-    </div>
-    </section>
-
-    <div class="buttons-section">
-        <button id="btnSeeInfo" onclick="window.location.href='../pages/informacoes.php'">Ver mais informações</button>
-        <button id="btnNeedHelp" onclick="window.location.href='../pages/contactos.php'">Precisa de ajuda?</button>
-    </div>
 
     <?php include '../includes/footer.php'; ?>
 </body>
