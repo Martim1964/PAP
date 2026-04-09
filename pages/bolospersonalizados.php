@@ -150,7 +150,8 @@
                                 <p class="small-text">Formato PNG (máx. 5MB)</p>
                             </div>
                             
-                            <input type="file" id="imagem" name="photo" accept="image/png" required>
+                            <label for="imagem">Insira uma imagem</label>
+                            <input type="file" id="imagem" name="photo" accept="image/png" aria-label="Insira o bolo" required>
                             
                             <p class="erro" id="mensagemErro"></p>
                             <p class="sucesso" id="mensagemSucesso"></p>
@@ -158,7 +159,7 @@
                             <!-- Preview da Imagem -->
                             <div class="preview" id="preview">
                                 <div class="preview-header">
-                                    <h4>Pré-visualização</h4>
+                                    <h3>Pré-visualização</h3>
                                     <button type="button" class="btn-limpar-img" id="btn-limpar-img">Limpar</button>
                                 </div>
                                 <img id="imagemPreview" src="" alt="Preview">

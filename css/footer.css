@@ -55,8 +55,8 @@
 
     .btn-primario {
         padding: 12px 35px;
-        background-color: #fff;
-        color: #c65d5d;
+        background-color: #000000;
+        color: #ffffff;
         border: none;
         border-radius: 25px;
         font-weight: bold;
@@ -65,7 +65,7 @@
     }
 
     .btn-primario:hover {
-        background-color: #f0f0f0;
+        background-color: #914f4f;
         transform: translateY(-2px);
         box-shadow: 0 5px 15px rgba(0,0,0,0.2);
     }

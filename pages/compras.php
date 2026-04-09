@@ -111,7 +111,7 @@ $flash         = dd_flash_get(); // Mensagem flash (se existir)
                         <!-- Detalhes do bolo -->
                         <div class="produto-info">
                             <div class="produto-detalhes">
-                                <h3 class="produto-nome"><?= htmlspecialchars($item['nome'] ?? '') ?></h3>
+                                <h2 class="produto-nome"><?= htmlspecialchars($item['nome'] ?? '') ?></h2>
                                 <p class="produto-desc"><?= htmlspecialchars($item['descricao'] ?? '') ?></p>
 
                                 <!-- Etiquetas com as opções escolhidas -->

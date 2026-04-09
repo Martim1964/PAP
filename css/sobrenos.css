@@ -1,10 +1,10 @@
 /* ==================== VARIÁVEIS E RESET ==================== */
 :root {
-    --primary-color: #efa2e6;
-    --secondary-color: #fe9bf7;
+    --primary-color: #000000;
+    --secondary-color: #f806e8;
     --accent-color: #ffffff;
     --text-dark: #0e0b07;
-    --text-light: #7d7d7d;
+    --text-light: #251919;
     --white: #ffffff;
     --bg-light: #ffffff;
 }
@@ -252,9 +252,9 @@ body {
     transform: rotate(360deg);
 }
 
-.mission-card h4 {
+.mission-card h3 {
     font-size: 1.4rem;
-    color: var(--secondary-color);
+    color: var(--text-dark);
     margin-bottom: 15px;
     font-weight: 600;
 }

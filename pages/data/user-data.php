@@ -65,7 +65,7 @@
     <!-- DADOS DO UTILIZADOR -->
     <div class="container my-5">
         <div class="d-flex justify-content-between align-items-center mb-3">
-            <h4><i class="bi bi-person-circle"></i> Os meus dados</h4>
+            <h1><i class="bi bi-person-circle"></i> Os meus dados</h1>
             <button class="btn btn-outline-primary btn-sm" data-bs-toggle="modal" data-bs-target="#modalEditar">
                 <i class="bi bi-pencil"></i> Editar
             </button>
@@ -113,7 +113,9 @@
         </div>
         <hr>
         <table class="table table-bordered table-hover">
+            <caption class="visually-hidden">As minhas encomendas</caption>
             <thead class="table-dark">
+                
                 <tr>
                     <th>Bolo</th>
                     <th>Tamanho</th>
@@ -127,6 +129,7 @@
             <tbody>
                 <?php if (mysqli_num_rows($result_enc) > 0): ?>
                     <?php while ($enc = mysqli_fetch_assoc($result_enc)): ?>
+                    
                     <tr>
                         <td><?= htmlspecialchars($enc['bolo_nome']) ?></td>
                         <td><?= htmlspecialchars($enc['tamanho_label']) ?></td>
@@ -151,7 +154,9 @@
         </div>
         <hr>
         <table class="table table-bordered table-hover">
+            <caption class="visually-hidden">As minhas encomendas personalizadas - pendentes</caption>
             <thead class="table-dark">
+                
                 <tr>
                     <th>Tamanho</th>
                     <th>Massa</th>
@@ -164,6 +169,7 @@
             <tbody>
                 <?php if (mysqli_num_rows($result_pendentes) > 0): ?>
                     <?php while ($enc = mysqli_fetch_assoc($result_pendentes)): ?>
+                    
                     <tr>
                         <td><?= htmlspecialchars($enc['tamanho']) ?></td>
                         <td><?= htmlspecialchars($enc['massa'] ?: '—') ?></td>
@@ -173,7 +179,7 @@
                         <td>
                             <?php if (!empty($enc['imagem'])): ?>
                                 <img src="../../img-pap/upload-bolos-personalizados/<?= htmlspecialchars($enc['imagem']) ?>"
-                                     alt="Imagem do bolo"
+                                     alt="Imagem de referencia da sua encomenda personalizada confirmada para o dia <?= htmlspecialchars ($enc['data_evento']) ?>"
                                      style="width: 60px; height: 60px; object-fit: cover; border-radius: 8px;">
                             <?php else: ?>
                                 <span class="text-muted">—</span>
@@ -195,7 +201,9 @@
         </div>
         <hr>
         <table class="table table-bordered table-hover">
+            <caption class="visually-hidden">As minhas encomendas personalizadas</caption>
             <thead class="table-dark">
+                
                 <tr>
                     <th>Tamanho</th>
                     <th>Massa</th>
@@ -219,7 +227,7 @@
                         <td>
                             <?php if (!empty($enc['imagem'])): ?>
                                 <img src="../../img-pap/upload-bolos-personalizados/<?= htmlspecialchars($enc['imagem']) ?>"
-                                     alt="Imagem do bolo"
+                                     alt="Imagem de referencia da sua encomenda personalizada confirmada para o dia <?= htmlspecialchars($enc['data_evento_final'] ?: ($enc['data_evento'])) ?>"
                                      style="width: 60px; height: 60px; object-fit: cover; border-radius: 8px;">
                             <?php else: ?>
                                 <span class="text-muted">—</span>
@@ -243,24 +251,24 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title"><i class="bi bi-pencil"></i> Editar dados</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label = "Fechar"></button>
                 </div>
                 <form action="../../actions/editar-conta.php" method="POST">
                     <div class="modal-body">
                         <div class="mb-3">
-                            <label class="form-label">Email</label>
-                            <input type="email" name="email" class="form-control"
-                                value="<?= htmlspecialchars($user['email']) ?>" required>
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" id="email" name="email" class="form-control"
+                                value="<?= htmlspecialchars($user['email']) ?>" aria-label = "Alterar Email" required>
                         </div>
                         <div class="mb-3">
-                            <label class="form-label">Telefone</label>
-                            <input type="tel" name="telefone" class="form-control"
-                                value="<?= htmlspecialchars($user['telefone'] ?? '') ?>">
+                            <label for= "telefone" class="form-label">Telefone</label>
+                            <input type="tel" id="telefone" name="telefone" class="form-control"
+                                value="<?= htmlspecialchars($user['telefone'] ?? '') ?>" aria-label="Alterar numero telefone">
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                        <button type="submit" class="btn btn-primary">Guardar</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" aria-label ="Cancelar">Cancelar</button>
+                        <button type="submit" class="btn btn-primary" aria-label="Guardar" >Guardar</button>
                     </div>
                 </form>
             </div>

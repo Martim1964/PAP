@@ -35,7 +35,10 @@
 <body>
     <?php include '../includes/header.php'; ?>
 
+    <h1>Escolha um tipo de bolo e faça já a sua encomenda!</h1>
+
     <div class="section-cakes">
+        
         <div class="cake-item">
             <a href="bolos/casamento.php">
                 <img src="../img-pap/nossos-bolos/bolo-casamento.png" alt="Bolo de Casamento">
@@ -69,7 +72,7 @@
     <section class="promo-section">
         <div class="promo-content">
             <h2>O bolo ideal para o seu grande dia</h2>
-            <h4>Casamentos, aniversários ou eventos especiais. Personalize o seu bolo à sua medida.</h4>
+            <h3>Casamentos, aniversários ou eventos especiais. Personalize o seu bolo à sua medida.</h3>
                 <?php if(isset($_SESSION['user'])): ?>
                         <a href="bolospersonalizados.php" class ="btn-promo">Personalize aqui o seu bolo!</a>
                     <?php else: ?>

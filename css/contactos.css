@@ -152,7 +152,7 @@ body {
     animation: fadeInUp 0.8s ease-out;
 }
 
-.faq-container h3 {
+.faq-container h2 {
     font-size: 2.2rem;
     color: var(--primary-color);
     margin-bottom: 40px;
@@ -163,7 +163,7 @@ body {
     letter-spacing: 1px;
 }
 
-.faq-container h3::after {
+.faq-container h2::after {
     content: '';
     position: absolute;
     bottom: 0;

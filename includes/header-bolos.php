@@ -14,7 +14,6 @@
 <body>
     <?php if (session_status() !== PHP_SESSION_ACTIVE) { session_start(); } ?>
     <!-- Responsive navigation bar with Doces Dias colors -->
-    <a href="#main-content" class="visually-hidden-focusable position-absolute top-0 start-0 p-2 bg-white text-dark">Saltar para o conteúdo principal</a>
     <nav class="navbar navbar-expand-sm navbar-custom" aria-label="Navegação principal">
         <div class="container-fluid">
             <a class="navbar-brand" href="../../index.php">
@@ -61,7 +60,7 @@
                     <?php if(isset($_SESSION['user_id'])): ?>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Abrir menu da conta">
-                                Bem-vindo, <strong><?php echo htmlspecialchars($_SESSION['nome']); ?></strong>!
+                                Bem-vindo, <?php echo htmlspecialchars($_SESSION['nome']); ?>!
                             </a>
                             <ul class="dropdown-menu dropdown-menu-end">
                                 <li><a class="dropdown-item" href="../../pages/data/user-data.php">Ver conta</a></li>

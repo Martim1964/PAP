@@ -53,7 +53,7 @@ $cartItems = dd_carrinho_get();
             <div class="coluna-formulario">
                 <!-- DADOS PESSOAIS -->
                 <div class="secao-formulario">
-                    <h2 class="secao-titulo">DADOS PESSOAIS</h2>
+                    <h1 class="secao-titulo">DADOS PESSOAIS</h1>
                     <form id="form-dados-pessoais">
                         <div class="form-grupo">
                             <label for="nome">Nome Completo *</label>
@@ -122,7 +122,7 @@ $cartItems = dd_carrinho_get();
                     <div class="termos-checkbox">
                         <input type="checkbox" id="termos" required>
                         <label for="termos">
-                            Concordo com os <a href="#" class="link-termos">Termos e Condições</a> e <a href="#" class="link-termos">Política de Privacidade</a>
+                            Concordo com os <a href="termos.php" class="link-termos">Termos e Condições</a> e <a href="politica.php" class="link-termos">Política de Privacidade</a>
                         </label>
                     </div>
 

@@ -1,6 +1,6 @@
 /* Cores inspiradas no logotipo Doces Dias */
         .navbar-custom {
-            background-color: #c65d5d;
+            background-color: #ed9a9a;
         }
         
         .navbar-custom .navbar-brand img {
@@ -10,7 +10,7 @@
         }
         
         .navbar-custom .nav-link {
-            color: #fff !important;
+            color: #000000 !important;
             transition: all 0.3s ease;
             padding: 8px 15px !important;
         }
@@ -25,19 +25,19 @@
         }
         
         .navbar-custom .dropdown-menu {
-            background-color: #f8d7da;
+            background-color: #ffffff;
             border: none;
             box-shadow: 0 4px 8px rgba(0,0,0,0.1);
         }
         
         .navbar-custom .dropdown-item {
-            color: #c65d5d;
+            color: #000000;
             transition: all 0.3s ease;
         }
         
         .navbar-custom .dropdown-item:hover {
             background-color: #c65d5d;
-            color: #fff;
+            color: #000000;
         }
         
         /* Separador visual para redes sociais */

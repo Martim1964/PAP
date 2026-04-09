@@ -55,6 +55,10 @@
 
     <div class="container my-5">
 
+    <h1>PAINEL DE ADMINISTRADOR</h1>
+    
+    <br><br><br>
+
         <!-- ENCOMENDAS NORMAIS -->
         <div class="d-flex justify-content-between align-items-center mb-3">
             <h4><i class="bi bi-box-seam"></i> Todas as encomendas</h4>
@@ -168,7 +172,7 @@
                         </td>
                         <td>
                                 <img src="../../img-pap/upload-bolos-personalizados/<?= htmlspecialchars($enc['imagem']) ?>"
-                                     alt="Imagem do bolo"
+                                     alt="Imagem de referencia das encomendas personalizadas para o dia <?= htmlspecialchars ($enc['data_evento_final']) ?: ($enc['data_evento']) ?>"
                                      style="width: 60px; height: 60px; object-fit: cover; border-radius: 8px;">
                         </td>
 
@@ -198,6 +202,7 @@
                         </td>
                         <td>
                              <img src="../../img-pap/upload-bolos-personalizados/<?= htmlspecialchars($enc['imagem']) ?>" 
+                                  alt="Imagem de referencia das encomendas personalizadas pendentes para o dia <?= htmlspecialchars ($enc['data_evento']) ?>"
                                   style="width: 60px; height: 60px; object-fit: cover; border-radius: 8px;">
                         </td>
                     </tr>
@@ -221,33 +226,33 @@
                     <div class="modal-body">
                         <input type="hidden" name = "encomenda_id" id="ModalEncId">
                         <div class="mb-3">
-                            <label class="form-label">Tamanho</label>
-                            <input type="text" name="tamanho_edit" class="form-control">
+                            <label class="form-label" for = "tamanho">Tamanho</label>
+                            <input type="text" name="tamanho_edit" id="tamanho" class="form-control" aria-label="tamanho">
                         </div>
                         <div class="mb-3">
-                            <label class="form-label">Massa</label>
-                            <input type="text" name="massa_edit" class="form-control">
+                            <label class="form-label" for="massa">Massa</label>
+                            <input type="text" name="massa_edit" id="massa" class="form-control" aria-label="massa">
                         </div>
                         <div class="mb-3">
-                            <label class="form-label">Recheio</label>
-                            <input type="text" name="recheio_edit" class="form-control">
+                            <label class="form-label" for="recheio">Recheio</label>
+                            <input type="text" name="recheio_edit" id="recheio" class="form-control" aria-label ="recheio">
                         </div>
                         <div class="mb-3">
-                            <label class="form-label">Quantidade</label>
-                            <input type="number" name="quantidade_edit" class="form-control">
+                            <label class="form-label" for="quantidade">Quantidade</label>
+                            <input type="number" name="quantidade_edit" id="quantidade" class="form-control" aria-label="quantidade">
                         </div>
                         <div class="mb-3">
-                            <label class="form-label">Data do evento</label>
-                            <input type="date" name="data_evento_edit" class="form-control">
+                            <label class="form-label" for="data_evento">Data do evento</label>
+                            <input type="date" name="data_evento_edit" id="data_evento" class="form-control" aria-label="data_evento">
                         </div>
                         <div class="mb-3">
-                            <label class="form-label">Preço unitário(s/iva)</label>
-                            <input type="number" name="preco_unit_edit" class="form-control">
+                            <label class="form-label" for="preco_unit">Preço unitário(s/iva)</label>
+                            <input type="number" name="preco_unit_edit" id="preco_unit" class="form-control" aria-label="preço_unit_s/iva">
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                        <button type="submit" class="btn btn-primary">Guardar</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" aria-label="Cancelar">Cancelar</button>
+                        <button type="submit" class="btn btn-primary" aria-label="Guardar">Guardar</button>
                     </div>
                 </form>
             </div>
@@ -259,8 +264,8 @@
         <hr>
         <form method="GET" class="d-flex gap-2 mb-3">
             <input type="hidden" name="filtro" value="<?= htmlspecialchars($filtro) ?>">
-            <input type="text" name="pesquisa" class="form-control form-control-sm" placeholder="Pesquisar por nome..." value="<?= htmlspecialchars($pesquisa) ?>">
-            <button type="submit" class="btn btn-outline-primary btn-sm"><i class="bi bi-search"></i></button>
+            <input type="text" name="pesquisa" class="form-control form-control-sm" placeholder="Pesquisar por nome..." value="<?= htmlspecialchars($pesquisa) ?>" aria-label="pesquisar por nome do cliente">
+            <button type="submit" class="btn btn-outline-primary btn-sm" aria-label = "Clicar para pesquisar"><i class="bi bi-search"></i></button>
         </form>
         <table class="table table-bordered table-hover">
             <thead class="table-dark">
@@ -295,13 +300,15 @@
             <div class="card-body">
                 <form action="../../actions/processa_nova_info.php" method="POST">
                     <div class="mb-3">
-                        <label class="form-label font-weight-bold">Assunto da Informação</label>
-                        <input type="text" name="assunto" class="form-control" placeholder="Nova Informação" required>
+                        <label for="assunto-info" class="form-label font-weight-bold">Assunto da Informação</label>
+                        <input type="text" id="assunto-info" name="assunto" class="form-control" placeholder="Nova Informação" required>
                     </div>
+                    
                     <div class="mb-3">
-                        <label class="form-label font-weight-bold">Conteúdo</label>
-                        <textarea name="conteudo" class="form-control" rows="5" placeholder="Escreva aqui o conteúdo da informação" required></textarea>
+                        <label for="conteudo-info" class="form-label font-weight-bold">Conteúdo</label>
+                        <textarea id="conteudo-info" name="conteudo" class="form-control" rows="5" placeholder="Escreva aqui o conteúdo da informação" required></textarea>
                     </div>
+                    
                     <button type="submit" class="btn btn-primary">
                         <i class="bi bi-send"></i> Inserir na página de informações
                     </button>
@@ -309,20 +316,21 @@
             </div>
         </div>
 
-
         <h4 class="mt-5"><i class="bi bi-envelope-at"></i> Enviar Newsletter</h4>
         <hr>
         <div class="card shadow-sm">
             <div class="card-body">
                 <form action="../../actions/processa_envio_newsletter.php" method="POST">
                     <div class="mb-3">
-                        <label class="form-label font-weight-bold">Assunto do Email</label>
-                        <input type="text" name="assunto" class="form-control" placeholder="Ex: Novidades de Páscoa na Doces Dias!" required>
+                        <label for="assunto-email" class="form-label font-weight-bold">Assunto do Email</label>
+                        <input type="text" id="assunto-email" name="assunto" class="form-control" placeholder="Ex: Novidades de Páscoa na Doces Dias!" required>
                     </div>
+                    
                     <div class="mb-3">
-                        <label class="form-label font-weight-bold">Mensagem</label>
-                        <textarea name="mensagem" class="form-control" rows="5" placeholder="Escreva aqui a mensagem para todos os seus clientes..." required></textarea>
+                        <label for="mensagem-email" class="form-label font-weight-bold">Mensagem</label>
+                        <textarea id="mensagem-email" name="mensagem" class="form-control" rows="5" placeholder="Escreva aqui a mensagem para todos os seus clientes..." required></textarea>
                     </div>
+                    
                     <button type="submit" class="btn btn-primary">
                         <i class="bi bi-send"></i> Enviar para todos os subscritores
                     </button>

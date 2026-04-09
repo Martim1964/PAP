@@ -42,13 +42,13 @@ if (strtotime($user["reset_token_expires_at"]) <= time()) {
         <div class="login-container">
             <div class="login-image">
                 <img src="../img-pap/logotipo-docesdias.jpg" alt="Logótipo da Doces Dias" class="logo-login">
-                <h2 class="welcome-text">Bem-vindo</h2>
+                <h1 class="welcome-text">Bem-vindo</h1>
                 <p class="subtitle-text">Defina uma nova password para voltar a aceder à sua conta</p>
             </div>
 
             <div class="login-form-section">
                 <form method="post" action="../actions/processa_reset_password.php" class="login-form" id="loginForm">
-                    <h3 class="form-title">Alterar password</h3>
+                    <h2 class="form-title">Alterar password</h2>
 
                     <input type="hidden" name="token" value="<?= htmlspecialchars($token) ?>">
 

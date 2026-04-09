@@ -17,13 +17,13 @@
         <div class="login-container">
             <div class="login-image">
                 <img src="../img-pap/logotipo-docesdias.jpg" alt="Logótipo da Doces Dias" class="logo-login">
-                <h2 class="welcome-text">Bem-vindo</h2>
+                <h1 class="welcome-text">Bem-vindo</h1>
                 <p class="subtitle-text">Aceda à sua conta para encomendar os melhores bolos</p>
             </div>
 
             <div class="login-form-section">
                 <form action="../actions/send-pass-reset.php" method="POST" class="login-form" id="loginForm">
-                    <h3 class="form-title">Recupere a sua password</h3>
+                    <h2 class="form-title">Recupere a sua password</h2>
 
                     <div class="form-group">
                         <label for="email" class="form-label">

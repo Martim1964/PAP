@@ -26,7 +26,7 @@
         <h1 class="main-title">DOCES DIAS</h1>
 
         <div class="divider">
-            <h3 class="online-text">Doçaria online</h3>
+            <h2 class="online-text">Doçaria online</h2>
         </div>
 
     <img src="img-pap/homepage-img/bolo-img1.jpg" alt="Bolo-fundo" class="img-fundo">
@@ -38,17 +38,17 @@
     <div class="choose-section">
         <div>
         <button><a href="pages/sobrenos.php">Sobre nós</a></button>
-            <h4>Conheça a nossa história, os nossos valores e a paixão que colocamos em cada bolo artesanal</h4>
+            <h3>Conheça a nossa história, os nossos valores e a paixão que colocamos em cada bolo artesanal</h3>
         </div>
 
         <div>
         <button><a href="pages/encomende.php">Os nossos bolos</a></button>
-            <h4>Descubra a nossa variedade de bolos caseiros, feitos com ingredientes selecionados e muito carinho</h4>
+            <h3>Descubra a nossa variedade de bolos caseiros, feitos com ingredientes selecionados e muito carinho</h3>
         </div>
 
         <div>
         <button><a href="pages/contactos.php">Contacte-nos</a></button>
-            <h4>Entre em contacto connosco para encomendas, dúvidas ou sugestões</h4>
+            <h3>Entre em contacto connosco para encomendas, dúvidas ou sugestões</h3>
         </div>
     </div>
 
@@ -66,8 +66,8 @@
 
     <div class="info-section">
         <h1>Todas as informações para os nossos clientes</h1>
-    <h3>Veja aqui todas as informações importantes para as suas encomendas e não só</h3>
-    <button><a href="pages/informacoes.php">Ver todas as informações</a></button>
+        <h2>Veja aqui todas as informações importantes para as suas encomendas</h3>
+        <button><a href="pages/informacoes.php">Ver todas as informações</a></button>
     </div>
 
 <?php include 'includes/footer-root.php'; ?>

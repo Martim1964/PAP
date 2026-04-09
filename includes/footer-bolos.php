@@ -21,8 +21,8 @@
                 <p>Subscreva a nossa newsletter e receba as últimas novidades e promoções!</p>
                 
                  <form class="form-newsletter" action="actions/processa_newsletter.php" method="POST">
-                    <input type="email" name="email_newsletter" placeholder="Seu endereço de email" 
-                    value="<?= htmlspecialchars($_SESSION['user'] ?? '') ?>"readonly>
+                    <label for="email_newsletter" class="sr-only">Endereço de email:</label>
+                    <input type="email" id= "email_newsletter" name="email_newsletter" value="<?= htmlspecialchars($_SESSION['user'] ?? '') ?>"  placeholder="Faça login!" readonly>
                     <button type="submit" class="btn-primario">Subscrever</button>
                 </form>
             </div>
@@ -48,13 +48,13 @@
                     <p>&copy; 2026 Doces Dias. Todos os direitos reservados.</p>
                     
                     <div class="social-media">
-                        <a href="https://wa.me/351913047889" target="_blank" title="WhatsApp">
+                        <a href="https://wa.me/351913047889" target="_blank" title="WhatsApp" aria-label = "Whatsapp">
                             <i class="bi bi-whatsapp"></i>
                         </a>
-                        <a href="https://www.facebook.com/docessdias" target="_blank" title="Facebook">
+                        <a href="https://www.facebook.com/docessdias" target="_blank" title="Facebook" aria-label = "Facebook">
                             <i class="bi bi-facebook"></i>
                         </a>
-                        <a href="https://www.instagram.com/docesdias.pt" target="_blank" title="Instagram">
+                        <a href="https://www.instagram.com/docesdias.pt" target="_blank" title="Instagram" aria-label = "Instagram">
                             <i class="bi bi-instagram"></i>
                         </a>
                     </div>

@@ -252,7 +252,7 @@
         }
 
         .info-section button a {
-            color: white;
+            color: rgb(0, 0, 0);
             text-decoration: none;
             font-size: 1rem;
             font-weight: 600;
@@ -260,17 +260,17 @@
         }
 
         .info-section button:hover a {
-            color: #c35955;
+            color: #ea9d9a;
         }
 
         .info-section button:last-child {
-            background: white;
+            background: rgb(248, 170, 170);
             margin-top: 30px;
             padding: 18px 45px;
         }
 
         .info-section button:last-child a {
-            color: #c35955;
+            color: #000000;
         }
 
         .info-section button:last-child:hover {

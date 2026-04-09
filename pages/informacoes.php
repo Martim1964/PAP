@@ -23,7 +23,7 @@ dd_start_session();
     <section class="hero-section">
         <div class="container">
             <div class="hero-content">
-                <h2 class="hero-subtitle">As melhores informações para os nossos clientes</h2>
+                <h1 class="hero-subtitle">As melhores informações para os nossos clientes</h1>
                 <div class="logo-container">
                     <img src="../img-pap/logotipo-docesdias.jpg" alt="Doces Dias Logo" class="hero-logo">
                 </div>

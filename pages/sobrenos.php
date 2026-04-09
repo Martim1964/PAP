@@ -115,7 +115,7 @@
                             <div class="mission-icon">
                                 <i class="bi bi-heart-fill"></i>
                             </div>
-                            <h4>Qualidade Superior</h4>
+                            <h3>Qualidade Superior</h3>
                             <p>Garantir produtos de excelência com ingredientes selecionados e frescos</p>
                         </div>
                     </div>
@@ -124,7 +124,7 @@
                             <div class="mission-icon">
                                 <i class="bi bi-people-fill"></i>
                             </div>
-                            <h4>Satisfação do Cliente</h4>
+                            <h3>Satisfação do Cliente</h3>
                             <p>Proporcionar experiências memoráveis em cada encomenda</p>
                         </div>
                     </div>
@@ -133,7 +133,7 @@
                             <div class="mission-icon">
                                 <i class="bi bi-star-fill"></i>
                             </div>
-                            <h4>Inovação Constante</h4>
+                            <h3>Inovação Constante</h3>
                             <p>Criar novos sabores mantendo a essência tradicional</p>
                         </div>
                     </div>
@@ -142,7 +142,7 @@
                             <div class="mission-icon">
                                 <i class="bi bi-gem"></i>
                             </div>
-                            <h4>Paixão pela Confeitaria</h4>
+                            <h3>Paixão pela Confeitaria</h3>
                             <p>Dedicação e amor em cada detalhe dos nossos produtos</p>
                         </div>
                     </div>

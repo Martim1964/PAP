@@ -78,8 +78,8 @@ body {
     flex-grow: 1;
 }
 
-.cake-item h4 {
-    color: #ff69b4;
+.cake-item h3 {
+    color: #8b0b4b;
     font-size: 1.3em;
     margin-bottom: 20px;
 }

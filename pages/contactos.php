@@ -56,7 +56,7 @@ session_start();
         </div>
 
         <div class="faq-container">
-            <h3>Perguntas Frequentes (FAQ)</h3>
+            <h2>Perguntas Frequentes (FAQ)</h2>
 
             <div class="faq-item">
             <button class="faq-question">Qual o prazo mínimo para encomendas?</button>

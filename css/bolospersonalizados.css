@@ -99,7 +99,7 @@ body {
 }
 
 .form-section h2 {
-    color: #667eea;
+    color: #0e36e7;
     font-size: 1.2rem;
     margin-bottom: 15px;
     padding-bottom: 8px;
@@ -185,7 +185,7 @@ textarea {
 .suggestion-card h3 {
     font-size: 1rem;
     margin-bottom: 10px;
-    color: #667eea;
+    color: #1133cb;
 }
 
 .suggestion-card ul {
@@ -269,7 +269,7 @@ input[type="file"]:hover {
 }
 
 .sucesso {
-    color: #28a745;
+    color: #064615;
     background: #d4edda;
     padding: 12px;
     border-radius: 8px;
@@ -301,7 +301,7 @@ input[type="file"]:hover {
 }
 
 .preview-header h4 {
-    color: #667eea;
+    color: #12267d;
     font-size: 1rem;
     margin: 0;
 }

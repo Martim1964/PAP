@@ -19,7 +19,7 @@
                 <img src="../img-pap/logotipo-docesdias.jpg" alt="Doces Dias Logo" style="height:50px;">
             </a>
             
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar" style="border-color: rgba(255,255,255,0.5);">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar" aria-controls="collapsibleNavbar" aria-expanded="false" aria-label="Abrir menu de navegação" style="border-color: rgba(255,255,255,0.5);">
                 <span class="navbar-toggler-icon"></span>
             </button>
             
@@ -55,7 +55,7 @@
                     <?php if(isset($_SESSION['user_id'])): ?>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
-                                Bem-vindo, <strong><?php echo htmlspecialchars($_SESSION['nome']); ?></strong>!
+                                Bem-vindo, <?php echo htmlspecialchars($_SESSION['nome']); ?>!
                             </a>
                             <ul class="dropdown-menu dropdown-menu-end">
                                 <li><a class="dropdown-item" href="../pages/data/user-data.php">Ver conta</a></li>
@@ -75,8 +75,8 @@
                     <?php endif; ?>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="../pages/compras.php">
-                            <i class="bi bi-cart-fill"></i>
+                        <a class="nav-link" href="../pages/compras.php" aria-label="Abrir carrinho de compras">
+                            <i class="bi bi-cart-fill" aria-hidden="true"></i>
                         </a>
                     </li>
 

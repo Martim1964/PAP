@@ -97,7 +97,7 @@ body {
 }
 
 .regist-title a {
-    color: var(--primary-color);
+    color: var(--primary-dark);
     text-decoration: none;
     font-weight: 700;
     transition: var(--transition);
@@ -436,7 +436,7 @@ body {
 }
 
 .regist-footer a {
-    color: var(--primary-color);
+    color: var(--primary-dark);
     text-decoration: none;
     font-weight: 700;
     transition: var(--transition);
