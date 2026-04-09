@@ -23,11 +23,7 @@
     --gradient-light: linear-gradient(135deg, #fff9fb 0%, #ffffff 100%);
 }
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
 body {
     font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -55,10 +51,8 @@ body {
 .title::before {
     content: '';
     position: absolute;
-    top: -50%;
-    right: -10%;
-    width: 400px;
-    height: 400px;
+    top: -50%; right: -10%;
+    width: 400px; height: 400px;
     background: rgba(255, 255, 255, 0.05);
     border-radius: 50%;
     animation: float 6s ease-in-out infinite;
@@ -67,10 +61,8 @@ body {
 .title::after {
     content: '';
     position: absolute;
-    bottom: -30%;
-    left: -5%;
-    width: 300px;
-    height: 300px;
+    bottom: -30%; left: -5%;
+    width: 300px; height: 300px;
     background: rgba(255, 255, 255, 0.03);
     border-radius: 50%;
     animation: float 8s ease-in-out infinite reverse;
@@ -85,7 +77,6 @@ body {
     z-index: 1;
     letter-spacing: 2px;
 }
-
 
 /* ========================================
    Contact Info Section
@@ -135,9 +126,7 @@ body {
     transition: color 0.3s ease;
 }
 
-.contact-item a:hover {
-    color: var(--primary-color);
-}
+.contact-item a:hover { color: var(--primary-color); }
 
 /* ========================================
    FAQ Container
@@ -214,9 +203,7 @@ body {
 .faq-question::before {
     content: '';
     position: absolute;
-    left: 0;
-    top: 0;
-    bottom: 0;
+    left: 0; top: 0; bottom: 0;
     width: 4px;
     background: var(--primary-color);
     transform: scaleY(0);
@@ -235,9 +222,7 @@ body {
     color: var(--primary-color);
 }
 
-.faq-question.active::before {
-    transform: scaleY(1);
-}
+.faq-question.active::before { transform: scaleY(1); }
 
 .faq-question::after {
     content: '▼';
@@ -246,9 +231,7 @@ body {
     flex-shrink: 0;
 }
 
-.faq-question.active::after {
-    transform: rotate(180deg);
-}
+.faq-question.active::after { transform: rotate(180deg); }
 
 /* ========================================
    FAQ Answer
@@ -265,4 +248,107 @@ body {
     line-height: 1.8;
     background: var(--bg-gray);
     margin: 0;
+}
+
+/* ========================================
+   RESPONSIVIDADE
+   ======================================== */
+
+/* Tablet (max 1024px) */
+@media (max-width: 1024px) {
+    .title { padding: 80px 20px 60px; margin-bottom: 40px; }
+    .title h1 { font-size: 2.8rem; }
+
+    .contact-info {
+        margin: 40px 20px;
+        padding: 40px 25px;
+        gap: 25px;
+    }
+
+    .faq-container {
+        margin: 40px 20px;
+        padding: 45px 30px;
+    }
+
+    .faq-container h2 { font-size: 1.9rem; }
+}
+
+/* Mobile grande (max 768px) */
+@media (max-width: 768px) {
+    .title { padding: 60px 20px 50px; margin-bottom: 30px; }
+    .title h1 { font-size: 2rem; letter-spacing: 1px; }
+
+    .contact-info {
+        margin: 30px 15px;
+        padding: 30px 20px;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+
+    .contact-item { padding: 15px 10px; }
+
+    .contact-item a { font-size: 0.95rem; }
+
+    .faq-container {
+        margin: 30px 15px;
+        padding: 35px 20px;
+        border-radius: 12px;
+    }
+
+    .faq-container h2 {
+        font-size: 1.6rem;
+        margin-bottom: 30px;
+    }
+
+    .faq-question {
+        padding: 18px 20px;
+        font-size: 1rem;
+    }
+
+    .faq-question:hover { padding-left: 25px; }
+
+    .faq-answer p {
+        padding: 20px;
+        font-size: 0.95rem;
+    }
+}
+
+/* Mobile pequeno (max 480px) */
+@media (max-width: 480px) {
+    .title h1 { font-size: 1.5rem; letter-spacing: 0; }
+    .title { padding: 45px 15px 40px; }
+
+    .contact-info {
+        grid-template-columns: 1fr;
+        margin: 20px 10px;
+        padding: 25px 15px;
+        gap: 15px;
+    }
+
+    .faq-container {
+        margin: 20px 10px;
+        padding: 25px 15px;
+    }
+
+    .faq-container h2 { font-size: 1.3rem; }
+
+    .faq-question {
+        padding: 15px;
+        font-size: 0.9rem;
+    }
+
+    .faq-question:hover { padding-left: 20px; }
+
+    .faq-answer p {
+        padding: 15px;
+        font-size: 0.9rem;
+    }
+}
+
+/* Preferência: reduzir movimento */
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+    }
 }

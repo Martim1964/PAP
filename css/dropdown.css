@@ -144,3 +144,137 @@ body {
     transform: scale(1.08);
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
 }
+
+/* ==================== RESPONSIVIDADE ==================== */
+
+/* Tablet (max 1024px) */
+@media (max-width: 1024px) {
+    .title h1 {
+        font-size: 2.2em;
+    }
+
+    .cakes {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+
+    .cake-item img {
+        height: 250px;
+    }
+
+    .enc-type {
+        padding: 50px 30px;
+    }
+
+    .enc-type h2 {
+        font-size: 2em;
+    }
+}
+
+/* Mobile grande (max 768px) */
+@media (max-width: 768px) {
+    body {
+        padding: 15px;
+    }
+
+    .title {
+        padding: 30px 15px;
+        margin-bottom: 30px;
+        border-radius: 12px;
+    }
+
+    .title h1 {
+        font-size: 1.8em;
+        letter-spacing: 1px;
+    }
+
+    .cakes {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        padding: 0 10px;
+        margin-bottom: 40px;
+    }
+
+    .cake-item img {
+        height: 220px;
+    }
+
+    .cake-content {
+        padding: 20px;
+    }
+
+    .cake-item h2 {
+        font-size: 1.5em;
+    }
+
+    .cake-item h3 {
+        font-size: 1.1em;
+    }
+
+    .order-btn {
+        width: 100%;
+        padding: 14px;
+    }
+
+    .Encomendas {
+        margin: 40px auto;
+        padding: 0 10px;
+    }
+
+    .enc-type {
+        padding: 40px 20px;
+        border-radius: 15px;
+    }
+
+    .enc-type h2 {
+        font-size: 1.6em;
+        margin-bottom: 20px;
+    }
+
+    .enc-type a {
+        padding: 15px 35px;
+        font-size: 1em;
+    }
+}
+
+/* Mobile pequeno (max 480px) */
+@media (max-width: 480px) {
+    body {
+        padding: 10px;
+    }
+
+    .title h1 {
+        font-size: 1.4em;
+        letter-spacing: 0;
+    }
+
+    .cake-item img {
+        height: 180px;
+    }
+
+    .cake-item h2 {
+        font-size: 1.3em;
+    }
+
+    .cake-item p {
+        font-size: 0.95em;
+    }
+
+    .enc-type h2 {
+        font-size: 1.3em;
+    }
+
+    .enc-type a {
+        width: 100%;
+        padding: 14px 20px;
+        font-size: 0.95em;
+    }
+}
+
+/* Preferência: reduzir movimento */
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+    }
+}

@@ -34,10 +34,7 @@ body {
 .hero-section::before {
     content: '';
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+    top: 0; left: 0; right: 0; bottom: 0;
     background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="2" fill="rgba(255,255,255,0.1)"/></svg>');
     opacity: 0.3;
 }
@@ -45,6 +42,7 @@ body {
 .hero-content {
     position: relative;
     z-index: 1;
+    padding: 0 20px;
 }
 
 .hero-subtitle {
@@ -95,6 +93,7 @@ body {
     max-width: 800px;
     margin: 0 auto;
     text-align: center;
+    padding: 0 20px;
 }
 
 .section-heading {
@@ -173,10 +172,7 @@ body {
 .conclusion-section::before {
     content: '';
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+    top: 0; left: 0; right: 0; bottom: 0;
     background: url('data:image/svg+xml,<svg width="60" height="60" xmlns="http://www.w3.org/2000/svg"><path d="M30 10 L35 25 L50 25 L38 35 L43 50 L30 40 L17 50 L22 35 L10 25 L25 25 Z" fill="rgba(255,255,255,0.05)"/></svg>');
     opacity: 0.3;
 }
@@ -195,6 +191,7 @@ body {
 .mission-content {
     max-width: 1000px;
     margin: 0 auto;
+    padding: 0 20px;
 }
 
 .mission-title {
@@ -287,34 +284,185 @@ body {
 
 /* ==================== ANIMATIONS ==================== */
 @keyframes fadeInDown {
-    from {
-        opacity: 0;
-        transform: translateY(-30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+    from { opacity: 0; transform: translateY(-30px); }
+    to   { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+    from { opacity: 0; transform: translateY(30px); }
+    to   { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes zoomIn {
-    from {
-        opacity: 0;
-        transform: scale(0.8);
+    from { opacity: 0; transform: scale(0.8); }
+    to   { opacity: 1; transform: scale(1); }
+}
+
+/* ==================== RESPONSIVIDADE ==================== */
+
+/* Tablet (max 1024px) */
+@media (max-width: 1024px) {
+    .hero-title {
+        font-size: 3rem;
     }
-    to {
-        opacity: 1;
-        transform: scale(1);
+
+    .hero-subtitle {
+        font-size: 1rem;
+        letter-spacing: 2px;
+    }
+
+    .hero-logo {
+        width: 150px;
+        height: 150px;
+    }
+
+    .section-heading {
+        font-size: 2rem;
+    }
+
+    .mission-title {
+        font-size: 2.2rem;
+    }
+
+    .section-image {
+        width: 80%;
+        height: 320px;
+    }
+
+    .development-section .content-box {
+        text-align: center;
+    }
+}
+
+/* Mobile grande (max 768px) */
+@media (max-width: 768px) {
+    .hero-section {
+        padding: 70px 0 60px;
+    }
+
+    .hero-title {
+        font-size: 2.2rem;
+        margin-bottom: 25px;
+    }
+
+    .hero-subtitle {
+        font-size: 0.9rem;
+        letter-spacing: 2px;
+    }
+
+    .hero-logo {
+        width: 130px;
+        height: 130px;
+        border-width: 4px;
+    }
+
+    .intro-section {
+        padding: 50px 0;
+    }
+
+    .section-heading {
+        font-size: 1.7rem;
+    }
+
+    .section-text {
+        font-size: 1rem;
+    }
+
+    .development-section {
+        padding: 50px 0;
+    }
+
+    .section-image {
+        width: 100%;
+        height: 250px;
+        border-radius: 15px;
+    }
+
+    .conclusion-section {
+        padding: 50px 0;
+    }
+
+    .mission-section {
+        padding: 60px 0;
+    }
+
+    .mission-title {
+        font-size: 1.8rem;
+        margin-bottom: 40px;
+    }
+
+    .mission-card {
+        padding: 30px 20px;
+        margin-bottom: 20px;
+    }
+
+    .logo-divider {
+        padding: 40px 0;
+    }
+
+    .divider-logo {
+        width: 90px;
+        height: 90px;
+    }
+}
+
+/* Mobile pequeno (max 480px) */
+@media (max-width: 480px) {
+    .hero-section {
+        padding: 50px 0 40px;
+    }
+
+    .hero-title {
+        font-size: 1.6rem;
+        letter-spacing: 1px;
+    }
+
+    .hero-subtitle {
+        font-size: 0.8rem;
+        letter-spacing: 1px;
+    }
+
+    .hero-logo {
+        width: 110px;
+        height: 110px;
+    }
+
+    .section-heading {
+        font-size: 1.4rem;
+    }
+
+    .section-text {
+        font-size: 0.95rem;
+    }
+
+    .mission-title {
+        font-size: 1.5rem;
+    }
+
+    .mission-icon {
+        width: 65px;
+        height: 65px;
+        font-size: 1.5rem;
+    }
+
+    .mission-card h3 {
+        font-size: 1.2rem;
+    }
+
+    .section-image {
+        height: 200px;
+    }
+
+    .divider-logo {
+        width: 75px;
+        height: 75px;
+    }
+}
+
+/* Preferência: reduzir movimento */
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
     }
 }

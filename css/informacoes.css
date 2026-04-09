@@ -1,14 +1,14 @@
 /* Configurações Gerais */
 body {
-    background-color: #fdf7f8; /* Rosa muito clarinho para combinar com a marca */
+    background-color: #fdf7f8;
 }
 
 /* Hero Section Otimizada */
 .hero-section {
     background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
-    padding: 60px 0;
+    padding: 60px 20px;
     text-align: center;
-    clip-path: ellipse(150% 100% at 50% 0%); /* Efeito visual moderno no fundo */
+    clip-path: ellipse(150% 100% at 50% 0%);
 }
 
 .hero-subtitle {
@@ -39,7 +39,7 @@ body {
     padding: 50px 15px;
 }
 
-/* Card Único (Substitui info1, info2, etc) */
+/* Card */
 .info-card {
     background: white;
     border-radius: 20px;
@@ -58,7 +58,7 @@ body {
 }
 
 .info-card h2 {
-    color: #420505; /* Cor principal da tua marca */
+    color: #420505;
     font-size: 1.4rem;
     margin-bottom: 15px;
     font-weight: 600;
@@ -71,8 +71,68 @@ body {
     margin-bottom: 0;
 }
 
-/* Responsividade */
+/* ========================================
+   RESPONSIVIDADE
+   ======================================== */
+
+/* Tablet (max 1024px) */
+@media (max-width: 1024px) {
+    .hero-subtitle { font-size: 1.7rem; }
+
+    .hero-logo { width: 110px; height: 110px; }
+
+    .infos-grid {
+        grid-template-columns: repeat(2, 1fr);
+        padding: 40px 20px;
+    }
+}
+
+/* Mobile grande (max 768px) */
 @media (max-width: 768px) {
-    .hero-subtitle { font-size: 1.5rem; }
-    .infos-grid { grid-template-columns: 1fr; }
+    .hero-section {
+        padding: 45px 15px;
+        clip-path: ellipse(180% 100% at 50% 0%);
+    }
+
+    .hero-subtitle { font-size: 1.4rem; }
+
+    .hero-logo { width: 100px; height: 100px; }
+
+    .infos-grid {
+        grid-template-columns: 1fr;
+        padding: 30px 15px;
+        gap: 20px;
+    }
+
+    .info-card { padding: 25px 20px; }
+
+    .info-card h2 { font-size: 1.2rem; }
+}
+
+/* Mobile pequeno (max 480px) */
+@media (max-width: 480px) {
+    .hero-section {
+        padding: 35px 10px;
+        clip-path: none;
+    }
+
+    .hero-subtitle { font-size: 1.2rem; }
+
+    .hero-logo { width: 85px; height: 85px; }
+
+    .infos-grid { padding: 20px 10px; gap: 15px; }
+
+    .info-card { padding: 20px 15px; border-radius: 15px; }
+
+    .info-card h2 { font-size: 1.1rem; }
+
+    .info-card p { font-size: 0.9rem; }
+}
+
+/* Preferência: reduzir movimento */
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+    }
 }

@@ -33,6 +33,7 @@ h1 {
     color: var(--primary-color);
     margin: 40px auto 10px;
     display: block;
+    padding: 0 20px;
 }
 
 h1::after {
@@ -303,4 +304,114 @@ div[style*="text-align: center"] {
 
 #btnNeedHelp:active {
     transform: translateY(-1px);
+}
+
+/* ========================================
+   RESPONSIVIDADE
+   ======================================== */
+
+/* Tablet (max 1024px) */
+@media (max-width: 1024px) {
+    h1 { font-size: 2rem; }
+
+    .section-cakes {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+        padding: 40px 20px;
+    }
+
+    .Info-section {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+        padding: 40px 20px;
+    }
+
+    .hero-subtitle { font-size: 1.6rem; }
+
+    .promo-content h2 { font-size: 1.7rem; }
+}
+
+/* Mobile grande (max 768px) */
+@media (max-width: 768px) {
+    h1 { font-size: 1.7rem; margin: 30px auto 10px; }
+
+    .section-cakes {
+        grid-template-columns: 1fr;
+        padding: 30px 15px;
+        gap: 20px;
+    }
+
+    .cake-item img { height: 200px; }
+
+    .cake-item h2 { font-size: 1.1rem; padding: 15px; }
+
+    .promo-section {
+        margin: 20px 15px;
+        padding: 35px 20px;
+        border-radius: 12px;
+    }
+
+    .promo-content h2 { font-size: 1.4rem; }
+
+    .promo-content h4 { font-size: 1rem; }
+
+    .btn-promo {
+        width: 100%;
+        padding: 13px 20px;
+    }
+
+    .hero-section {
+        padding: 40px 20px;
+        margin-bottom: 40px;
+    }
+
+    .hero-subtitle { font-size: 1.3rem; }
+
+    .hero-section p { font-size: 1rem; }
+
+    .Info-section {
+        grid-template-columns: 1fr;
+        padding: 30px 15px;
+        gap: 20px;
+    }
+
+    .info-text { min-height: auto; }
+
+    .btn-ver-mais { width: 100%; text-align: center; }
+
+    #btnNeedHelp {
+        width: 100%;
+        padding: 14px 20px;
+    }
+
+    div[style*="text-align: center"] {
+        flex-direction: column;
+        align-items: center;
+        padding: 20px 15px;
+    }
+}
+
+/* Mobile pequeno (max 480px) */
+@media (max-width: 480px) {
+    h1 { font-size: 1.4rem; }
+
+    .cake-item img { height: 170px; }
+
+    .promo-content h2 { font-size: 1.2rem; }
+
+    .hero-subtitle { font-size: 1.1rem; }
+
+    .hero-section p { font-size: 0.95rem; }
+
+    .info-container { padding: 20px; }
+
+    .info-logo { width: 60px; height: 60px; }
+}
+
+/* Preferência: reduzir movimento */
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+    }
 }
