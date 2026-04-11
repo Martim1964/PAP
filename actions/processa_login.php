@@ -34,7 +34,7 @@ if (isset($_POST['email']) && isset($_POST['pass'])) {
         $destination = '../pages/' . $redirectTo;
     }
 
-    $query = "SELECT * FROM utilizadores WHERE email = '$email' LIMIT 1";
+    $query = "SELECT * FROM utilizadores WHERE email = '$email' AND ativo = 1 LIMIT 1";
     $result = mysqli_query($con, $query);
     
     if(mysqli_num_rows($result) > 0){
@@ -58,7 +58,7 @@ if (isset($_POST['email']) && isset($_POST['pass'])) {
             exit;
         }
     } else {
-        $_SESSION['loginErro'] = "Email ou password incorretos.";
+        $_SESSION['loginErro'] = "Email ou password incorretos ou conta desativada.";
         $loginPage = '../pages/login.php';
         if ($redirectTo !== '') {
             $loginPage .= '?redirect=' . urlencode($redirectTo);

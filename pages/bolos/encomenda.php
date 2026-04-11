@@ -10,6 +10,7 @@ require_once __DIR__ . '/../../includes/carrinho.php';
 require_once __DIR__ . '/../../includes/db.php';
 
 dd_start_session();
+require_once __DIR__ . '/../../includes/verificar_ativo.php';
 
 // --- BUSCAR O BOLO DA BASE DE DADOS ---
 $bolo_id  = $_GET['bolo'] ?? null;

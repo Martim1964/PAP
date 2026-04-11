@@ -11,7 +11,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         'assunto' => $_POST['assunto'],
         'conteudo' => $_POST['conteudo'],
     ]);
-    }
+}
     ?>
 
     <script>

@@ -1,3 +1,8 @@
+<?php 
+require_once __DIR__ . '/../includes/carrinho.php';
+dd_start_session();
+require_once __DIR__ . '/../includes/verificar_ativo.php'; ?>
+
 <!DOCTYPE html>
 <html lang="pt">
 <head>

@@ -263,6 +263,24 @@ function guardar_newsletter($con) {
     return mysqli_query($con, $query);
 }
 
+// ------------------------------------------------------------
+// GUARDAR NEWSLETTER ENVIADA NA BASE DE DADOS
+// Chamada quando o admin envia uma nova newsletter
+// ------------------------------------------------------------
+function guardar_newsletter_enviada($con) {
+    $assunto  = trim($_POST['assunto']  ?? '');
+    $mensagem = trim($_POST['mensagem'] ?? '');
+
+    $query = "
+        INSERT INTO `newsletters_enviadas` (
+            assunto, mensagem
+        ) VALUES (
+            '$assunto', '$mensagem'
+        )
+    ";
+
+    return mysqli_query($con, $query);
+}
 
 // ------------------------------------------------------------
 // GUARDAR NOVA INFO NA BASE DE DADOS

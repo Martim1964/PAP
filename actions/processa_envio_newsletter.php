@@ -11,6 +11,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $assunto = $_POST['assunto'];
     $mensagem = $_POST['mensagem'];
 
+    $sucesso = guardar_newsletter_enviada($con, [
+        'assunto' => $_POST['assunto'],
+        'mensagem' => $_POST['mensagem'],
+    ]);
+
     // Vou buscar todos os email dos subscritores
     $query = "SELECT email FROM newsletter_subscritores";
     $result = mysqli_query($con, $query);

@@ -3,6 +3,7 @@ require_once __DIR__ . '/../../includes/carrinho.php';
 require_once __DIR__ . '/../../includes/db.php';
 
 dd_start_session();
+require_once __DIR__ . '/../../includes/verificar_ativo.php';
 
 // Buscar todos  os dados do catalogo dos bolos onde a categoria e a de aniversarios
 $query = "SELECT * FROM catalogo_bolos WHERE categoria_id = 4 AND ativo = 1 ORDER BY nome ASC";

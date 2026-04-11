@@ -73,7 +73,7 @@
                         </li>
                     <?php else: ?>
                         <li class="nav-item">
-                            <a class="nav-link" href="../pages/login.php" aria-label="Abrir página de login ou registo">
+                            <a class="nav-link" href="../../pages/login.php" aria-label="Abrir página de login ou registo">
                                 <i class="bi bi-person" aria-hidden="true"></i> Login/Registe-se
                             </a>
                         </li>
