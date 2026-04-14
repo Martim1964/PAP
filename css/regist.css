@@ -1,0 +1,463 @@
+/* ========================================
+   Doces Dias - CSS para Página Registo
+   ======================================== */
+
+:root {
+    --primary-color: #e91e63;
+    --primary-light: #ff6090;
+    --primary-dark: #b0003a;
+    --secondary-color: #f8bbd0;
+    --accent-color: #c2185b;
+    --text-dark: #2c2c2c;
+    --text-light: #666666;
+    --bg-light: #fff5f8;
+    --bg-white: #ffffff;
+    --bg-gray: #f9f9f9;
+    --success-color: #4caf50;
+    --border-radius: 16px;
+    --box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    --box-shadow-hover: 0 20px 40px rgba(233, 30, 99, 0.15);
+    --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+    --gradient-primary: linear-gradient(135deg, var(--primary-color) 0%, var(--accent-color) 100%);
+    --gradient-light: linear-gradient(135deg, #fff9fb 0%, #ffffff 100%);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: var(--gradient-light);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    color: var(--text-dark);
+    line-height: 1.6;
+}
+
+/* ========================================
+   Container Principal
+   ======================================== */
+.regist-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    max-width: 1200px;
+    margin: 60px auto 40px;
+    background: var(--bg-white);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: var(--box-shadow-hover);
+    min-height: 650px;
+    align-items: stretch;
+    animation: slideUpIn 0.6s ease-out;
+}
+
+@keyframes slideUpIn {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.regist-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    transition: transform 0.6s ease;
+}
+
+.regist-container:hover img {
+    transform: scale(1.05);
+}
+
+/* ========================================
+   Título e Formulário
+   ======================================== */
+.regist-title {
+    font-size: 0.95rem;
+    color: var(--text-light);
+    margin-bottom: 30px;
+    text-align: center;
+    font-weight: 400;
+    letter-spacing: 0.5px;
+}
+
+.regist-title a {
+    color: var(--primary-dark);
+    text-decoration: none;
+    font-weight: 700;
+    transition: var(--transition);
+    position: relative;
+}
+
+.regist-title a::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--primary-color);
+    transition: var(--transition);
+}
+
+.regist-title a:hover::after {
+    width: 100%;
+}
+
+.regist-title a:hover {
+    color: var(--primary-dark);
+}
+
+.regist-form {
+    width: 100%;
+    padding: 60px 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.regist-form h3 {
+    font-size: 2.2rem;
+    color: var(--text-dark);
+    margin-bottom: 15px;
+    text-align: center;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+.regist-form p {
+    color: var(--text-light);
+    text-align: center;
+    margin-bottom: 35px;
+    font-size: 0.95rem;
+}
+
+/* ========================================
+   Campos do Formulário
+   ======================================== */
+.form-label {
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 10px;
+    font-size: 0.9rem;
+    letter-spacing: 0.3px;
+    text-transform: uppercase;
+}
+
+.form-control {
+    padding: 14px 18px;
+    border: 2px solid #e0e0e0;
+    border-radius: 10px;
+    font-size: 0.95rem;
+    transition: var(--transition);
+    background-color: var(--bg-gray);
+    color: var(--text-dark);
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.form-control::placeholder {
+    color: #bbb;
+}
+
+.form-control:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 4px rgba(233, 30, 99, 0.1);
+    background-color: var(--bg-white);
+    outline: none;
+    transform: translateY(-2px);
+}
+
+.form-control:valid {
+    border-color: var(--success-color);
+}
+
+.mb-3 {
+    margin-bottom: 20px;
+}
+
+/* ========================================
+   Botão de Registro
+   ======================================== */
+.regist-button {
+    width: 100%;
+    padding: 16px;
+    background: var(--gradient-primary);
+    border: none;
+    border-radius: 10px;
+    color: var(--bg-white);
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: var(--transition);
+    margin-top: 15px;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    position: relative;
+    overflow: hidden;
+}
+
+.regist-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.2);
+    transition: var(--transition);
+}
+
+.regist-button:hover::before {
+    left: 100%;
+}
+
+.regist-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 40px rgba(233, 30, 99, 0.3);
+}
+
+.regist-button:active {
+    transform: translateY(-1px);
+}
+
+.regist-button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* ========================================
+   Responsividade
+   ======================================== */
+@media (max-width: 1024px) {
+    .regist-container {
+        grid-template-columns: 1fr;
+        min-height: auto;
+        margin: 40px auto 30px;
+    }
+
+    .regist-container img {
+        display: none;
+    }
+
+    .regist-form {
+        padding: 40px 30px;
+    }
+
+    .regist-form h3 {
+        font-size: 1.8rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .regist-form {
+        padding: 30px 20px;
+    }
+
+    .regist-form h3 {
+        font-size: 1.6rem;
+        margin-bottom: 10px;
+    }
+
+    .regist-title {
+        font-size: 0.85rem;
+        margin-bottom: 20px;
+    }
+
+    .form-control {
+        padding: 12px 15px;
+        font-size: 0.9rem;
+    }
+
+    .regist-button {
+        padding: 14px;
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .regist-container {
+        margin: 20px 10px 20px;
+        border-radius: 10px;
+    }
+
+    .regist-form {
+        padding: 20px 15px;
+    }
+
+    .regist-form h3 {
+        font-size: 1.4rem;
+        margin-bottom: 8px;
+    }
+
+    .form-label {
+        font-size: 0.85rem;
+    }
+
+    .form-control {
+        padding: 10px 12px;
+        font-size: 0.85rem;
+    }
+}
+
+/* ========================================
+   Animações Adicionais
+   ======================================== */
+@keyframes slideInForm {
+    from {
+        opacity: 0;
+        transform: translateX(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.regist-form {
+    animation: slideInForm 0.6s ease-out 0.2s both;
+}
+
+.mb-3 {
+    animation: fadeInUp 0.5s ease-out backwards;
+}
+
+.mb-3:nth-child(1) { animation-delay: 0.3s; }
+.mb-3:nth-child(2) { animation-delay: 0.35s; }
+.mb-3:nth-child(3) { animation-delay: 0.4s; }
+.mb-3:nth-child(4) { animation-delay: 0.45s; }
+
+/* ========================================
+   Alertas
+   ======================================== */
+.alert {
+    border: none;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    animation: slideInAlert 0.4s ease-out;
+    padding: 12px 16px;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+@keyframes slideInAlert {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.alert-danger {
+    background-color: #ffebee;
+    color: #c62828;
+    border-left: 4px solid #f44336;
+}
+
+.alert-success {
+    background-color: #e8f5e9;
+    color: #2e7d32;
+    border-left: 4px solid #4caf50;
+}
+
+.alert i {
+    font-size: 1.2rem;
+}
+
+/* Wrapper do formulário */
+.regist-form-content {
+    padding: 60px 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* ========================================
+   Input de Senha
+   ======================================== */
+.password-input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.btn-toggle-password {
+    position: absolute;
+    right: 15px;
+    background: none;
+    border: none;
+    color: var(--text-light);
+    cursor: pointer;
+    font-size: 1.2rem;
+    padding: 5px;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-toggle-password:hover {
+    color: var(--primary-color);
+    transform: scale(1.1);
+}
+
+/* Footer do Registo */
+.regist-footer {
+    text-align: center;
+    margin-top: 25px;
+    animation: fadeInUp 0.5s ease-out backwards;
+    animation-delay: 0.5s;
+}
+
+.regist-footer p {
+    color: var(--text-light);
+    font-size: 0.85rem;
+    margin: 0;
+}
+
+.regist-footer a {
+    color: var(--primary-dark);
+    text-decoration: none;
+    font-weight: 700;
+    transition: var(--transition);
+    position: relative;
+}
+
+.regist-footer a::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--primary-color);
+    transition: var(--transition);
+}
+
+.regist-footer a:hover::after {
+    width: 100%;
+}
+
+.regist-footer a:hover {
+    color: var(--primary-dark);
+}

@@ -1,0 +1,2 @@
+#Este ficheiro serve para o github ignorar a pasta vendor que cont‚m demasiados ficheiros de modo que o github nao seja sobrecarregado 
+/vendor/ 

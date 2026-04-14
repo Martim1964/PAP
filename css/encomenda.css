@@ -1,0 +1,420 @@
+/* ========================================
+   RESET E CONFIGURAÇÕES GERAIS
+   ======================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+    min-height: 100vh;
+    padding: 20px;
+    line-height: 1.6;
+    color: #333;
+}
+
+/* ========================================
+   CONTAINER PRINCIPAL
+   ======================================== */
+.bcontainer {
+    max-width: 1400px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.15);
+    overflow: hidden;
+}
+
+/* ========================================
+   TÍTULO
+   ======================================== */
+.title {
+    background: linear-gradient(135deg, #e84393 0%, #c0195f 100%);
+    color: white;
+    padding: 40px 30px;
+    text-align: center;
+}
+
+.title h1 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    font-size: 1rem;
+    opacity: 0.9;
+    margin-top: 8px;
+}
+
+/* ========================================
+   CARD DO BOLO SELECIONADO
+   ======================================== */
+.cake-overview {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    background: #fff8f5;
+    border-left: 5px solid #e84393;
+    border-radius: 0;
+    padding: 25px 40px;
+    margin-bottom: 0;
+}
+
+.cake-overview img {
+    width: 130px;
+    height: 130px;
+    object-fit: cover;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+    flex-shrink: 0;
+}
+
+.cake-overview-info h3 {
+    font-size: 1.5rem;
+    color: #c0195f;
+    margin-bottom: 6px;
+}
+
+.cake-overview-info p {
+    color: #666;
+    margin-bottom: 8px;
+}
+
+.cake-overview-info strong {
+    color: #e84393;
+    font-size: 1.1rem;
+}
+
+/* ========================================
+   FORMULÁRIO
+   ======================================== */
+.personalize-form {
+    padding: 40px;
+}
+
+/* ========================================
+   GRID LAYOUT - 2 COLUNAS
+   ======================================== */
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+}
+
+.coluna-esquerda,
+.coluna-direita {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.coluna-direita {
+    position: sticky;
+    top: 20px;
+    align-self: flex-start;
+}
+
+/* ========================================
+   SEÇÕES DO FORMULÁRIO
+   ======================================== */
+.form-section {
+    background: #f8f9fa;
+    padding: 25px;
+    border-radius: 12px;
+    border-left: 4px solid #e84393;
+    transition: all 0.3s ease;
+}
+
+.form-section:hover {
+    box-shadow: 0 5px 15px rgba(232, 67, 147, 0.15);
+    transform: translateY(-2px);
+}
+
+.form-section h2 {
+    color: #c0195f;
+    font-size: 1.15rem;
+    margin-bottom: 15px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #f0d0e0;
+}
+
+.form-section h3 {
+    color: #c0195f;
+    font-size: 1.05rem;
+    margin-bottom: 12px;
+}
+
+/* ========================================
+   LABELS E INPUTS
+   ======================================== */
+label {
+    display: block;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 8px;
+    font-size: 0.95rem;
+}
+
+select,
+input[type="text"],
+input[type="date"],
+input[type="number"],
+textarea {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    font-family: inherit;
+}
+
+select:focus,
+input:focus,
+textarea:focus {
+    outline: none;
+    border-color: #e84393;
+    box-shadow: 0 0 0 3px rgba(232, 67, 147, 0.1);
+}
+
+select {
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23e84393' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    background-color: white;
+    padding-right: 35px;
+}
+
+textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+/* ========================================
+   SUGESTÕES
+   ======================================== */
+.suggestions-box {
+    background: linear-gradient(135deg, #fff5f9 0%, #fce4f0 100%);
+    border-left-color: #c0195f !important;
+}
+
+.suggestions-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.suggestion-card {
+    background: white;
+    padding: 15px;
+    border-radius: 8px;
+    border-left: 3px solid #e84393;
+}
+
+.suggestion-card h3 {
+    font-size: 1rem;
+    margin-bottom: 10px;
+    color: #e84393;
+}
+
+.suggestion-card ul {
+    list-style: none;
+    padding: 0;
+}
+
+.suggestion-card li {
+    padding: 5px 0;
+    color: #555;
+    font-size: 0.9rem;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.suggestion-card li:last-child {
+    border-bottom: none;
+}
+
+/* ========================================
+   SECÇÃO DE DECORAÇÃO (condicional)
+   ======================================== */
+.conditional {
+    animation: fadeIn 0.3s ease;
+    border-left-color: #ff9ec4 !important;
+    background: #fff0f7;
+}
+
+.idade-box {
+    margin-top: 15px;
+    padding: 15px;
+    background: #ffe0ef;
+    border-radius: 8px;
+}
+
+/* ========================================
+   RESUMO DO PEDIDO
+   ======================================== */
+.resumo-section {
+    background: linear-gradient(135deg, #fff5f9 0%, #fce4f0 100%);
+    border-left-color: #e84393 !important;
+}
+
+.resumo-vazio {
+    text-align: center;
+    color: #aaa;
+    padding: 30px;
+    font-style: italic;
+}
+
+#resumo-content {
+    margin-bottom: 20px;
+}
+
+.resumo-item {
+    background: white;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.resumo-item h3 {
+    font-size: 1rem;
+    color: #e84393;
+    margin-bottom: 10px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #f0d0e0;
+}
+
+.resumo-item p {
+    margin: 5px 0;
+    font-size: 0.9rem;
+    color: #555;
+}
+
+.resumo-total {
+    background: linear-gradient(135deg, #e84393 0%, #c0195f 100%);
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    margin-bottom: 15px;
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+/* ========================================
+   BOTÕES
+   ======================================== */
+.button-group {
+    display: flex;
+    gap: 12px;
+    margin-top: 10px;
+    margin-bottom: 15px;
+}
+
+.btn-primary,
+.btn-secondary,
+button[type="submit"],
+button[type="button"] {
+    flex: 1;
+    padding: 14px 25px;
+    border: none;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-primary,
+button[type="submit"] {
+    background: linear-gradient(135deg, #e84393 0%, #c0195f 100%);
+    color: white;
+    box-shadow: 0 4px 15px rgba(232, 67, 147, 0.35);
+}
+
+.btn-primary:hover,
+button[type="submit"]:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(232, 67, 147, 0.5);
+}
+
+.btn-secondary {
+    background: linear-gradient(135deg, #6c757d 0%, #5a6268 100%);
+    color: white;
+    box-shadow: 0 4px 15px rgba(108,117,125,0.3);
+}
+
+.btn-secondary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(108,117,125,0.4);
+}
+
+/* ========================================
+   DISCLAIMER
+   ======================================== */
+.disclaimer {
+    font-size: 0.85rem;
+    color: #888;
+    font-style: italic;
+    text-align: center;
+    margin: 0;
+}
+
+/* ========================================
+   ANIMAÇÃO FADE IN
+   ======================================== */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ========================================
+   RESPONSIVE
+   ======================================== */
+@media (max-width: 992px) {
+    .grid-container {
+        grid-template-columns: 1fr;
+    }
+
+    .coluna-direita {
+        position: relative;
+        top: 0;
+    }
+
+    .suggestions-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .personalize-form {
+        padding: 20px;
+    }
+
+    .cake-overview {
+        flex-direction: column;
+        text-align: center;
+        padding: 20px;
+    }
+
+    .title h1 {
+        font-size: 1.7rem;
+    }
+
+    .button-group {
+        flex-direction: column;
+    }
+}
+/* =========================================================
+   ENCOMENDA.CSS
+   Estilos da pagina de encomenda/personalizacao do bolo.
+   ========================================================= */
