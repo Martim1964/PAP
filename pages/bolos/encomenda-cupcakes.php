@@ -86,7 +86,7 @@ $category = 'cupcakes';
                         <h2>1. <?= htmlspecialchars($titulo_secao) ?></h2>
 
 
-                        <select id="tamanho" name="tamanho" required>
+                        <select id="tamanho" name="tamanho" aria-label = "Tamanho" required>
                             <option value="">Escolha uma opcao...</option>
                             <!--Inicio um foreach para percorrer o array de tamanhos / packs da BD -->
                             <?php foreach ($tamanhos as $slug => $t): ?>
@@ -105,7 +105,7 @@ $category = 'cupcakes';
                     <section class="form-section">
                         <h2>2. Data do Evento</h2>
                         <label for="birthday">Data do evento (min. 7 dias):</label>
-                        <input type="date" id="birthday" name="birthday" required>
+                        <input type="date" id="birthday" name="birthday" aria-label="Event Date" required>
                     </section>
 
                     <section class="form-section">
@@ -124,8 +124,8 @@ $category = 'cupcakes';
                         </div>
 
                         <div class="button-group">
-                            <button type="button" class="btn-secondary" id="btn-limpar-pedido">Limpar Pedido</button>
-                            <button type="submit" class="btn-primary">Adicionar ao Carrinho</button>
+                            <button type="button" class="btn-secondary" id="btn-limpar-pedido" aria-label="Reset">Limpar Pedido</button>
+                            <button type="submit" class="btn-primary" aria-label="Add to Cart">Adicionar ao Carrinho</button>
                         </div>
                     </section>
                 </div>

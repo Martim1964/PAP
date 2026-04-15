@@ -37,10 +37,10 @@
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Abrir menu Nossos Bolos">Nossos Bolos</a>
                             <ul class="dropdown-menu" aria-label="Submenu Nossos Bolos">
-                                <li><a class="dropdown-item" href="../../pages/bolos/casamento.php">Bolos de casamento</a></li>
-                                <li><a class="dropdown-item" href="../../pages/bolos/aniversario.php">Bolos de aniversário</a></li>
-                                <li><a class="dropdown-item" href="../../pages/bolos/batizados.php">Bolos de batizado</a></li>
-                                <li><a class="dropdown-item" href="../../pages/bolos/cupcakes.php">Cupcakes/Bolos tradicionais</a></li>
+                                <li><a class="dropdown-item" href="../../pages/bolos/casamento.php" aria-label="Casamento">Bolos de casamento</a></li>
+                                <li><a class="dropdown-item" href="../../pages/bolos/aniversario.php" aria-label="Aniversário">Bolos de aniversário</a></li>
+                                <li><a class="dropdown-item" href="../../pages/bolos/batizados.php" aria-label="Batizado" >Bolos de batizado</a></li>
+                                <li><a class="dropdown-item" href="../../pages/bolos/cupcakes.php" aria-label="Cupcakes/Doces">Cupcakes/Bolos tradicionais</a></li>
                             </ul>
                     </li>
 

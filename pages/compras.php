@@ -197,7 +197,7 @@ $flash         = dd_flash_get(); // Mensagem flash (se existir)
             </div>
 
             <!-- Botão de finalizar (desativado se o carrinho estiver vazio) -->
-            <button class="btn-checkout"
+            <button class="btn-checkout" aria-label="Finalizar Compra"
                     <?= empty($itensCarrinho) ? 'disabled' : '' ?>
                     onclick="window.location.href='compras-finalizar.php'">
                 Finalizar compra →

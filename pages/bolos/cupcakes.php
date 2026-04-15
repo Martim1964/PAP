@@ -27,7 +27,7 @@ $res_bolos = mysqli_query($con, $query);
         <h1>Cupcakes / Doces Tradicionais</h1>
     </div>
 
-    <div class="cakes">
+    <div class="cakes" aria-label="Product List">
     <?php while ($bolo = mysqli_fetch_assoc($res_bolos)): 
         // Para cada bolo que o MySQL encontrar, vamos buscar os seus tamanhos específicos e o seu preco
         $tamanhos = buscar_tamanhos($con, $bolo['slug']);
@@ -38,7 +38,7 @@ $res_bolos = mysqli_query($con, $query);
         $precomin = $minimo ? dd_formata_preco($minimo['preco']) : '0.00';
     ?>
 
-    <div class="cake-item">
+    <div class="cake-item" aria-label="Product Card">
         <img src="../../<?= htmlspecialchars($bolo['imagem']) ?>" alt="<?= htmlspecialchars($bolo['nome']) ?>">
             <div class="cake-content">
                 <h2><?= htmlspecialchars($bolo['nome']) ?></h2>
@@ -53,7 +53,7 @@ $res_bolos = mysqli_query($con, $query);
                     endif; 
                 ?>
                 
-                <a href="<?= $url ?>" class="order-btn">Encomendar / Personalizar</a>
+                <a href="<?= $url ?>" class="order-btn" aria-label="Encomendar bolo">Encomendar / Personalizar</a>
                 </div>
             </div>
         <?php endwhile; ?>

@@ -88,7 +88,7 @@ $category = 'outros';
                     <!-- 1. TAMANHO — gerado dinamicamente da BD -->
                     <section class="form-section">
                         <h2>1. Tamanho do Bolo</h2>
-                        <select id="tamanho" name="tamanho" required>
+                        <select id="tamanho" name="tamanho" aria-label="Tamanho" required>
                             <option value="">Escolha um tamanho...</option>
                             <?php foreach ($tamanhos as $slug => $dados): ?>
                                 <option value="<?= htmlspecialchars($slug) ?>">
@@ -101,7 +101,7 @@ $category = 'outros';
                     <!-- 2. MASSA — gerado dinamicamente da BD -->
                     <section class="form-section">
                         <h2>2. Tipo de Massa</h2>
-                        <select id="massa" name="massa" required>
+                        <select id="massa" name="massa" aria-label="Massa" required>
                             <option value="">Escolha uma massa...</option>
                             <optgroup label="Massas Standard">
                                 <?php foreach ($massas as $slug => $dados): ?>
@@ -127,7 +127,7 @@ $category = 'outros';
                     <!-- 3. RECHEIO — gerado dinamicamente da BD -->
                     <section class="form-section">
                         <h2>3. Tipo de Recheio</h2>
-                        <select id="recheio" name="recheio" required>
+                        <select id="recheio" name="recheio" aria-label="Recheio" required>
                             <option value="">Escolha um recheio...</option>
                             <optgroup label="Recheios Standard">
                                 <?php foreach ($recheios as $slug => $dados): ?>
@@ -175,7 +175,7 @@ $category = 'outros';
                     <section class="form-section">
                         <h2>4. Data do Evento</h2>
                         <label for="birthday">Data do evento (mín. 7 dias):</label>
-                        <input type="date" id="birthday" name="birthday" required>
+                        <input type="date" id="birthday" name="birthday" aria-label="Event Date" required>
                     </section>
 
                     <!-- 5. OBSERVAÇÕES -->
@@ -196,8 +196,8 @@ $category = 'outros';
                             <p class="resumo-vazio">Preenche os campos para ver o resumo...</p>
                         </div>
                         <div class="button-group">
-                            <button type="button" class="btn-secondary" id="btn-limpar-pedido">Limpar Pedido</button>
-                            <button type="submit" class="btn-primary">Adicionar ao Carrinho</button>
+                            <button type="button" class="btn-secondary" id="btn-limpar-pedido" aria-label="Reset">Limpar Pedido</button>
+                            <button type="submit" class="btn-primary" aria-label="Add to Cart">Adicionar ao Carrinho</button>
                         </div>
                     </section>
 

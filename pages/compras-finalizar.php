@@ -120,18 +120,18 @@ $cartItems = dd_carrinho_get();
 
                     <!-- Termos e Condições -->
                     <div class="termos-checkbox">
-                        <input type="checkbox" id="termos" required>
+                        <input type="checkbox" id="termos" aria-label="Termos e Condicoes" required>
                         <label for="termos">
                             Concordo com os <a href="termos.php" class="link-termos">Termos e Condições</a> e <a href="politica.php" class="link-termos">Política de Privacidade</a>
                         </label>
                     </div>
 
                     <!-- Botões -->
-                    <button class="btn-pagar" onclick="avancarPagamento()" id="btn-pagar">
+                    <button class="btn-pagar" onclick="avancarPagamento()" id="btn-pagar" aria-label="Avançar">
                         Avançar para Pagamento →
                     </button>
 
-                    <button class="btn-voltar" onclick="voltarCarrinho()">
+                    <button class="btn-voltar" onclick="voltarCarrinho()" aria-label="Voltar">
                         ← Voltar ao Carrinho
                     </button>
                 </div>

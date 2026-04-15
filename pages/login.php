@@ -67,7 +67,7 @@ if (isset($_GET['redirect'])) {
                     </button>
 
                     <?php if (isset($_SESSION['loginErro'])): ?>
-                        <div class="alert alert-danger" role="alert">
+                        <div class="alert alert-danger" role="alert" aria-label="Mensagem de Erro">
                             <i class="bi bi-exclamation-triangle-fill" aria-hidden="true"></i>
                             <?php
                                 echo htmlspecialchars($_SESSION['loginErro']);
