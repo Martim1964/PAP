@@ -46,7 +46,7 @@ $res_bolos = mysqli_query($con, $query);
             <div class="cake-content">
                 <h2><?= htmlspecialchars($bolo['nome']) ?></h2>
                 <p><?= htmlspecialchars($bolo['descricao']) ?></p>
-                <h3>Preço: Desde €<?= $precomin ?></h3>
+                <h3>Preço: Desde €<?= $precomin ?> sem IVA</h3>
                 <?php 
                     $slug = $bolo['slug'];
                     if(isset($_SESSION['user'])): 
