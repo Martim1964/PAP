@@ -42,7 +42,7 @@ $res_bolos = mysqli_query($con, $query);
 
     <div class="cake-item" aria-label="Product Card">
         <img src="../../<?= htmlspecialchars($bolo['imagem']) ?>" alt="<?= htmlspecialchars($bolo['nome']) ?>">
-            <div class="cake-content">
+            <div class="cake-content" aria-label = "Cake Content">
                 <h2><?= htmlspecialchars($bolo['nome']) ?></h2>
                 <p><?= htmlspecialchars($bolo['descricao']) ?></p>
                 <h3>Preço: Desde €<?= $precomin ?> sem IVA</h3>
