@@ -18,197 +18,6 @@ function dd_start_session() {
 }
 
 // ------------------------------------------------------------
-// CATÁLOGO DE BOLOS
-// Lista de todos os bolos disponíveis para encomendar.
-// Cada bolo tem: nome, imagem, descrição, categoria e preço base.
-// ------------------------------------------------------------
-function dd_catalogo_bolos() {
-    return [
-        // --- BOLOS DE ANIVERSÁRIO ---
-        'bolo-avos' => [
-            'nome'       => 'Bolo de Avós',
-            'img'        => 'img-pap/nossos-bolos/aniversario/bolo-avós-aniv.jpg',
-            'desc'       => 'Um bolo especial dedicado aos avós.',
-            'categoria'  => 'aniversario',
-            'preco_base' => 25.00,
-        ],
-        'bolo-camisa' => [
-            'nome'       => 'Bolo Camisa',
-            'img'        => 'img-pap/nossos-bolos/aniversario/bolo-camisa-aniv.jpg',
-            'desc'       => 'Perfeito para os apaixonados por futebol.',
-            'categoria'  => 'aniversario',
-            'preco_base' => 25.00,
-        ],
-        'bolo-cars' => [
-            'nome'       => 'Bolo Cars',
-            'img'        => 'img-pap/nossos-bolos/aniversario/bolo-cars-aniv.jpg',
-            'desc'       => 'Bolo inspirado no filme Cars.',
-            'categoria'  => 'aniversario',
-            'preco_base' => 25.00,
-        ],
-        'bolo-conchas' => [
-            'nome'       => 'Bolo Conchas',
-            'img'        => 'img-pap/nossos-bolos/aniversario/bolo-conchas-aniv.jpg',
-            'desc'       => 'Bolo decorado com conchas.',
-            'categoria'  => 'aniversario',
-            'preco_base' => 25.00,
-        ],
-        'bolo-panda' => [
-            'nome'       => 'Bolo Panda',
-            'img'        => 'img-pap/nossos-bolos/aniversario/bolo-panda-aniv.jpg',
-            'desc'       => 'Fofíssimo bolo panda.',
-            'categoria'  => 'aniversario',
-            'preco_base' => 25.00,
-        ],
-        'bolo-pasteleiro' => [
-            'nome'       => 'Bolo Pasteleiro',
-            'img'        => 'img-pap/nossos-bolos/aniversario/bolo-pasteleiro-aniv.jpg',
-            'desc'       => 'Clássico bolo pasteleiro.',
-            'categoria'  => 'aniversario',
-            'preco_base' => 25.00,
-        ],
-        'bolo-praia' => [
-            'nome'       => 'Bolo Praia',
-            'img'        => 'img-pap/nossos-bolos/aniversario/bolo-praia-aniv.jpg',
-            'desc'       => 'Bolo com tema de praia.',
-            'categoria'  => 'aniversario',
-            'preco_base' => 25.00,
-        ],
-        'bolo-rosa' => [
-            'nome'       => 'Bolo Rosa',
-            'img'        => 'img-pap/nossos-bolos/aniversario/bolo-rosa-aniv.jpg',
-            'desc'       => 'Bolo rosa delicado.',
-            'categoria'  => 'aniversario',
-            'preco_base' => 25.00,
-        ],
-        'bolo-sofa' => [
-            'nome'       => 'Bolo Sofá',
-            'img'        => 'img-pap/nossos-bolos/aniversario/bolo-sofa-aniv.jpg',
-            'desc'       => 'Confortável bolo sofá.',
-            'categoria'  => 'aniversario',
-            'preco_base' => 25.00,
-        ],
-        'bolo-sonic' => [
-            'nome'       => 'Bolo Sonic',
-            'img'        => 'img-pap/nossos-bolos/aniversario/bolo-sonic-aniv.jpg',
-            'desc'       => 'Bolo do velocíssimo Sonic.',
-            'categoria'  => 'aniversario',
-            'preco_base' => 25.00,
-        ],
-        // --- BOLOS DE BATIZADO ---
-        'bolo-batismo' => [
-            'nome'       => 'Bolo Batismo',
-            'img'        => 'img-pap/nossos-bolos/batizado/bolo-batismo-bat.jfif',
-            'desc'       => 'Um bolo especial dedicado aos batismos.',
-            'categoria'  => 'batizado',
-            'preco_base' => 25.00,
-        ],
-        'bolo-1ºcomunhão' => [
-            'nome'       => 'Bolo 1ª Comunhão',
-            'img'        => 'img-pap/nossos-bolos/batizado/bolo-1ºcomunhão-bat.jfif',
-            'desc'       => 'Um bolo especial para a primeira comunhão.',
-            'categoria'  => 'batizado',
-            'preco_base' => 25.00,
-        ],
-        'bolo-baloiço' => [
-            'nome'       => 'Bolo Baloiço',
-            'img'        => 'img-pap/nossos-bolos/batizado/bolo-baloiço-bat.jfif',
-            'desc'       => 'Um bolo temático de baloiço.',
-            'categoria'  => 'batizado',
-            'preco_base' => 25.00,
-        ],
-        // --- BOLOS DE CASAMENTO ---
-        'bolo-aliancas' => [
-            'nome'       => 'Bolo Alianças',
-            'img'        => 'img-pap/nossos-bolos/casamento/bolo-aliancas-cas.jpg',
-            'desc'       => 'Um bolo elegante com tema de alianças.',
-            'categoria'  => 'casamento',
-            'preco_base' => 25.00,
-        ],
-        'bolo-bodas-diamante' => [
-            'nome'       => 'Bolo Bodas de Diamante',
-            'img'        => 'img-pap/nossos-bolos/casamento/bolo-bodas-diamante-cas.jpg',
-            'desc'       => 'Bolo especial para bodas de diamante.',
-            'categoria'  => 'casamento',
-            'preco_base' => 25.00,
-        ],
-        'bolo-flores' => [
-            'nome'       => 'Bolo Flores',
-            'img'        => 'img-pap/nossos-bolos/casamento/bolo-flores-cas.jpg',
-            'desc'       => 'Bolo decorado com flores delicadas.',
-            'categoria'  => 'casamento',
-            'preco_base' => 25.00,
-        ],
-        'bolo-flores-comestiveis' => [
-            'nome'       => 'Bolo Flores Comestíveis',
-            'img'        => 'img-pap/nossos-bolos/casamento/bolo-flores-comestiveis-cas.jpg',
-            'desc'       => 'Bolo com flores comestíveis.',
-            'categoria'  => 'casamento',
-            'preco_base' => 25.00,
-        ],
-    ];
-}
-
-// ------------------------------------------------------------
-// OPÇÕES DE PERSONALIZAÇÃO + PREÇOS EXTRA
-// Define os tamanhos, massas e recheios disponíveis,
-// e quanto custam adicionalmente.
-// ------------------------------------------------------------
-function dd_opcoes_encomenda() {
-    return [
-        // Tamanho determina o preço base do bolo
-        'tamanho' => [
-            'pequeno'     => ['label' => 'Pequeno (10-12 pessoas)',   'preco' => 25.00],
-            'medio'       => ['label' => 'Médio (13-16 pessoas)',     'preco' => 35.00],
-            'grande'      => ['label' => 'Grande (17-20 pessoas)',    'preco' => 50.00],
-            'muito_grande'=> ['label' => 'Muito Grande (20+ pessoas)','preco' => 70.00],
-        ],
-        // Massa: algumas são standard (sem custo extra), outras premium (com custo extra)
-        'massa' => [
-            'baunilha'      => ['label' => 'Baunilha',         'preco' =>  0.00],
-            'laranja_canela'=> ['label' => 'Laranja e Canela', 'preco' =>  0.00],
-            'papoila_limao' => ['label' => 'Papoila e Limão',  'preco' =>  0.00],
-            'chocolate'     => ['label' => 'Chocolate Negro',  'preco' => 10.00],
-            'red_velvet'    => ['label' => 'Red Velvet',       'preco' => 12.00],
-            'cenoura'       => ['label' => 'Laranja e Amêndoa','preco' =>  8.00],
-        ],
-        // Recheio: alguns são standard (sem custo extra), outros premium (com custo extra)
-        'recheio' => [
-            'caramelo'   => ['label' => 'Caramelo Salgado',   'preco' =>  0.00],
-            'morango'    => ['label' => 'Curd de Morango',    'preco' =>  0.00],
-            'limao'      => ['label' => 'Curd de Limão',      'preco' =>  0.00],
-            'creamcheese'=> ['label' => 'Cream Cheese Laranja','preco'=>  0.00],
-            'brigadeiro' => ['label' => 'Brigadeiro Negro',   'preco' =>  8.00],
-            'mascarpone' => ['label' => 'Mascarpone',         'preco' => 10.00],
-            'framboesa'  => ['label' => 'Ganache Framboesa',  'preco' => 12.00],
-            'maracuja'   => ['label' => 'Ganache Maracujá',   'preco' => 12.00],
-        ],
-    ];
-}
-
-// ------------------------------------------------------------
-// CALCULAR PREÇO TOTAL DA ENCOMENDA
-// Soma o preço do tamanho + o extra da massa + o extra do recheio.
-// Exemplo: Médio (35€) + Chocolate (10€) + Brigadeiro (8€) = 53€
-// ------------------------------------------------------------
-function dd_preco_encomenda($tamanho, $massa, $recheio) {
-    $opcoes = dd_opcoes_encomenda();
-
-    // Verifica se as opções escolhidas existem
-    if (!isset($opcoes['tamanho'][$tamanho]) ||
-        !isset($opcoes['massa'][$massa]) ||
-        !isset($opcoes['recheio'][$recheio])) {
-        return null; // Opção inválida
-    }
-
-    $total = $opcoes['tamanho'][$tamanho]['preco']
-           + $opcoes['massa'][$massa]['preco']
-           + $opcoes['recheio'][$recheio]['preco'];
-
-    return round($total, 2); // Arredonda a 2 casas decimais
-}
-
-// ------------------------------------------------------------
 // FORMATAR PREÇO PARA MOSTRAR
 // Converte 53.5 → "53,50" (formato português)
 // ------------------------------------------------------------
@@ -276,6 +85,23 @@ function dd_flash_get() {
     $msg = $_SESSION['flash_mensagem'];
     unset($_SESSION['flash_mensagem']); // Apaga depois de ler (só aparece uma vez)
     return $msg;
+}
+
+// ------------------------------------------------------------
+// VALIDAR IDADE MÍNIMA (DATA DE NASCIMENTO)
+// Verifica se a pessoa tem pelo menos 13 anos com base na data de nascimento.
+// ------------------------------------------------------------
+function dd_validar_idade_minima($data_nascimento, $idade_minima = 13) {
+    if (empty($data_nascimento)) return false;
+    
+    try {
+        $hoje = new DateTime();
+        $nasc = new DateTime($data_nascimento);
+        $idade = $hoje->diff($nasc)->y;
+        return $idade >= $idade_minima;
+    } catch (Exception $e) {
+        return false; // Data inválida
+    }
 }
 
 // ------------------------------------------------------------

@@ -1,73 +1,64 @@
 <?php
 session_start();
 
+// Configurações de ligação (Idealmente isto estaria num ficheiro externo config.php)
 $servidor = "localhost";
-$user = "root";
-$pass = "";
-$db_name = "pap_db";
+$user     = "root";
+$pass     = "";
+$db_name  = "pap_db";
 
-$con = mysqli_connect($servidor, $user, $pass, $db_name);
-if (!$con) {
-    die("Falha na conexão à BD: " . mysqli_connect_error());
+// Conexão em estilo POO
+$con = new mysqli($servidor, $user, $pass, $db_name);
+
+if ($con->connect_error) {
+    die("Falha na conexão: " . $con->connect_error);
 }
 
-if (isset($_POST['email']) && isset($_POST['pass'])) {
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['email'], $_POST['pass'])) {
     $email = $_POST['email'];
     $senha = $_POST['pass'];
 
-    // Preserve an optional redirect target so that after login the user goes back to the intended page.
-    $redirectTo = '';
-    if (!empty($_POST['redirect'])) {
-        $redirectTo = trim($_POST['redirect']);
-        $redirectTo = preg_replace('/[\r\n]/', '', $redirectTo);
+    // --- Lógica de Redirecionamento ---
+    $redirectTo = $_POST['redirect'] ?? '';
+    $destination = '../index.php';
 
-        // Prevent open redirects and path traversal.
-        if (preg_match('#^(?:https?:)?//#i', $redirectTo) || strpos($redirectTo, '..') !== false) {
-            $redirectTo = '';
+    if (!empty($redirectTo)) {
+        $redirectTo = preg_replace('/[\r\n]/', '', trim($redirectTo));
+        // Bloqueia redirecionamentos externos ou path traversal
+        if (!preg_match('#^(?:https?:)?//#i', $redirectTo) && strpos($redirectTo, '..') === false) {
+            $destination = '../pages/' . ltrim($redirectTo, '/\\');
+        } else {
+            $redirectTo = ''; // Reset se for inválido
         }
     }
 
-    // Default destination after successful login.
-    $destination = '../index.php';
-    if ($redirectTo !== '') {
-        $redirectTo = ltrim($redirectTo, '/\\');
-        $destination = '../pages/' . $redirectTo;
-    }
+    // --- Prepared Statement ---
+    $sql = "SELECT * FROM utilizadores WHERE email = ? AND ativo = 1 LIMIT 1";
+    $stmt = $con->prepare($sql);
+    $stmt->bind_param("s", $email);
+    $stmt->execute();
+    $result = $stmt->get_result();
 
-    $query = "SELECT * FROM utilizadores WHERE email = '$email' AND ativo = 1 LIMIT 1";
-    $result = mysqli_query($con, $query);
-    
-    if(mysqli_num_rows($result) > 0){
-        $row = mysqli_fetch_assoc($result);
-        
-        if(password_verify($senha, $row['pass'])){
-            $_SESSION['user'] = $row['email'];
-            $_SESSION['nome'] = $row['nome'];
-            $_SESSION['user_id'] = $row['id'];
-            $_SESSION['admin']   = $row['admin'];
+    if ($row = $result->fetch_assoc()) {
+        // Verifica a password
+        if (password_verify($senha, $row['pass'])) {
+            $_SESSION['user']      = $row['email'];
+            $_SESSION['nome']      = $row['nome'];
+            $_SESSION['user_id']   = $row['id'];
+            $_SESSION['admin']     = $row['admin'];
             $_SESSION['telemovel'] = $row['telefone'];
+            
             header("Location: $destination");
             exit;
-        } else {
-            $_SESSION['loginErro'] = "Email ou password incorretos.";
-            $loginPage = '../pages/login.php';
-            if ($redirectTo !== '') {
-                $loginPage .= '?redirect=' . urlencode($redirectTo);
-            }
-            header("Location: $loginPage");
-            exit;
         }
-    } else {
-        $_SESSION['loginErro'] = "Email ou password incorretos ou conta desativada.";
-        $loginPage = '../pages/login.php';
-        if ($redirectTo !== '') {
-            $loginPage .= '?redirect=' . urlencode($redirectTo);
-        }
-        header("Location: $loginPage");
-        exit;
     }
+
+    // --- Se chegar aqui, algo falhou (Login Incorreto) ---
+    $_SESSION['loginErro'] = "Email ou password incorretos ou conta desativada.";
+    $loginPage = '../pages/login.php' . ($redirectTo ? '?redirect=' . urlencode($redirectTo) : '');
+    
+    header("Location: $loginPage");
+    exit;
 }
 
-
-mysqli_close($con);
-?>
+$con->close();

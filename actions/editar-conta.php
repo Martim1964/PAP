@@ -9,12 +9,14 @@
     }
 
     $user_id  = (int)$_SESSION['user_id'];
-    $email    = mysqli_real_escape_string($con, trim($_POST['email']   ?? ''));
-    $telefone = mysqli_real_escape_string($con, trim($_POST['telefone'] ?? ''));
+    $email    = trim($_POST['email']   ?? '');
+    $telefone = trim($_POST['telefone'] ?? '');
 
     if ($email) {
-        $sql = "UPDATE utilizadores SET email = '$email', telefone = '$telefone' WHERE id = $user_id";
-        mysqli_query($con, $sql);
+        $stmt = $con->prepare("UPDATE utilizadores SET email = ?, telefone = ? WHERE id = ?");
+        $stmt->bind_param("ssi", $email, $telefone, $user_id);
+        $stmt->execute();
+        $stmt->close();
         $_SESSION['user'] = $email; 
     }
 

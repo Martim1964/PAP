@@ -10,19 +10,23 @@
 
     // Pesquisa de clientes por nome
     $pesquisa = $_GET['pesquisa'] ?? '';
-    $pesquisa_escaped = mysqli_real_escape_string($con, $pesquisa);
-    $result_clientes = mysqli_query($con, "SELECT id, nome, email, telefone, data_nascimento, ativo, admin FROM utilizadores WHERE nome LIKE '%$pesquisa_escaped%' ORDER BY nome ASC");
+    $stmt = $con->prepare("SELECT id, nome, email, telefone, data_nascimento, ativo, admin FROM utilizadores WHERE nome LIKE ? ORDER BY nome ASC");
+    $like_pesquisa = '%' . $pesquisa . '%';
+    $stmt->bind_param("s", $like_pesquisa);
+    $stmt->execute();
+    $result_clientes = $stmt->get_result();
+    $stmt->close();
 
     // Filtro dos contactos
     $filtro_contactos = $_GET['filtro_contactos'] ?? 'todos';
-    $where_contactos = '';
+    $sql_contactos = "SELECT * FROM contactos";
     if ($filtro_contactos === 'pendente') {
-        $where_contactos = "WHERE estado = 'pendente'";
+        $sql_contactos .= " WHERE estado = 'pendente'";
     } elseif ($filtro_contactos === 'respondido') {
-        $where_contactos = "WHERE estado = 'respondido'";
+        $sql_contactos .= " WHERE estado = 'respondido'";
     }
-
-    $result_contactos = mysqli_query($con, "SELECT * FROM contactos $where_contactos ORDER BY data_envio DESC");
+    $sql_contactos .= " ORDER BY data_envio DESC";
+    $result_contactos = mysqli_query($con, $sql_contactos);
 
     // Totais para estatísticas
     $total_clientes   = mysqli_fetch_assoc(mysqli_query($con, "SELECT COUNT(*) AS total FROM utilizadores WHERE admin = 0"))['total'] ?? 0;

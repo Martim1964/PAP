@@ -156,7 +156,7 @@ require_once __DIR__ . '/../includes/verificar_ativo.php'; ?>
                             </div>
                             
                             <label for="imagem">Insira uma imagem</label>
-                            <input type="file" id="imagem" name="photo" accept="image/png" aria-label="Insira o bolo" required>
+                            <input type="file" id="imagem" name="photo" accept="image/png" aria-label="Insira o bolo">
                             
                             <p class="erro" id="mensagemErro"></p>
                             <p class="sucesso" id="mensagemSucesso"></p>

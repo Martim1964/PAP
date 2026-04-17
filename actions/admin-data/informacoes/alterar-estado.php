@@ -9,13 +9,15 @@ if (!isset($_SESSION['user_id']) || $_SESSION['admin'] != 1) {
 }
 
 $id     = isset($_GET['id']) ? (int)$_GET['id'] : 0;
-$estado = isset($_GET['estado']) ? mysqli_real_escape_string($con, $_GET['estado']) : '';
+$estado = isset($_GET['estado']) ? $_GET['estado'] : '';
 
 $estados_validos = ['1', '0'];
 
 if ($id > 0 && in_array($estado, $estados_validos)) {
-    $sql = "UPDATE informacoes SET ativo = '$estado' WHERE id = $id";
-    mysqli_query($con, $sql);
+    $stmt = $con->prepare("UPDATE informacoes SET ativo = ? WHERE id = ?");
+    $stmt->bind_param("si", $estado, $id);
+    $stmt->execute();
+    $stmt->close();
 }
 
 header('Location: ../../../pages/data/admin-data-info.php');

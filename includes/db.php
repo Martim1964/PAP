@@ -1,91 +1,80 @@
 <?php
 // ============================================================
 // FICHEIRO: includes/db.php
-// O QUE FAZ: Liga à base de dados e tem todas as funções
-// para ir buscar dados do MySQL (bolos, tamanhos, massas,
-// recheios e calcular preços).
-//
-// Este ficheiro é incluído em todos os ficheiros que
-// precisam de aceder à base de dados.
+// O QUE FAZ: Gestão da ligação à BD e funções de consulta.
 // ============================================================
 
+// Definição das credenciais de acesso à base de dados
 $db_servidor   = "localhost";
 $db_utilizador = "root";
 $db_password   = "";
 $db_nome       = "pap_db";
 
-// Tenta ligar ao MySQL — se falhar, para e mostra o erro
-$con = mysqli_connect($db_servidor, $db_utilizador, $db_password, $db_nome);
+// Criação da conexão utilizando a classe mysqli (Estilo POO)
+$con = new mysqli($db_servidor, $db_utilizador, $db_password, $db_nome);
 
-if (!$con) {
-    die("Erro ao ligar à base de dados: " . mysqli_connect_error());
+// Verifica se houve algum erro na tentativa de ligação
+if ($con->connect_error) {
+    die("Erro ao ligar à base de dados: " . $con->connect_error);
 }
 
-// Garante que o MySQL usa UTF-8 (para acentos e caracteres especiais)
-mysqli_set_charset($con, "utf8mb4");
+// Configura a comunicação para UTF-8 (evita erros em acentos e emojis)
+$con->set_charset("utf8mb4");
 
 // ------------------------------------------------------------
-// BUSCAR TODAS AS INFORMAÇÕES DA BD E INSERIR NA PÁGINA DE INFO
+// FUNÇÃO: buscar_infos
+// OBJETIVO: Listar textos informativos ativos da página de INFO.
 // ------------------------------------------------------------
 function buscar_infos($con) {
+    // Query estática (sem inputs do user), pode ser executada diretamente
     $query = "SELECT id, nome, conteudo, ordem FROM informacoes WHERE ativo = 1 ORDER BY ordem ASC";
-    
-    $resultado = mysqli_query($con, $query);
+    $resultado = $con->query($query);
     
     $infos = [];
-
-    // Se houver informacoes
     if ($resultado) {
-        while ($linha = mysqli_fetch_assoc($resultado)) {
-            // Guardamos todos os campos necessários num array
-            $infos[] = [
-                'id'       => $linha['id'],
-                'nome'     => $linha['nome'],
-                'conteudo' => $linha['conteudo'],
-                'ordem'    => $linha['ordem']
-            ];
+        // Converte cada linha da tabela num array associativo
+        while ($linha = $resultado->fetch_assoc()) {
+            $infos[] = $linha;
         }
     }
-    
     return $infos;
 }
 
-
 // ------------------------------------------------------------
-// BUSCAR UM BOLO PELO SLUG
-// Vai à tabela catalogo_bolos e devolve os dados do bolo.
-// Devolve null se o bolo não existir ou estiver inativo.
+// FUNÇÃO: buscar_bolo
+// OBJETIVO: Obter detalhes de um bolo específico através do slug (URL).
 // ------------------------------------------------------------
 function buscar_bolo($con, $slug) {
-    $slug = mysqli_real_escape_string($con, $slug);
-
-    $query = "
+    // Prepara a query com um marcador "?" por segurança
+    $stmt = $con->prepare("
         SELECT b.slug, b.nome, b.descricao, b.imagem, c.slug AS categoria
         FROM catalogo_bolos b
         JOIN categorias c ON b.categoria_id = c.id
-        WHERE b.slug = '$slug' AND b.ativo = 1
+        WHERE b.slug = ? AND b.ativo = 1
         LIMIT 1
-    ";
+    ");
+    // Vincula o slug recebido ao marcador "?" (s = string)
+    $stmt->bind_param("s", $slug);
+    $stmt->execute();
+    $resultado = $stmt->get_result();
 
-    $resultado = mysqli_query($con, $query);
-
-    if (!$resultado || mysqli_num_rows($resultado) === 0) {
-        return null;
-    }
-
-    return mysqli_fetch_assoc($resultado);
+    // Devolve os dados ou null se o bolo não existir
+    return $resultado->fetch_assoc() ?: null;
 }
 
 // ------------------------------------------------------------
-// BUSCAR TODOS OS TAMANHOS DOS DOCES/CUPCAKES COM PREÇOS
+// FUNÇÃO: buscar_tamanhos
+// OBJETIVO: Listar tamanhos disponíveis para um produto específico.
 // ------------------------------------------------------------
 function buscar_tamanhos($con, $bolo_slug) {
-    $slug      = mysqli_real_escape_string($con, $bolo_slug);
-    $query     = "SELECT slug, label, preco FROM tamanhos_produtos WHERE bolo_slug = '$slug' ORDER BY ordem ASC";
-    $resultado = mysqli_query($con, $query);
+    $stmt = $con->prepare("SELECT slug, label, preco FROM tamanhos_produtos WHERE bolo_slug = ? AND ativo = '1' ORDER BY ordem ASC");
+    $stmt->bind_param("s", $bolo_slug);
+    $stmt->execute();
+    $resultado = $stmt->get_result();
 
     $tamanhos = [];
-    while ($linha = mysqli_fetch_assoc($resultado)) {
+    while ($linha = $resultado->fetch_assoc()) {
+        // Organiza o array usando o slug como chave para facilitar o cálculo posterior
         $tamanhos[$linha['slug']] = [
             'label' => $linha['label'],
             'preco' => (float)$linha['preco'],
@@ -95,53 +84,52 @@ function buscar_tamanhos($con, $bolo_slug) {
 }
 
 // ------------------------------------------------------------
-// BUSCAR TODAS AS MASSAS COM PREÇOS
+// FUNÇÃO: buscar_massas e buscar_recheios
+// OBJETIVO: Listar opções de personalização.
 // ------------------------------------------------------------
 function buscar_massas($con) {
-    $query     = "SELECT slug, label, preco, premium FROM massas ORDER BY premium ASC, id ASC";
-    $resultado = mysqli_query($con, $query);
+    $query = "SELECT slug, label, preco, premium, ativo FROM massas WHERE ativo = '1' ORDER BY premium ASC, id ASC";
+    $resultado = $con->query($query);
 
     $massas = [];
-    while ($linha = mysqli_fetch_assoc($resultado)) {
-        $massas[$linha['slug']] = [
-            'label'   => $linha['label'],
-            'preco'   => (float)$linha['preco'],
-            'premium' => (bool)$linha['premium'],
-        ];
+    if ($resultado) {
+        while ($linha = $resultado->fetch_assoc()) {
+            $massas[$linha['slug']] = [
+                'label'   => $linha['label'],
+                'preco'   => (float)$linha['preco'],
+                'premium' => (bool)$linha['premium'],
+            ];
+        }
     }
-
     return $massas;
 }
 
-// ------------------------------------------------------------
-// BUSCAR TODOS OS RECHEIOS COM PREÇOS
-// ------------------------------------------------------------
 function buscar_recheios($con) {
-    $query     = "SELECT slug, label, preco, premium FROM recheios ORDER BY premium ASC, id ASC";
-    $resultado = mysqli_query($con, $query);
+    $query = "SELECT slug, label, preco, premium, ativo FROM recheios WHERE ativo = '1' ORDER BY premium ASC, id ASC";
+    $resultado = $con->query($query);
 
     $recheios = [];
-    while ($linha = mysqli_fetch_assoc($resultado)) {
-        $recheios[$linha['slug']] = [
-            'label'   => $linha['label'],
-            'preco'   => (float)$linha['preco'],
-            'premium' => (bool)$linha['premium'],
-        ];
+    if ($resultado) {
+        while ($linha = $resultado->fetch_assoc()) {
+            $recheios[$linha['slug']] = [
+                'label'   => $linha['label'],
+                'preco'   => (float)$linha['preco'],
+                'premium' => (bool)$linha['premium'],
+            ];
+        }
     }
-
     return $recheios;
 }
 
 // ------------------------------------------------------------
-// CALCULAR PREÇO TOTAL
-// Soma tamanho + massa + recheio a partir dos dados da BD.
-// Exemplo: Médio (35€) + Chocolate (10€) + Brigadeiro (8€) = 53€
-// Para cupcakes: massa e recheio são '' então só soma o tamanho.
+// FUNÇÃO: calcular_preco
+// OBJETIVO: Lógica matemática para somar os extras ao preço base.
 // ------------------------------------------------------------
 function calcular_preco($tamanhos, $massas, $recheios, $tamanho, $massa = '', $recheio = '') {
     if (!isset($tamanhos[$tamanho])) return null;
 
     $total  = $tamanhos[$tamanho]['preco'];
+    // Soma o preço da massa/recheio apenas se eles existirem no array de preços
     $total += ($massa   && isset($massas[$massa]))     ? $massas[$massa]['preco']     : 0;
     $total += ($recheio && isset($recheios[$recheio])) ? $recheios[$recheio]['preco'] : 0;
 
@@ -149,159 +137,124 @@ function calcular_preco($tamanhos, $massas, $recheios, $tamanho, $massa = '', $r
 }
 
 // ------------------------------------------------------------
-// GUARDAR ENCOMENDA NA BASE DE DADOS
-// Chamada quando o utilizador finaliza a encomenda.
+// FUNÇÃO: guardar_encomenda
+// OBJETIVO: Inserir um novo pedido padrão na base de dados.
 // ------------------------------------------------------------
 function guardar_encomenda($con, $dados) {
+    // Conversão de tipos para garantir integridade dos dados
     $utilizador_id  = (int)$dados['utilizador_id'];
-    $bolo_slug      = mysqli_real_escape_string($con, $dados['bolo_slug']);
-    $bolo_nome      = mysqli_real_escape_string($con, $dados['bolo_nome']);
-    $tamanho_slug   = mysqli_real_escape_string($con, $dados['tamanho_slug']);
-    $tamanho_label  = mysqli_real_escape_string($con, $dados['tamanho_label']);
-    $massa_slug     = mysqli_real_escape_string($con, $dados['massa_slug']    ?? '');
-    $massa_label    = mysqli_real_escape_string($con, $dados['massa_label']   ?? '');
-    $recheio_slug   = mysqli_real_escape_string($con, $dados['recheio_slug']  ?? '');
-    $recheio_label  = mysqli_real_escape_string($con, $dados['recheio_label'] ?? '');
-    $data_evento    = mysqli_real_escape_string($con, $dados['data_evento']);
-    $observacoes    = mysqli_real_escape_string($con, $dados['observacoes']   ?? '');
     $quantidade     = (int)$dados['quantidade'];
     $preco_unitario = (float)$dados['preco_unitario'];
     $preco_total    = round($preco_unitario * $quantidade, 2);
-    $iva            = round($preco_total * 0.23, 2); 
-   
+    $iva            = round($preco_total * 0.23, 2);
 
-    $query = "
-        INSERT INTO encomendas (
-            utilizador_id, bolo_slug, bolo_nome,
-            tamanho_slug, tamanho_label,
-            massa_slug, massa_label,
-            recheio_slug, recheio_label,
-            data_evento, observacoes,
-            quantidade, preco_unitario, preco_total, iva, estado
-        ) VALUES (
-            $utilizador_id, '$bolo_slug', '$bolo_nome',
-            '$tamanho_slug', '$tamanho_label',
-            '$massa_slug', '$massa_label',
-            '$recheio_slug', '$recheio_label',
-            '$data_evento', '$observacoes',
-            $quantidade, $preco_unitario, $preco_total, $iva, 'Confirmada'
-        )
-    ";
+    $sql = "INSERT INTO encomendas (
+                utilizador_id, bolo_slug, bolo_nome, tamanho_slug, tamanho_label,
+                massa_slug, massa_label, recheio_slug, recheio_label,
+                data_evento, observacoes, quantidade, preco_unitario, preco_total, iva, estado
+            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'Confirmada')";
 
-    return mysqli_query($con, $query);
+    $stmt = $con->prepare($sql);
+    // Vincula todos os dados: i=inteiro, s=string, d=decimal (double)
+    $stmt->bind_param("issssssssssiddd", 
+        $utilizador_id, $dados['bolo_slug'], $dados['bolo_nome'],
+        $dados['tamanho_slug'], $dados['tamanho_label'],
+        $dados['massa_slug'], $dados['massa_label'],
+        $dados['recheio_slug'], $dados['recheio_label'],
+        $dados['data_evento'], $dados['observacoes'],
+        $quantidade, $preco_unitario, $preco_total, $iva
+    );
+
+    return $stmt->execute();
 }
+
 // ------------------------------------------------------------
-// GUARDAR ENCOMENDA PERSONALIZADA NA BASE DE DADOS
-// Chamada quando o utilizador finaliza a sua encomenda personalizada.
+// FUNÇÃO: guardar_encomenda_personalizada
+// OBJETIVO: Gravar pedidos onde o cliente envia tema e imagem própria.
 // ------------------------------------------------------------
 function guardar_encomenda_personalizada($con, $dados) {
-    $utilizador_id  = (int)$dados['utilizador_id'];
-    $tamanho_label  = mysqli_real_escape_string($con, $dados['tamanho']);
-    $massa_label    = mysqli_real_escape_string($con, $dados['massa']   ?? '');
-    $recheio_label  = mysqli_real_escape_string($con, $dados['recheio'] ?? '');
-    $data_evento    = mysqli_real_escape_string($con, $dados['data_evento']);
-    $observacoes    = mysqli_real_escape_string($con, $dados['observacoes']   ?? '');
-    $tema           = mysqli_real_escape_string($con, $dados['tema']   ?? '');
-    $imagem         = mysqli_real_escape_string($con, $dados['imagem']);
+    $utilizador_id = (int)$dados['utilizador_id'];
 
-    $query = "
-        INSERT INTO `encomendas_personalizadas` (
-            utilizador_id, tamanho, massa, recheio, 
-            data_evento, observacoes, tema, estado, imagem
-        ) VALUES (
-            $utilizador_id, '$tamanho_label', '$massa_label',
-            '$recheio_label', '$data_evento', 
-            '$observacoes', '$tema', 'Pendente', '$imagem'
-        )
-    ";
+    $sql = "INSERT INTO encomendas_personalizadas (
+                utilizador_id, tamanho, massa, recheio, 
+                data_evento, observacoes, tema, estado, imagem
+            ) VALUES (?, ?, ?, ?, ?, ?, ?, 'Pendente', ?)";
 
-    return mysqli_query($con, $query);
+    $stmt = $con->prepare($sql);
+    $stmt->bind_param("isssssss", 
+        $utilizador_id, $dados['tamanho'], $dados['massa'], $dados['recheio'],
+        $dados['data_evento'], $dados['observacoes'], $dados['tema'], $dados['imagem']
+    );
+
+    return $stmt->execute();
 }
 
 // ------------------------------------------------------------
-// GUARDAR CONTACTO NA BASE DE DADOS
-// Chamada quando o utilizador envia uma mensagem no formulário de contactos
+// FUNÇÃO: guardar_contacto
+// OBJETIVO: Gravar as mensagens enviadas pelo form de contacto.
 // ------------------------------------------------------------
 function guardar_contacto($con) {
-    $nome  = $_SESSION['nome'];
-    $email = $_SESSION['user'];
-    $telefone = $_SESSION['telemovel'];
-    $assunto  = trim($_POST['assunto']  ?? '');
-    $mensagem = trim($_POST['mensagem'] ?? '');
+    $sql = "INSERT INTO contactos (nome, email, telefone, assunto, mensagem) VALUES (?, ?, ?, ?, ?)";
+    
+    $stmt = $con->prepare($sql);
+    // Usa diretamente os dados da sessão (logado) e do formulário (POST)
+    $stmt->bind_param("sssss", 
+        $_SESSION['nome'], 
+        $_SESSION['user'], 
+        $_SESSION['telemovel'], 
+        $_POST['assunto'], 
+        $_POST['mensagem']
+    );
 
-    $query = "
-        INSERT INTO `contactos` (
-            nome, email, telefone, assunto, mensagem
-        ) VALUES (
-            '$nome', '$email', '$telefone', '$assunto', '$mensagem'
-        )
-    ";
-
-    return mysqli_query($con, $query);
+    return $stmt->execute();
 }
 
 // ------------------------------------------------------------
-// GUARDAR EMAIL SUBSCITORES NEWSLETTER NA BASE DE DADOS
-// Chamada quando o utilizador subscreve a newsletter
+// FUNÇÃO: guardar_newsletter
+// OBJETIVO: Subscrever o utilizador na lista de emails.
 // ------------------------------------------------------------
 function guardar_newsletter($con) {
     $email = $_SESSION['user'];
 
-    $check = mysqli_query($con, "SELECT id FROM newsletter_subscritores WHERE email = '$email' LIMIT 1");
-    if (mysqli_num_rows($check) > 0) {
-        return false;
-    }
+    // Primeiro, verifica se o email já existe para não duplicar
+    $stmtCheck = $con->prepare("SELECT id FROM newsletter_subscritores WHERE email = ? LIMIT 1");
+    $stmtCheck->bind_param("s", $email);
+    $stmtCheck->execute();
+    if ($stmtCheck->get_result()->num_rows > 0) return false;
 
-    $query = "
-        INSERT INTO `newsletter_subscritores` (
-            email
-        ) VALUES (
-            '$email'
-        )
-    ";
-
-    return mysqli_query($con, $query);
+    // Se não existir, insere
+    $stmt = $con->prepare("INSERT INTO newsletter_subscritores (email) VALUES (?)");
+    $stmt->bind_param("s", $email);
+    return $stmt->execute();
 }
 
 // ------------------------------------------------------------
-// GUARDAR NEWSLETTER ENVIADA NA BASE DE DADOS
-// Chamada quando o admin envia uma nova newsletter
+// FUNÇÃO: guardar_newsletter_enviada
+// OBJETIVO: Funções administrativas para gestão de conteúdos.
 // ------------------------------------------------------------
 function guardar_newsletter_enviada($con) {
     $assunto  = trim($_POST['assunto']  ?? '');
     $mensagem = trim($_POST['mensagem'] ?? '');
 
-    $query = "
-        INSERT INTO `newsletters_enviadas` (
-            assunto, mensagem
-        ) VALUES (
-            '$assunto', '$mensagem'
-        )
-    ";
-
-    return mysqli_query($con, $query);
+    $stmt = $con->prepare("INSERT INTO newsletters_enviadas (assunto, mensagem) VALUES (?, ?)");
+    $stmt->bind_param("ss", $assunto, $mensagem);
+    return $stmt->execute();
 }
 
 // ------------------------------------------------------------
-// GUARDAR NOVA INFO NA BASE DE DADOS
-// Chamada quando o admin escreve nova informação
+// FUNÇÃO DE GUARDAR NOVAS INFORMACOES NA BD
+// OBJETIVO: Funções administrativas para gestão de conteúdos.
 // ------------------------------------------------------------
+
 function guardar_info($con) {
     $assunto  = trim($_POST['assunto']  ?? '');
     $conteudo = trim($_POST['conteudo'] ?? '');
 
-    $query = "
-        INSERT INTO `informacoes` (
-            nome, conteudo
-        ) VALUES (
-            '$assunto', '$conteudo'
-        )
-    ";
-
-    return mysqli_query($con, $query);
+    $stmt = $con->prepare("INSERT INTO informacoes (nome, conteudo) VALUES (?, ?)");
+    $stmt->bind_param("ss", $assunto, $conteudo);
+    return $stmt->execute();
 }
 
-
-
-
+// Retorna a conexão aberta para ser usada pelos outros ficheiros
 return $con;
+?>

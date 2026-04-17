@@ -20,7 +20,7 @@
 
     $confirmar_id = isset($_GET['confirmar_id']) ? (int)$_GET['confirmar_id'] : 0;
 
-    $result_enc = mysqli_query($con, "SELECT e.id, e.bolo_nome, e.tamanho_label, e.quantidade, e.data_evento, e.estado, e.preco_total, e.iva, u.nome AS cliente FROM encomendas e JOIN utilizadores u ON e.utilizador_id = u.id $where_extra ORDER BY e.data_encomenda DESC");
+    $result_enc = mysqli_query($con, "SELECT e.id, e.bolo_nome, e.tamanho_label, e.quantidade, e.data_evento,e.data_encomenda, e.observacoes, e.estado, e.preco_total, e.iva, u.nome AS cliente FROM encomendas e JOIN utilizadores u ON e.utilizador_id = u.id $where_extra ORDER BY e.data_encomenda DESC");
 
     $result_personalizadas = mysqli_query($con, "SELECT ep.*, u.nome AS cliente FROM encomendas_personalizadas ep JOIN utilizadores u ON ep.utilizador_id = u.id ORDER BY ep.id DESC");
 
@@ -86,7 +86,9 @@
                     <th>Bolo</th>
                     <th>Tamanho</th>
                     <th>Qtd</th>
+                    <th>Data Encomenda</th>
                     <th>Data Evento</th>
+                    <th>Observações</th>
                     <th>Preço total c/ iva</th>
                     <th>Estado</th>
                 </tr>
@@ -99,7 +101,9 @@
                         <td><?= htmlspecialchars($enc['bolo_nome']) ?></td>
                         <td><?= htmlspecialchars($enc['tamanho_label']) ?></td>
                         <td><?= $enc['quantidade'] ?></td>
+                        <td><?= $enc['data_encomenda'] ?></td>
                         <td><?= dd_formata_data($enc['data_evento']) ?></td>
+                        <td><?= htmlspecialchars($enc['observacoes']) ?: '-' ?></td>
                         <td><?= number_format($enc['preco_total'] + $enc['iva'], 2, ',', '.') ?>€</td>
                         <td>
                             <div class="dropdown">
@@ -137,7 +141,9 @@
                     <th>Massa</th>
                     <th>Recheio</th>
                     <th>Quantidade</th>
+                    <th>Data Encomenda</th>
                     <th>Data Evento</th>
+                    <th>Observações</th>
                     <th>Preço total c/ iva</th>
                     <th>Estado</th>
                     <th>Imagem</th>
@@ -153,7 +159,9 @@
                         <td><?= htmlspecialchars($enc['massa_final'] ?: $enc['massa']) ?: '-' ?></td>
                         <td><?= htmlspecialchars($enc['recheio_final'] ?: $enc['recheio']) ?: '-' ?></td>
                         <td><?= $enc['quantidade_final'] ?></td>
+                        <td><?= $enc['data_encomenda_personalizada'] ?></td>
                         <td><?= dd_formata_data($enc['data_evento_final']) ?: $enc['data_evento'] ?></td>
+                        <td><?= htmlspecialchars($enc['observacoes']) ?: '-' ?></td>
                         <td><?= number_format($enc['preco_total'] + $enc['iva'], 2, ',', '.') ?>€</td>
                         <td>
                             <div class="dropdown">
@@ -183,7 +191,9 @@
                         <td><?= htmlspecialchars($enc['massa']) ?: '-' ?></td>
                         <td><?= htmlspecialchars($enc['recheio']) ?: '-' ?></td>
                         <td><?= $enc['quantidade_final'] ?></td>
-                        <td><?= dd_formata_data($enc['data_evento']) ?></td>
+                        <td><?= $enc['data_encomenda_personalizada'] ?></td>
+                        <td><?= dd_formata_data($enc['data_evento']) ?></td>~
+                        <td><?= htmlspecialchars($enc['observacoes']) ?: '-' ?></td>
                         <td>Encomenda pendente</td>
                         <td>
                             <div class="dropdown">

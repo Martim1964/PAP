@@ -10,13 +10,15 @@
     }
 
     $id     = isset($_GET['id']) ? (int)$_GET['id'] : 0; //Ver o id da conta que o estado foi alterado
-    $estado = isset($_GET['estado']) ? mysqli_real_escape_string($con, $_GET['estado']) : ''; //Alterar  o estado
+    $estado = isset($_GET['estado']) ? $_GET['estado'] : ''; //Alterar  o estado
 
     $estados_validos = ['pendente', 'confirmada', 'pronta', 'entregue', 'cancelada']; //Verifica o nome do estado
     
     if ($id > 0 && in_array($estado, $estados_validos)) { //Altera o estado conforme a escolha do admin
-        $sql = "UPDATE encomendas_personalizadas SET estado = '$estado' WHERE id = $id";
-        mysqli_query($con, $sql);
+        $stmt = $con->prepare("UPDATE encomendas_personalizadas SET estado = ? WHERE id = ?");
+        $stmt->bind_param("si", $estado, $id);
+        $stmt->execute();
+        $stmt->close();
     
     if($estado == 'confirmada'){
          header("Location: ../../pages/data/admin-data-encomendas.php?confirmar_id=$id");

@@ -14,24 +14,25 @@
 
     if($_SERVER['REQUEST_METHOD'] === 'POST'){ //Recebe os dados inseridos pelo administrador
             $id         = (int)$_POST['encomenda_id'];
-            $tamanho    = mysqli_real_escape_string($con, $_POST['tamanho_edit']);
-            $massa      = mysqli_real_escape_string($con, $_POST['massa_edit']);
-            $recheio    = mysqli_real_escape_string($con, $_POST['recheio_edit']);
+            $tamanho    = $_POST['tamanho_edit'];
+            $massa      = $_POST['massa_edit'];
+            $recheio    = $_POST['recheio_edit'];
             $quantidade = (int)$_POST['quantidade_edit'];
-            $dataEvento = mysqli_real_escape_string($con, $_POST['data_evento_edit']);
+            $dataEvento = $_POST['data_evento_edit'];
 
             $precoUnit      = round((float)$_POST['preco_unit_edit'], 2);
             $precoTotal     = round($precoUnit * $quantidade, 2);
             $iva            = round($precoTotal * 0.23, 2);
 
             //Atualiza a tabela das encomendas personalizadas com as novas alterações
-            $sql = "UPDATE encomendas_personalizadas SET 
-            tamanho_final = '$tamanho', massa_final = '$massa', recheio_final = '$recheio',
-            quantidade_final = $quantidade, data_evento_final = '$dataEvento', preco_unit = $precoUnit,
-            preco_total = $precoTotal, iva = $iva, estado = 'confirmada'
-            WHERE id = $id";
-
-            mysqli_query($con, $sql); //Executar a query inserindo todos os dados 
+            $stmt = $con->prepare("UPDATE encomendas_personalizadas SET 
+            tamanho_final = ?, massa_final = ?, recheio_final = ?,
+            quantidade_final = ?, data_evento_final = ?, preco_unit = ?,
+            preco_total = ?, iva = ?, estado = 'confirmada'
+            WHERE id = ?");
+            $stmt->bind_param("sssiddddi", $tamanho, $massa, $recheio, $quantidade, $dataEvento, $precoUnit, $precoTotal, $iva, $id);
+            $stmt->execute();
+            $stmt->close(); 
         
 
             //Calcular preço com iva para o email

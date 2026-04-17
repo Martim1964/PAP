@@ -10,16 +10,18 @@ $response = ['success' => false];
 
 if(is_array($post_order) && count($post_order) > 0){
     $updated = true;
+    $stmt = $con->prepare("UPDATE informacoes SET ordem = ? WHERE id = ?");
     for($order_no = 0; $order_no < count($post_order); $order_no++)
     {
-        $id = mysqli_real_escape_string($con, $post_order[$order_no]);
+        $id = $post_order[$order_no];
         $nova_posicao = $order_no + 1;
         
-        $query = "UPDATE informacoes SET ordem = '$nova_posicao' WHERE id = '$id'";
-        if(!mysqli_query($con, $query)){
+        $stmt->bind_param("ii", $nova_posicao, $id);
+        if(!$stmt->execute()){
             $updated = false;
         }
     }
+    $stmt->close();
     if($updated){
         mysqli_query($con, "SET @rank = 0");
         mysqli_query($con, "UPDATE informacoes SET ordem = (@rank := @rank + 1) ORDER BY ordem ASC");

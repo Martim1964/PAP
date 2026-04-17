@@ -8,6 +8,7 @@
 session_start();
 
 require_once __DIR__ . '/../includes/db.php';
+require_once __DIR__ . '/../includes/carrinho.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
@@ -19,20 +20,25 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $password         = trim($_POST['confirm_password'] ?? '');
 
     // --- VALIDAÇÕES BÁSICAS ---
-    if (empty($nome) || empty($email) || empty($password)) {
-        $_SESSION['regist_error'] = 'Por favor preenche todos os campos obrigatórios.';
+    if (empty($nome) || empty($email) || empty($password) || (!empty($data_nascimento) && !dd_validar_idade_minima($data_nascimento))) {
+        $_SESSION['regist_error'] = 'Por favor insira todos os dados obrigatórios e/ou verifique a sua data de nascimento.';
         header('Location: ../pages/regist.php');
         exit;
     }
 
     // Verifica se o email já existe na BD
-    $emailEscapado = mysqli_real_escape_string($con, $email);
-    $verificar = mysqli_query($con, "SELECT id FROM utilizadores WHERE email = '$emailEscapado' LIMIT 1");
-    if (mysqli_num_rows($verificar) > 0) {
+    $stmtCheck = $con->prepare("SELECT id FROM utilizadores WHERE email = ? LIMIT 1");
+    $stmtCheck->bind_param("s", $email);
+    $stmtCheck->execute();
+    $stmtCheck->store_result();
+
+    if ($stmtCheck->num_rows > 0) {
         $_SESSION['regist_error'] = 'Este email já está registado.';
+        $stmtCheck->close();
         header('Location: ../pages/regist.php');
         exit;
     }
+    $stmtCheck->close();
 
     // --- HASH DA PASSWORD ---
     // Nunca guardamos a password em texto — usamos bcrypt
@@ -40,26 +46,26 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // --- DATA DE NASCIMENTO ---
     // Pode ser null se o utilizador não preencheu
-    $dataNasc = !empty($data_nascimento) ? "'$data_nascimento'" : "NULL";
+    $dataNasc = !empty($data_nascimento) ? $data_nascimento : null;
 
     // --- INSERIR NA BASE DE DADOS ---
-    $nomeEsc     = mysqli_real_escape_string($con, $nome);
-    $emailEsc    = mysqli_real_escape_string($con, $email);
-    $telefoneEsc = mysqli_real_escape_string($con, $telefone);
-    $hashEsc     = mysqli_real_escape_string($con, $hashPass);
+    $sql = "INSERT INTO utilizadores (nome, email, pass, telefone, data_nascimento) 
+            VALUES (?, ?, ?, ?, ?)";
+    
+    $stmt = $con->prepare($sql);
+    $stmt->bind_param("sssss", $nome, $email, $hashPass, $telefone, $dataNasc);
 
-    $inserir = "INSERT INTO utilizadores (nome, email, pass, telefone, data_nascimento)
-                VALUES ('$nomeEsc', '$emailEsc', '$hashEsc', '$telefoneEsc', $dataNasc)";
-
-    if (mysqli_query($con, $inserir)) {
+    if ($stmt->execute()) {
         $_SESSION['regist_success'] = 'Registo feito com sucesso! Podes fazer login.';
         header('Location: ../pages/login.php');
     } else {
-        $_SESSION['regist_error'] = 'Erro ao fazer o registo: ' . mysqli_error($con);
+        $_SESSION['regist_error'] = 'Erro ao fazer o registo: ' . $stmt->error;
         header('Location: ../pages/regist.php');
     }
 
+    $stmt->close();
     exit;
 }
 
-mysqli_close($con);
+$con->close();
+?>

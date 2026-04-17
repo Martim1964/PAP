@@ -9,10 +9,13 @@
     }
 
     $id     = isset($_GET['id'])     ? (int)$_GET['id']                        : 0;
-    $estado = isset($_GET['estado']) ? mysqli_real_escape_string($con, $_GET['estado']) : '';
+    $estado = isset($_GET['estado']) ? $_GET['estado'] : '';
 
     if ($id > 0 && in_array($estado, ['pendente', 'respondido'])) {
-        mysqli_query($con, "UPDATE contactos SET estado = '$estado' WHERE id = $id");
+        $stmt = $con->prepare("UPDATE contactos SET estado = ? WHERE id = ?");
+        $stmt->bind_param("si", $estado, $id);
+        $stmt->execute();
+        $stmt->close();
         ?>
             <script>
                 alert('Estado do contacto alterado com sucesso');

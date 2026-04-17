@@ -13,9 +13,12 @@
     $user_id = (int)$_SESSION['user_id'];
 
     // Buscar dados do utilizador
-    $sql_user = "SELECT nome, email, telefone, data_nascimento FROM utilizadores WHERE id = $user_id LIMIT 1";
-    $result_user = mysqli_query($con, $sql_user);
-    $user = mysqli_fetch_assoc($result_user);
+    $stmt = $con->prepare("SELECT nome, email, telefone, data_nascimento FROM utilizadores WHERE id = ? LIMIT 1");
+    $stmt->bind_param("i", $user_id);
+    $stmt->execute();
+    $result_user = $stmt->get_result();
+    $user = $result_user->fetch_assoc();
+    $stmt->close();
 
     // Filtro
     $filtro = $_GET['filtro'] ?? 'todas';
@@ -31,25 +34,45 @@
     // Buscar encomendas do utilizador
     $sql_enc = "SELECT bolo_nome, tamanho_label, massa_label, recheio_label, quantidade, data_evento, estado 
                 FROM encomendas 
-                WHERE utilizador_id = $user_id $where_extra 
-                ORDER BY data_encomenda DESC";
-    $result_enc = mysqli_query($con, $sql_enc);
+                WHERE utilizador_id = ?";
+    if ($filtro === 'por_entregar') {
+        $sql_enc .= " AND estado NOT IN ('entregue', 'cancelada')";
+    } elseif ($filtro === 'entregues') {
+        $sql_enc .= " AND estado = 'entregue'";
+    } elseif ($filtro === 'canceladas') {
+        $sql_enc .= " AND estado = 'cancelada'";
+    }
+    $sql_enc .= " ORDER BY data_encomenda DESC";
+
+    $stmt_enc = $con->prepare($sql_enc);
+    $stmt_enc->bind_param("i", $user_id);
+    $stmt_enc->execute();
+    $result_enc = $stmt_enc->get_result();
+    $stmt_enc->close();
 
     // Buscar encomendas personalizadas PENDENTES (por verificação)
     $sql_pendentes = "SELECT tamanho, massa, recheio, data_evento, estado, imagem 
                       FROM encomendas_personalizadas 
-                      WHERE utilizador_id = $user_id 
+                      WHERE utilizador_id = ? 
                         AND estado NOT IN ('confirmada', 'pronta', 'entregue')
                       ORDER BY id DESC";
-    $result_pendentes = mysqli_query($con, $sql_pendentes);
+    $stmt_pendentes = $con->prepare($sql_pendentes);
+    $stmt_pendentes->bind_param("i", $user_id);
+    $stmt_pendentes->execute();
+    $result_pendentes = $stmt_pendentes->get_result();
+    $stmt_pendentes->close();
 
     // Buscar encomendas personalizadas CONFIRMADAS
     $sql_confirmadas = "SELECT *
                         FROM encomendas_personalizadas 
-                        WHERE utilizador_id = $user_id 
+                        WHERE utilizador_id = ? 
                           AND estado IN ('confirmada', 'pronta', 'entregue')
                         ORDER BY id DESC";
-    $result_confirmadas = mysqli_query($con, $sql_confirmadas);
+    $stmt_confirmadas = $con->prepare($sql_confirmadas);
+    $stmt_confirmadas->bind_param("i", $user_id);
+    $stmt_confirmadas->execute();
+    $result_confirmadas = $stmt_confirmadas->get_result();
+    $stmt_confirmadas->close();
 ?>
 <!DOCTYPE html>
 <html lang="pt-PT">

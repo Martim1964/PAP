@@ -11,13 +11,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $assunto = $_POST['assunto'];
     $mensagem = $_POST['mensagem'];
 
-    $sucesso = guardar_newsletter_enviada($con, [
-        'assunto' => $_POST['assunto'],
-        'mensagem' => $_POST['mensagem'],
-    ]);
+    $sucesso = guardar_newsletter_enviada($con);
 
     // Vou buscar todos os email dos subscritores
-    $query = "SELECT email FROM newsletter_subscritores";
+    $query = "SELECT email, ativo FROM newsletter_subscritores WHERE ativo = '1'";
     $result = mysqli_query($con, $query);
 
     $contador = 0; //Crio a variável para contar todos os emails 
@@ -39,6 +36,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $mensagem
             <br><br>
             <p>Qualquer questão disponha!</p>
+            <br><br><br>
+            Não quer receber mais newsletters? 
+            <a href="http://localhost/PAP/actions/processa_newsletter_cancel.php?email=$email">
+            Clique aqui para cancelar a subscrição
             
             END;
                 
