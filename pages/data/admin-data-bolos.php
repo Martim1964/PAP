@@ -17,6 +17,15 @@
 
     $mensagem = $_GET['mensagem'] ?? '';
     $tipo     = $_GET['tipo'] ?? '';
+    $abrir_modal = $_GET['abrir_modal'] ?? '';
+    $erro_bolo_slug = isset($_GET['erro_bolo_slug']) && $_GET['erro_bolo_slug'] === '1';
+    $form_tamanho = [
+        'bolo_slug' => $_GET['bolo_slug'] ?? '',
+        'label' => $_GET['label'] ?? '',
+        'slug' => $_GET['slug'] ?? '',
+        'preco' => $_GET['preco'] ?? '',
+        'ordem' => $_GET['ordem'] ?? '',
+    ];
 ?>
 <!DOCTYPE html>
 <html lang="pt-PT">
@@ -347,7 +356,7 @@
                             <input type="text" name="slug" id="slug_massa" class="form-control" required>
                         </div>
                         <div class="mb-3">
-                            <label class="form-label" for="preco_massa">Preço (€)</label>
+                            <label class="form-label" for="preco_massa">Preço (€) s/IVA</label>
                             <input type="number" step="0.01" min="0" name="preco" id="preco_massa" class="form-control" required>
                         </div>
                         <div class="mb-3">
@@ -386,7 +395,7 @@
                             <input type="text" name="slug" id="slug_recheio" class="form-control" required>
                         </div>
                         <div class="mb-3">
-                            <label class="form-label" for="preco_recheio">Preço (€)</label>
+                            <label class="form-label" for="preco_recheio">Preço (€) s/IVA</label>
                             <input type="number" step="0.01" min="0" name="preco" id="preco_recheio" class="form-control" required>
                         </div>
                         <div class="mb-3">
@@ -421,23 +430,26 @@
                         </div>
                         <div class="mb-3">
                             <label class="form-label" for="bolo_slug_tam">Slug do bolo <small class="text-muted">(ex: bolo-chocolate)</small></label>
-                            <input type="text" name="bolo_slug" id="bolo_slug_tam" class="form-control" required>
+                            <input type="text" name="bolo_slug" id="bolo_slug_tam" class="form-control <?= $erro_bolo_slug ? 'is-invalid' : '' ?>" value="<?= htmlspecialchars($form_tamanho['bolo_slug']) ?>" required>
+                            <?php if ($erro_bolo_slug): ?>
+                                <div class="invalid-feedback">O slug indicado n&atilde;o est&aacute; associado a nenhum bolo do cat&aacute;logo.</div>
+                            <?php endif; ?>
                         </div>
                         <div class="mb-3">
                             <label class="form-label" for="label_tam">Label <small class="text-muted">(ex: Tamanho Normal)</small></label>
-                            <input type="text" name="label" id="label_tam" class="form-control" required>
+                            <input type="text" name="label" id="label_tam" class="form-control" value="<?= htmlspecialchars($form_tamanho['label']) ?>" required>
                         </div>
                         <div class="mb-3">
                             <label class="form-label" for="slug_tam">Slug <small class="text-muted">(ex: normal)</small></label>
-                            <input type="text" name="slug" id="slug_tam" class="form-control" required>
+                            <input type="text" name="slug" id="slug_tam" class="form-control" value="<?= htmlspecialchars($form_tamanho['slug']) ?>" required>
                         </div>
                         <div class="mb-3">
-                            <label class="form-label" for="preco_tam">Preço (€)</label>
-                            <input type="number" step="0.01" min="0" name="preco" id="preco_tam" class="form-control" required>
+                            <label class="form-label" for="preco_tam">Preço (€) s/IVA</label>
+                            <input type="number" step="0.01" min="0" name="preco" id="preco_tam" class="form-control" value="<?= htmlspecialchars($form_tamanho['preco']) ?>" required>
                         </div>
                         <div class="mb-3">
                             <label class="form-label" for="ordem_tam">Ordem</label>
-                            <input type="number" min="1" name="ordem" id="ordem_tam" class="form-control" required>
+                            <input type="number" min="1" name="ordem" id="ordem_tam" class="form-control" value="<?= htmlspecialchars($form_tamanho['ordem']) ?>" required>
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -448,8 +460,16 @@
             </div>
         </div>
     </div>
-
-
+    <?php if ($abrir_modal === 'tamanho'): ?>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const modalElement = document.getElementById('modalNovoTamanho');
+            if (modalElement) {
+                new bootstrap.Modal(modalElement).show();
+            }
+        });
+    </script>
+    <?php endif; ?>
 
     <?php include __DIR__ . '/../../includes/footer-bolos.php'; ?>
 </body>

@@ -16,7 +16,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     <script>
         alert('Nova informação inserida com sucesso!');
-        window.location.href = '../pages/data/admin-data.php';
+        window.location.href = '../pages/data/menu-admin.php';
     </script>;
 
 

@@ -24,36 +24,36 @@ if (!isset($_SESSION['user_id']) || $_SESSION['admin'] != 1) {
 
 <div class="container my-5">
     <h6 class="text-muted text-uppercase fw-semibold">Doces Dias</h6>
-    <h1 class="mb-5">Painel de administrador</h1>
+    <h1 class="mb-5">Painel de administrador</h1> <?php //Titulo ?>
 
     <div class="row g-3">
         <div class="col-md-6">
-            <a href="admin-data-encomendas.php" class="card text-decoration-none h-100 p-4">
+            <a href="admin-data-encomendas.php" class="card text-decoration-none h-100 p-4"><?php //Ligação a pagina da gestao de encomendas ?>
                 <h5>Gestão de encomendas</h5>
                 <p class="text-muted mb-0">Ver e atualizar o estado das encomendas normais e personalizadas.</p>
             </a>
         </div>
         <div class="col-md-6">
-            <a href="admin-data-clientes.php" class="card text-decoration-none h-100 p-4">
+            <a href="admin-data-clientes.php" class="card text-decoration-none h-100 p-4"> <?php //Ligação a pagina da gestao de clientes ?>
                 <h5>Gestão de clientes</h5>
                 <p class="text-muted mb-0">Pesquisar clientes, ativar contas e gerir permissões de administrador.</p>
             </a>
         </div>
-        <div class="col-md-6">
-            <a href="admin-data-info.php" class="card text-decoration-none h-100 p-4">
+        <div class="col-md-6"> 
+            <a href="admin-data-info.php" class="card text-decoration-none h-100 p-4"> <?php //Ligação a pagina da gestao da pagina de informacoes ?>
                 <h5>Gestão da página de informações</h5>
                 <p class="text-muted mb-0">Adicionar, reordenar e gerir as informações visíveis ao público.</p>
             </a>
         </div>
         <div class="col-md-6">
-            <a href="admin-data-newsletters.php" class="card text-decoration-none h-100 p-4">
+            <a href="admin-data-newsletters.php" class="card text-decoration-none h-100 p-4"> <?php //Ligação a pagina da gestao da gestao de newsletters ?>
                 <h5>Gestão de newsletters</h5>
                 <p class="text-muted mb-0">Redigir e enviar newsletters para todos os subscritores.</p>
             </a>
         </div>
 
         <div class="col-md-6">
-            <a href="admin-data-bolos.php" class="card text-decoration-none h-100 p-4">
+            <a href="admin-data-bolos.php" class="card text-decoration-none h-100 p-4"> <?php //Ligação a pagina da gestao de bolos ?>
                 <h5>Gestão de bolos</h5>
                 <p class="text-muted mb-0">Adicionar novos produtos, novas massas, recheios e tamanhos.</p>
             </a>
