@@ -79,6 +79,7 @@ if (!empty($erros)) {
 
 // --- CALCULAR PREÇO A PARTIR DA BASE DE DADOS ---
 // Os preços vêm do MySQL — ninguém consegue manipulá-los no browser
+//Os 3 primeiros vêm das funções do db.php e as outras 3 vêm do formulário
 $precoUnitario = calcular_preco($tamanhos, $massas, $recheios, $tamanho, $massa, $recheio);
 
 if ($precoUnitario === null) {

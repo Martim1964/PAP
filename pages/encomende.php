@@ -35,6 +35,8 @@
 <body>
     <?php include '../includes/header.php'; ?>
 
+    <main>
+
     <h1>Escolha um tipo de bolo e faça já a sua encomenda!</h1>
 
     <div class="section-cakes">
@@ -92,6 +94,8 @@
             </div>
         </div>
     </section>
+
+    </main>
 
     <?php include '../includes/footer.php'; ?>
 </body>

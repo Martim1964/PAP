@@ -11,6 +11,7 @@
 <body>
     <?php include '../includes/header.php'; ?>
 
+    <main>
     <div class="container" style="max-width: 800px; margin: 60px auto; padding: 0 20px; line-height: 1.8; color: #444;">
 
         <h1 style="margin-bottom: 8px;">Termos e Condições</h1>
@@ -52,6 +53,8 @@
         <p>Estes termos e condições são regidos e interpretados de acordo com a legislação portuguesa e da União Europeia, nomeadamente o Regulamento Geral sobre a Proteção de Dados (RGPD). Qualquer litígio fica sujeito à jurisdição exclusiva dos tribunais portugueses.</p>
 
     </div>
+
+    </main>
 
     <?php include '../includes/footer.php'; ?>
 </body>

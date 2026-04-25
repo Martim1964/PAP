@@ -41,6 +41,8 @@
 <body>
     <?php include __DIR__ . '/../../includes/header-bolos.php'; ?>
 
+    <main>
+
     <div class="container my-5">
 
         <nav aria-label="breadcrumb" class="mb-4">
@@ -289,6 +291,8 @@
         }
     });
     </script>
+
+    </main>
 
     <?php include __DIR__ . '/../../includes/footer-bolos.php'; ?>
 </body>

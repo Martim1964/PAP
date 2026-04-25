@@ -25,7 +25,10 @@ $res_bolos = mysqli_query($con, $query);
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
-    <?php include '../../includes/header-bolos.php'; ?>
+    <?php include '../../includes/header-bolos.php'; ?>~
+
+    <main>
+
     <div class="title">
         <h1>Bolos de Casamento</h1>
     </div>
@@ -74,6 +77,8 @@ $res_bolos = mysqli_query($con, $query);
             </div>
         </div>
     </section>
+
+    </main>
 
     <?php include '../../includes/footer-bolos.php'; ?>
 </body>

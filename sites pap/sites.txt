@@ -30,3 +30,6 @@ https://www.youtube.com/watch?v=w6bWNIR2ELY
 https://www.youtube.com/watch?v=2OPVViV-GQk&t=324s
 https://www.youtube.com/watch?v=GpngIucpMkw
 https://www.youtube.com/watch?v=noU9N9a__YQ
+https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model
+https://cucumber.io
+https://tcm-sec.com/avoid-or-1-equals-1-in-sql-injections/

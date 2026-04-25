@@ -11,6 +11,8 @@
 <body>
     <?php include '../includes/header.php'; ?>
 
+    <main>
+
     <div class="container" style="max-width: 800px; margin: 60px auto; padding: 0 20px; line-height: 1.8; color: #444;">
 
         <h1 style="margin-bottom: 8px;">Política de Privacidade</h1>
@@ -73,6 +75,8 @@
         <p>Se tiver alguma dúvida sobre como tratamos os seus dados pessoais, não hesite em <a href="contactos.php">entrar em contacto connosco</a>.</p>
 
     </div>
+
+    </main>
 
     <?php include '../includes/footer.php'; ?>
 </body>

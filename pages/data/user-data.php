@@ -32,9 +32,7 @@
     }
 
     // Buscar encomendas do utilizador
-    $sql_enc = "SELECT bolo_nome, tamanho_label, massa_label, recheio_label, quantidade, data_evento, estado 
-                FROM encomendas 
-                WHERE utilizador_id = ?";
+    $sql_enc = "SELECT bolo_nome, tamanho_label, massa_label, recheio_label, quantidade, data_evento, estado FROM encomendas WHERE utilizador_id = ?";
     if ($filtro === 'por_entregar') {
         $sql_enc .= " AND estado NOT IN ('entregue', 'cancelada')";
     } elseif ($filtro === 'entregues') {
@@ -87,6 +85,8 @@
 </head>
 <body>
     <?php include __DIR__ . '/../../includes/header-bolos.php'; ?>
+
+    <main>
 
     <!-- DADOS DO UTILIZADOR -->
     <div class="container my-5">
@@ -300,6 +300,8 @@
             </div>
         </div>
     </div>
+
+    </main>
 
     <?php include __DIR__ . '/../../includes/footer-bolos.php'; ?>
 </body>

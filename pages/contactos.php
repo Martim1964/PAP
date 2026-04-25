@@ -21,7 +21,7 @@ session_start();
 
 <body>
     <?php include '../includes/header.php'; ?>
-
+        <main>
         <div class="title">
             <h1>Os Nossos Contactos</h1>
         </div>
@@ -164,6 +164,8 @@ session_start();
                 </p>
             </div>
         <?php endif; ?>
+
+    </main>
 
     <script src="../js/contactos.js"></script>
     <?php include '../includes/footer.php'; ?>

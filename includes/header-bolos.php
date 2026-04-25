@@ -9,6 +9,7 @@
     <link rel="icon" href="../../img-pap/logotipo-docesdias.jpg"> <!-- Site favicon -->
     <title>Header - Doces Dias</title>
     <link rel="stylesheet" href="../../css/header.css"> <!-- Custom header styles -->
+    <script src="../../js/acessibilidade.js" defer></script>
         
 
 <body>
@@ -57,6 +58,23 @@
                 
                 <!-- Right side: Login, Cart and Social Media -->
                 <ul class="navbar-nav">
+
+                <li class="nav-item">
+                    <button id="btn-ouvir" class="btn-acessibilidade" aria-label="Ouvir conteúdo da página">🔊</button>
+                </li>
+
+                <li class="nav-item">
+                    <button id="btn-parar" class="btn-acessibilidade" aria-label="Parar leitura da página">⏹</button>
+                </li>
+
+                <li class="nav-item">
+                    <button id="btn-aumentar" class="btn-acessibilidade" aria-label="Aumentar tamanho do texto">A+</button>
+                </li>
+
+                <li class="nav-item">
+                    <button id="btn-diminuir" class="btn-acessibilidade" aria-label="Diminuir tamanho do texto">A-</button>
+                </li>
+
                     <?php if(isset($_SESSION['user_id'])): ?>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Abrir menu da conta">

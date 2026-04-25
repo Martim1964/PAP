@@ -13,6 +13,8 @@
 <body>
     <?php include '../includes/header.php'; ?>
 
+    <main>
+
     <!-- Hero Section -->
     <section class="hero-section">
         <div class="container">
@@ -33,7 +35,7 @@
             <div class="content-box">
                 <h2 class="section-heading">O Início</h2>
                 <p class="section-text">
-                    A Doces Dias, anteriormente conhecida por Delicias do Nelinho nasceu a partir de um grande desafio. Manuel, homem de
+                    A Doces Dias, anteriormente conhecida por Delícias do Nelinho nasceu a partir de um grande desafio. Manuel, homem de
                     família, mais conhecido como Nelinho fundou este projeto numa altura complicada na sua vida com mais de 20 anos 
                     de experiência no mundo da pastelaria. Ele decidiu transformar o desemprego numa grande oportunidade onde o amor
                     e as receitas tradicionais foram os ingredientes principais neste capítulo. 
@@ -157,6 +159,8 @@
             <img src="../img-pap/mae.jpg" alt="Mae" class="divider-logo">
         </div>
     </section>
+
+    </main>
 
     <?php include '../includes/footer.php'; ?>
 </body>

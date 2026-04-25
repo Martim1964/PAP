@@ -28,6 +28,8 @@ $cartItems = dd_carrinho_get();
 <body>
 <?php include '../includes/header.php'; ?>
 
+<main>
+
     <div class="finalizar-container">
         <!-- PROGRESSO -->
         <div class="progresso-secao">
@@ -139,6 +141,8 @@ $cartItems = dd_carrinho_get();
         </div>
     </div>
     </form>
+
+    </main>
 
 <?php include '../includes/footer.php'; ?>
 

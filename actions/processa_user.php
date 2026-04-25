@@ -26,12 +26,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         exit;
     }
 
-    // Verifica se o email já existe na BD
+    
     $stmtCheck = $con->prepare("SELECT id FROM utilizadores WHERE email = ? LIMIT 1");
     $stmtCheck->bind_param("s", $email);
     $stmtCheck->execute();
     $stmtCheck->store_result();
 
+    // Verifica se o email já existe na BD
     if ($stmtCheck->num_rows > 0) {
         $_SESSION['regist_error'] = 'Este email já está registado.';
         $stmtCheck->close();

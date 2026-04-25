@@ -1,4 +1,8 @@
 /* Cores inspiradas no logotipo Doces Dias */
+        body {
+            font-size: 100%;
+        }
+
         .navbar-custom {
             background-color: #ed9a9a;
         }
@@ -23,7 +27,26 @@
         .navbar-custom .nav-link i {
             font-size: 1.2rem;
         }
-        
+        .btn-acessibilidade {
+            background: transparent;
+            color: #313131;
+            border: 2px solid #000000;
+            border-radius: 6px;
+            margin: 4px;
+            padding: 6px 10px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .btn-acessibilidade:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .btn-acessibilidade:focus {
+            outline: 3px solid #ffcc00;
+            outline-offset: 3px;
+        }
+
         .navbar-custom .dropdown-menu {
             background-color: #ffffff;
             border: none;
@@ -63,6 +86,10 @@
             }
             .nav-item {
                 border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            }
+            .accessibility-controls {
+                justify-content: flex-start;
+                width: 100%;
             }
         }
 

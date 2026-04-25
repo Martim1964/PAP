@@ -23,7 +23,10 @@ $res_bolos = mysqli_query($con, $query);
     <link rel="stylesheet" href="../../css/dropdown.css">
 </head>
 <body>
-    <?php include '../../includes/header-bolos.php'; ?>
+    <?php include '../../includes/header-bolos.php'; ?>~
+
+    <main>
+    
     <div class="title">
         <h1>Bolos de Batizado</h1>
     </div>
@@ -72,6 +75,8 @@ $res_bolos = mysqli_query($con, $query);
             </div>
         </div>
     </section>
+
+    </main>
 
     <?php include '../../includes/footer-bolos.php'; ?>
 </body>

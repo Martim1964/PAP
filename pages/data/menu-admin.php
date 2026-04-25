@@ -22,6 +22,8 @@ if (!isset($_SESSION['user_id']) || $_SESSION['admin'] != 1) {
 <body>
 <?php include __DIR__ . '/../../includes/header-bolos.php'; ?>
 
+<main>
+
 <div class="container my-5">
     <h6 class="text-muted text-uppercase fw-semibold">Doces Dias</h6>
     <h1 class="mb-5">Painel de administrador</h1> <?php //Titulo ?>
@@ -60,6 +62,8 @@ if (!isset($_SESSION['user_id']) || $_SESSION['admin'] != 1) {
         </div>
     </div>
 </div>
+
+</main>
 
 <?php include __DIR__ . '/../../includes/footer-bolos.php'; ?>
 </body>

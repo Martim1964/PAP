@@ -50,6 +50,8 @@
 <body>
     <?php include __DIR__ . '/../../includes/header-bolos.php'; ?>
 
+    <main>
+
     <div class="container my-5">
 
         <!-- Breadcrumb -->
@@ -71,13 +73,17 @@
             <h4 class="mb-0"><i class="bi bi-person-lines-fill"></i> Clientes</h4>
         </div>
         <hr>
+        <!-- Pesquisar clientes -->
         <form method="GET" class="d-flex gap-2 mb-3">
+            <!-- Serve para garantir que durante a pesquisa os dados em relação à filtragem do estado da encomenda não sejam perdidos ao submeter o formulário de pesquisa -->
             <input type="hidden" name="filtro_contactos" value="<?= htmlspecialchars($filtro_contactos) ?>">
+            <!-- Crio uma caixa de texto para o administrador pesquisar o nome em questão -->
             <input type="text" name="pesquisa" class="form-control form-control-sm"
                 placeholder="Pesquisar por nome..."
                 value="<?= htmlspecialchars($pesquisa) ?>"
                 aria-label="Pesquisar cliente por nome">
             <button type="submit" class="btn btn-outline-primary btn-sm" aria-label="Pesquisar">
+                <!-- Botão para executar o que ele escreveu -->
                 <i class="bi bi-search"></i>
             </button>
         </form>
@@ -206,6 +212,8 @@
 
     </div>
 
+    </main>
+    
     <?php include __DIR__ . '/../../includes/footer-bolos.php'; ?>
 </body>
 </html>

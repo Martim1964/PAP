@@ -67,6 +67,8 @@ $flash         = dd_flash_get(); // Mensagem flash (se existir)
 <body>
 <?php include '../includes/header.php'; ?>
 
+<main>
+
 <div class="carrinho-container">
 
     <!-- COLUNA ESQUERDA: lista de produtos -->
@@ -206,6 +208,8 @@ $flash         = dd_flash_get(); // Mensagem flash (se existir)
     </aside>
 
 </div><!-- fim carrinho-container -->
+
+</main>
 
 <script src="../js/compras.js"></script>
 <?php include '../includes/footer.php'; ?>

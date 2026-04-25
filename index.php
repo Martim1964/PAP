@@ -21,6 +21,8 @@
 
 <?php include 'includes/header-root.php'; ?>
 
+<main>
+
     <div class="container">
         <h3 class="subtitle">Bolos caseiros deliciosos</h3>
         <h1 class="main-title">DOCES DIAS</h1>
@@ -69,6 +71,8 @@
         <h2>Veja aqui todas as informações importantes para as suas encomendas</h3>
         <button><a href="pages/informacoes.php">Ver todas as informações</a></button>
     </div>
+
+</main>
 
 <?php include 'includes/footer-root.php'; ?>
 

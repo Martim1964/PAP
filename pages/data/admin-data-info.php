@@ -90,6 +90,8 @@
 <body>
     <div class="all-content-wrapper">
         <?php include __DIR__ . '/../../includes/header-bolos.php'; ?>
+
+        <main>
         <section class="container">
             <!-- Breadcrumb -->
         <nav aria-label="breadcrumb" class="mb-4">
@@ -112,12 +114,13 @@
                                     <div class="alert icon-alert with-arrow alert-success form-alter" role="alert" style="display:none;">
                                         <i class="fa fa-fw fa-check-circle"></i>
                                         <span class="success-message">Página de informações atualizada com sucesso</span> 
-                                        <?php //Mensagem criada após alteração da ordem via JavaScript?>
+                                        <!-- Mensagem criada após alteração da ordem via JavaScript -->
                                     </div>
 
                                     <div class="alert icon-alert with-arrow alert-danger form-alter" role="alert" style="display:none;">
                                         <i class="fa fa-fw fa-times-circle"></i>
-                                        <span class="warning-message"> A lista está vazia ou ocorreu um erro. </span> <?php //Caso a lista esteja vazia ?>
+                                        <span class="warning-message"> A lista está vazia ou ocorreu um erro. </span> 
+                                        <!-- Caso a lista esteja vazia -->
                                     </div>
 
                                     <ul class="list-unstyled" id="post_list">
@@ -239,11 +242,13 @@
 
     </div>
 
+    </main>
 
 
-    <?php
-    // jQuery para manipular DOM, eventos e AJAX
-    ?>
+
+    <!--
+    jQuery para manipular DOM, eventos e AJAX
+-->
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 
     <?php

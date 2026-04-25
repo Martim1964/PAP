@@ -38,7 +38,9 @@
     if($_POST['observacoes']){
         $lineBuy .= ' | Observações: ' . $_POST['observacoes'];
     }
-    $lineBuy .= ' | Imagem: ' . 'A mesma foi inserida com sucesso, vai para verificação';
+    if($_POST['imagem']){
+        $lineBuy .= ' | Imagem: ' . 'A mesma foi inserida com sucesso, vai para verificação';
+    }
 
     //Enviar o email
     $email = $_SESSION['user']; //Ir buscar o email que esta na sessao de utilizador
@@ -52,7 +54,7 @@
 
         <h2> Obrigado por personalizar a sua encomenda connosco!</h2>
         <p>Brevemente entraremos em contacto para confirmação de todos os detalhes via email ou número de telefone</p>
-        <p>Após confirmação pode acompanhar a sua encomenda na sua área reservada</p>
+        <p>Após confirmação pode acompanhar a sua encomenda na sua área reservada</p><
         <br>    
         <strong>Detalhes da sua encomenda:</strong><br>
         $lineBuy

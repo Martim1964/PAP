@@ -133,7 +133,7 @@ function calcular_preco($tamanhos, $massas, $recheios, $tamanho, $massa = '', $r
     $total += ($massa   && isset($massas[$massa]))     ? $massas[$massa]['preco']     : 0;
     $total += ($recheio && isset($recheios[$recheio])) ? $recheios[$recheio]['preco'] : 0;
 
-    return round($total, 2);
+    return round($total, 2); //2 casas decimais
 }
 
 // ------------------------------------------------------------

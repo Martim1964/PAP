@@ -56,6 +56,8 @@ $category = 'cupcakes';
 <body>
 <?php include '../../includes/header-bolos.php'; ?>
 
+<main>
+
 
 <div class="bcontainer" data-category="<?= htmlspecialchars($category) ?>">
 
@@ -133,6 +135,8 @@ $category = 'cupcakes';
         </form>
     </div>
 </div>
+
+</main>
 
 <script>
     window.precosCupcakesDB = <?= json_encode(array_map(fn($t) => $t['preco'], $tamanhos)) ?>;

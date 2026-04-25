@@ -15,6 +15,7 @@ require_once __DIR__ . '/../includes/verificar_ativo.php'; ?>
 </head>
 <body>
 <?php include '../includes/header.php'; ?>
+    <main>
 
     <div class="bcontainer">
         <div class="title">
@@ -198,6 +199,8 @@ require_once __DIR__ . '/../includes/verificar_ativo.php'; ?>
             </form>
         </div>
     </div>
+
+    </main>
 
     <script src="../js/bolospersonalizados.js?v=2"></script>
 

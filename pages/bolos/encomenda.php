@@ -49,6 +49,8 @@ $category = 'outros';
 <body>
 <?php include '../../includes/header-bolos.php'; ?>
 
+<main>
+
 <?php $flash = dd_flash_get(); ?>
 
 <div class="bcontainer" data-category="<?= htmlspecialchars($category) ?>">
@@ -207,6 +209,8 @@ $category = 'outros';
         </form>
     </div>
 </div>
+
+</main>
 
 <!-- Passa os preços da BD para o JavaScript -->
 <script>

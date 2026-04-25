@@ -19,6 +19,8 @@ dd_start_session();
 <body>
     <?php include '../includes/header.php'; ?>
 
+    <main>
+
     <!-- Hero Section -->
     <section class="hero-section">
         <div class="container">
@@ -48,6 +50,8 @@ dd_start_session();
         <?php endforeach; ?>
     <?php endif; ?>
 </div>
+
+</main>
 
 
     <?php include '../includes/footer.php'; ?>

@@ -16,6 +16,8 @@
     include '../includes/header.php';
     ?>
 
+    <main>  
+
     <div class="container regist-container">
         <img class="img-fluid" src="../img-pap/logotipo-docesdias.jpg" alt="Bolo Doces Dias">
 
@@ -123,6 +125,8 @@
             </form>
         </div>
     </div>
+
+    </main>
 
     <script src="../js/regist.js"></script>
     <?php include '../includes/footer.php'; ?>
