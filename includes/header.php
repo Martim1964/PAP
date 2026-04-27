@@ -119,19 +119,19 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="https://wa.me/351913047889" target="_blank">
+                    <a class="nav-link" href="https://wa.me/351913047889" target="_blank" rel="noopener noreferrer" title="WhatsApp" aria-label="Abrir WhatsApp da Doces Dias">
                         <i class="bi bi-whatsapp"></i>
                     </a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="https://www.instagram.com/docesdias.pt" target="_blank">
+                    <a class="nav-link" href="https://www.instagram.com/docesdias.pt" target="_blank" rel="noopener noreferrer" title="Instagram" aria-label="Abrir Instagram da Doces Dias">
                         <i class="bi bi-instagram"></i>
                     </a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="https://www.facebook.com/docessdias" target="_blank">
+                    <a class="nav-link" href="https://www.facebook.com/docessdias" rel="noopener noreferrer" title="Facebook" aria-label="Abrir Facebook da Doces Dias">
                         <i class="bi bi-facebook"></i>
                     </a>
                 </li>
