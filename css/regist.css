@@ -51,7 +51,7 @@ body {
     grid-template-columns: 1fr 1fr;
     gap: 0;
     max-width: 1200px;
-    margin: 60px auto 40px;
+    margin: 3.75rem auto 2.5rem;
     background: var(--bg-white);
     border-radius: var(--border-radius);
     overflow: hidden;
@@ -90,7 +90,7 @@ body {
 .regist-title {
     font-size: 0.95rem;
     color: var(--text-light);
-    margin-bottom: 30px;
+    margin-bottom: 1.875rem;
     text-align: center;
     font-weight: 400;
     letter-spacing: 0.5px;
@@ -125,7 +125,7 @@ body {
 
 .regist-form {
     width: 100%;
-    padding: 60px 50px;
+    padding: 3.75rem 3.125rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -134,7 +134,7 @@ body {
 .regist-form h3 {
     font-size: 2.2rem;
     color: var(--text-dark);
-    margin-bottom: 15px;
+    margin-bottom: 0.9375rem;
     text-align: center;
     font-weight: 800;
     letter-spacing: 1px;
@@ -143,7 +143,7 @@ body {
 .regist-form p {
     color: var(--text-light);
     text-align: center;
-    margin-bottom: 35px;
+    margin-bottom: 2.1875rem;
     font-size: 0.95rem;
 }
 
@@ -153,14 +153,14 @@ body {
 .form-label {
     font-weight: 700;
     color: var(--text-dark);
-    margin-bottom: 10px;
+    margin-bottom: 0.625rem;
     font-size: 0.9rem;
     letter-spacing: 0.3px;
     text-transform: uppercase;
 }
 
 .form-control {
-    padding: 14px 18px;
+    padding: 0.875rem 1.125rem;
     border: 2px solid #e0e0e0;
     border-radius: 10px;
     font-size: 0.95rem;
@@ -187,7 +187,7 @@ body {
 }
 
 .mb-3 {
-    margin-bottom: 20px;
+    margin-bottom: 1.25rem;
 }
 
 /* ========================================
@@ -195,7 +195,7 @@ body {
    ======================================== */
 .regist-button {
     width: 100%;
-    padding: 16px;
+    padding: 1rem;
     background: var(--gradient-primary);
     border: none;
     border-radius: 10px;
@@ -204,7 +204,7 @@ body {
     font-weight: 700;
     cursor: pointer;
     transition: var(--transition);
-    margin-top: 15px;
+    margin-top: 0.9375rem;
     text-transform: uppercase;
     letter-spacing: 1.2px;
     position: relative;
@@ -248,7 +248,7 @@ body {
     .regist-container {
         grid-template-columns: 1fr;
         min-height: auto;
-        margin: 40px auto 30px;
+        margin: 2.5rem auto 1.875rem;
     }
 
     .regist-container img {
@@ -256,7 +256,7 @@ body {
     }
 
     .regist-form {
-        padding: 40px 30px;
+        padding: 2.5rem 1.875rem;
     }
 
     .regist-form h3 {
@@ -266,43 +266,43 @@ body {
 
 @media (max-width: 768px) {
     .regist-form {
-        padding: 30px 20px;
+        padding: 1.875rem 1.25rem;
     }
 
     .regist-form h3 {
         font-size: 1.6rem;
-        margin-bottom: 10px;
+        margin-bottom: 0.625rem;
     }
 
     .regist-title {
         font-size: 0.85rem;
-        margin-bottom: 20px;
+        margin-bottom: 1.25rem;
     }
 
     .form-control {
-        padding: 12px 15px;
+        padding: 0.75rem 0.9375rem;
         font-size: 0.9rem;
     }
 
     .regist-button {
-        padding: 14px;
+        padding: 0.875rem;
         font-size: 0.9rem;
     }
 }
 
 @media (max-width: 480px) {
     .regist-container {
-        margin: 20px 10px 20px;
+        margin: 1.25rem 0.625rem 1.25rem;
         border-radius: 10px;
     }
 
     .regist-form {
-        padding: 20px 15px;
+        padding: 1.25rem 0.9375rem;
     }
 
     .regist-form h3 {
         font-size: 1.4rem;
-        margin-bottom: 8px;
+        margin-bottom: 0.5rem;
     }
 
     .form-label {
@@ -310,7 +310,7 @@ body {
     }
 
     .form-control {
-        padding: 10px 12px;
+        padding: 0.625rem 0.75rem;
         font-size: 0.85rem;
     }
 }
@@ -348,13 +348,13 @@ body {
 .alert {
     border: none;
     border-radius: 10px;
-    margin-bottom: 20px;
+    margin-bottom: 1.25rem;
     animation: slideInAlert 0.4s ease-out;
-    padding: 12px 16px;
+    padding: 0.75rem 1rem;
     font-size: 0.9rem;
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 0.625rem;
 }
 
 @keyframes slideInAlert {
@@ -386,7 +386,7 @@ body {
 
 /* Wrapper do formulário */
 .regist-form-content {
-    padding: 60px 50px;
+    padding: 3.75rem 3.125rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -409,7 +409,7 @@ body {
     color: var(--text-light);
     cursor: pointer;
     font-size: 1.2rem;
-    padding: 5px;
+    padding: 0.3125rem;
     transition: var(--transition);
     display: flex;
     align-items: center;
@@ -424,7 +424,7 @@ body {
 /* Footer do Registo */
 .regist-footer {
     text-align: center;
-    margin-top: 25px;
+    margin-top: 1.5625rem;
     animation: fadeInUp 0.5s ease-out backwards;
     animation-delay: 0.5s;
 }

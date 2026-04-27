@@ -11,7 +11,7 @@ body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
     min-height: 100vh;
-    padding: 20px;
+    padding: 1.25rem;
     line-height: 1.6;
     color: #333;
 }
@@ -34,7 +34,7 @@ body {
 .title {
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     color: white;
-    padding: 40px 30px;
+    padding: 2.5rem 1.875rem;
     text-align: center;
 }
 
@@ -42,21 +42,21 @@ body {
     font-size: 2.5rem;
     font-weight: 700;
     text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
-    margin-bottom: 15px;
+    margin-bottom: 0.9375rem;
 }
 
 .subtitle {
     font-size: 1rem;
     opacity: 0.95;
     font-weight: 400;
-    margin-top: 10px;
+    margin-top: 0.625rem;
 }
 
 /* ========================================
    FORMULÁRIO
    ======================================== */
 .personalize-form {
-    padding: 40px;
+    padding: 2.5rem;
 }
 
 /* ========================================
@@ -65,14 +65,14 @@ body {
 .grid-container {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 30px;
+    gap: 1.875rem;
 }
 
 .coluna-esquerda,
 .coluna-direita {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 1.25rem;
 }
 
 /* Coluna direita sticky */
@@ -87,7 +87,7 @@ body {
    ======================================== */
 .form-section {
     background: #f8f9fa;
-    padding: 25px;
+    padding: 1.5625rem;
     border-radius: 12px;
     border-left: 4px solid #667eea;
     transition: all 0.3s ease;
@@ -101,15 +101,15 @@ body {
 .form-section h2 {
     color: #0e36e7;
     font-size: 1.2rem;
-    margin-bottom: 15px;
-    padding-bottom: 8px;
+    margin-bottom: 0.9375rem;
+    padding-bottom: 0.5rem;
     border-bottom: 2px solid #e0e0e0;
 }
 
 .form-section h3 {
     color: #667eea;
     font-size: 1.1rem;
-    margin-bottom: 12px;
+    margin-bottom: 0.75rem;
 }
 
 /* ========================================
@@ -119,7 +119,7 @@ label {
     display: block;
     font-weight: 600;
     color: #333;
-    margin-bottom: 8px;
+    margin-bottom: 0.5rem;
     font-size: 0.95rem;
 }
 
@@ -130,7 +130,7 @@ input[type="number"],
 input[type="file"],
 textarea {
     width: 100%;
-    padding: 12px;
+    padding: 0.75rem;
     border: 2px solid #e0e0e0;
     border-radius: 8px;
     font-size: 1rem;
@@ -152,7 +152,7 @@ select {
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23667eea' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
     background-repeat: no-repeat;
     background-position: right 12px center;
-    padding-right: 35px;
+    padding-right: 2.1875rem;
 }
 
 textarea {
@@ -171,20 +171,20 @@ textarea {
 .suggestions-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 15px;
-    margin-top: 15px;
+    gap: 0.9375rem;
+    margin-top: 0.9375rem;
 }
 
 .suggestion-card {
     background: white;
-    padding: 15px;
+    padding: 0.9375rem;
     border-radius: 8px;
     border-left: 3px solid #667eea;
 }
 
 .suggestion-card h3 {
     font-size: 1rem;
-    margin-bottom: 10px;
+    margin-bottom: 0.625rem;
     color: #1133cb;
 }
 
@@ -194,7 +194,7 @@ textarea {
 }
 
 .suggestion-card li {
-    padding: 5px 0;
+    padding: 0.3125rem 0;
     color: #555;
     font-size: 0.9rem;
     border-bottom: 1px solid #f0f0f0;
@@ -208,8 +208,8 @@ textarea {
    IDADE BOX
    ======================================== */
 .idade-box {
-    margin-top: 15px;
-    padding: 15px;
+    margin-top: 0.9375rem;
+    padding: 0.9375rem;
     background: #f0f4ff;
     border-radius: 8px;
 }
@@ -223,14 +223,14 @@ textarea {
 
 .foto-info {
     text-align: center;
-    padding: 15px;
+    padding: 0.9375rem;
     background: linear-gradient(135deg, #667eea15 0%, #764ba215 100%);
     border-radius: 8px;
-    margin-bottom: 15px;
+    margin-bottom: 0.9375rem;
 }
 
 .foto-info p {
-    margin: 5px 0;
+    margin: 0.3125rem 0;
     font-weight: 500;
 }
 
@@ -243,7 +243,7 @@ textarea {
    INPUT FILE
    ======================================== */
 input[type="file"] {
-    padding: 15px;
+    padding: 0.9375rem;
     border: 2px dashed #667eea;
     cursor: pointer;
     background: #f8f9ff;
@@ -260,9 +260,9 @@ input[type="file"]:hover {
 .erro {
     color: #dc3545;
     background: #f8d7da;
-    padding: 12px;
+    padding: 0.75rem;
     border-radius: 8px;
-    margin-top: 10px;
+    margin-top: 0.625rem;
     border-left: 3px solid #dc3545;
     display: none;
     font-size: 0.9rem;
@@ -271,9 +271,9 @@ input[type="file"]:hover {
 .sucesso {
     color: #064615;
     background: #d4edda;
-    padding: 12px;
+    padding: 0.75rem;
     border-radius: 8px;
-    margin-top: 10px;
+    margin-top: 0.625rem;
     border-left: 3px solid #28a745;
     display: none;
     font-size: 0.9rem;
@@ -283,8 +283,8 @@ input[type="file"]:hover {
    PREVIEW DA IMAGEM
    ======================================== */
 .preview {
-    margin-top: 20px;
-    padding: 20px;
+    margin-top: 1.25rem;
+    padding: 1.25rem;
     background: white;
     border-radius: 10px;
     border: 2px solid #667eea;
@@ -295,8 +295,8 @@ input[type="file"]:hover {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 15px;
-    padding-bottom: 10px;
+    margin-bottom: 0.9375rem;
+    padding-bottom: 0.625rem;
     border-bottom: 2px solid #e0e0e0;
 }
 
@@ -310,7 +310,7 @@ input[type="file"]:hover {
     background: #dc3545;
     color: white;
     border: none;
-    padding: 8px 15px;
+    padding: 0.5rem 0.9375rem;
     border-radius: 6px;
     font-size: 0.85rem;
     cursor: pointer;
@@ -327,19 +327,19 @@ input[type="file"]:hover {
     max-height: 200px;
     object-fit: contain;
     border-radius: 8px;
-    margin-bottom: 15px;
+    margin-bottom: 0.9375rem;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 .preview-info {
     background: #e8f4f8;
-    padding: 15px;
+    padding: 0.9375rem;
     border-radius: 8px;
     border-left: 3px solid #17a2b8;
 }
 
 .preview-info p {
-    margin: 5px 0;
+    margin: 0.3125rem 0;
     font-size: 0.9rem;
     color: #0c5460;
 }
@@ -359,32 +359,32 @@ input[type="file"]:hover {
 .resumo-vazio {
     text-align: center;
     color: #999;
-    padding: 30px;
+    padding: 1.875rem;
     font-style: italic;
 }
 
 #resumo-content {
-    margin-bottom: 20px;
+    margin-bottom: 1.25rem;
 }
 
 .resumo-item {
     background: white;
-    padding: 15px;
+    padding: 0.9375rem;
     border-radius: 8px;
-    margin-bottom: 10px;
+    margin-bottom: 0.625rem;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
 }
 
 .resumo-item h3 {
     font-size: 1rem;
     color: #667eea;
-    margin-bottom: 10px;
-    padding-bottom: 8px;
+    margin-bottom: 0.625rem;
+    padding-bottom: 0.5rem;
     border-bottom: 2px solid #e0e0e0;
 }
 
 .resumo-item p {
-    margin: 5px 0;
+    margin: 0.3125rem 0;
     font-size: 0.9rem;
     color: #555;
 }
@@ -396,10 +396,10 @@ input[type="file"]:hover {
 .resumo-total {
     background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
     color: white;
-    padding: 20px;
+    padding: 1.25rem;
     border-radius: 8px;
     text-align: center;
-    margin-bottom: 15px;
+    margin-bottom: 0.9375rem;
 }
 
 .resumo-total h2 {
@@ -414,14 +414,14 @@ input[type="file"]:hover {
    ======================================== */
 .notas {
     background: linear-gradient(135deg, #e8f4f8 0%, #e1f5fe 100%);
-    padding: 25px;
+    padding: 1.5625rem;
     border-radius: 12px;
     border-left: 4px solid #17a2b8;
 }
 
 .notas h3 {
     color: #0c5460;
-    margin-bottom: 15px;
+    margin-bottom: 0.9375rem;
     font-size: 1.1rem;
 }
 
@@ -432,8 +432,8 @@ input[type="file"]:hover {
 
 .notas li {
     color: #0c5460;
-    margin: 8px 0;
-    padding-left: 20px;
+    margin: 0.5rem 0;
+    padding-left: 1.25rem;
     position: relative;
     font-size: 0.95rem;
 }
@@ -451,8 +451,8 @@ input[type="file"]:hover {
    ======================================== */
 .button-group {
     display: flex;
-    gap: 12px;
-    margin-bottom: 15px;
+    gap: 0.75rem;
+    margin-bottom: 0.9375rem;
 }
 
 button[type="submit"],
@@ -460,7 +460,7 @@ button[type="button"],
 .btn-primary,
 .btn-secondary {
     flex: 1;
-    padding: 14px 25px;
+    padding: 0.875rem 1.5625rem;
     border: none;
     border-radius: 10px;
     font-size: 1rem;
@@ -542,7 +542,7 @@ button[type="submit"]:hover {
 
 @media (max-width: 768px) {
     .personalize-form {
-        padding: 25px;
+        padding: 1.5625rem;
     }
     
     .title h1 {

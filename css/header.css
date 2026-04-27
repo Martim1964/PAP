@@ -1,5 +1,5 @@
 /* Cores inspiradas no logotipo Doces Dias */
-        body {
+        html {
             font-size: 100%;
         }
 
@@ -16,7 +16,7 @@
         .navbar-custom .nav-link {
             color: #000000 !important;
             transition: all 0.3s ease;
-            padding: 8px 15px !important;
+            padding: 0.5rem 0.9375rem !important;
         }
         
         .navbar-custom .nav-link:hover {
@@ -32,8 +32,8 @@
             color: #313131;
             border: 2px solid #000000;
             border-radius: 6px;
-            margin: 4px;
-            padding: 6px 10px;
+            margin: 0.25rem;
+            padding: 0.375rem 0.625rem;
             cursor: pointer;
             font-weight: bold;
         }
@@ -66,23 +66,23 @@
         /* Separador visual para redes sociais */
         .social-divider {
             border-left: 2px solid rgba(255, 255, 255, 0.3);
-            margin-left: 10px;
-            padding-left: 10px;
+            margin-left: 0.625rem;
+            padding-left: 0.625rem;
         }
 
         /* Separador visual apenas para Desktop (acima de 992px) */
         @media (min-width: 992px) {
             .social-divider {
                 border-left: 2px solid rgba(255, 255, 255, 0.3);
-                margin-left: 10px;
-                padding-left: 10px;
+                margin-left: 0.625rem;
+                padding-left: 0.625rem;
             }
         }
 
         /* Ajuste para o menu mobile não ficar colado às bordas */
         @media (max-width: 991px) {
             .navbar-nav {
-                padding-top: 15px;
+                padding-top: 0.9375rem;
             }
             .nav-item {
                 border-bottom: 1px solid rgba(255, 255, 255, 0.1);
@@ -93,8 +93,552 @@
             }
         }
 
-        
+body.dark-mode {
+    background: #1a1a1a !important;
+    color: #f2f2f2 !important;
+}
 
-        
+body.dark-mode main,
+body.dark-mode header,
+body.dark-mode footer,
+body.dark-mode section,
+body.dark-mode .container,
+body.dark-mode .bcontainer,
+body.dark-mode .login-main,
+body.dark-mode .register-container,
+body.dark-mode .contact-section,
+body.dark-mode .info-section,
+body.dark-mode .cakes-section,
+body.dark-mode .choose-section,
+body.dark-mode .grid-container,
+body.dark-mode .personalize-form,
+body.dark-mode .carrinho-container,
+body.dark-mode .checkout-container,
+body.dark-mode .pagamento-container {
+    color: #f2f2f2;
+}
 
-        
+body.dark-mode .navbar-custom {
+    background-color: #242424;
+}
+
+body.dark-mode .navbar-custom .nav-link,
+body.dark-mode .navbar-custom .dropdown-item {
+    color: #f5f5f5 !important;
+}
+
+body.dark-mode .navbar-custom .nav-link:hover,
+body.dark-mode .navbar-custom .dropdown-item:hover {
+    background-color: #3a3a3a;
+    color: #f5f5f5 !important;
+}
+
+body.dark-mode .navbar-custom .dropdown-menu {
+    background-color: #242424;
+}
+
+body.dark-mode .btn-acessibilidade {
+    background-color: #2f2f2f;
+    color: #f5f5f5;
+    border-color: #d6b4ba;
+}
+
+body.dark-mode .btn-acessibilidade:hover {
+    background-color: #3f3f3f;
+}
+
+body.dark-mode a {
+    color: #ffd6df;
+}
+
+body.dark-mode a:hover {
+    color: #f5f5f5;
+}
+
+body.dark-mode button,
+body.dark-mode .btn,
+body.dark-mode .btn-primary,
+body.dark-mode .btn-secondary,
+body.dark-mode .btn-primario,
+body.dark-mode .order-btn {
+    color: #f8f8f8;
+}
+
+body.dark-mode .btn-primary,
+body.dark-mode .btn-secondary,
+body.dark-mode .btn-primario,
+body.dark-mode .order-btn,
+body.dark-mode .btn-login,
+body.dark-mode .regist-button,
+body.dark-mode .btn-promo,
+body.dark-mode .btn-ver-mais,
+body.dark-mode .btn-checkout,
+body.dark-mode .btn-continuar,
+body.dark-mode .btn-aplicar,
+body.dark-mode .btn-pagar,
+body.dark-mode .btn-confirmar,
+body.dark-mode .btn-ok,
+body.dark-mode .btn-ok-erro,
+body.dark-mode .choose-section button,
+body.dark-mode .cakes-section button,
+body.dark-mode .info-section button {
+    background: #d6b4ba !important;
+    color: #1a1a1a !important;
+    border-color: #f0c7d0;
+}
+
+body.dark-mode .btn-primary:hover,
+body.dark-mode .btn-secondary:hover,
+body.dark-mode .btn-primario:hover,
+body.dark-mode .order-btn:hover,
+body.dark-mode .btn-login:hover,
+body.dark-mode .regist-button:hover,
+body.dark-mode .btn-promo:hover,
+body.dark-mode .btn-ver-mais:hover,
+body.dark-mode .btn-checkout:hover,
+body.dark-mode .btn-continuar:hover,
+body.dark-mode .btn-aplicar:hover,
+body.dark-mode .btn-pagar:hover,
+body.dark-mode .btn-confirmar:hover,
+body.dark-mode .btn-ok:hover,
+body.dark-mode .btn-ok-erro:hover {
+    background: #f0c7d0 !important;
+    color: #1a1a1a !important;
+}
+
+body.dark-mode button a,
+body.dark-mode .btn a,
+body.dark-mode .order-btn {
+    color: #1a1a1a !important;
+}
+
+body.dark-mode input,
+body.dark-mode select,
+body.dark-mode textarea,
+body.dark-mode .form-control,
+body.dark-mode .form-select {
+    background-color: #242424;
+    color: #f2f2f2;
+    border-color: #5f5f5f;
+}
+
+body.dark-mode input::placeholder,
+body.dark-mode textarea::placeholder {
+    color: #c9c9c9;
+}
+
+body.dark-mode input:focus,
+body.dark-mode select:focus,
+body.dark-mode textarea:focus,
+body.dark-mode .form-control:focus,
+body.dark-mode .form-select:focus {
+    background-color: #2b2b2b;
+    color: #f5f5f5;
+    border-color: #f0a8b8;
+}
+
+body.dark-mode .title,
+body.dark-mode .choose-section > div,
+body.dark-mode .form-section,
+body.dark-mode .suggestion-card,
+body.dark-mode .suggestions-box,
+body.dark-mode .idade-box,
+body.dark-mode .foto-info,
+body.dark-mode .preview,
+body.dark-mode .preview-info,
+body.dark-mode .resumo-section,
+body.dark-mode .resumo-item,
+body.dark-mode .notas,
+body.dark-mode .cake-item,
+body.dark-mode .cake-content,
+body.dark-mode .contact-card,
+body.dark-mode .info-card,
+body.dark-mode .login-container,
+body.dark-mode .login-form-section,
+body.dark-mode .produto-item,
+body.dark-mode .coluna-produtos,
+body.dark-mode .resumo-compra,
+body.dark-mode .pagamento-card,
+body.dark-mode .checkout-card,
+body.dark-mode .card,
+body.dark-mode form,
+body.dark-mode .modal-content,
+body.dark-mode .dropdown-menu {
+    background: #242424 !important;
+    color: #f2f2f2 !important;
+}
+
+body.dark-mode h1,
+body.dark-mode h2,
+body.dark-mode h3,
+body.dark-mode h4,
+body.dark-mode h5,
+body.dark-mode h6,
+body.dark-mode p,
+body.dark-mode label,
+body.dark-mode li,
+body.dark-mode span,
+body.dark-mode small,
+body.dark-mode strong {
+    color: #f2f2f2;
+}
+
+body.dark-mode .small-text,
+body.dark-mode .form-text,
+body.dark-mode .subtitle,
+body.dark-mode .subtitle-text,
+body.dark-mode .produto-desc,
+body.dark-mode .produto-count,
+body.dark-mode .aviso-reserva,
+body.dark-mode .disclaimer {
+    color: #d7d7d7 !important;
+}
+
+body.dark-mode hr {
+    background: linear-gradient(90deg, transparent, #d6b4ba, transparent);
+}
+
+body.dark-mode .table,
+body.dark-mode table {
+    color: #f2f2f2;
+}
+
+body.dark-mode th,
+body.dark-mode td {
+    color: #f2f2f2;
+    border-color: #4a4a4a;
+}
+
+body.dark-mode {
+    --bs-body-bg: #1a1a1a;
+    --bs-body-color: #f5f5f5;
+    --bs-secondary-color: #d6d6d6;
+    --bs-tertiary-bg: #242424;
+    --bs-border-color: #555555;
+    --bs-link-color: #ffd6df;
+    --bs-link-hover-color: #f5f5f5;
+    --primary-color: #f0a8b8;
+    --primary-light: #f6c2ce;
+    --primary-dark: #f5b4c4;
+    --secondary-color: #3a2930;
+    --accent-color: #f0a8b8;
+    --text-dark: #f5f5f5;
+    --text-light: #d6d6d6;
+    --text-muted: #c7c7c7;
+    --text-gray: #d6d6d6;
+    --bg-light: #1a1a1a;
+    --bg-white: #242424;
+    --bg-gray: #2a2a2a;
+    --bg-input: #242424;
+    --gradient-light: linear-gradient(135deg, #242424 0%, #2a2a2a 100%);
+    --rosa-principal: #f0a8b8;
+    --rosa-claro: #3a2930;
+    --rosa-escuro: #f5b4c4;
+    --bege: #2a2a2a;
+    --creme: #1f1f1f;
+    --chocolate: #f0c7d0;
+    --texto-escuro: #f5f5f5;
+    --texto-claro: #d6d6d6;
+    --branco: #242424;
+    --cinza-claro: #2a2a2a;
+    --cinza-borda: #555555;
+    --white: #f5f5f5;
+}
+
+body.dark-mode .main-title,
+body.dark-mode .online-text,
+body.dark-mode .hero-title,
+body.dark-mode .hero-subtitle,
+body.dark-mode .welcome-text,
+body.dark-mode .title h1,
+body.dark-mode .cartao-frente,
+body.dark-mode .cartao-frente *,
+body.dark-mode .telefone-notificacao,
+body.dark-mode .telefone-notificacao * {
+    color: #f5f5f5 !important;
+}
+
+body.dark-mode .hero-section,
+body.dark-mode .title,
+body.dark-mode body > .container {
+    background: linear-gradient(135deg, #242424 0%, #3a2930 100%) !important;
+}
+
+body.dark-mode .intro-section,
+body.dark-mode .development-section,
+body.dark-mode .mission-section,
+body.dark-mode .logo-divider,
+body.dark-mode .section-cakes,
+body.dark-mode .Info-section,
+body.dark-mode .infos-grid,
+body.dark-mode .contact-info,
+body.dark-mode .faq-container,
+body.dark-mode .finalizar-container,
+body.dark-mode .pagamento-container,
+body.dark-mode .progresso-secao,
+body.dark-mode .bg-light,
+body.dark-mode .bg-white {
+    background: #1a1a1a !important;
+    color: #f5f5f5 !important;
+}
+
+body.dark-mode .content-box,
+body.dark-mode .image-container,
+body.dark-mode .mission-card,
+body.dark-mode .promo-section,
+body.dark-mode .info1,
+body.dark-mode .info2,
+body.dark-mode .info3,
+body.dark-mode .info4,
+body.dark-mode .info5,
+body.dark-mode .cake-overview,
+body.dark-mode .enc-type,
+body.dark-mode .contact-item,
+body.dark-mode .faq-item,
+body.dark-mode .faq-question,
+body.dark-mode .faq-answer,
+body.dark-mode .secao-formulario,
+body.dark-mode .resumo-pedido-sticky,
+body.dark-mode .resumo-sticky,
+body.dark-mode .resumo-pagamento-sticky,
+body.dark-mode .coluna-metodos,
+body.dark-mode .metodo-pagamento,
+body.dark-mode .tabs-pagamento,
+body.dark-mode .tab-btn,
+body.dark-mode .checkbox-grupo,
+body.dark-mode .termos-checkbox,
+body.dark-mode .opcao-entrega label,
+body.dark-mode .resumo-produto-img,
+body.dark-mode .produto-imagem,
+body.dark-mode .qtd-selector,
+body.dark-mode .beneficios-secao,
+body.dark-mode .beneficio-item,
+body.dark-mode .codigo-promo,
+body.dark-mode .promo-input-container,
+body.dark-mode .impostos-info,
+body.dark-mode .metodos-pagamento,
+body.dark-mode .icone-pag,
+body.dark-mode .info-entrega,
+body.dark-mode .carrinho-vazio,
+body.dark-mode .notificacao,
+body.dark-mode .alerta-procura,
+body.dark-mode .info-seguranca,
+body.dark-mode .modal-conteudo,
+body.dark-mode .modal-conteudo-sucesso,
+body.dark-mode .modal-conteudo-erro,
+body.dark-mode .mbw-card,
+body.dark-mode .mbw-body,
+body.dark-mode .mbw-logo-bar,
+body.dark-mode .mbw-recibo,
+body.dark-mode .mbw-info-box,
+body.dark-mode .mbw-phone-screen,
+body.dark-mode .mbw-notif-banner,
+body.dark-mode .list-group-item,
+body.dark-mode .accordion,
+body.dark-mode .accordion-item,
+body.dark-mode .accordion-button,
+body.dark-mode .offcanvas,
+body.dark-mode .toast,
+body.dark-mode .alert,
+body.dark-mode .form-check,
+body.dark-mode .form-control-plaintext,
+body.dark-mode .input-group-text {
+    background: #242424 !important;
+    color: #f5f5f5 !important;
+    border-color: #555555 !important;
+}
+
+body.dark-mode .tab-btn:hover,
+body.dark-mode .tab-btn.active,
+body.dark-mode .faq-question:hover,
+body.dark-mode .faq-question.active,
+body.dark-mode .opcao-entrega input[type="radio"]:checked + label,
+body.dark-mode .qtd-selector:hover,
+body.dark-mode .codigo-promo:hover,
+body.dark-mode .icone-pag:hover,
+body.dark-mode .btn-voltar:hover,
+body.dark-mode .btn-voltar-pagamento:hover,
+body.dark-mode .btn-alternativo:hover {
+    background: #3a2930 !important;
+    color: #f5f5f5 !important;
+    border-color: #f0a8b8 !important;
+}
+
+body.dark-mode .btn-voltar,
+body.dark-mode .btn-voltar-pagamento,
+body.dark-mode .btn-alternativo,
+body.dark-mode .btn-toggle-password,
+body.dark-mode .mbw-btn-fechar,
+body.dark-mode .mbw-btn-cancelar {
+    background: #242424 !important;
+    color: #f5f5f5 !important;
+    border-color: #f0a8b8 !important;
+}
+
+body.dark-mode .btn-voltar:hover,
+body.dark-mode .btn-voltar-pagamento:hover,
+body.dark-mode .btn-alternativo:hover,
+body.dark-mode .btn-toggle-password:hover,
+body.dark-mode .mbw-btn-fechar:hover,
+body.dark-mode .mbw-btn-cancelar:hover {
+    background: #3a2930 !important;
+    color: #f5f5f5 !important;
+}
+
+body.dark-mode .resumo-total,
+body.dark-mode .resumo-total-grande,
+body.dark-mode .desconto-linha,
+body.dark-mode .mbw-info-row,
+body.dark-mode .mbw-recibo-linha,
+body.dark-mode .step-numero,
+body.dark-mode .step-linha {
+    background: #2a2a2a !important;
+    color: #f5f5f5 !important;
+    border-color: #555555 !important;
+}
+
+body.dark-mode .step.active .step-numero,
+body.dark-mode .step.active ~ .step-linha,
+body.dark-mode .resumo-titulo::after,
+body.dark-mode .faq-container h2::after,
+body.dark-mode .section-heading::after,
+body.dark-mode .mission-title::after {
+    background: linear-gradient(90deg, #f0a8b8, #f5b4c4) !important;
+}
+
+body.dark-mode .carrinho-header h1,
+body.dark-mode .total-valor,
+body.dark-mode .resumo-total-grande span:last-child {
+    background: none !important;
+    -webkit-text-fill-color: #f0c7d0 !important;
+    color: #f0c7d0 !important;
+}
+
+body.dark-mode .erro,
+body.dark-mode .notificacao-erro,
+body.dark-mode .alert-danger,
+body.dark-mode .modal-conteudo-erro,
+body.dark-mode .mbw-card-erro {
+    background: #3a2424 !important;
+    color: #ffd6d6 !important;
+    border-color: #f0a8a8 !important;
+}
+
+body.dark-mode .sucesso,
+body.dark-mode .alert-success,
+body.dark-mode .modal-conteudo-sucesso,
+body.dark-mode .mbw-card-sucesso {
+    background: #203427 !important;
+    color: #d8f5dd !important;
+    border-color: #8fd39a !important;
+}
+
+body.dark-mode .texto-verde,
+body.dark-mode .entrega-data,
+body.dark-mode .mbw-titulo-verde {
+    color: #9be6a8 !important;
+}
+
+body.dark-mode .erro-msg,
+body.dark-mode .mbw-titulo-vermelho,
+body.dark-mode .btn-remover:hover {
+    color: #ffb3b3 !important;
+}
+
+body.dark-mode .form-text,
+body.dark-mode .section-text,
+body.dark-mode .info-text,
+body.dark-mode .contact-item a,
+body.dark-mode .faq-answer p,
+body.dark-mode .resumo-produto-qtd,
+body.dark-mode .resumo-impostos,
+body.dark-mode .opcao-descricao,
+body.dark-mode .char-count,
+body.dark-mode .mbw-sub,
+body.dark-mode .mbw-sub-small,
+body.dark-mode .mbw-info-label,
+body.dark-mode .mbw-timer-row,
+body.dark-mode .mbw-notif-sub,
+body.dark-mode .mbw-titulo-cinza,
+body.dark-mode .text-muted,
+body.dark-mode .text-secondary,
+body.dark-mode .text-body-secondary {
+    color: #d6d6d6 !important;
+}
+
+body.dark-mode .link-termos,
+body.dark-mode .forgot-password,
+body.dark-mode .login-footer a,
+body.dark-mode .regist-footer a,
+body.dark-mode .contact-item a,
+body.dark-mode .mbw-btn-cancelar {
+    color: #ffd6df !important;
+}
+
+body.dark-mode .link-termos:hover,
+body.dark-mode .forgot-password:hover,
+body.dark-mode .login-footer a:hover,
+body.dark-mode .regist-footer a:hover,
+body.dark-mode .contact-item a:hover {
+    color: #f5f5f5 !important;
+}
+
+body.dark-mode .btn-primary *,
+body.dark-mode .btn-secondary *,
+body.dark-mode .btn-primario *,
+body.dark-mode .order-btn *,
+body.dark-mode .btn-login *,
+body.dark-mode .regist-button *,
+body.dark-mode .btn-promo *,
+body.dark-mode .btn-ver-mais *,
+body.dark-mode .btn-checkout *,
+body.dark-mode .btn-continuar *,
+body.dark-mode .btn-aplicar *,
+body.dark-mode .btn-pagar *,
+body.dark-mode .btn-confirmar *,
+body.dark-mode .choose-section button *,
+body.dark-mode .cakes-section button *,
+body.dark-mode .info-section button * {
+    color: #1a1a1a !important;
+}
+
+body.dark-mode :focus-visible,
+body.dark-mode button:focus,
+body.dark-mode a:focus,
+body.dark-mode input:focus,
+body.dark-mode select:focus,
+body.dark-mode textarea:focus {
+    outline: 3px solid #f0c7d0 !important;
+    outline-offset: 3px;
+}
+
+body.dark-mode [style*="color"] {
+    color: #f5f5f5 !important;
+}
+
+body.dark-mode [style*="background: white"],
+body.dark-mode [style*="background:white"],
+body.dark-mode [style*="background-color: white"],
+body.dark-mode [style*="background-color:white"] {
+    background: #242424 !important;
+}
+
+body.dark-mode .mbw-logo-way,
+body.dark-mode .mbw-info-val,
+body.dark-mode .mbw-recibo-linha span:last-child,
+body.dark-mode .mbw-ref {
+    color: #f5f5f5 !important;
+}
+
+body.dark-mode .mbw-screen-btn {
+    color: #1a1a1a !important;
+}
+
+body.dark-mode .dropdown-divider,
+body.dark-mode .border,
+body.dark-mode .border-top,
+body.dark-mode .border-bottom,
+body.dark-mode .border-start,
+body.dark-mode .border-end {
+    border-color: #555555 !important;
+}

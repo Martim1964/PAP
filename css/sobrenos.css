@@ -25,7 +25,7 @@ body {
 /* ==================== HERO SECTION ==================== */
 .hero-section {
     background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-    padding: 100px 0 80px;
+    padding: 6.25rem 0 5rem;
     text-align: center;
     position: relative;
     overflow: hidden;
@@ -42,7 +42,7 @@ body {
 .hero-content {
     position: relative;
     z-index: 1;
-    padding: 0 20px;
+    padding: 0 1.25rem;
 }
 
 .hero-subtitle {
@@ -51,7 +51,7 @@ body {
     font-weight: 300;
     letter-spacing: 3px;
     text-transform: uppercase;
-    margin-bottom: 15px;
+    margin-bottom: 0.9375rem;
     animation: fadeInDown 0.8s ease-out;
 }
 
@@ -59,7 +59,7 @@ body {
     color: var(--white);
     font-size: 4rem;
     font-weight: 700;
-    margin-bottom: 40px;
+    margin-bottom: 2.5rem;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
     animation: fadeInUp 0.8s ease-out 0.2s backwards;
 }
@@ -85,7 +85,7 @@ body {
 
 /* ==================== INTRO SECTION ==================== */
 .intro-section {
-    padding: 80px 0;
+    padding: 5rem 0;
     background: var(--white);
 }
 
@@ -93,13 +93,13 @@ body {
     max-width: 800px;
     margin: 0 auto;
     text-align: center;
-    padding: 0 20px;
+    padding: 0 1.25rem;
 }
 
 .section-heading {
     font-size: 2.5rem;
     color: var(--secondary-color);
-    margin-bottom: 25px;
+    margin-bottom: 1.5625rem;
     font-weight: 700;
     position: relative;
     display: inline-block;
@@ -121,12 +121,12 @@ body {
     font-size: 1.1rem;
     color: var(--text-light);
     line-height: 1.8;
-    margin-top: 30px;
+    margin-top: 1.875rem;
 }
 
 /* ==================== DEVELOPMENT SECTIONS ==================== */
 .development-section {
-    padding: 80px 0;
+    padding: 5rem 0;
 }
 
 .bg-light {
@@ -159,12 +159,12 @@ body {
 
 .development-section .content-box {
     text-align: left;
-    padding: 20px;
+    padding: 1.25rem;
 }
 
 /* ==================== CONCLUSION SECTION ==================== */
 .conclusion-section {
-    padding: 80px 0;
+    padding: 5rem 0;
     background: linear-gradient(135deg, var(--secondary-color) 0%, var(--text-dark) 100%);
     position: relative;
 }
@@ -184,21 +184,21 @@ body {
 
 /* ==================== MISSION SECTION ==================== */
 .mission-section {
-    padding: 100px 0;
+    padding: 6.25rem 0;
     background: var(--white);
 }
 
 .mission-content {
     max-width: 1000px;
     margin: 0 auto;
-    padding: 0 20px;
+    padding: 0 1.25rem;
 }
 
 .mission-title {
     text-align: center;
     font-size: 3rem;
     color: var(--secondary-color);
-    margin-bottom: 60px;
+    margin-bottom: 3.75rem;
     font-weight: 700;
     position: relative;
 }
@@ -217,7 +217,7 @@ body {
 
 .mission-card {
     background: var(--bg-light);
-    padding: 40px 30px;
+    padding: 2.5rem 1.875rem;
     border-radius: 15px;
     text-align: center;
     transition: all 0.3s ease;
@@ -234,7 +234,7 @@ body {
 .mission-icon {
     width: 80px;
     height: 80px;
-    margin: 0 auto 25px;
+    margin: 0 auto 1.5625rem;
     background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
     border-radius: 50%;
     display: flex;
@@ -252,7 +252,7 @@ body {
 .mission-card h3 {
     font-size: 1.4rem;
     color: var(--text-dark);
-    margin-bottom: 15px;
+    margin-bottom: 0.9375rem;
     font-weight: 600;
 }
 
@@ -264,7 +264,7 @@ body {
 
 /* ==================== LOGO DIVIDER ==================== */
 .logo-divider {
-    padding: 60px 0;
+    padding: 3.75rem 0;
     background: var(--bg-light);
 }
 
@@ -337,12 +337,12 @@ body {
 /* Mobile grande (max 768px) */
 @media (max-width: 768px) {
     .hero-section {
-        padding: 70px 0 60px;
+        padding: 4.375rem 0 3.75rem;
     }
 
     .hero-title {
         font-size: 2.2rem;
-        margin-bottom: 25px;
+        margin-bottom: 1.5625rem;
     }
 
     .hero-subtitle {
@@ -357,7 +357,7 @@ body {
     }
 
     .intro-section {
-        padding: 50px 0;
+        padding: 3.125rem 0;
     }
 
     .section-heading {
@@ -369,7 +369,7 @@ body {
     }
 
     .development-section {
-        padding: 50px 0;
+        padding: 3.125rem 0;
     }
 
     .section-image {
@@ -379,25 +379,25 @@ body {
     }
 
     .conclusion-section {
-        padding: 50px 0;
+        padding: 3.125rem 0;
     }
 
     .mission-section {
-        padding: 60px 0;
+        padding: 3.75rem 0;
     }
 
     .mission-title {
         font-size: 1.8rem;
-        margin-bottom: 40px;
+        margin-bottom: 2.5rem;
     }
 
     .mission-card {
-        padding: 30px 20px;
-        margin-bottom: 20px;
+        padding: 1.875rem 1.25rem;
+        margin-bottom: 1.25rem;
     }
 
     .logo-divider {
-        padding: 40px 0;
+        padding: 2.5rem 0;
     }
 
     .divider-logo {
@@ -409,7 +409,7 @@ body {
 /* Mobile pequeno (max 480px) */
 @media (max-width: 480px) {
     .hero-section {
-        padding: 50px 0 40px;
+        padding: 3.125rem 0 2.5rem;
     }
 
     .hero-title {

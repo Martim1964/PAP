@@ -19,7 +19,7 @@ $res_bolos = mysqli_query($con, $query);
     <title>Cupcakes e Doces Tradicionais - Doces Dias</title>
     <link rel="icon" href="../../img-pap/logotipo-docesdias.jpg">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <link rel="stylesheet" href="../../css/dropdown.css">
+    <link rel="stylesheet" href="../../css/bolos.css">
 </head>
 <body>
     <?php include '../../includes/header-bolos.php'; ?>
@@ -68,7 +68,7 @@ $res_bolos = mysqli_query($con, $query);
                 <?php if(isset($_SESSION['user'])): ?>
                         <a href="../../pages/bolospersonalizados.php">Personalize já o seu cupcake / doce tradicional!</a>
                     <?php else: ?>
-                        <a href="../../pages/login.php">Personalize já o seucupcake / doce tradicional!</a>
+                        <a href="../../pages/login.php">Personalize já o seu cupcake / doce tradicional!</a>
                     <?php endif; ?>
             </div>
         </div>

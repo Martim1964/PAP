@@ -1,27 +1,5 @@
 <!DOCTYPE html>
 <html lang="pt">
-<style>
-    #btnSeeInfo {
-        background: linear-gradient(135deg, #ffffff 0%, #c2185b 100%) !important;
-        color: white !important;
-        border: none !important;
-        border-radius: 30px !important;
-        padding: 15px 40px !important;
-        font-size: 1rem !important;
-        font-weight: 600 !important;
-        cursor: pointer !important;
-    }
-
-    #btnSeeInfo:hover{
-    transform: translateY(-3px) scale(1.05);
-    box-shadow: 0 10px 30px rgba(233, 30, 99, 0.4);
-    color: white;
-    }
-
-    #btnSeeInfo:active{
-    transform: translateY(-1px);
-}
-</style>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">

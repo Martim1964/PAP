@@ -85,6 +85,26 @@
             cursor: move;
             margin-top: 12px;
         }
+
+        body.dark-mode .li-post-group {
+            background: #1a1a1a;
+            border-bottom: solid 1px #333;
+        }
+
+        body.dark-mode .li-post-title {
+            background: #222;
+            color: #ffffff;
+            border-left: solid 4px #ff7aa2;
+        }
+
+        body.dark-mode #post_list li {
+            border: 1px solid #333;
+        }
+
+        body.dark-mode #post_list li.ui-state-highlight {
+            background-color: #2a2a2a;
+            border: 1px dotted #555;
+        }
     </style>
 </head>
 <body>

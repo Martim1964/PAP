@@ -68,6 +68,12 @@
                     <button id="btn-diminuir" class="btn-acessibilidade" aria-label="Diminuir tamanho do texto">A-</button>
                 </li>
 
+                <li class="nav-item">
+                    <button id="btn-dark" class="btn-acessibilidade" aria-label="Ativar ou desativar modo escuro" aria-pressed="false">
+                        <i class="bi bi-moon-fill" aria-hidden="true"></i>
+                    </button>
+                </li>
+
                     <?php if(isset($_SESSION['user_id'])): ?>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Abrir menu da conta">

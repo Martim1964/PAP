@@ -21,11 +21,11 @@ $res_bolos = mysqli_query($con, $query);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bolos de Casamento - Doces Dias</title>
     <link rel="icon" href="../../img-pap/logotipo-docesdias.jpg">
-    <link rel="stylesheet" href="../../css/dropdown.css">
+    <link rel="stylesheet" href="../../css/bolos.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
-    <?php include '../../includes/header-bolos.php'; ?>~
+    <?php include '../../includes/header-bolos.php'; ?>
 
     <main>
 

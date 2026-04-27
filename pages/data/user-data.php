@@ -243,7 +243,7 @@
             <tbody>
                 <?php if (mysqli_num_rows($result_confirmadas) > 0): ?>
                     <?php while ($enc = mysqli_fetch_assoc($result_confirmadas)): ?>
-                    <tr class="table-success">
+                    <tr>
                         <td><?= htmlspecialchars($enc['tamanho_final'] ?: $enc['tamanho']) ?></td>
                         <td><?= htmlspecialchars($enc['massa_final'] ?: ($enc['massa'])?: '-') ?></td>
                         <td><?= htmlspecialchars($enc['recheio_final'] ?: ($enc['recheio'])?: '-') ?></td>

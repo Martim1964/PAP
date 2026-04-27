@@ -43,11 +43,11 @@ body {
 
 .carrinho-container {
     max-width: 1400px;
-    margin: 40px auto;
-    padding: 0 20px;
+    margin: 2.5rem auto;
+    padding: 0 1.25rem;
     display: grid;
     grid-template-columns: 2fr 1fr;
-    gap: 40px;
+    gap: 2.5rem;
 }
 
 /* Animações */
@@ -85,18 +85,18 @@ body {
 /* ========== COLUNA PRODUTOS ========== */
 .coluna-produtos {
     background: var(--branco);
-    padding: 40px;
+    padding: 2.5rem;
     border-radius: 20px;
     box-shadow: var(--sombra-forte);
     animation: slideIn 0.6s ease;
 }
 
 .carrinho-header h1 {
-    font-size: 36px;
+    font-size: 2.25rem;
     font-weight: 900;
     text-transform: uppercase;
     color: var(--chocolate);
-    margin-bottom: 8px;
+    margin-bottom: 0.5rem;
     letter-spacing: -1px;
     background: linear-gradient(135deg, var(--chocolate), var(--rosa-escuro));
     -webkit-background-clip: text;
@@ -106,15 +106,15 @@ body {
 
 .produto-count {
     font-weight: 400;
-    font-size: 24px;
+    font-size: 1.5rem;
     color: var(--texto-claro);
 }
 
 .aviso-reserva {
     color: var(--texto-claro);
-    font-size: 14px;
-    margin-bottom: 20px;
-    padding: 12px;
+    font-size: 0.875rem;
+    margin-bottom: 1.25rem;
+    padding: 0.75rem;
     background: var(--rosa-claro);
     border-radius: 8px;
     border-left: 4px solid var(--rosa-principal);
@@ -124,34 +124,34 @@ body {
 .alerta-procura {
     background: linear-gradient(135deg, #FFF3CD 0%, #FFE4B5 100%);
     border: 2px solid #FFD700;
-    padding: 20px;
+    padding: 1.25rem;
     border-radius: 12px;
-    margin-bottom: 25px;
+    margin-bottom: 1.5625rem;
 }
 
 .alerta-titulo {
     font-weight: 700;
-    font-size: 14px;
+    font-size: 0.875rem;
     text-transform: uppercase;
     color: var(--chocolate);
-    margin-bottom: 6px;
+    margin-bottom: 0.375rem;
     letter-spacing: 0.5px;
 }
 
 .alerta-procura p {
     color: var(--texto-escuro);
-    font-size: 14px;
+    font-size: 0.875rem;
 }
 
 /* ========== PRODUTO ITEM ========== */
 .produto-item {
     display: grid;
     grid-template-columns: 180px 1fr auto;
-    gap: 25px;
-    padding: 30px;
+    gap: 1.5625rem;
+    padding: 1.875rem;
     border: none;
     border-radius: 16px;
-    margin-bottom: 25px;
+    margin-bottom: 1.5625rem;
     background: linear-gradient(135deg, var(--branco) 0%, var(--bege) 100%);
     position: relative;
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
@@ -191,36 +191,36 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    gap: 15px;
+    gap: 0.9375rem;
 }
 
 .produto-nome {
-    font-size: 18px;
+    font-size: 1.125rem;
     font-weight: 700;
     color: var(--chocolate);
-    margin-bottom: 5px;
+    margin-bottom: 0.3125rem;
     text-transform: uppercase;
     letter-spacing: 0.3px;
 }
 
 .produto-desc {
     color: var(--texto-claro);
-    font-size: 15px;
-    margin-bottom: 10px;
+    font-size: 0.9375rem;
+    margin-bottom: 0.625rem;
 }
 
 .produto-specs {
     display: flex;
     flex-wrap: wrap;
-    gap: 8px;
+    gap: 0.5rem;
 }
 
 .spec-tag {
     background: linear-gradient(135deg, var(--rosa-principal), var(--rosa-claro));
     color: var(--branco);
-    padding: 8px 14px;
+    padding: 0.5rem 0.875rem;
     border-radius: 25px;
-    font-size: 12px;
+    font-size: 0.75rem;
     font-weight: 600;
     border: none;
     box-shadow: 0 2px 8px rgba(255, 149, 181, 0.2);
@@ -231,21 +231,21 @@ body {
 .produto-acoes {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 0.75rem;
 }
 
 .produto-acoes label {
-    font-size: 14px;
+    font-size: 0.875rem;
     font-weight: 600;
     color: var(--texto-escuro);
 }
 
 .qtd-selector {
-    padding: 10px 35px 10px 12px;
+    padding: 0.625rem 2.1875rem 0.625rem 0.75rem;
     border: 2px solid var(--rosa-principal);
     border-radius: 10px;
     background: var(--branco);
-    font-size: 15px;
+    font-size: 0.9375rem;
     font-weight: 600;
     cursor: pointer;
     color: var(--chocolate);
@@ -269,18 +269,18 @@ body {
     flex-direction: column;
     align-items: flex-end;
     justify-content: space-between;
-    gap: 10px;
+    gap: 0.625rem;
 }
 
 .btn-remover,
 .btn-favorito {
     background: none;
     border: none;
-    font-size: 24px;
+    font-size: 1.5rem;
     cursor: pointer;
     color: var(--texto-claro);
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    padding: 8px;
+    padding: 0.5rem;
     border-radius: 8px;
     display: flex;
     align-items: center;
@@ -300,15 +300,15 @@ body {
 }
 
 .preco-valor {
-    font-size: 20px;
+    font-size: 1.25rem;
     font-weight: 700;
     color: var(--chocolate);
 }
 
 /* ========== BENEFÍCIOS ========== */
 .beneficios-secao {
-    margin-top: 40px;
-    padding: 30px;
+    margin-top: 2.5rem;
+    padding: 1.875rem;
     background: linear-gradient(135deg, var(--rosa-claro) 0%, var(--bege) 100%);
     border-radius: 16px;
     border: none;
@@ -319,9 +319,9 @@ body {
 .beneficio-item {
     display: flex;
     align-items: center;
-    gap: 15px;
-    margin-bottom: 15px;
-    font-size: 15px;
+    gap: 0.9375rem;
+    margin-bottom: 0.9375rem;
+    font-size: 0.9375rem;
     color: var(--texto-escuro);
     font-weight: 500;
     transition: all 0.3s ease;
@@ -332,7 +332,7 @@ body {
 }
 
 .beneficio-icon {
-    font-size: 20px;
+    font-size: 1.25rem;
 }
 
 /* ========== COLUNA RESUMO ========== */
@@ -344,7 +344,7 @@ body {
     position: sticky;
     top: 20px;
     background: var(--branco);
-    padding: 40px;
+    padding: 2.5rem;
     border-radius: 20px;
     box-shadow: var(--sombra-forte);
     border: none;
@@ -352,14 +352,14 @@ body {
 }
 
 .resumo-titulo {
-    font-size: 26px;
+    font-size: 1.625rem;
     font-weight: 900;
     text-transform: uppercase;
     color: var(--chocolate);
-    margin-bottom: 30px;
+    margin-bottom: 1.875rem;
     letter-spacing: 0.5px;
     position: relative;
-    padding-bottom: 15px;
+    padding-bottom: 0.9375rem;
 }
 
 .resumo-titulo::after {
@@ -376,16 +376,16 @@ body {
 .resumo-linha {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 16px;
-    font-size: 15px;
+    margin-bottom: 1rem;
+    font-size: 0.9375rem;
     color: var(--texto-escuro);
     font-weight: 500;
     transition: all 0.3s ease;
-    padding: 8px 0;
+    padding: 0.5rem 0;
 }
 
 .desconto-linha {
-    padding: 12px;
+    padding: 0.75rem;
     background: linear-gradient(135deg, rgba(109, 201, 93, 0.1), rgba(109, 201, 93, 0.05));
     border-radius: 10px;
     border-left: 4px solid var(--verde-sucesso);
@@ -399,22 +399,22 @@ body {
 .resumo-total {
     display: flex;
     justify-content: space-between;
-    padding: 25px 0;
-    margin-top: 25px;
+    padding: 1.5625rem 0;
+    margin-top: 1.5625rem;
     border-top: 3px solid var(--cinza-borda);
     border-bottom: 3px solid var(--rosa-principal);
-    padding-bottom: 25px;
+    padding-bottom: 1.5625rem;
 }
 
 .total-label {
-    font-size: 18px;
+    font-size: 1.125rem;
     font-weight: 800;
     color: var(--chocolate);
     text-transform: uppercase;
 }
 
 .total-valor {
-    font-size: 28px;
+    font-size: 1.75rem;
     font-weight: 900;
     background: linear-gradient(135deg, var(--rosa-principal), var(--rosa-escuro));
     -webkit-background-clip: text;
@@ -424,22 +424,22 @@ body {
 
 .impostos-info {
     color: var(--texto-claro);
-    font-size: 13px;
-    margin-top: 8px;
+    font-size: 0.8125rem;
+    margin-top: 0.5rem;
     text-align: right;
 }
 
 /* ========== CÓDIGO PROMOCIONAL ========== */
 .codigo-promo {
-    margin: 25px 0;
-    padding: 18px;
+    margin: 1.5625rem 0;
+    padding: 1.125rem;
     border: 2px dashed var(--rosa-principal);
     background: linear-gradient(135deg, var(--rosa-claro), var(--bege));
     border-radius: 12px;
     cursor: pointer;
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 0.75rem;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     font-weight: 600;
     color: var(--chocolate);
@@ -453,7 +453,7 @@ body {
 }
 
 .promo-icon {
-    font-size: 20px;
+    font-size: 1.25rem;
 }
 
 .seta {
@@ -467,16 +467,16 @@ body {
 
 .promo-input-container {
     display: flex;
-    gap: 10px;
-    margin-bottom: 20px;
+    gap: 0.625rem;
+    margin-bottom: 1.25rem;
 }
 
 #codigo-promo {
     flex: 1;
-    padding: 14px;
+    padding: 0.875rem;
     border: 2px solid var(--rosa-principal);
     border-radius: 10px;
-    font-size: 14px;
+    font-size: 0.875rem;
     font-weight: 500;
     transition: all 0.3s ease;
     background: var(--branco);
@@ -489,7 +489,7 @@ body {
 }
 
 .btn-aplicar {
-    padding: 14px 24px;
+    padding: 0.875rem 1.5rem;
     background: linear-gradient(135deg, var(--rosa-principal), var(--rosa-escuro));
     color: var(--branco);
     border: none;
@@ -498,7 +498,7 @@ body {
     cursor: pointer;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     text-transform: uppercase;
-    font-size: 13px;
+    font-size: 0.8125rem;
     letter-spacing: 0.5px;
     box-shadow: var(--sombra-media);
 }
@@ -511,19 +511,19 @@ body {
 /* ========== BOTÕES PRINCIPAIS ========== */
 .btn-checkout {
     width: 100%;
-    padding: 20px;
+    padding: 1.25rem;
     background: linear-gradient(135deg, var(--rosa-principal) 0%, var(--rosa-escuro) 100%);
     color: var(--branco);
     border: none;
     border-radius: 14px;
-    font-size: 17px;
+    font-size: 1.0625rem;
     font-weight: 800;
     cursor: pointer;
-    margin-bottom: 16px;
+    margin-bottom: 1rem;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 10px;
+    gap: 0.625rem;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     text-transform: uppercase;
     letter-spacing: 1px;
@@ -541,16 +541,16 @@ body {
 
 .btn-alternativo {
     width: 100%;
-    padding: 18px;
+    padding: 1.125rem;
     background: var(--branco);
     border: 2px solid var(--rosa-principal);
     border-radius: 14px;
-    font-size: 16px;
+    font-size: 1rem;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 10px;
+    gap: 0.625rem;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     font-weight: 600;
     box-shadow: var(--sombra-leve);
@@ -565,10 +565,10 @@ body {
 
 .divisor-ou {
     text-align: center;
-    margin: 20px 0;
+    margin: 1.25rem 0;
     position: relative;
     color: var(--texto-claro);
-    font-size: 14px;
+    font-size: 0.875rem;
     font-weight: 600;
 }
 
@@ -592,32 +592,32 @@ body {
 
 /* ========== MÉTODOS DE PAGAMENTO ========== */
 .metodos-pagamento {
-    margin-top: 30px;
-    padding-top: 30px;
+    margin-top: 1.875rem;
+    padding-top: 1.875rem;
     border-top: 2px solid var(--cinza-borda);
 }
 
 .metodos-titulo {
-    font-size: 11px;
+    font-size: 0.6875rem;
     font-weight: 800;
     text-transform: uppercase;
     color: var(--texto-claro);
-    margin-bottom: 15px;
+    margin-bottom: 0.9375rem;
     letter-spacing: 1px;
 }
 
 .icones-pagamento {
     display: flex;
-    gap: 10px;
+    gap: 0.625rem;
     flex-wrap: wrap;
 }
 
 .icone-pag {
-    padding: 12px 16px;
+    padding: 0.75rem 1rem;
     border: 2px solid var(--rosa-principal);
     border-radius: 10px;
     background: linear-gradient(135deg, var(--rosa-claro), var(--bege));
-    font-size: 12px;
+    font-size: 0.75rem;
     font-weight: 700;
     color: var(--chocolate);
     transition: all 0.3s ease;
@@ -632,8 +632,8 @@ body {
 
 /* ========== INFO ENTREGA ========== */
 .info-entrega {
-    margin-top: 30px;
-    padding: 25px;
+    margin-top: 1.875rem;
+    padding: 1.5625rem;
     background: linear-gradient(135deg, var(--bege) 0%, var(--creme) 100%);
     border-radius: 14px;
     border-left: 5px solid var(--verde-sucesso);
@@ -643,19 +643,19 @@ body {
 .entrega-titulo {
     font-weight: 700;
     color: var(--chocolate);
-    margin-bottom: 10px;
-    font-size: 15px;
+    margin-bottom: 0.625rem;
+    font-size: 0.9375rem;
 }
 
 .entrega-data {
-    font-size: 19px;
+    font-size: 1.1875rem;
     font-weight: 800;
     color: var(--rosa-escuro);
-    margin-bottom: 10px;
+    margin-bottom: 0.625rem;
 }
 
 .entrega-nota {
-    font-size: 12px;
+    font-size: 0.75rem;
     color: var(--texto-claro);
     font-style: italic;
 }
@@ -664,12 +664,12 @@ body {
 @media (max-width: 968px) {
     .carrinho-container {
         grid-template-columns: 1fr;
-        gap: 30px;
+        gap: 1.875rem;
     }
 
     .produto-item {
         grid-template-columns: 130px 1fr;
-        gap: 20px;
+        gap: 1.25rem;
     }
 
     .produto-preco-secao {
@@ -685,29 +685,29 @@ body {
     }
 
     .carrinho-header h1 {
-        font-size: 28px;
+        font-size: 1.75rem;
     }
 }
 
 @media (max-width: 480px) {
     .carrinho-container {
-        padding: 0 15px;
+        padding: 0 0.9375rem;
     }
 
     .coluna-produtos,
     .resumo-sticky {
-        padding: 20px;
+        padding: 1.25rem;
         border-radius: 16px;
     }
 
     .carrinho-header h1 {
-        font-size: 24px;
+        font-size: 1.5rem;
     }
 
     .produto-item {
         grid-template-columns: 1fr;
         text-align: center;
-        padding: 20px;
+        padding: 1.25rem;
     }
 
     .produto-imagem {
@@ -726,12 +726,12 @@ body {
     }
 
     .resumo-titulo {
-        font-size: 20px;
+        font-size: 1.25rem;
     }
 
     .btn-checkout {
-        padding: 16px;
-        font-size: 15px;
+        padding: 1rem;
+        font-size: 0.9375rem;
     }
 }
 
@@ -740,26 +740,26 @@ body {
 /* Carrinho Vazio */
 .carrinho-vazio {
     text-align: center;
-    padding: 60px 30px;
+    padding: 3.75rem 1.875rem;
     animation: slideIn 0.5s ease;
 }
 
 .carrinho-vazio h2 {
-    font-size: 28px;
+    font-size: 1.75rem;
     color: var(--chocolate);
-    margin-bottom: 15px;
+    margin-bottom: 0.9375rem;
     font-weight: 800;
 }
 
 .carrinho-vazio p {
-    font-size: 16px;
+    font-size: 1rem;
     color: var(--texto-claro);
-    margin-bottom: 30px;
+    margin-bottom: 1.875rem;
 }
 
 .btn-continuar {
     display: inline-block;
-    padding: 14px 32px;
+    padding: 0.875rem 2rem;
     background: linear-gradient(135deg, var(--rosa-principal), var(--rosa-escuro));
     color: var(--branco);
     text-decoration: none;
@@ -780,7 +780,7 @@ body {
     position: fixed;
     bottom: 30px;
     right: 30px;
-    padding: 16px 24px;
+    padding: 1rem 1.5rem;
     background: var(--branco);
     color: var(--texto-escuro);
     border-radius: 12px;

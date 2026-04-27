@@ -8,14 +8,14 @@ body {
     font-family: 'Georgia', serif;
     background: linear-gradient(135deg, #ffeef8 0%, #fff5f7 100%);
     min-height: 100vh;
-    padding: 20px;
+    padding: 1.25rem;
 }
 
 .title {
     text-align: center;
-    padding: 40px 20px;
+    padding: 2.5rem 1.25rem;
     background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
-    margin-bottom: 50px;
+    margin-bottom: 3.125rem;
     border-radius: 15px;
     box-shadow: 0 10px 30px rgba(255, 105, 180, 0.3);
 }
@@ -30,10 +30,10 @@ body {
 .cakes {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
+    gap: 1.875rem;
     max-width: 1400px;
-    margin: 0 auto 60px;
-    padding: 0 20px;
+    margin: 0 auto 3.75rem;
+    padding: 0 1.25rem;
 }
 
 .cake-item {
@@ -59,7 +59,7 @@ body {
 }
 
 .cake-content {
-    padding: 25px;
+    padding: 1.5625rem;
     flex-grow: 1;
     display: flex;
     flex-direction: column;
@@ -68,25 +68,25 @@ body {
 .cake-item h2 {
     font-size: 1.8em;
     color: #d63384;
-    margin-bottom: 15px;
+    margin-bottom: 0.9375rem;
 }
 
 .cake-item p {
     color: #666;
     line-height: 1.6;
-    margin-bottom: 20px;
+    margin-bottom: 1.25rem;
     flex-grow: 1;
 }
 
 .cake-item h3 {
     color: #8b0b4b;
     font-size: 1.3em;
-    margin-bottom: 20px;
+    margin-bottom: 1.25rem;
 }
 
 .order-btn {
     display: inline-block;
-    padding: 12px 30px;
+    padding: 0.75rem 1.875rem;
     background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
     color: white;
     text-decoration: none;
@@ -107,13 +107,13 @@ body {
 
 .Encomendas {
     max-width: 1400px;
-    margin: 60px auto;
-    padding: 0 20px;
+    margin: 3.75rem auto;
+    padding: 0 1.25rem;
 }
 
 .enc-type {
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    padding: 60px 40px;
+    padding: 3.75rem 2.5rem;
     border-radius: 20px;
     text-align: center;
     box-shadow: 0 15px 40px rgba(102, 126, 234, 0.4);
@@ -122,15 +122,15 @@ body {
 .enc-type h2 {
     color: white;
     font-size: 2.5em;
-    margin-bottom: 30px;
+    margin-bottom: 1.875rem;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .enc-type a {
     display: inline-block;
-    padding: 18px 50px;
-    background: white;
-    color: #667eea;
+    padding: 1.125rem 3.125rem;
+    background: rgb(18, 18, 18);
+    color: #ffffff;
     text-decoration: none;
     border-radius: 30px;
     font-weight: bold;
@@ -155,7 +155,7 @@ body {
 
     .cakes {
         grid-template-columns: repeat(2, 1fr);
-        gap: 20px;
+        gap: 1.25rem;
     }
 
     .cake-item img {
@@ -163,7 +163,7 @@ body {
     }
 
     .enc-type {
-        padding: 50px 30px;
+        padding: 3.125rem 1.875rem;
     }
 
     .enc-type h2 {
@@ -174,12 +174,12 @@ body {
 /* Mobile grande (max 768px) */
 @media (max-width: 768px) {
     body {
-        padding: 15px;
+        padding: 0.9375rem;
     }
 
     .title {
-        padding: 30px 15px;
-        margin-bottom: 30px;
+        padding: 1.875rem 0.9375rem;
+        margin-bottom: 1.875rem;
         border-radius: 12px;
     }
 
@@ -190,9 +190,9 @@ body {
 
     .cakes {
         grid-template-columns: 1fr;
-        gap: 20px;
-        padding: 0 10px;
-        margin-bottom: 40px;
+        gap: 1.25rem;
+        padding: 0 0.625rem;
+        margin-bottom: 2.5rem;
     }
 
     .cake-item img {
@@ -200,7 +200,7 @@ body {
     }
 
     .cake-content {
-        padding: 20px;
+        padding: 1.25rem;
     }
 
     .cake-item h2 {
@@ -213,26 +213,26 @@ body {
 
     .order-btn {
         width: 100%;
-        padding: 14px;
+        padding: 0.875rem;
     }
 
     .Encomendas {
-        margin: 40px auto;
-        padding: 0 10px;
+        margin: 2.5rem auto;
+        padding: 0 0.625rem;
     }
 
     .enc-type {
-        padding: 40px 20px;
+        padding: 2.5rem 1.25rem;
         border-radius: 15px;
     }
 
     .enc-type h2 {
         font-size: 1.6em;
-        margin-bottom: 20px;
+        margin-bottom: 1.25rem;
     }
 
     .enc-type a {
-        padding: 15px 35px;
+        padding: 0.9375rem 2.1875rem;
         font-size: 1em;
     }
 }
@@ -240,7 +240,7 @@ body {
 /* Mobile pequeno (max 480px) */
 @media (max-width: 480px) {
     body {
-        padding: 10px;
+        padding: 0.625rem;
     }
 
     .title h1 {
@@ -266,7 +266,7 @@ body {
 
     .enc-type a {
         width: 100%;
-        padding: 14px 20px;
+        padding: 0.875rem 1.25rem;
         font-size: 0.95em;
     }
 }
