@@ -14,7 +14,7 @@
         $itensCart = dd_carrinho_get();
 
         /* Adicionar e implementar chave secreta facultado pelo site stripe.com */
-        $stripe_secret_key = "";
+        $stripe_secret_key = "";//inserir aqui a chave
 
         \Stripe\Stripe::setApiKey($stripe_secret_key);
 
