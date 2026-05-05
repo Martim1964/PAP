@@ -1,0 +1,468 @@
+/* ==================== VARIÁVEIS E RESET ==================== */
+:root {
+    --primary-color: #000000;
+    --secondary-color: #f806e8;
+    --accent-color: #ffffff;
+    --text-dark: #0e0b07;
+    --text-light: #251919;
+    --white: #ffffff;
+    --bg-light: #ffffff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: var(--text-dark);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* ==================== HERO SECTION ==================== */
+.hero-section {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    padding: 6.25rem 0 5rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="2" fill="rgba(255,255,255,0.1)"/></svg>');
+    opacity: 0.3;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+    padding: 0 1.25rem;
+}
+
+.hero-subtitle {
+    color: var(--accent-color);
+    font-size: 1.2rem;
+    font-weight: 300;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 0.9375rem;
+    animation: fadeInDown 0.8s ease-out;
+}
+
+.hero-title {
+    color: var(--white);
+    font-size: 4rem;
+    font-weight: 700;
+    margin-bottom: 2.5rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    animation: fadeInUp 0.8s ease-out 0.2s backwards;
+}
+
+.logo-container {
+    display: inline-block;
+    animation: zoomIn 0.8s ease-out 0.4s backwards;
+}
+
+.hero-logo {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    border: 6px solid var(--white);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.hero-logo:hover {
+    transform: scale(1.05) rotate(5deg);
+}
+
+/* ==================== INTRO SECTION ==================== */
+.intro-section {
+    padding: 5rem 0;
+    background: var(--white);
+}
+
+.content-box {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 0 1.25rem;
+}
+
+.section-heading {
+    font-size: 2.5rem;
+    color: var(--secondary-color);
+    margin-bottom: 1.5625rem;
+    font-weight: 700;
+    position: relative;
+    display: inline-block;
+}
+
+.section-heading::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background: var(--primary-color);
+    border-radius: 2px;
+}
+
+.section-text {
+    font-size: 1.1rem;
+    color: var(--text-light);
+    line-height: 1.8;
+    margin-top: 1.875rem;
+}
+
+/* ==================== DEVELOPMENT SECTIONS ==================== */
+.development-section {
+    padding: 5rem 0;
+}
+
+.bg-light {
+    background: var(--bg-light);
+}
+
+.image-container {
+    position: relative;
+    overflow: hidden;
+    border-radius: 20px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.image-container:hover {
+    transform: translateY(-10px);
+}
+
+.section-image {
+    width: 60%;
+    height: 400px;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s ease;
+}
+
+.image-container:hover .section-image {
+    transform: scale(1.1);
+}
+
+.development-section .content-box {
+    text-align: left;
+    padding: 1.25rem;
+}
+
+/* ==================== CONCLUSION SECTION ==================== */
+.conclusion-section {
+    padding: 5rem 0;
+    background: linear-gradient(135deg, var(--secondary-color) 0%, var(--text-dark) 100%);
+    position: relative;
+}
+
+.conclusion-section::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: url('data:image/svg+xml,<svg width="60" height="60" xmlns="http://www.w3.org/2000/svg"><path d="M30 10 L35 25 L50 25 L38 35 L43 50 L30 40 L17 50 L22 35 L10 25 L25 25 Z" fill="rgba(255,255,255,0.05)"/></svg>');
+    opacity: 0.3;
+}
+
+.conclusion-section .content-box {
+    position: relative;
+    z-index: 1;
+}
+
+/* ==================== MISSION SECTION ==================== */
+.mission-section {
+    padding: 6.25rem 0;
+    background: var(--white);
+}
+
+.mission-content {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 1.25rem;
+}
+
+.mission-title {
+    text-align: center;
+    font-size: 3rem;
+    color: var(--secondary-color);
+    margin-bottom: 3.75rem;
+    font-weight: 700;
+    position: relative;
+}
+
+.mission-title::after {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 4px;
+    background: var(--primary-color);
+    border-radius: 2px;
+}
+
+.mission-card {
+    background: var(--bg-light);
+    padding: 2.5rem 1.875rem;
+    border-radius: 15px;
+    text-align: center;
+    transition: all 0.3s ease;
+    height: 100%;
+    border: 2px solid transparent;
+}
+
+.mission-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+    border-color: var(--primary-color);
+}
+
+.mission-icon {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 1.5625rem;
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    color: var(--white);
+    transition: transform 0.3s ease;
+}
+
+.mission-card:hover .mission-icon {
+    transform: rotate(360deg);
+}
+
+.mission-card h3 {
+    font-size: 1.4rem;
+    color: var(--text-dark);
+    margin-bottom: 0.9375rem;
+    font-weight: 600;
+}
+
+.mission-card p {
+    color: var(--text-light);
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+/* ==================== LOGO DIVIDER ==================== */
+.logo-divider {
+    padding: 3.75rem 0;
+    background: var(--bg-light);
+}
+
+.divider-logo {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: 4px solid var(--primary-color);
+    object-fit: cover;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.divider-logo:hover {
+    transform: rotate(360deg) scale(1.1);
+}
+
+/* ==================== ANIMATIONS ==================== */
+@keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-30px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes zoomIn {
+    from { opacity: 0; transform: scale(0.8); }
+    to   { opacity: 1; transform: scale(1); }
+}
+
+/* ==================== RESPONSIVIDADE ==================== */
+
+/* Tablet (max 1024px) */
+@media (max-width: 1024px) {
+    .hero-title {
+        font-size: 3rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1rem;
+        letter-spacing: 2px;
+    }
+
+    .hero-logo {
+        width: 150px;
+        height: 150px;
+    }
+
+    .section-heading {
+        font-size: 2rem;
+    }
+
+    .mission-title {
+        font-size: 2.2rem;
+    }
+
+    .section-image {
+        width: 80%;
+        height: 320px;
+    }
+
+    .development-section .content-box {
+        text-align: center;
+    }
+}
+
+/* Mobile grande (max 768px) */
+@media (max-width: 768px) {
+    .hero-section {
+        padding: 4.375rem 0 3.75rem;
+    }
+
+    .hero-title {
+        font-size: 2.2rem;
+        margin-bottom: 1.5625rem;
+    }
+
+    .hero-subtitle {
+        font-size: 0.9rem;
+        letter-spacing: 2px;
+    }
+
+    .hero-logo {
+        width: 130px;
+        height: 130px;
+        border-width: 4px;
+    }
+
+    .intro-section {
+        padding: 3.125rem 0;
+    }
+
+    .section-heading {
+        font-size: 1.7rem;
+    }
+
+    .section-text {
+        font-size: 1rem;
+    }
+
+    .development-section {
+        padding: 3.125rem 0;
+    }
+
+    .section-image {
+        width: 100%;
+        height: 250px;
+        border-radius: 15px;
+    }
+
+    .conclusion-section {
+        padding: 3.125rem 0;
+    }
+
+    .mission-section {
+        padding: 3.75rem 0;
+    }
+
+    .mission-title {
+        font-size: 1.8rem;
+        margin-bottom: 2.5rem;
+    }
+
+    .mission-card {
+        padding: 1.875rem 1.25rem;
+        margin-bottom: 1.25rem;
+    }
+
+    .logo-divider {
+        padding: 2.5rem 0;
+    }
+
+    .divider-logo {
+        width: 90px;
+        height: 90px;
+    }
+}
+
+/* Mobile pequeno (max 480px) */
+@media (max-width: 480px) {
+    .hero-section {
+        padding: 3.125rem 0 2.5rem;
+    }
+
+    .hero-title {
+        font-size: 1.6rem;
+        letter-spacing: 1px;
+    }
+
+    .hero-subtitle {
+        font-size: 0.8rem;
+        letter-spacing: 1px;
+    }
+
+    .hero-logo {
+        width: 110px;
+        height: 110px;
+    }
+
+    .section-heading {
+        font-size: 1.4rem;
+    }
+
+    .section-text {
+        font-size: 0.95rem;
+    }
+
+    .mission-title {
+        font-size: 1.5rem;
+    }
+
+    .mission-icon {
+        width: 65px;
+        height: 65px;
+        font-size: 1.5rem;
+    }
+
+    .mission-card h3 {
+        font-size: 1.2rem;
+    }
+
+    .section-image {
+        height: 200px;
+    }
+
+    .divider-logo {
+        width: 75px;
+        height: 75px;
+    }
+}
+
+/* Preferência: reduzir movimento */
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+    }
+}

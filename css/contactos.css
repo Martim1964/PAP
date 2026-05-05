@@ -1,0 +1,354 @@
+/* ========================================
+   Doces Dias - CSS for Contacts Page
+   ======================================== */
+
+:root {
+    --primary-color: #e91e63;
+    --primary-light: #ff6090;
+    --primary-dark: #b0003a;
+    --secondary-color: #f8bbd0;
+    --accent-color: #c2185b;
+    --text-dark: #2c2c2c;
+    --text-light: #666666;
+    --bg-light: #fff5f8;
+    --bg-white: #ffffff;
+    --bg-gray: #f9f9f9;
+    --success-color: #4caf50;
+    --warning-color: #ff9800;
+    --border-radius: 16px;
+    --box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    --box-shadow-hover: 0 20px 40px rgba(233, 30, 99, 0.15);
+    --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+    --gradient-primary: linear-gradient(135deg, var(--primary-color) 0%, var(--accent-color) 100%);
+    --gradient-light: linear-gradient(135deg, #fff9fb 0%, #ffffff 100%);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: var(--bg-light);
+    min-height: 100vh;
+    color: var(--text-dark);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* ========================================
+   Title Section
+   ======================================== */
+.title {
+    text-align: center;
+    padding: 6.25rem 1.25rem 5rem;
+    background: var(--gradient-primary);
+    color: white;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(233, 30, 99, 0.2);
+    margin-bottom: 3.75rem;
+}
+
+.title::before {
+    content: '';
+    position: absolute;
+    top: -50%; right: -10%;
+    width: 400px; height: 400px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 50%;
+    animation: float 6s ease-in-out infinite;
+}
+
+.title::after {
+    content: '';
+    position: absolute;
+    bottom: -30%; left: -5%;
+    width: 300px; height: 300px;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 50%;
+    animation: float 8s ease-in-out infinite reverse;
+}
+
+.title h1 {
+    font-size: 3.5rem;
+    font-weight: 800;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    animation: fadeInDown 0.8s ease-out;
+    position: relative;
+    z-index: 1;
+    letter-spacing: 2px;
+}
+
+/* ========================================
+   Contact Info Section
+   ======================================== */
+.contact-info {
+    max-width: 1200px;
+    margin: 3.75rem auto;
+    padding: 3.75rem 2.5rem;
+    background: var(--gradient-light);
+    border-radius: 16px;
+    box-shadow: var(--box-shadow);
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 2.5rem;
+    animation: fadeInUp 0.8s ease-out;
+}
+
+.contact-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    transition: var(--transition);
+    padding: 1.25rem;
+    border-radius: 12px;
+}
+
+.contact-item:hover {
+    background: rgba(233, 30, 99, 0.05);
+    transform: translateY(-5px);
+}
+
+.contact-item i {
+    margin-bottom: 1.25rem;
+    transition: transform 0.3s ease;
+}
+
+.contact-item:hover i {
+    transform: scale(1.2) rotate(5deg);
+}
+
+.contact-item a {
+    color: var(--text-dark);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: color 0.3s ease;
+}
+
+.contact-item a:hover { color: var(--primary-color); }
+
+/* ========================================
+   FAQ Container
+   ======================================== */
+.faq-container {
+    max-width: 900px;
+    margin: 3.75rem auto;
+    padding: 3.75rem 2.5rem;
+    background: var(--gradient-light);
+    border-radius: 16px;
+    box-shadow: var(--box-shadow);
+    animation: fadeInUp 0.8s ease-out;
+}
+
+.faq-container h2 {
+    font-size: 2.2rem;
+    color: var(--primary-color);
+    margin-bottom: 2.5rem;
+    text-align: center;
+    font-weight: 700;
+    position: relative;
+    padding-bottom: 1.25rem;
+    letter-spacing: 1px;
+}
+
+.faq-container h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background: var(--gradient-primary);
+    border-radius: 2px;
+}
+
+/* ========================================
+   FAQ Item
+   ======================================== */
+.faq-item {
+    margin-bottom: 1.25rem;
+    background: var(--bg-white);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    transition: var(--transition);
+}
+
+.faq-item:hover {
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+/* ========================================
+   FAQ Question Button
+   ======================================== */
+.faq-question {
+    width: 100%;
+    padding: 1.375rem 1.875rem;
+    background: var(--bg-white);
+    border: none;
+    cursor: pointer;
+    font-size: 1.1rem;
+    text-align: left;
+    font-weight: 600;
+    color: var(--text-dark);
+    transition: var(--transition);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+}
+
+.faq-question::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 4px;
+    background: var(--primary-color);
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: transform 0.3s ease;
+}
+
+.faq-question:hover {
+    background: var(--bg-light);
+    color: var(--primary-color);
+    padding-left: 2.1875rem;
+}
+
+.faq-question.active {
+    background: var(--bg-light);
+    color: var(--primary-color);
+}
+
+.faq-question.active::before { transform: scaleY(1); }
+
+.faq-question::after {
+    content: '▼';
+    font-size: 0.8rem;
+    transition: transform 0.3s ease;
+    flex-shrink: 0;
+}
+
+.faq-question.active::after { transform: rotate(180deg); }
+
+/* ========================================
+   FAQ Answer
+   ======================================== */
+.faq-answer {
+    overflow: hidden;
+    transition: max-height 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+}
+
+.faq-answer p {
+    padding: 1.5625rem 1.875rem;
+    color: var(--text-light);
+    font-size: 1.05rem;
+    line-height: 1.8;
+    background: var(--bg-gray);
+    margin: 0;
+}
+
+/* ========================================
+   RESPONSIVIDADE
+   ======================================== */
+
+/* Tablet (max 1024px) */
+@media (max-width: 1024px) {
+    .title { padding: 80px 20px 60px; margin-bottom: 40px; }
+    .title h1 { font-size: 2.8rem; }
+
+    .contact-info {
+        margin: 2.5rem 1.25rem;
+        padding: 2.5rem 1.5625rem;
+        gap: 1.5625rem;
+    }
+
+    .faq-container {
+        margin: 2.5rem 1.25rem;
+        padding: 2.8125rem 1.875rem;
+    }
+
+    .faq-container h2 { font-size: 1.9rem; }
+}
+
+/* Mobile grande (max 768px) */
+@media (max-width: 768px) {
+    .title { padding: 60px 20px 50px; margin-bottom: 30px; }
+    .title h1 { font-size: 2rem; letter-spacing: 1px; }
+
+    .contact-info {
+        margin: 1.875rem 0.9375rem;
+        padding: 1.875rem 1.25rem;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.25rem;
+    }
+
+    .contact-item { padding: 15px 10px; }
+
+    .contact-item a { font-size: 0.95rem; }
+
+    .faq-container {
+        margin: 1.875rem 0.9375rem;
+        padding: 2.1875rem 1.25rem;
+        border-radius: 12px;
+    }
+
+    .faq-container h2 {
+        font-size: 1.6rem;
+        margin-bottom: 1.875rem;
+    }
+
+    .faq-question {
+        padding: 1.125rem 1.25rem;
+        font-size: 1rem;
+    }
+
+    .faq-question:hover { padding-left: 25px; }
+
+    .faq-answer p {
+        padding: 1.25rem;
+        font-size: 0.95rem;
+    }
+}
+
+/* Mobile pequeno (max 480px) */
+@media (max-width: 480px) {
+    .title h1 { font-size: 1.5rem; letter-spacing: 0; }
+    .title { padding: 45px 15px 40px; }
+
+    .contact-info {
+        grid-template-columns: 1fr;
+        margin: 1.25rem 0.625rem;
+        padding: 1.5625rem 0.9375rem;
+        gap: 0.9375rem;
+    }
+
+    .faq-container {
+        margin: 1.25rem 0.625rem;
+        padding: 1.5625rem 0.9375rem;
+    }
+
+    .faq-container h2 { font-size: 1.3rem; }
+
+    .faq-question {
+        padding: 0.9375rem;
+        font-size: 0.9rem;
+    }
+
+    .faq-question:hover { padding-left: 20px; }
+
+    .faq-answer p {
+        padding: 0.9375rem;
+        font-size: 0.9rem;
+    }
+}
+
+/* Preferência: reduzir movimento */
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+    }
+}

@@ -1,0 +1,135 @@
+-----------------------------------------------------------------------
+pagina login: com.eckey.vizpin.dm:id/action_bar_root
+-----------------------------------------------------------------------
+Country Code: com.eckey.vizpin.dm:id/tvCountry
+com.eckey.vizpin.dm:id/ivDropdown
+
+Search Country: com.eckey.vizpin.dm:id/etSearch
+
+Click In Country: com.eckey.vizpin.dm:id/txtcountry
+
+Phone Number: com.eckey.vizpin.dm:id/etMobile
+
+Password: com.eckey.vizpin.dm:id/etPassword
+
+Termos Of Use & Policy Privace: com.eckey.vizpin.dm:id/cbTerms
+
+Remember Me Button: com.eckey.vizpin.dm:id/cbAuto
+
+Login: com.eckey.vizpin.dm:id/btnLogin
+
+
+---------------------------------------------------------------------
+Forgot password page: com.eckey.vizpin.dm:id/rlroot
+---------------------------------------------------------------------
+Forgot Password button: com.eckey.vizpin.dm:id/tvForgot
+
+Continue to go to the forgot password: android:id/button1
+
+SMS code button: com.eckey.vizpin.dm:id/etLocationID
+
+Password button: com.eckey.vizpin.dm:id/etPassword
+
+Verrify password button: com.eckey.vizpin.dm:id/etConfirmPassword
+
+Update button: com.eckey.vizpin.dm:id/btnUpdate
+
+Error message: android:id/message
+
+----------------------------------------------------------------------
+Sign up page
+----------------------------------------------------------------------
+Sign Up button: com.eckey.vizpin.dm:id/btnSignUp
+
+Button to enter in the sign  up page: android:id/button1
+
+Put first name: com.eckey.vizpin.dm:id/etFirstName
+
+Put last name: com.eckey.vizpin.dm:id/etLastName
+
+Dropdown country code: com.eckey.vizpin.dm:id/ivDropdown
+
+Search from Country: com.eckey.vizpin.dm:id/etSearch
+
+Click in the Country: com.eckey.vizpin.dm:id/txtcountry
+
+Country code: com.eckey.vizpin.dm:id/tvCountry
+
+Phone number: com.eckey.vizpin.dm:id/etMobile
+
+Password button: com.eckey.vizpin.dm:id/etPassword
+
+Confirm password button: com.eckey.vizpin.dm:id/etConfirmPassword
+
+Accept Terms of Use: com.eckey.vizpin.dm:id/cbHelp
+
+Regist new Account: com.eckey.vizpin.dm:id/btnRegister
+
+Message to put SMS: android:id/content
+---------------------------------------------------------------------
+list of keys page: com.eckey.vizpin.dm:id/decor_content_parent
+---------------------------------------------------------------------
+Name Of Account: com.eckey.vizpin.dm:id/tvAccount
+
+Open Door: com.eckey.vizpin.dm:id/btnOpen
+
+Lock Door: com.eckey.vizpin.dm:id/btnReset
+
++Info Button: com.eckey.vizpin.dm:id/tvInfo
+
+Favorite Button: com.eckey.vizpin.dm:id/ivFavorites
+
+Favorite button message: android:id/message
+
+Sort By Proximty: com.eckey.vizpin.dm:id/ivSort
+
+Hello [Username]: com.eckey.vizpin.dm:id/tvHello
+
+Show signal strenght: com.eckey.vizpin.dm:id/checkbox
+
+Update button: com.eckey.vizpin.dm:id/btUpdate
+
+Help Button: com.eckey.vizpin.dm:id/ivHelp
+
+Settings Button: com.eckey.vizpin.dm:id/ivSettings
+
+
+--------------------------------------------------------------------
++info page: com.eckey.vizpin.dm:id/decor_content_parent
+--------------------------------------------------------------------
++Info Button: com.eckey.vizpin.dm:id/tvInfo
+
+Location: com.eckey.vizpin.dm:id/ivAddress
+
+Phone Number: com.eckey.vizpin.dm:id/tvPhone
+
+Open Door: com.eckey.vizpin.dm:id/btnOpen
+
+Lock Door: com.eckey.vizpin.dm:id/btnReset
+
+Get Visitor Code: com.eckey.vizpin.dm:id/btnGetVisitorCode
+
+Confirm I want to Get: com.eckey.vizpin.dm:id/btnGetCode
+
+Number code: com.eckey.vizpin.dm:id/txtCode
+-------------------------------------------------------------------
+settings page: com.eckey.vizpin.dm:id/decor_content_parent
+-------------------------------------------------------------------
+Settings Button: com.eckey.vizpin.dm:id/ivSettings
+
+Auto Login: com.eckey.vizpin.dm:id/swAutoLogin
+
+Notifications: com.eckey.vizpin.dm:id/swNotifications
+
+Sound: com.eckey.vizpin.dm:id/swFeedbackSound
+
+-------------------------------------------------------------------
+help page: com.sec.android.app.sbrowser:id/action_bar_root
+-------------------------------------------------------------------
+
+-------------------------------------------------------------------
+other ivAddress
+-------------------------------------------------------------------
+Andoid home page: com.sec.android.app.launcher:id/workspace
+Enter in the VizpinSmartApp button: com.sec.android.app.launcher:id/home_icon
+Error Message: android:id/message

@@ -1,0 +1,566 @@
+/* ========================================
+   RESET E CONFIGURAÇÕES GERAIS
+   ======================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+    min-height: 100vh;
+    padding: 1.25rem;
+    line-height: 1.6;
+    color: #333;
+}
+
+/* ========================================
+   CONTAINER PRINCIPAL
+   ======================================== */
+.bcontainer {
+    max-width: 1400px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.15);
+    overflow: hidden;
+}
+
+/* ========================================
+   TÍTULO
+   ======================================== */
+.title {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 2.5rem 1.875rem;
+    text-align: center;
+}
+
+.title h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+    margin-bottom: 0.9375rem;
+}
+
+.subtitle {
+    font-size: 1rem;
+    opacity: 0.95;
+    font-weight: 400;
+    margin-top: 0.625rem;
+}
+
+/* ========================================
+   FORMULÁRIO
+   ======================================== */
+.personalize-form {
+    padding: 2.5rem;
+}
+
+/* ========================================
+   GRID LAYOUT - 2 COLUNAS
+   ======================================== */
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.875rem;
+}
+
+.coluna-esquerda,
+.coluna-direita {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+/* Coluna direita sticky */
+.coluna-direita {
+    position: sticky;
+    top: 20px;
+    align-self: flex-start;
+}
+
+/* ========================================
+   SEÇÕES DO FORMULÁRIO
+   ======================================== */
+.form-section {
+    background: #f8f9fa;
+    padding: 1.5625rem;
+    border-radius: 12px;
+    border-left: 4px solid #667eea;
+    transition: all 0.3s ease;
+}
+
+.form-section:hover {
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.2);
+    transform: translateY(-2px);
+}
+
+.form-section h2 {
+    color: #0e36e7;
+    font-size: 1.2rem;
+    margin-bottom: 0.9375rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e0e0e0;
+}
+
+.form-section h3 {
+    color: #667eea;
+    font-size: 1.1rem;
+    margin-bottom: 0.75rem;
+}
+
+/* ========================================
+   LABELS E INPUTS
+   ======================================== */
+label {
+    display: block;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 0.5rem;
+    font-size: 0.95rem;
+}
+
+select,
+input[type="text"],
+input[type="date"],
+input[type="number"],
+input[type="file"],
+textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    font-family: inherit;
+}
+
+select:focus,
+input:focus,
+textarea:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+select {
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23667eea' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    padding-right: 2.1875rem;
+}
+
+textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+/* ========================================
+   SUGESTÕES
+   ======================================== */
+.suggestions-box {
+    background: linear-gradient(135deg, #f5f7fa 0%, #e9ecef 100%);
+    border-left-color: #28a745 !important;
+}
+
+.suggestions-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.9375rem;
+    margin-top: 0.9375rem;
+}
+
+.suggestion-card {
+    background: white;
+    padding: 0.9375rem;
+    border-radius: 8px;
+    border-left: 3px solid #667eea;
+}
+
+.suggestion-card h3 {
+    font-size: 1rem;
+    margin-bottom: 0.625rem;
+    color: #1133cb;
+}
+
+.suggestion-card ul {
+    list-style: none;
+    padding: 0;
+}
+
+.suggestion-card li {
+    padding: 0.3125rem 0;
+    color: #555;
+    font-size: 0.9rem;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.suggestion-card li:last-child {
+    border-bottom: none;
+}
+
+/* ========================================
+   IDADE BOX
+   ======================================== */
+.idade-box {
+    margin-top: 0.9375rem;
+    padding: 0.9375rem;
+    background: #f0f4ff;
+    border-radius: 8px;
+}
+
+/* ========================================
+   SEÇÃO IMAGEM
+   ======================================== */
+.imagem-section {
+    border-left-color: #ff6b6b !important;
+}
+
+.foto-info {
+    text-align: center;
+    padding: 0.9375rem;
+    background: linear-gradient(135deg, #667eea15 0%, #764ba215 100%);
+    border-radius: 8px;
+    margin-bottom: 0.9375rem;
+}
+
+.foto-info p {
+    margin: 0.3125rem 0;
+    font-weight: 500;
+}
+
+.small-text {
+    font-size: 0.85rem;
+    color: #666;
+}
+
+/* ========================================
+   INPUT FILE
+   ======================================== */
+input[type="file"] {
+    padding: 0.9375rem;
+    border: 2px dashed #667eea;
+    cursor: pointer;
+    background: #f8f9ff;
+}
+
+input[type="file"]:hover {
+    border-color: #764ba2;
+    background: #f0f4ff;
+}
+
+/* ========================================
+   MENSAGENS
+   ======================================== */
+.erro {
+    color: #dc3545;
+    background: #f8d7da;
+    padding: 0.75rem;
+    border-radius: 8px;
+    margin-top: 0.625rem;
+    border-left: 3px solid #dc3545;
+    display: none;
+    font-size: 0.9rem;
+}
+
+.sucesso {
+    color: #064615;
+    background: #d4edda;
+    padding: 0.75rem;
+    border-radius: 8px;
+    margin-top: 0.625rem;
+    border-left: 3px solid #28a745;
+    display: none;
+    font-size: 0.9rem;
+}
+
+/* ========================================
+   PREVIEW DA IMAGEM
+   ======================================== */
+.preview {
+    margin-top: 1.25rem;
+    padding: 1.25rem;
+    background: white;
+    border-radius: 10px;
+    border: 2px solid #667eea;
+    display: none;
+}
+
+.preview-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.9375rem;
+    padding-bottom: 0.625rem;
+    border-bottom: 2px solid #e0e0e0;
+}
+
+.preview-header h4 {
+    color: #12267d;
+    font-size: 1rem;
+    margin: 0;
+}
+
+.btn-limpar-img {
+    background: #dc3545;
+    color: white;
+    border: none;
+    padding: 0.5rem 0.9375rem;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-limpar-img:hover {
+    background: #c82333;
+    transform: translateY(-2px);
+}
+
+.preview img {
+    width: 100%;
+    max-height: 200px;
+    object-fit: contain;
+    border-radius: 8px;
+    margin-bottom: 0.9375rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.preview-info {
+    background: #e8f4f8;
+    padding: 0.9375rem;
+    border-radius: 8px;
+    border-left: 3px solid #17a2b8;
+}
+
+.preview-info p {
+    margin: 0.3125rem 0;
+    font-size: 0.9rem;
+    color: #0c5460;
+}
+
+.preview-info strong {
+    color: #0c5460;
+}
+
+/* ========================================
+   RESUMO DO PEDIDO
+   ======================================== */
+.resumo-section {
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    border-left-color: #4CAF50 !important;
+}
+
+.resumo-vazio {
+    text-align: center;
+    color: #999;
+    padding: 1.875rem;
+    font-style: italic;
+}
+
+#resumo-content {
+    margin-bottom: 1.25rem;
+}
+
+.resumo-item {
+    background: white;
+    padding: 0.9375rem;
+    border-radius: 8px;
+    margin-bottom: 0.625rem;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.resumo-item h3 {
+    font-size: 1rem;
+    color: #667eea;
+    margin-bottom: 0.625rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e0e0e0;
+}
+
+.resumo-item p {
+    margin: 0.3125rem 0;
+    font-size: 0.9rem;
+    color: #555;
+}
+
+.resumo-item strong {
+    color: #333;
+}
+
+.resumo-total {
+    background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
+    color: white;
+    padding: 1.25rem;
+    border-radius: 8px;
+    text-align: center;
+    margin-bottom: 0.9375rem;
+}
+
+.resumo-total h2 {
+    font-size: 2rem;
+    margin: 0;
+    border: none;
+    color: white !important;
+}
+
+/* ========================================
+   NOTAS IMPORTANTES
+   ======================================== */
+.notas {
+    background: linear-gradient(135deg, #e8f4f8 0%, #e1f5fe 100%);
+    padding: 1.5625rem;
+    border-radius: 12px;
+    border-left: 4px solid #17a2b8;
+}
+
+.notas h3 {
+    color: #0c5460;
+    margin-bottom: 0.9375rem;
+    font-size: 1.1rem;
+}
+
+.notas ul {
+    list-style: none;
+    padding: 0;
+}
+
+.notas li {
+    color: #0c5460;
+    margin: 0.5rem 0;
+    padding-left: 1.25rem;
+    position: relative;
+    font-size: 0.95rem;
+}
+
+.notas li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: #17a2b8;
+    font-weight: bold;
+}
+
+/* ========================================
+   BOTÕES
+   ======================================== */
+.button-group {
+    display: flex;
+    gap: 0.75rem;
+    margin-bottom: 0.9375rem;
+}
+
+button[type="submit"],
+button[type="button"],
+.btn-primary,
+.btn-secondary {
+    flex: 1;
+    padding: 0.875rem 1.5625rem;
+    border: none;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-primary,
+button[type="submit"] {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+}
+
+.btn-primary:hover,
+button[type="submit"]:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+}
+
+.btn-secondary {
+    background: linear-gradient(135deg, #6c757d 0%, #5a6268 100%);
+    color: white;
+    box-shadow: 0 4px 15px rgba(108, 117, 125, 0.3);
+}
+
+.btn-secondary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(108, 117, 125, 0.4);
+}
+
+/* ========================================
+   DISCLAIMER
+   ======================================== */
+.disclaimer {
+    font-size: 0.85rem;
+    color: #666;
+    font-style: italic;
+    text-align: center;
+    margin: 0;
+}
+
+/* ========================================
+   SEÇÕES CONDICIONAIS
+   ======================================== */
+.conditional {
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ========================================
+   RESPONSIVE
+   ======================================== */
+@media (max-width: 992px) {
+    .grid-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .coluna-direita {
+        position: relative;
+        top: 0;
+    }
+    
+    .suggestions-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .personalize-form {
+        padding: 1.5625rem;
+    }
+    
+    .title h1 {
+        font-size: 2rem;
+    }
+    
+    .subtitle {
+        font-size: 0.9rem;
+    }
+    
+    .button-group {
+        flex-direction: column;
+    }
+    
+    button[type="submit"],
+    button[type="button"],
+    .btn-primary,
+    .btn-secondary {
+        width: 100%;
+    }
+}

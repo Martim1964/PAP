@@ -1,0 +1,669 @@
+/* =========================================================
+   COMPRAS-FINALIZAR.CSS
+   Estilos da etapa de finalizacao do checkout.
+   ========================================================= */
+
+:root {
+    /* Cores Doces Dias */
+    --rosa-principal: #FF95B5;
+    --rosa-claro: #FFE4E1;
+    --rosa-escuro: #E91E63;
+    --bege: #FFF5F0;
+    --creme: #FFFBF7;
+    --chocolate: #7A3E1C;
+    --texto-escuro: #2C2C2C;
+    --texto-claro: #6B6B6B;
+    --verde-sucesso: #6DC95D;
+    --vermelho: #E74C3C;
+    --azul: #5B9BD5;
+    --branco: #FFFFFF;
+    --cinza-claro: #F9F9F9;
+    --cinza-borda: #E8E8E8;
+    --sombra-leve: 0 2px 8px rgba(255, 149, 181, 0.1);
+    --sombra-media: 0 4px 16px rgba(255, 149, 181, 0.15);
+    --sombra-forte: 0 8px 24px rgba(255, 149, 181, 0.2);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    background: linear-gradient(135deg, #FFF9F7 0%, #FFE6F0 50%, #FFFBF7 100%);
+    color: var(--texto-escuro);
+    line-height: 1.6;
+    min-height: 100vh;
+}
+
+/* ========== PROGRESSO ========== */
+.progresso-secao {
+    max-width: 1400px;
+    margin: 2.5rem auto 3.125rem;
+    padding: 0 1.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.25rem;
+}
+
+.step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.625rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.step-numero {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: var(--cinza-claro);
+    color: var(--texto-claro);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 1.125rem;
+    border: 2px solid var(--cinza-borda);
+    transition: all 0.3s ease;
+}
+
+.step-label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--texto-claro);
+    letter-spacing: 0.5px;
+}
+
+.step.active .step-numero {
+    background: linear-gradient(135deg, var(--rosa-principal), var(--rosa-escuro));
+    color: var(--branco);
+    border-color: var(--rosa-escuro);
+    box-shadow: var(--sombra-media);
+    transform: scale(1.1);
+}
+
+.step.active .step-label {
+    color: var(--chocolate);
+    font-weight: 800;
+}
+
+.step-linha {
+    width: 50px;
+    height: 3px;
+    background: var(--cinza-borda);
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
+
+.step.active ~ .step-linha {
+    background: linear-gradient(90deg, var(--rosa-principal), var(--rosa-escuro));
+}
+
+/* ========== CONTAINER PRINCIPAL ========== */
+.finalizar-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 1.25rem 2.5rem;
+}
+
+.contenido-finalizar {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 2.5rem;
+    animation: slideIn 0.5s ease;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ========== COLUNA FORMULÁRIO ========== */
+.coluna-formulario {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5625rem;
+}
+
+.secao-formulario {
+    background: var(--branco);
+    padding: 2.1875rem;
+    border-radius: 16px;
+    box-shadow: var(--sombra-leve);
+    border-left: 5px solid var(--rosa-principal);
+    transition: all 0.3s ease;
+    animation: slideIn 0.5s ease;
+}
+
+.secao-formulario:hover {
+    box-shadow: var(--sombra-media);
+    transform: translateY(-2px);
+}
+
+.secao-titulo {
+    font-size: 1.125rem;
+    font-weight: 800;
+    color: var(--chocolate);
+    margin-bottom: 1.25rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding-bottom: 0.75rem;
+    border-bottom: 2px solid var(--rosa-claro);
+}
+
+/* ========== FORMULÁRIO ========== */
+.form-grupo {
+    margin-bottom: 1.125rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.form-grupo label {
+    font-weight: 600;
+    color: var(--texto-escuro);
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+}
+
+.form-grupo input,
+.form-grupo textarea {
+    padding: 0.75rem 0.9375rem;
+    border: 2px solid var(--cinza-borda);
+    border-radius: 10px;
+    font-size: 0.875rem;
+    font-family: inherit;
+    transition: all 0.3s ease;
+    background: var(--branco);
+}
+
+.form-grupo input:focus,
+.form-grupo textarea:focus {
+    outline: none;
+    border-color: var(--rosa-principal);
+    box-shadow: 0 0 0 3px rgba(255, 149, 181, 0.1);
+    background: var(--branco);
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.9375rem;
+}
+
+.erro-msg {
+    font-size: 0.75rem;
+    color: var(--vermelho);
+    font-weight: 600;
+    display: none;
+}
+
+.form-grupo.erro input,
+.form-grupo.erro textarea {
+    border-color: var(--vermelho);
+    background: rgba(231, 76, 60, 0.05);
+}
+
+.form-grupo.erro .erro-msg {
+    display: block;
+}
+
+/* ========== CHECKBOX ========== */
+.checkbox-grupo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-top: 1.25rem;
+    padding: 0.9375rem;
+    background: var(--cinza-claro);
+    border-radius: 10px;
+}
+
+.checkbox-grupo input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    accent-color: var(--rosa-principal);
+}
+
+.checkbox-grupo label {
+    margin: 0;
+    font-weight: 500;
+    cursor: pointer;
+    font-size: 0.875rem;
+    text-transform: none;
+}
+
+.char-count {
+    font-size: 0.75rem;
+    color: var(--texto-claro);
+    text-align: right;
+}
+
+/* ========== OPÇÕES DE ENTREGA ========== */
+.opcoes-entrega {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+}
+
+.opcao-entrega {
+    position: relative;
+}
+
+.opcao-entrega input[type="radio"] {
+    display: none;
+}
+
+.opcao-entrega label {
+    display: block;
+    padding: 1.125rem;
+    border: 2px solid var(--cinza-borda);
+    border-radius: 12px;
+    background: var(--cinza-claro);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: none;
+}
+
+.opcao-entrega input[type="radio"]:checked + label {
+    background: linear-gradient(135deg, var(--rosa-claro), var(--bege));
+    border-color: var(--rosa-principal);
+    box-shadow: var(--sombra-media);
+}
+
+.opcao-titulo {
+    font-weight: 700;
+    color: var(--chocolate);
+    margin-bottom: 0.3125rem;
+    font-size: 0.9375rem;
+}
+
+.opcao-descricao {
+    font-size: 0.8125rem;
+    color: var(--texto-claro);
+    margin-bottom: 0.5rem;
+}
+
+.opcao-preco {
+    font-size: 1rem;
+    font-weight: 800;
+    color: var(--rosa-escuro);
+}
+
+/* ========== COLUNA RESUMO ========== */
+.coluna-resumo {
+    position: relative;
+}
+
+.resumo-pedido-sticky {
+    position: sticky;
+    top: 20px;
+    background: var(--branco);
+    padding: 2.1875rem;
+    border-radius: 16px;
+    box-shadow: var(--sombra-forte);
+    border: none;
+    animation: slideIn 0.6s ease 0.1s both;
+}
+
+.resumo-titulo {
+    font-size: 1.125rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    color: var(--chocolate);
+    margin-bottom: 1.5625rem;
+    letter-spacing: 0.5px;
+    position: relative;
+    padding-bottom: 0.9375rem;
+}
+
+.resumo-titulo::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 40px;
+    height: 4px;
+    background: linear-gradient(90deg, var(--rosa-principal), var(--rosa-escuro));
+    border-radius: 2px;
+}
+
+/* ========== RESUMO PRODUTOS ========== */
+.resumo-produtos {
+    margin-bottom: 1.5625rem;
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.resumo-produto-item {
+    display: flex;
+    gap: 0.75rem;
+    margin-bottom: 0.9375rem;
+    padding-bottom: 0.9375rem;
+    border-bottom: 1px solid var(--rosa-escuro);
+    font-size: 0.8125rem;
+}
+
+.resumo-produto-item:last-child {
+    border-bottom: none;
+}
+
+.resumo-produto-img {
+    width: 60px;
+    height: 60px;
+    border-radius: 8px;
+    background: var(--rosa-claro);
+    flex-shrink: 0;
+    overflow: hidden;
+}
+
+.resumo-produto-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.resumo-produto-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.resumo-produto-nome {
+    font-weight: 700;
+    color: var(--chocolate);
+    font-size: 0.8125rem;
+}
+
+.resumo-produto-qtd {
+    color: var(--texto-claro);
+    font-size: 0.75rem;
+}
+
+.resumo-produto-preco {
+    font-weight: 700;
+    color: var(--texto-escuro);
+}
+
+/* ========== RESUMO LINHAS ========== */
+.resumo-linha {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.75rem;
+    font-size: 0.875rem;
+    color: var(--texto-escuro);
+    font-weight: 500;
+    padding: 0.5rem 0;
+}
+
+.desconto-linha {
+    padding: 0.75rem;
+    background: linear-gradient(135deg, rgba(109, 201, 93, 0.1), rgba(109, 201, 93, 0.05));
+    border-radius: 10px;
+    border-left: 4px solid var(--verde-sucesso);
+}
+
+.texto-verde {
+    color: var(--verde-sucesso);
+    font-weight: 700;
+}
+
+.resumo-impostos {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.8125rem;
+    color: var(--texto-claro);
+    padding: 0.625rem 0;
+    border-top: 1px solid var(--cinza-borda);
+    margin-top: 0.9375rem;
+    padding-top: 0.9375rem;
+}
+
+.resumo-total {
+    display: flex;
+    justify-content: space-between;
+    padding: 1.25rem 0;
+    margin: 1.25rem 0;
+    border-top: 3px solid var(--cinza-borda);
+    border-bottom: 3px solid var(--rosa-principal);
+}
+
+.total-label {
+    font-size: 1rem;
+    font-weight: 800;
+    color: var(--chocolate);
+    text-transform: uppercase;
+}
+
+.total-valor {
+    font-size: 1.5rem;
+    font-weight: 900;
+    background: linear-gradient(135deg, var(--rosa-principal), var(--rosa-escuro));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* ========== TERMOS ========== */
+.termos-checkbox {
+    display: flex;
+    gap: 0.75rem;
+    align-items: flex-start;
+    margin: 1.25rem 0;
+    padding: 0.9375rem;
+    background: var(--cinza-claro);
+    border-radius: 10px;
+}
+
+.termos-checkbox input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    margin-top: 0.125rem;
+    cursor: pointer;
+    accent-color: var(--vermelho);
+    flex-shrink: 0;
+}
+
+.termos-checkbox label {
+    font-size: 0.8125rem;
+    color: var(--texto-escuro);
+    cursor: pointer;
+    margin: 0;
+    text-transform: none;
+}
+
+.link-termos {
+    color: var(--texto-escuro);
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.link-termos:hover {
+    color: var(--rosa-escuro);
+    text-decoration: underline;
+}
+
+/* ========== BOTÕES ========== */
+.btn-pagar {
+    width: 100%;
+    padding: 1.125rem;
+    background: linear-gradient(135deg, var(--rosa-principal) 0%, var(--rosa-escuro) 100%);
+    color: var(--branco);
+    border: none;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-weight: 800;
+    cursor: pointer;
+    margin-bottom: 0.75rem;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: var(--sombra-media);
+}
+
+.btn-pagar:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--sombra-forte);
+}
+
+.btn-pagar:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.btn-voltar {
+    width: 100%;
+    padding: 0.875rem;
+    background: var(--branco);
+    color: var(--chocolate);
+    border: 2px solid var(--rosa-principal);
+    border-radius: 12px;
+    font-size: 0.875rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.btn-voltar:hover {
+    background: var(--rosa-claro);
+    border-color: var(--rosa-escuro);
+}
+
+/* ========== RESPONSIVO ========== */
+@media (max-width: 1024px) {
+    .contenido-finalizar {
+        grid-template-columns: 1fr;
+        gap: 1.875rem;
+    }
+
+    .resumo-pedido-sticky {
+        position: relative;
+        top: auto;
+    }
+}
+
+@media (max-width: 768px) {
+    .progresso-secao {
+        margin: 1.875rem auto 2.5rem;
+        gap: 0.625rem;
+    }
+
+    .step-numero {
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+    }
+
+    .step-linha {
+        width: 30px;
+    }
+
+    .secao-formulario {
+        padding: 1.25rem;
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+
+    .resumo-pedido-sticky {
+        padding: 1.5625rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .finalizar-container {
+        padding: 0 0.9375rem 1.875rem;
+    }
+
+    .progresso-secao {
+        margin: 1.25rem auto 1.875rem;
+        gap: 0.5rem;
+    }
+
+    .step-numero {
+        width: 35px;
+        height: 35px;
+        font-size: 0.875rem;
+    }
+
+    .step-label {
+        font-size: 0.625rem;
+    }
+
+    .step-linha {
+        width: 20px;
+        height: 2px;
+    }
+
+    .secao-formulario {
+        padding: 0.9375rem;
+        border-radius: 12px;
+    }
+
+    .secao-titulo {
+        font-size: 0.9375rem;
+        margin-bottom: 0.9375rem;
+    }
+
+    .form-grupo input,
+    .form-grupo textarea {
+        padding: 0.625rem 0.75rem;
+        font-size: 0.8125rem;
+    }
+
+    .resumo-pedido-sticky {
+        padding: 1.25rem;
+    }
+
+    .resumo-titulo {
+        font-size: 1rem;
+    }
+
+    .btn-pagar,
+    .btn-voltar {
+        padding: 0.875rem;
+        font-size: 0.8125rem;
+    }
+
+    .total-valor {
+        font-size: 1.25rem;
+    }
+}
+
+/* ========== UTILITÁRIOS ========== */
+.notificacao-erro {
+    background: rgba(231, 76, 60, 0.1);
+    border: 2px solid var(--vermelho);
+    color: var(--vermelho);
+    padding: 0.9375rem;
+    border-radius: 10px;
+    margin-bottom: 1.25rem;
+    font-weight: 600;
+    animation: slideIn 0.3s ease;
+}
+
+::selection {
+    background: var(--rosa-principal);
+    color: var(--branco);
+}
