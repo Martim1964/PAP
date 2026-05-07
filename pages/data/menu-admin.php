@@ -60,6 +60,13 @@ if (!isset($_SESSION['user_id']) || $_SESSION['admin'] != 1) {
                 <p class="text-muted mb-0">Adicionar novos produtos, novas massas, recheios e tamanhos.</p>
             </a>
         </div>
+
+        <div class="col-md-6">
+            <a href="admin-data-testes.php" class="card text-decoration-none h-100 p-4"> <?php //Ligação a pagina da gestao de bolos ?>
+                <h5>Realização de testes</h5>
+                <p class="text-muted mb-0">Verificar testes automatizados.</p>
+            </a>
+        </div>
     </div>
 </div>
 
