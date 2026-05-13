@@ -213,9 +213,13 @@
                             </div>
                         </td>
                         <td>
-                            <img src="../../img-pap/upload-bolos-personalizados/<?= htmlspecialchars($enc['imagem']) ?>"
-                                 alt="Imagem encomenda"
-                                 style="width: 60px; height: 60px; object-fit: cover; border-radius: 8px;">
+                            <?php if (!empty($enc['imagem'])): ?>
+                                <img src="../../img-pap/upload-bolos-personalizados/<?= htmlspecialchars($enc['imagem']) ?>"
+                                    alt="Imagem encomenda"
+                                    style="width: 60px; height: 60px; object-fit: cover; border-radius: 8px;">
+                            <?php else: ?>
+                                <span>Não foi inserida imagem</span>
+                            <?php endif; ?>
                         </td>
                     </tr>
                     <?php endif; ?>
@@ -277,19 +281,19 @@
     </div>
 
     <script>
-    document.addEventListener("DOMContentLoaded", function() {
-        const confirmarId = <?= $confirmar_id ?>;
-        if (confirmarId > 0) {
-            const inputId = document.getElementById('ModalEncId');
-            if (inputId) {
-                inputId.value = confirmarId;
-                const modal = new bootstrap.Modal(document.getElementById('modalEditar'));
-                modal.show();
-                const novaUrl = window.location.protocol + "//" + window.location.host + window.location.pathname;
-                window.history.replaceState({path: novaUrl}, '', novaUrl);
+        document.addEventListener("DOMContentLoaded", function() {
+            const confirmarId = <?= $confirmar_id ?>;
+            if (confirmarId > 0) {
+                const inputId = document.getElementById('ModalEncId');
+                if (inputId) {
+                    inputId.value = confirmarId;
+                    const modal = new bootstrap.Modal(document.getElementById('modalEditar'));
+                    modal.show();
+                    const novaUrl = window.location.protocol + "//" + window.location.host + window.location.pathname;
+                    window.history.replaceState({path: novaUrl}, '', novaUrl);
+                }
             }
-        }
-    });
+        });
     </script>
 
     </main>

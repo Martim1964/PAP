@@ -25,8 +25,9 @@ if (!isset($_SESSION['user_id']) || $_SESSION['admin'] != 1) {
 <main>
 
 <div class="container my-5">
+    <h2 class="mb-5">Bem vindo ao seu painel de administrador  , <?php echo htmlspecialchars($_SESSION['nome']) ?></h2>
     <h6 class="text-muted text-uppercase fw-semibold">Doces Dias</h6>
-    <h1 class="mb-5">Painel de administrador</h1> <?php //Titulo ?>
+    <h4 class="mb-5">Painel de administrador</h4> <!-- TITULO -->
 
     <div class="row g-3">
         <div class="col-md-6">
@@ -58,13 +59,6 @@ if (!isset($_SESSION['user_id']) || $_SESSION['admin'] != 1) {
             <a href="admin-data-bolos.php" class="card text-decoration-none h-100 p-4"> <?php //Ligação a pagina da gestao de bolos ?>
                 <h5>Gestão de bolos</h5>
                 <p class="text-muted mb-0">Adicionar novos produtos, novas massas, recheios e tamanhos.</p>
-            </a>
-        </div>
-
-        <div class="col-md-6">
-            <a href="admin-data-testes.php" class="card text-decoration-none h-100 p-4"> <?php //Ligação a pagina da gestao de bolos ?>
-                <h5>Realização de testes</h5>
-                <p class="text-muted mb-0">Verificar testes automatizados.</p>
             </a>
         </div>
     </div>

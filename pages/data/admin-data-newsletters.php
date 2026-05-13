@@ -150,15 +150,6 @@
 
     </div>
 
-    <script>
-        // Confirmação antes de enviar
-        document.querySelector('form').addEventListener('submit', function (e) {
-            const total = <?= $total_subscritores ?>;
-            if (!confirm(`Tens a certeza que queres enviar esta newsletter para ${total} subscritores?`)) {
-                e.preventDefault();
-            }
-        });
-    </script>
 
     </main>
 

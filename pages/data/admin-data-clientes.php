@@ -78,6 +78,9 @@
             <!-- Serve para garantir que durante a pesquisa os dados em relação à filtragem do estado da encomenda não sejam perdidos ao submeter o formulário de pesquisa -->
             <input type="hidden" name="filtro_contactos" value="<?= htmlspecialchars($filtro_contactos) ?>">
             <!-- Crio uma caixa de texto para o administrador pesquisar o nome em questão -->
+             <label for="pesquisa" class="visually-hidden">
+                Pesquisar cliente por nome
+            </label>
             <input type="text" name="pesquisa" class="form-control form-control-sm"
                 placeholder="Pesquisar por nome..."
                 value="<?= htmlspecialchars($pesquisa) ?>"

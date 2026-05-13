@@ -147,8 +147,16 @@
                     <?php while ($massa = mysqli_fetch_assoc($result_massas)): ?>
                     <tr>
                         <td><?= htmlspecialchars($massa['label']) ?></td>
-                        <td><code><?= htmlspecialchars($massa['slug']) ?></code></td>
-                        <td><?= number_format($massa['preco'], 2, ',', '.') ?>€</td>
+                        <td><?= htmlspecialchars($massa['slug']) ?></td>
+                        <td>
+            
+                            <?= number_format($massa['preco'], 2, ',', '.') ?>€
+                            <!-- Botao para abrir modal de alteração de preço -->
+                            <button class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#modalPrecoMassa" 
+                            data-id="<?= $massa['id'] ?>" data-preco="<?= $massa['preco'] ?>">
+                                <i class="bi bi-pencil-square"></i>
+                            </button>
+                        </td>
                         <td>
                             <div class="dropdown">
                                 <button class="btn btn-outline-secondary btn-sm dropdown-toggle w-100" type="button" data-bs-toggle="dropdown" aria-label = "Massa Normal/Premium">
@@ -203,8 +211,15 @@
                     <?php while ($recheio = mysqli_fetch_assoc($result_recheios)): ?>
                     <tr>
                         <td><?= htmlspecialchars($recheio['label']) ?></td>
-                        <td><code><?= htmlspecialchars($recheio['slug']) ?></code></td>
-                        <td><?= number_format($recheio['preco'], 2, ',', '.') ?>€</td>
+                        <td><?= htmlspecialchars($recheio['slug']) ?></td>
+                        <td>
+                            <?= number_format($recheio['preco'], 2, ',', '.') ?>€
+                            <!-- Botao para abrir modal de alteração de preço -->
+                            <button class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#modalPrecoRecheio" 
+                            data-id="<?= $recheio['id'] ?>" data-preco="<?= $recheio['preco'] ?>">
+                                <i class="bi bi-pencil-square"></i>
+                            </button>
+                        </td>
                         <td>
                             <div class="dropdown">
                                 <button class="btn btn-outline-secondary btn-sm dropdown-toggle w-100" type="button" data-bs-toggle="dropdown" aria-label = "Recheio premium/normal">
@@ -261,8 +276,15 @@
                     <tr>
                         <td><code><?= htmlspecialchars($tam['bolo_slug']) ?></code></td>
                         <td><?= htmlspecialchars($tam['label']) ?></td>
-                        <td><code><?= htmlspecialchars($tam['slug']) ?></code></td>
-                        <td><?= number_format($tam['preco'], 2, ',', '.') ?>€</td>
+                        <td><?= htmlspecialchars($tam['slug']) ?></td>
+                        <td>
+                            <?= number_format($tam['preco'], 2, ',', '.') ?>€
+                            <!-- Botao para abrir modal de alteração de preço -->
+                            <button class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#modalPrecoTamanho" 
+                            data-id="<?= $tam['id'] ?>" data-preco="<?= $tam['preco'] ?>">
+                                <i class="bi bi-pencil-square"></i>
+                            </button>
+                        </td>
                         <td><?= $tam['ordem'] ?></td>
                         <td>
                             <div class="dropdown">
@@ -378,6 +400,50 @@
         </div>
     </div>
 
+     <!-- Novo PRECO Massa -->
+    <div class="modal fade" id="modalPrecoMassa" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title"><i class="bi bi-plus-lg"></i> Novo preço</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+                </div>
+                <form action="../../actions/admin-data/bolos/preco-massa.php" method="POST">
+                    <input type="hidden" name="id" id="massa_id">
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label class="form-label" for="preco_massa">Preço (€) s/IVA</label>
+                            <input type="number" step="0.01" min="0" name="preco" id="preco_massa" class="form-control" required>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                        <button type="submit" class="btn btn-primary">Guardar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+
+        const modal = document.getElementById('modalPrecoMassa');
+
+        modal.addEventListener('show.bs.modal', function (event) {
+
+            const button = event.relatedTarget;
+
+            const id = button.getAttribute('data-id');
+            const preco = button.getAttribute('data-preco');
+
+            document.getElementById('massa_id').value = id;
+            document.getElementById('preco_massa').value = preco;
+        });
+
+    });
+    </script>
+
     <!-- Novo Recheio -->
     <div class="modal fade" id="modalNovoRecheio" tabindex="-1">
         <div class="modal-dialog">
@@ -416,6 +482,50 @@
             </div>
         </div>
     </div>
+
+    <!-- Novo PRECO Recheio -->
+    <div class="modal fade" id="modalPrecoRecheio" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title"><i class="bi bi-plus-lg"></i> Novo preço</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+                </div>
+                <form action="../../actions/admin-data/bolos/preco-recheio.php" method="POST">
+                    <input type="hidden" name="id" id="recheio_id">
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label class="form-label" for="preco_recheio">Preço (€) s/IVA</label>
+                            <input type="number" step="0.01" min="0" name="preco" id="preco_massa" class="form-control" required>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                        <button type="submit" class="btn btn-primary">Guardar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+
+        const modal = document.getElementById('modalPrecoRecheio');
+
+        modal.addEventListener('show.bs.modal', function (event) {
+
+            const button = event.relatedTarget;
+
+            const id = button.getAttribute('data-id');
+            const preco = button.getAttribute('data-preco');
+
+            document.getElementById('recheio_id').value = id;
+            document.getElementById('preco_recheio').value = preco;
+        });
+
+    });
+    </script>
 
     <!-- Novo Tamanho -->
     <div class="modal fade" id="modalNovoTamanho" tabindex="-1">
@@ -472,6 +582,50 @@
         });
     </script>
     <?php endif; ?>
+
+    <!-- Novo PRECO Tamanho BOLOS -->
+    <div class="modal fade" id="modalPrecoTamanho" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title"><i class="bi bi-plus-lg"></i> Novo preço</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+                </div>
+                <form action="../../actions/admin-data/bolos/preco-bolos.php" method="POST">
+                    <input type="hidden" name="id" id="tamanho_id">
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label class="form-label" for="preco_tamanho">Preço (€) s/IVA</label>
+                            <input type="number" step="0.01" min="0" name="preco" id="preco_tamanho" class="form-control" required>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                        <button type="submit" class="btn btn-primary">Guardar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+
+        const modal = document.getElementById('modalPrecoTamanho');
+
+        modal.addEventListener('show.bs.modal', function (event) {
+
+            const button = event.relatedTarget;
+
+            const id = button.getAttribute('data-id');
+            const preco = button.getAttribute('data-preco');
+
+            document.getElementById('tamanho_id').value = id;
+            document.getElementById('preco_tamanho').value = preco;
+        });
+
+    });
+    </script>
 
     </main>
 
